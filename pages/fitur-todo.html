@@ -1,61 +1,103 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LifeSync - Todo &amp; Task Planner</title>
+    <title>LifeSync - Habit Tracker &amp; To-Do Mandiri</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="../tailwind-config.js"></script>
     <link rel="stylesheet" href="../style.css">
     <link rel="icon" type="image/png" href="../assets/lifesync-symbol.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,500..800;1,500..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
-<body class="bg-[#F7FAF7] text-neutral-900 p-6 sm:p-12 font-sans selection:bg-brand-500 selection:text-white">
-    <div class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-sm space-y-6 border border-[#DEE6DF]">
-        <a href="../index.html#fitur" class="inline-flex items-center gap-2 text-sm font-bold text-brand-600 hover:text-brand-700 transition">
-            <i class="fa-solid fa-arrow-left"></i> Kembali ke Fitur Utama
+<body class="bg-surface-container-low text-on-surface p-6 sm:p-12 font-sans selection:bg-tertiary-default selection:text-on-primary min-h-screen">
+    <div class="max-w-4xl mx-auto bg-surface-container-lowest p-8 sm:p-10 rounded-3xl shadow-card space-y-6 border border-outline-variant/40">
+        <a href="../index.html#fitur" class="inline-flex items-center gap-1.5 text-xs font-bold text-tertiary hover:text-tertiary-dark transition-colors">
+            <span class="material-symbols-outlined text-sm">arrow_back</span>
+            <span>Kembali ke Fitur Utama LifeSync</span>
         </a>
-        <div class="flex items-center space-x-4 border-b border-[#DEE6DF] pb-4">
-            <div class="w-12 h-12 bg-brand-100 text-brand-600 rounded-lg flex items-center justify-center text-xl">
-                <i class="fa-solid fa-list-check"></i>
+
+        <div class="flex items-center space-x-4 border-b border-outline-variant/30 pb-5">
+            <div class="w-14 h-14 bg-tertiary-fixed text-tertiary rounded-2xl flex items-center justify-center flex-shrink-0">
+                <span class="material-symbols-outlined text-3xl">repeat</span>
             </div>
             <div>
-                <h1 class="text-2xl font-black text-neutral-900">Todo &amp; Task Planner</h1>
-                <p class="text-sm text-neutral-600">Fitur Unggulan LifeSync</p>
+                <h1 class="text-2xl sm:text-3xl font-display font-bold text-on-surface">Habit Tracker &amp; To-Do Mandiri</h1>
+                <p class="text-xs sm:text-sm text-on-surface-variant font-mono">Pemisahan Beban Mental &bull; Target Poin &bull; Heatmap 30 Hari</p>
             </div>
         </div>
-        <p class="text-neutral-600 leading-relaxed text-sm sm:text-base mb-4">
-            LifeSync menyediakan pengelolaan daftar tugas harian dengan fitur CRUD lengkap. Pengguna dapat membuat tugas baru, menentukan tenggat waktu, menandai status selesai, serta menerima pemicu notifikasi lokal sehingga tidak pernah ketinggalan jadwal penting.
+
+        <p class="text-on-surface-variant leading-relaxed text-sm sm:text-base">
+            Membangun kebiasaan baik membutuhkan ruang mental yang berbeda dari daftar pekerjaan yang menekan. LifeSync secara sadar memisahkan modul pembentukan kebiasaan (Habit) dari tugas harian (To-Do), membimbing Anda mencapai konsistensi tanpa rasa bersalah.
         </p>
 
         <div class="grid md:grid-cols-2 gap-6">
-            <div class="p-6 rounded-lg border border-[#DEE6DF] bg-white">
-                <h3 class="text-lg font-bold text-neutral-900 mb-3 flex items-center gap-2">
-                    <i class="fa-solid fa-plus text-brand-600"></i> Buat &amp; Kelola Tugas
+            <div class="p-6 rounded-2xl border border-outline-variant/30 bg-surface-container-low">
+                <h3 class="text-base font-display font-bold text-on-surface mb-3 flex items-center gap-2">
+                    <span class="material-symbols-outlined text-tertiary text-xl">cycle</span>
+                    <span>Modul Kebiasaan (Habit Tracker)</span>
                 </h3>
-                <ul class="space-y-3 text-sm text-neutral-600">
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-xs text-brand-500 mt-0.5"></i> <span class="leading-relaxed">Buat tugas baru dengan judul, deskripsi, dan prioritas</span></li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-xs text-brand-500 mt-0.5"></i> <span class="leading-relaxed">Tetapkan tenggat waktu (deadline) dan waktu pengingat</span></li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-xs text-brand-500 mt-0.5"></i> <span class="leading-relaxed">Ubah status tugas menjadi belum selesai, dalam proses, atau selesai</span></li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-xs text-brand-500 mt-0.5"></i> <span class="leading-relaxed">Edit atau hapus tugas yang sudah dibuat</span></li>
+                <ul class="space-y-3 text-xs sm:text-sm text-on-surface-variant">
+                    <li class="flex items-start gap-2.5">
+                        <span class="material-symbols-outlined text-tertiary text-base flex-shrink-0 mt-0.5">check_circle</span>
+                        <span>Penetapan aturan target: harian, hari kerja, atau kuota mingguan</span>
+                    </li>
+                    <li class="flex items-start gap-2.5">
+                        <span class="material-symbols-outlined text-tertiary text-base flex-shrink-0 mt-0.5">check_circle</span>
+                        <span>Akumulasi poin keberhasilan untuk mengukur konsistensi riil</span>
+                    </li>
+                    <li class="flex items-start gap-2.5">
+                        <span class="material-symbols-outlined text-tertiary text-base flex-shrink-0 mt-0.5">check_circle</span>
+                        <span>Visualisasi kisi heatmap 30 hari untuk refleksi pencapaian</span>
+                    </li>
+                    <li class="flex items-start gap-2.5">
+                        <span class="material-symbols-outlined text-tertiary text-base flex-shrink-0 mt-0.5">check_circle</span>
+                        <span>Pengingat damai tanpa spam notifikasi yang mengintimidasi</span>
+                    </li>
+                    <li class="flex items-start gap-2.5">
+                        <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mt-0.5">notifications_active</span>
+                        <span><strong>Pengingat Kontekstual (Premium):</strong> Kalimat pengingat dirangkai berbeda-beda secara unik dan adaptif sesuai konteks hari, bukan pesan template kaku</span>
+                    </li>
                 </ul>
             </div>
-            <div class="p-6 rounded-lg border border-[#DEE6DF] bg-white">
-                <h3 class="text-lg font-bold text-neutral-900 mb-3 flex items-center gap-2">
-                    <i class="fa-solid fa-bell text-brand-600"></i> Pengingat &amp; Notifikasi
+
+            <div class="p-6 rounded-2xl border border-outline-variant/30 bg-surface-container-low">
+                <h3 class="text-base font-display font-bold text-on-surface mb-3 flex items-center gap-2">
+                    <span class="material-symbols-outlined text-tertiary text-xl">checklist</span>
+                    <span>Modul Tugas &amp; Prioritas (To-Do)</span>
                 </h3>
-                <ul class="space-y-3 text-sm text-neutral-600">
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-xs text-brand-500 mt-0.5"></i> <span class="leading-relaxed">Notifikasi lokal muncul sebelum tenggat waktu tugas</span></li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-xs text-brand-500 mt-0.5"></i> <span class="leading-relaxed">Pengingat berfungsi bahkan saat aplikasi offline</span></li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-xs text-brand-500 mt-0.5"></i> <span class="leading-relaxed">Tampilkan daftar tugas yang harus diselesaikan hari ini</span></li>
-                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-xs text-brand-500 mt-0.5"></i> <span class="leading-relaxed">Riwayat tugas selesai tersimpan untuk evaluasi produktivitas</span></li>
+                <ul class="space-y-3 text-xs sm:text-sm text-on-surface-variant">
+                    <li class="flex items-start gap-2.5">
+                        <span class="material-symbols-outlined text-tertiary text-base flex-shrink-0 mt-0.5">check_circle</span>
+                        <span>Klasifikasi prioritas terstruktur: Urgent, High, Normal, dan Low</span>
+                    </li>
+                    <li class="flex items-start gap-2.5">
+                        <span class="material-symbols-outlined text-tertiary text-base flex-shrink-0 mt-0.5">check_circle</span>
+                        <span>Tenggat waktu terhubung langsung dengan kalender agenda</span>
+                    </li>
+                    <li class="flex items-start gap-2.5">
+                        <span class="material-symbols-outlined text-tertiary text-base flex-shrink-0 mt-0.5">check_circle</span>
+                        <span>Pembedaan status tugas: Belum Dimulai, Dalam Proses, &amp; Selesai</span>
+                    </li>
+                    <li class="flex items-start gap-2.5">
+                        <span class="material-symbols-outlined text-tertiary text-base flex-shrink-0 mt-0.5">check_circle</span>
+                        <span>Pemberian label kontekstual universal untuk penyaringan cepat</span>
+                    </li>
                 </ul>
             </div>
         </div>
 
-        <div class="p-6 rounded-lg border border-brand-100 bg-brand-50">
-            <h3 class="text-lg font-bold text-brand-700 mb-3">Manfaat bagi Pengguna</h3>
-            <p class="text-sm text-brand-600 leading-relaxed">Dengan Todo &amp; Task Planner, pengguna dapat mengorganisir kegiatan harian dengan lebih terstruktur, meningkatkan produktivitas, dan tidak pernah melupakan tugas penting yang harus diselesaikan.</p>
+        <div class="p-6 rounded-2xl border border-tertiary-default/20 bg-surface-container-low">
+            <h3 class="text-sm font-bold text-tertiary mb-1.5 flex items-center gap-2">
+                <span class="material-symbols-outlined text-base">self_improvement</span>
+                <span>Ritme Konsistensi Tanpa Kelelahan (Burnout)</span>
+            </h3>
+            <p class="text-xs sm:text-sm text-on-surface-variant leading-relaxed">
+                Ketika daftar to-do Anda menumpuk, kebiasaan baik seringkali menjadi korban pertama. Dengan memisahkannya ke sistem pelacakan mandiri, Anda tetap bisa menjaga hidrasi, membaca, atau berolahraga terlepas dari dinamika pekerjaan Anda.
+            </p>
         </div>
     </div>
 </body>

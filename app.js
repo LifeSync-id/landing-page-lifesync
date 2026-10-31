@@ -156,8 +156,12 @@ function initNavbar() {
         toggle.setAttribute('aria-expanded', String(open));
         toggle.setAttribute('aria-label', open ? 'Tutup menu navigasi' : 'Buka menu navigasi');
         if (icon) {
-            icon.classList.toggle('fa-bars', !open);
-            icon.classList.toggle('fa-xmark', open);
+            if (icon.classList.contains('material-symbols-outlined')) {
+                icon.textContent = open ? 'close' : 'menu';
+            } else {
+                icon.classList.toggle('fa-bars', !open);
+                icon.classList.toggle('fa-xmark', open);
+            }
         }
     }
 
@@ -183,10 +187,10 @@ function initNavbar() {
         var scrolled = y > 10;
 
         if (scrolled) {
-            navbar.classList.add('bg-white/95', 'backdrop-blur-xl', 'shadow-sm');
+            navbar.classList.add('bg-surface/90', 'backdrop-blur-xl', 'shadow-soft');
             navbar.classList.remove('bg-transparent');
             if (bar) {
-                bar.classList.add('border-slate-100');
+                bar.classList.add('border-outline-variant/30');
                 bar.classList.remove('border-transparent');
             }
         } else {
@@ -221,7 +225,7 @@ function initNavbar() {
         navLinks.forEach(function (link) {
             var href = link.getAttribute('href');
             var active = href === '#' + current;
-            link.classList.toggle('text-brand-600', active);
+            link.classList.toggle('text-primary-default', active);
             link.classList.toggle('font-bold', active);
         });
     }

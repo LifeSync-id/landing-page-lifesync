@@ -7,7 +7,6 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
-const url = require('url');
 
 const ROOT = path.resolve(__dirname, '..');
 const PORT = Number(process.argv[2]) || 8765;
@@ -28,7 +27,7 @@ const MIME = {
 };
 
 const server = http.createServer((req, res) => {
-    const parsed = url.parse(req.url);
+    const parsed = new URL(req.url, `http://${req.headers.host || '127.0.0.1'}`);
     let pathname = decodeURIComponent(parsed.pathname);
     if (pathname === '/') pathname = '/index.html';
 
