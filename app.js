@@ -109,7 +109,9 @@ document.addEventListener('DOMContentLoaded', async function () {
         { name: 'Showcase Navigation', fn: initShowcaseNavigation },
         { name: 'Download Links', fn: initDownloadLinks },
         { name: 'Kontak Form', fn: initKontakForm },
-        { name: 'Smooth Scroll', fn: initSmoothScroll }
+        { name: 'Smooth Scroll', fn: initSmoothScroll },
+        { name: 'Pricing Modal', fn: initPricingModal },
+        { name: 'Analytics Telemetry', fn: initAnalytics }
     ];
 
     modules.forEach(function (mod) {
@@ -489,3 +491,237 @@ window.resetKontakForm = function resetKontakForm() {
         if (el) el.classList.add('hidden');
     });
 };
+
+
+/* ==========================================================
+   9. Analytics Telemetry (GA4 Automatic Event Tracking)
+   ========================================================== */
+function sendAnalyticsEvent(eventName, params) {
+    try {
+        if (typeof window.gtag === 'function') {
+            window.gtag('event', eventName, params || {});
+        }
+    } catch (err) {
+        console.warn('Analytics telemetry error:', err);
+    }
+}
+
+
+/* ==========================================================
+   8b. Modal Status Pengembangan (Pricing Plan CTA)
+   ========================================================== */
+function initPricingModal() {
+    var modal = document.getElementById('modal-pricing-dev');
+    if (!modal) return;
+
+    var planTitleEl = document.getElementById('dev-modal-plan-title');
+    var planDescEl  = document.getElementById('dev-modal-plan-desc');
+    var backdrop    = document.getElementById('dev-modal-backdrop');
+    var closeBtn    = document.getElementById('dev-modal-close-btn');
+    var ctaKontak   = document.getElementById('dev-modal-cta-kontak');
+    var ctaMockup   = document.getElementById('dev-modal-cta-mockup');
+
+    function openModal(plan) {
+        if (plan === 'premium') {
+            if (planTitleEl) planTitleEl.textContent = 'Paket Akses Premium';
+            if (planDescEl) {
+                planDescEl.textContent = 'Fitur paket premium dan sistem langganan belum dibuka karena aplikasi LifeSync saat ini masih dalam proses pengembangan.';
+            }
+        } else {
+            if (planTitleEl) planTitleEl.textContent = 'Paket Dasar Gratis';
+            if (planDescEl) {
+                planDescEl.textContent = 'Aplikasi mobile LifeSync saat ini masih dalam proses pengembangan dan belum dirilis untuk diunduh.';
+            }
+        }
+
+        modal.classList.remove('hidden');
+        document.body.classList.add('overflow-hidden');
+
+        sendAnalyticsEvent('dev_modal_open', {
+            plan_type: plan || 'free'
+        });
+    }
+
+    function closeModal() {
+        modal.classList.add('hidden');
+        document.body.classList.remove('overflow-hidden');
+    }
+
+    // Pasang listener pada tombol di pricing section
+    document.querySelectorAll('[data-open-dev-modal]').forEach(function (btn) {
+        btn.addEventListener('click', function (e) {
+            e.preventDefault();
+            var plan = btn.getAttribute('data-open-dev-modal') || 'free';
+            openModal(plan);
+        });
+    });
+
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    if (backdrop) backdrop.addEventListener('click', closeModal);
+
+    // Escape key listener
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+            closeModal();
+        }
+    });
+
+    // Kontak button inside modal
+    if (ctaKontak) {
+        ctaKontak.addEventListener('click', function () {
+            closeModal();
+            sendAnalyticsEvent('dev_modal_contact_click', {});
+        });
+    }
+
+    // Mockup button inside modal
+    if (ctaMockup) {
+        ctaMockup.addEventListener('click', function () {
+            sendAnalyticsEvent('dev_modal_mockup_click', {});
+        });
+    }
+
+    window.openPricingDevModal = openModal;
+    window.closePricingDevModal = closeModal;
+}
+
+function initAnalytics() {
+    // 9a. Global CTA & Delegated Click Tracker
+    document.addEventListener('click', function (e) {
+        var target = e.target;
+        if (!target) return;
+
+        var linkOrBtn = target.closest('a, button, .feature-card');
+        if (!linkOrBtn) return;
+
+        // Tentukan nama section terdekat
+        var sectionEl = linkOrBtn.closest('section[id], header[id], footer, div[id^="section-"]');
+        var sectionName = 'page';
+        if (sectionEl) {
+            sectionName = sectionEl.id || (sectionEl.tagName ? sectionEl.tagName.toLowerCase() : 'page');
+            sectionName = sectionName.replace('section-', '');
+        }
+
+        // 1) Feature Card Click (Navigasi ke halaman detail fitur)
+        if (linkOrBtn.classList.contains('feature-card')) {
+            var featKey = linkOrBtn.getAttribute('data-feature') || 'unknown';
+            sendAnalyticsEvent('select_content', {
+                content_type: 'feature_card',
+                item_id: featKey,
+                section: sectionName
+            });
+            return;
+        }
+
+                // 1b) Tombol Pricing Plan (Modal status pengembangan)
+        if (linkOrBtn.hasAttribute('data-open-dev-modal')) {
+            var planType = linkOrBtn.getAttribute('data-open-dev-modal') || 'free';
+            sendAnalyticsEvent('pricing_plan_click', {
+                plan: planType,
+                cta_location: sectionName,
+                cta_text: (linkOrBtn.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 40)
+            });
+            return;
+        }
+
+        // 2) Download Button Click
+        if (linkOrBtn.matches(DOWNLOAD_SELECTOR) || linkOrBtn.matches(DOWNLOAD_ANDROID_SELECTOR) || linkOrBtn.matches(DOWNLOAD_IOS_SELECTOR)) {
+            var platform = linkOrBtn.hasAttribute('data-download-android') ? 'android' : (linkOrBtn.hasAttribute('data-download-ios') ? 'ios' : 'all_platforms');
+            sendAnalyticsEvent('download_click', {
+                platform: platform,
+                cta_location: sectionName,
+                cta_text: (linkOrBtn.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 40)
+            });
+            return;
+        }
+
+        // 3) Link to Mockup Simulator
+        var href = linkOrBtn.getAttribute('href') || '';
+        if (href.indexOf('mockup.html') !== -1) {
+            sendAnalyticsEvent('mockup_open_click', {
+                cta_location: sectionName,
+                cta_text: (linkOrBtn.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 40)
+            });
+            return;
+        }
+
+        // 4) Anchor navigation ke #pricing atau #kontak
+        if (href === '#pricing' || href.indexOf('#pricing') !== -1) {
+            sendAnalyticsEvent('pricing_nav_click', {
+                cta_location: sectionName,
+                cta_text: (linkOrBtn.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 40)
+            });
+            return;
+        }
+
+        if (href === '#kontak' || href.indexOf('#kontak') !== -1) {
+            sendAnalyticsEvent('contact_nav_click', {
+                cta_location: sectionName,
+                cta_text: (linkOrBtn.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 40)
+            });
+            return;
+        }
+
+        // 5) Outbound Links
+        if (href && (href.startsWith('http://') || href.startsWith('https://')) && href.indexOf(window.location.hostname) === -1) {
+            sendAnalyticsEvent('outbound_click', {
+                link_url: href,
+                link_text: (linkOrBtn.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 40),
+                cta_location: sectionName
+            });
+        }
+    });
+
+    // 9b. Section Visibility Tracker (Mencatat section yang benar-benar dibaca user >= 1.5 detik)
+    if ('IntersectionObserver' in window) {
+        var observedSections = document.querySelectorAll('section[id], header[id="top"]');
+        var viewTimers = {};
+
+        var sectionObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                var id = entry.target.id || 'unknown';
+                if (entry.isIntersecting && entry.intersectionRatio >= 0.25) {
+                    if (!viewTimers[id]) {
+                        viewTimers[id] = setTimeout(function () {
+                            sendAnalyticsEvent('section_view', {
+                                section_name: id
+                            });
+                            sectionObserver.unobserve(entry.target);
+                            delete viewTimers[id];
+                        }, 1500);
+                    }
+                } else {
+                    if (viewTimers[id]) {
+                        clearTimeout(viewTimers[id]);
+                        delete viewTimers[id];
+                    }
+                }
+            });
+        }, {
+            threshold: [0.25]
+        });
+
+        observedSections.forEach(function (sec) {
+            sectionObserver.observe(sec);
+        });
+    }
+
+    // 9c. Engaged Reading Time Milestones (15s, 30s, 60s, 120s saat tab browser aktif)
+    var activeSeconds = 0;
+    var milestones = [15, 30, 60, 120];
+    var firedMilestones = {};
+
+    setInterval(function () {
+        if (!document.hidden) {
+            activeSeconds++;
+            milestones.forEach(function (sec) {
+                if (activeSeconds >= sec && !firedMilestones[sec]) {
+                    firedMilestones[sec] = true;
+                    sendAnalyticsEvent('reading_milestone', {
+                        seconds_engaged: sec
+                    });
+                }
+            });
+        }
+    }, 1000);
+}
