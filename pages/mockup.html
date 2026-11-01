@@ -1,0 +1,2748 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LSL8LFE6YG"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-LSL8LFE6YG');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeSync - Coba Langsung Aplikasi (Simulator Interaktif)</title>
+    <meta name="description"
+        content="Rasakan langsung pengalaman menggunakan LifeSync di browser Anda. Uji coba pelacak kebiasaan, agenda to-do, catatan, pemantau keuangan, pemindai nutrisi AI, hingga kenangan perjalanan.">
+    <meta name="theme-color" content="#316342">
+    <link rel="icon" type="image/png" href="../assets/lifesync-symbol.png">
+
+    <!-- Google Fonts & Material Symbols -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../tailwind-config.js"></script>
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+            background-color: #f6fbf5;
+            color: #181D1A;
+        }
+
+        /* Ambient subtle grain and mesh glow */
+        .ambient-mesh {
+            background-image:
+                radial-gradient(at 15% 15%, rgba(49, 99, 66, 0.08) 0px, transparent 55%),
+                radial-gradient(at 85% 85%, rgba(154, 68, 45, 0.05) 0px, transparent 50%),
+                radial-gradient(at 50% 50%, rgba(235, 245, 238, 0.6) 0px, transparent 75%);
+        }
+
+        /* Custom Scrollbar for Phone Screen */
+        .phone-screen-scroll::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .phone-screen-scroll::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .phone-screen-scroll::-webkit-scrollbar-thumb {
+            background: rgba(49, 99, 66, 0.25);
+            border-radius: 9999px;
+        }
+
+        .phone-screen-scroll::-webkit-scrollbar-thumb:hover {
+            background: rgba(49, 99, 66, 0.45);
+        }
+
+        /*test  */
+        /* Smartphone Hardware Buttons */
+        .phone-btn-vol-up {
+            position: absolute;
+            left: -10px;
+            top: 130px;
+            width: 4px;
+            height: 48px;
+            background: #2D3A32;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .phone-btn-vol-down {
+            position: absolute;
+            left: -10px;
+            top: 190px;
+            width: 4px;
+            height: 48px;
+            background: #2D3A32;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .phone-btn-power {
+            position: absolute;
+            right: -10px;
+            top: 160px;
+            width: 4px;
+            height: 64px;
+            background: #2D3A32;
+            border-radius: 0 3px 3px 0;
+        }
+
+
+
+        /* Material Symbols helper */
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 20px;
+            line-height: 1;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Active Nav Bottom Button */
+        .showcase-nav-btn {
+            color: #414942;
+            transition: all 0.2s ease;
+        }
+
+        .showcase-nav-btn.is-active {
+            color: #316342;
+            font-weight: 800;
+        }
+
+        .showcase-nav-btn.is-active .nav-indicator {
+            width: 16px;
+            background-color: #316342;
+        }
+
+        /* Smooth View Transitions */
+        .app-view {
+            animation: fadeInView 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes fadeInView {
+            from {
+                opacity: 0;
+                transform: translateY(6px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body class="min-h-screen bg-[#f6fbf5] text-[#181d1a] ambient-mesh selection:bg-primary/20 selection:text-primary">
+
+    <!-- ==================== HEADER UTAMA ==================== -->
+    <!-- ==================== HEADER UTAMA ==================== -->
+    <header
+        class="sticky top-0 z-50 border-b border-[#dfe4df] bg-white/95 backdrop-blur-md px-4 py-3 sm:px-8 shadow-xs">
+        <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+
+            <!-- Brand: Samakan Ikon & Logo Banner dengan Landing Page -->
+            <div class="flex items-center gap-3 shrink-0">
+                <a href="../index.html" class="flex items-center gap-2.5 sm:gap-3 shrink-0 group focus:outline-none"
+                    aria-label="LifeSync - Beranda">
+                    <img src="../assets/lifesync-symbol.png" alt="Logo LifeSync" width="48" height="48"
+                        class="h-9 w-9 sm:h-10 sm:w-10 md:h-11 md:w-11 object-contain transition-transform duration-300 group-hover:scale-105">
+                    <img src="../assets/lifesync-logo-name.png" alt="LifeSync" width="220" height="56"
+                        class="h-10 sm:h-12 md:h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
+                </a>
+            </div>
+
+            <!-- Action Buttons & Tombol Kembali ke Beranda -->
+            <div class="flex items-center gap-2 sm:gap-3">
+                <a href="../index.html"
+                    class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-[#316342]/30 bg-[#ebf5ee] hover:bg-[#dfe9e1] text-xs font-bold text-[#1e5031] transition shadow-2xs"
+                    title="Kembali ke Beranda Utama">
+                    <span class="material-symbols-outlined text-[16px]">arrow_back</span>
+                    <span class="hidden sm:inline">Kembali ke Beranda</span>
+                    <span class="sm:hidden">Beranda</span>
+                </a>
+
+                <button type="button" onclick="resetDemoData()"
+                    class="px-3 py-2 rounded-xl border border-[#c1c9bf] bg-white hover:bg-[#f6fbf5] text-xs font-semibold text-[#414942] hover:text-[#181D1A] transition flex items-center gap-1.5 shadow-2xs"
+                    title="Reset Simulasi">
+                    <i class="fa-solid fa-arrow-rotate-left text-[11px]"></i>
+                    <span class="hidden md:inline">Mulai Ulang</span>
+                </button>
+                <button type="button" onclick="openExecutiveSummary()"
+                    class="px-3.5 py-2 rounded-xl bg-white hover:bg-[#f6fbf5] text-xs font-bold text-[#414942] hover:text-[#1e5031] border border-[#c1c9bf] transition flex items-center gap-1.5 shadow-2xs">
+                    <i class="fa-solid fa-medal text-[12px] text-[#1e5031]"></i>
+                    <span class="hidden md:inline">Rekap Hari Ini</span>
+                    <span class="md:hidden">Rekap</span>
+                </button>
+                <a href="../index.html#pricing"
+                    class="px-4 py-2 rounded-xl bg-[#316342] hover:bg-[#1e5031] text-xs font-bold text-white transition flex items-center gap-1.5 shadow-sm">
+                    <span>Mulai Gratis</span>
+                    <i class="fa-solid fa-arrow-right text-[11px]"></i>
+                </a>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- ==================== AREA UTAMA ==================== -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-8 py-8 lg:py-12">
+
+        <!-- Intro Demo Interaktif -->
+        <div class="mb-8 text-center max-w-3xl mx-auto">
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#181D1A] tracking-tight leading-tight">
+                Kelola Rutinitas Harian Jadi Lebih Mudah Bareng <span class="text-[#316342]">LifeSync</span>
+            </h1>
+            <p class="text-sm sm:text-base text-[#414942] mt-3 leading-relaxed">
+                Cobain langsung tombol, to-do list, dan fiturnya di sini. Tanpa install aplikasi, kamu bisa rasakan
+                gimana LifeSync bikin kebiasaan, jadwal, keuangan, dan nutrisi harianmu jadi lebih rapi.
+            </p>
+        </div>
+
+        <!-- ==================== TAHAPAN RUTINITAS HARIAN (CLEAN SEGMENTED CONTROL) ==================== -->
+        <div class="mb-8">
+            <div
+                class="flex items-center gap-1 p-1 bg-[#ebefea] rounded-xl border border-[#c1c9bf] overflow-x-auto scrollbar-none max-w-full">
+                <button type="button" onclick="switchPhoneScreen('splash')"
+                    class="flow-chip active px-3.5 py-1.5 rounded-lg text-xs font-bold text-[#1e5031] bg-white shadow-xs transition whitespace-nowrap"
+                    data-chip="splash">
+                    1. Tampilan Awal
+                </button>
+                <button type="button" onclick="switchPhoneScreen('onboarding')"
+                    class="flow-chip px-3.5 py-1.5 rounded-lg text-xs font-semibold text-[#414942] hover:text-[#181D1A] transition whitespace-nowrap"
+                    data-chip="onboarding">
+                    2. Kenalan Fitur
+                </button>
+                <button type="button" onclick="switchPhoneScreen('auth')"
+                    class="flow-chip px-3.5 py-1.5 rounded-lg text-xs font-semibold text-[#414942] hover:text-[#181D1A] transition whitespace-nowrap"
+                    data-chip="auth">
+                    3. Login &amp; Tamu
+                </button>
+                <span class="h-4 w-[1px] bg-[#c1c9bf] shrink-0 mx-1" aria-hidden="true"></span>
+                <button type="button" onclick="switchPhoneTab('home')"
+                    class="flow-chip px-3.5 py-1.5 rounded-lg text-xs font-semibold text-[#414942] hover:text-[#181D1A] transition whitespace-nowrap flex items-center gap-1.5"
+                    data-chip="home">
+                    <i class="fa-solid fa-house text-[11px]"></i>
+                    <span>4. Beranda</span>
+                </button>
+                <button type="button" onclick="switchPhoneTab('planner')"
+                    class="flow-chip px-3.5 py-1.5 rounded-lg text-xs font-semibold text-[#414942] hover:text-[#181D1A] transition whitespace-nowrap flex items-center gap-1.5"
+                    data-chip="planner">
+                    <i class="fa-solid fa-list-check text-[11px]"></i>
+                    <span>5. To-Do &amp; Jadwal</span>
+                </button>
+                <button type="button" onclick="switchPhoneTab('notes')"
+                    class="flow-chip px-3.5 py-1.5 rounded-lg text-xs font-semibold text-[#414942] hover:text-[#181D1A] transition whitespace-nowrap flex items-center gap-1.5"
+                    data-chip="notes">
+                    <i class="fa-regular fa-note-sticky text-[11px]"></i>
+                    <span>6. Catatan &amp; Ide</span>
+                </button>
+                <button type="button" onclick="switchPhoneTab('finance')"
+                    class="flow-chip px-3.5 py-1.5 rounded-lg text-xs font-semibold text-[#414942] hover:text-[#181D1A] transition whitespace-nowrap flex items-center gap-1.5"
+                    data-chip="finance">
+                    <i class="fa-solid fa-wallet text-[11px]"></i>
+                    <span>7. Keuangan</span>
+                </button>
+                <button type="button" onclick="switchPhoneTab('nutrition')"
+                    class="flow-chip px-3.5 py-1.5 rounded-lg text-xs font-semibold text-[#414942] hover:text-[#181D1A] transition whitespace-nowrap flex items-center gap-1.5"
+                    data-chip="nutrition">
+                    <i class="fa-solid fa-utensils text-[11px]"></i>
+                    <span>8. Nutrisi &amp; AI Scan</span>
+                </button>
+                <button type="button" onclick="switchPhoneTab('memento')"
+                    class="flow-chip px-3.5 py-1.5 rounded-lg text-xs font-semibold text-[#414942] hover:text-[#181D1A] transition whitespace-nowrap flex items-center gap-1.5"
+                    data-chip="memento">
+                    <i class="fa-solid fa-camera text-[11px]"></i>
+                    <span>9. Jurnal Memento</span>
+                </button>
+                <button type="button" onclick="switchPhoneTab('profile')"
+                    class="flow-chip px-3.5 py-1.5 rounded-lg text-xs font-semibold text-[#414942] hover:text-[#181D1A] transition whitespace-nowrap flex items-center gap-1.5"
+                    data-chip="profile">
+                    <i class="fa-regular fa-user text-[11px]"></i>
+                    <span>10. Profil &amp; Rekap</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- ==================== DISPLAY FRAME & USER IMPACT PANE ==================== -->
+        <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+
+            <!-- KOLOM KIRI: SMARTPHONE PROTOTYPE (PREMIUM HARDWARE FRAME) -->
+            <div class="lg:col-span-7 flex justify-center items-center py-2">
+                <div id="phone-wrapper"
+                    class="relative w-full max-w-[390px] transition-transform duration-300 origin-top">
+
+                    <!-- Hardware Side Buttons -->
+                    <span class="phone-btn-vol-up" aria-hidden="true"></span>
+                    <span class="phone-btn-vol-down" aria-hidden="true"></span>
+                    <span class="phone-btn-power" aria-hidden="true"></span>
+
+                    <!-- Titanium Outer Bezel -->
+                    <div
+                        class="rounded-[3.25rem] border border-[#BAC7BF] bg-gradient-to-br from-[#E2EAE4] via-[#C9D6CE] to-[#DFE8E2] p-[8px] shadow-[0_32px_80px_-15px_rgba(24,45,34,0.18),0_15px_35px_rgba(0,0,0,0.06)]">
+                        <div class="rounded-[2.8rem] border border-[#8B9C92] bg-[#141C17] p-[3.5px]">
+
+                            <!-- Phone Display Glass Canvas -->
+                            <div
+                                class="relative h-[740px] overflow-hidden rounded-[2.55rem] bg-[#f6fbf5] text-[#181d1a] flex flex-col select-none shadow-inner">
+
+                                <!-- ==================== 1. STATUS BAR ==================== -->
+                                <div
+                                    class="relative shrink-0 px-6 pt-3 pb-1.5 flex items-center justify-between text-[11px] font-bold text-[#181d1a] z-30 bg-[#f6fbf5]/90 backdrop-blur-sm">
+                                    <span id="phone-clock" class="tracking-tight font-extrabold">09:41</span>
+
+                                    <!-- Kamera Depan (Punch Hole) -->
+                                    <div class="absolute left-1/2 top-3 -translate-x-1/2 flex items-center justify-center pointer-events-none"
+                                        aria-hidden="true">
+                                        <div
+                                            class="h-3 w-3 rounded-full bg-[#141C17] flex items-center justify-center ring-1 ring-black/10">
+                                            <div class="h-1.5 w-1.5 rounded-full bg-[#223026]"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex items-center gap-1.5 text-[10px] text-[#181d1a]">
+                                        <i class="fa-solid fa-signal text-[9.5px]"></i>
+                                        <i class="fa-solid fa-wifi text-[9.5px]"></i>
+                                        <i class="fa-solid fa-battery-full text-[12px] text-[#316342]"></i>
+                                    </div>
+                                </div>
+
+                                <!-- ==================== 2. SCREEN CANVAS CONTAINER ==================== -->
+                                <div id="phone-screen-container"
+                                    class="flex-1 overflow-y-auto phone-screen-scroll relative flex flex-col">
+
+                                    <!-- SCREEN: SPLASH -->
+                                    <div id="view-splash"
+                                        class="app-view flex-1 flex flex-col items-center justify-center p-6 text-center bg-gradient-to-b from-[#f6fbf5] via-[#f6fbf5] to-[#f6fbf5]">
+                                        <div class="relative mb-6">
+                                            <div
+                                                class="h-24 w-24 rounded-3xl bg-white shadow-card border border-[#c1c9bf] flex items-center justify-center p-3">
+                                                <img src="../assets/lifesync-symbol.png" alt="LifeSync Logo"
+                                                    class="h-16 w-16 object-contain">
+                                            </div>
+                                        </div>
+
+                                        <h2 class="text-2xl font-extrabold text-[#181d1a] tracking-tight">LifeSync</h2>
+                                        <p class="text-xs text-[#316342] font-bold uppercase tracking-widest mt-1">Daily
+                                            Habit Tracker &amp; Assistance</p>
+                                        <p class="text-[11.5px] text-[#414942] mt-2 max-w-[240px] leading-relaxed">Satu
+                                            aplikasi buat bantu kamu atur kebiasaan, jadwal, dan kesehatan tiap hari.
+                                        </p>
+
+                                        <div class="w-full max-w-[210px] mt-8 space-y-2">
+                                            <div class="h-1.5 w-full bg-[#dfe4df] rounded-full overflow-hidden">
+                                                <div id="splash-bar"
+                                                    class="h-full bg-[#316342] rounded-full transition-all duration-700 w-3/4">
+                                                </div>
+                                            </div>
+                                            <p id="splash-status" class="text-[10px] text-[#414942] font-medium">
+                                                Menyiapkan data kamu...</p>
+                                        </div>
+
+                                        <div class="mt-8 flex flex-col items-center gap-2.5 w-full max-w-[210px]">
+                                            <button type="button" onclick="switchPhoneScreen('onboarding')"
+                                                class="w-full py-2.5 rounded-xl bg-[#316342] text-white text-xs font-bold shadow-sm hover:bg-[#1e5031] transition flex items-center justify-center gap-1.5">
+                                                <span>Mulai Jelajahi</span>
+                                                <i class="fa-solid fa-arrow-right text-[11px]"></i>
+                                            </button>
+                                            <button type="button" onclick="switchPhoneTab('home')"
+                                                class="text-[11px] font-bold text-[#414942] hover:text-[#316342] hover:underline transition">
+                                                Langsung ke Beranda &rarr;
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <!-- SCREEN: ONBOARDING -->
+                                    <div id="view-onboarding"
+                                        class="app-view hidden flex-1 flex flex-col justify-between p-6 bg-[#f6fbf5]">
+                                        <!-- Top Bar: Back & Skip -->
+                                        <div class="flex items-center justify-between text-xs font-bold pt-1">
+                                            <button id="ob-btn-back" type="button" onclick="prevOnboardingSlide()"
+                                                class="text-[#414942] hover:text-[#181d1a] opacity-0 transition">
+                                                <i class="fa-solid fa-arrow-left"></i> Kembali
+                                            </button>
+                                            <button type="button" onclick="switchPhoneScreen('auth')"
+                                                class="text-[#316342] hover:underline">
+                                                Lewati
+                                            </button>
+                                        </div>
+
+                                        <!-- Slides Content (Dynamic Switcher) -->
+                                        <div id="ob-slide-content" class="my-auto text-center space-y-4">
+                                            <div id="ob-illustration"
+                                                class="mx-auto h-40 w-40 rounded-3xl bg-[#ebf5ee] border border-[#c1c9bf] flex items-center justify-center text-[#316342] text-5xl shadow-sm">
+                                                <i class="fa-solid fa-repeat"></i>
+                                            </div>
+                                            <div>
+                                                <span id="ob-badge"
+                                                    class="px-2.5 py-1 rounded-md text-[10.5px] font-bold bg-[#ebf5ee] text-[#1e5031] inline-block tracking-wide">
+                                                    1. Kebiasaan Positif
+                                                </span>
+                                                <h3 id="ob-title" class="text-xl font-extrabold text-[#181d1a] mt-2.5">
+                                                    Bangun Rutinitas Tanpa Beban
+                                                </h3>
+                                                <p id="ob-desc"
+                                                    class="text-xs text-[#414942] mt-1.5 max-w-[260px] mx-auto leading-relaxed">
+                                                    Mulai dari langkah kecil yang konsisten. Rayakan setiap progres
+                                                    harian tanpa dibebani notifikasi yang bikin stres.
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <!-- Bottom Navigation & Dots -->
+                                        <div class="space-y-4 pb-4">
+                                            <div class="flex items-center justify-center gap-1.5" id="ob-dots">
+                                                <span
+                                                    class="ob-dot h-2 w-6 rounded-full bg-[#316342] transition-all"></span>
+                                                <span
+                                                    class="ob-dot h-2 w-2 rounded-full bg-[#dfe4df] transition-all"></span>
+                                                <span
+                                                    class="ob-dot h-2 w-2 rounded-full bg-[#dfe4df] transition-all"></span>
+                                            </div>
+                                            <button id="ob-next-btn" type="button" onclick="nextOnboardingSlide()"
+                                                class="w-full py-3 rounded-xl bg-[#316342] hover:bg-[#1e5031] text-white font-bold text-xs shadow-md transition">
+                                                Lanjut
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <!-- SCREEN: AUTH (LOGIN & REGISTER & TAMU) -->
+                                    <div id="view-auth"
+                                        class="app-view hidden flex-1 flex flex-col justify-between p-6 bg-[#f6fbf5]">
+                                        <div class="space-y-4 pt-2">
+                                            <!-- Brand Logo -->
+                                            <div class="flex items-center justify-center">
+                                                <div
+                                                    class="h-16 w-16 rounded-2xl bg-white border border-[#dfe4df] shadow-sm flex items-center justify-center p-2.5">
+                                                    <img src="../assets/lifesync-symbol.png" alt="LifeSync Icon"
+                                                        class="h-full w-full object-contain">
+                                                </div>
+                                            </div>
+
+                                            <div class="text-center">
+                                                <h3 id="auth-heading" class="text-lg font-extrabold text-[#181d1a]">
+                                                    Masuk ke LifeSync</h3>
+                                                <p id="auth-subheading" class="text-xs text-[#414942] mt-0.5">Pilih cara
+                                                    masuk yang paling pas buat kamu</p>
+                                            </div>
+
+                                            <!-- Form Inputs -->
+                                            <form id="auth-form" onsubmit="handleAuthSubmit(event)" class="space-y-3">
+                                                <div id="auth-name-group" class="hidden">
+                                                    <label class="block text-[11px] font-bold text-[#181d1a] mb-1">Nama
+                                                        Panggilan</label>
+                                                    <input type="text" id="auth-input-name" placeholder="Megah Pratama"
+                                                        class="w-full px-3.5 py-2.5 rounded-xl border border-[#c1c9bf] bg-white text-xs text-[#181d1a] focus:outline-none focus:border-[#316342]">
+                                                </div>
+                                                <div>
+                                                    <label
+                                                        class="block text-[11px] font-bold text-[#181d1a] mb-1">Email</label>
+                                                    <input type="email" id="auth-input-email" value="megah@lifesync.id"
+                                                        required
+                                                        class="w-full px-3.5 py-2.5 rounded-xl border border-[#c1c9bf] bg-white text-xs text-[#181d1a] focus:outline-none focus:border-[#316342]">
+                                                </div>
+                                                <div>
+                                                    <div class="flex items-center justify-between mb-1">
+                                                        <label
+                                                            class="text-[11px] font-bold text-[#181d1a]">Password</label>
+                                                        <button type="button" onclick="simulateForgotPassword()"
+                                                            class="text-[10px] text-[#316342] font-bold hover:underline">Lupa
+                                                            password?</button>
+                                                    </div>
+                                                    <input type="password" id="auth-input-pass" value="password123"
+                                                        required
+                                                        class="w-full px-3.5 py-2.5 rounded-xl border border-[#c1c9bf] bg-white text-xs text-[#181d1a] focus:outline-none focus:border-[#316342]">
+                                                </div>
+
+                                                <button type="submit" id="auth-submit-btn"
+                                                    class="w-full py-2.5 rounded-xl bg-[#316342] hover:bg-[#1e5031] text-white font-bold text-xs shadow-sm transition">
+                                                    Masuk
+                                                </button>
+                                            </form>
+
+                                            <div class="relative text-center my-2">
+                                                <div class="absolute inset-0 flex items-center">
+                                                    <div class="w-full border-t border-[#dfe4df]"></div>
+                                                </div>
+                                                <span class="relative bg-[#f6fbf5] px-2 text-[10px] text-[#717971]">opsi
+                                                    cepat untuk mencoba</span>
+                                            </div>
+
+                                            <!-- Quick Demo & Guest Buttons -->
+                                            <div class="space-y-2">
+                                                <button type="button" onclick="loginAsDemo()"
+                                                    class="w-full py-2.5 rounded-xl border border-[#316342] bg-[#ebf5ee] hover:bg-[#dfe9e1] text-[#1e5031] font-bold text-xs flex items-center justify-center gap-2 transition shadow-xs">
+                                                    <i class="fa-solid fa-sparkles text-[11px]"></i>
+                                                    <span>Masuk Cepat (Akun Demo: Megah)</span>
+                                                </button>
+                                                <button type="button" onclick="loginAsGuest()"
+                                                    class="w-full py-2.5 rounded-xl border border-[#dfe4df] bg-white hover:bg-neutral-50 text-[#181d1a] font-semibold text-xs flex items-center justify-center gap-2 transition shadow-xs">
+                                                    <i class="fa-solid fa-lock text-[11px] text-[#414942]"></i>
+                                                    <span>Coba Mode Tamu (Tanpa Akun / Login)</span>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <!-- Toggle Auth Mode -->
+                                        <div class="pt-3 text-center text-xs text-[#414942]">
+                                            <span id="auth-toggle-text">Belum punya akun?</span>
+                                            <button type="button" onclick="toggleAuthMode()" id="auth-toggle-btn"
+                                                class="font-bold text-[#316342] hover:underline ml-1">
+                                                Daftar sekarang
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <!-- ==================== MAIN APP VIEWS CONTAINER ==================== -->
+                                    <div id="view-main-app" class="hidden flex-1 flex flex-col relative pb-20">
+
+                                        <!-- 1. HOME TAB -->
+                                        <div id="tab-home" class="app-tab px-4 pt-2 space-y-3.5">
+                                            <!-- TopBar: Brand & Tools -->
+                                            <div class="flex items-center justify-between">
+                                                <div class="flex items-center gap-2">
+                                                    <img src="../assets/lifesync-symbol.png" alt="LifeSync Icon"
+                                                        class="h-6 w-6 object-contain">
+                                                    <span
+                                                        class="text-base font-extrabold tracking-tight text-[#181d1a]">LifeSync</span>
+                                                </div>
+                                                <div class="flex items-center gap-1 text-[#414942]">
+                                                    <button type="button" onclick="openFaqModal()"
+                                                        class="flex h-7 w-7 items-center justify-center rounded-full hover:bg-neutral-100"
+                                                        title="Bantuan Pengguna">
+                                                        <i class="fa-regular fa-circle-question text-sm"></i>
+                                                    </button>
+                                                    <button type="button"
+                                                        onclick="triggerNotification('Pengingat Damai: Minum air putih dan luangkan 5 menit untuk peregangan!')"
+                                                        class="flex h-7 w-7 items-center justify-center rounded-full hover:bg-neutral-100"
+                                                        title="Pengingat">
+                                                        <i class="fa-regular fa-bell text-sm"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <!-- Greeting Banner -->
+                                            <div class="flex items-center justify-between gap-2 pt-0.5">
+                                                <div class="min-w-0">
+                                                    <h2 id="home-greeting-name"
+                                                        class="text-lg font-extrabold text-[#181d1a] leading-tight">
+                                                        Selamat pagi, Megah 👋</h2>
+                                                    <p class="text-[11px] text-[#414942] mt-0.5">Yuk mulai hari dengan
+                                                        lebih teratur.</p>
+                                                </div>
+                                                <div id="home-avatar"
+                                                    class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#ebf5ee] border border-[#c1c9bf] text-sm font-extrabold text-[#1e5031] shadow-xs">
+                                                    M
+                                                </div>
+                                            </div>
+
+                                            <!-- Dynamic Progress Ring Card -->
+                                            <div class="rounded-2xl border border-[#dfe4df] bg-white p-3.5 shadow-xs">
+                                                <div class="flex items-center justify-between gap-2">
+                                                    <div class="flex items-center gap-1.5">
+                                                        <span class="h-2 w-2 rounded-full bg-[#316342]"></span>
+                                                        <h3 class="text-xs font-bold text-[#181d1a]">Progres Hari Ini
+                                                        </h3>
+                                                    </div>
+                                                    <span id="home-progress-badge"
+                                                        class="rounded-md bg-[#ebf5ee] border border-[#c1c9bf] px-2 py-0.5 text-[9.5px] font-bold text-[#1e5031]">
+                                                        60% Selesai
+                                                    </span>
+                                                </div>
+                                                <div class="mt-3 flex items-center gap-3">
+                                                    <div id="home-conic-ring"
+                                                        class="flex h-[66px] w-[66px] shrink-0 items-center justify-center rounded-full p-[5px] transition-all"
+                                                        style="background: conic-gradient(#316342 0% 60%, #ebf5ee 60% 100%)">
+                                                        <div
+                                                            class="flex h-full w-full flex-col items-center justify-center rounded-full bg-white shadow-inner">
+                                                            <span id="home-progress-ratio"
+                                                                class="text-sm font-extrabold leading-tight text-[#181d1a]">3/5</span>
+                                                            <span
+                                                                class="text-[8.5px] font-medium text-[#414942]">Target</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="min-w-0 flex-1">
+                                                        <p id="home-progress-text"
+                                                            class="text-xs font-bold text-[#181d1a]">3 dari 5 kebiasaan
+                                                            selesai</p>
+                                                        <p class="mt-1 text-[10px] leading-relaxed text-[#414942]">Klik
+                                                            centang di bawah buat tandai kebiasaanmu!</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Shortcuts to Planner & Catatan -->
+                                            <div>
+                                                <h3 class="mb-2 text-xs font-bold text-[#181d1a]">Akses Cepat</h3>
+                                                <div class="grid grid-cols-2 gap-2">
+                                                    <button type="button" onclick="switchPhoneTab('planner')"
+                                                        class="text-left rounded-2xl border border-[#dfe4df] bg-white p-3 shadow-xs hover:border-[#316342] transition group">
+                                                        <div
+                                                            class="flex h-8 w-8 items-center justify-center rounded-xl bg-[#ebf5ee] text-[#1e5031] group-hover:scale-105 transition">
+                                                            <i class="fa-solid fa-list-check text-xs"></i>
+                                                        </div>
+                                                        <p class="mt-2 text-xs font-bold text-[#181d1a]">Agenda &amp;
+                                                            To-Do</p>
+                                                        <p class="text-[9.5px] text-[#414942]">Waktu lebih tertata</p>
+                                                    </button>
+                                                    <button type="button" onclick="switchPhoneTab('notes')"
+                                                        class="text-left rounded-2xl border border-[#dfe4df] bg-white p-3 shadow-xs hover:border-[#7E22CE] transition group">
+                                                        <div
+                                                            class="flex h-8 w-8 items-center justify-center rounded-xl bg-[#F3E8FF] text-[#7E22CE] group-hover:scale-105 transition">
+                                                            <i class="fa-regular fa-note-sticky text-xs"></i>
+                                                        </div>
+                                                        <p class="mt-2 text-xs font-bold text-[#181d1a]">Catatan Ide</p>
+                                                        <p class="text-[9.5px] text-[#414942]">Tulis ide &amp; resep</p>
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <!-- Habit Tiles (Interactive Checkboxes & Water Counter) -->
+                                            <div>
+                                                <div class="mb-2 flex items-center justify-between">
+                                                    <h3 class="text-xs font-bold text-[#181d1a]">Kebiasaan Hari Ini</h3>
+                                                    <button type="button" onclick="openAddHabitModal()"
+                                                        class="text-[10px] font-bold text-[#316342] hover:underline flex items-center gap-1">
+                                                        <i class="fa-solid fa-plus text-[9px]"></i> Tambah Baru
+                                                    </button>
+                                                </div>
+                                                <div id="home-habit-list" class="space-y-2">
+                                                    <!-- Injected dynamically by JS -->
+                                                </div>
+                                            </div>
+
+                                            <!-- Week Streak Heatmap -->
+                                            <div class="rounded-2xl border border-[#dfe4df] bg-white p-3 shadow-xs">
+                                                <div
+                                                    class="flex items-center justify-between pb-2.5 border-b border-[#f6fbf5]">
+                                                    <h3 class="text-xs font-bold text-[#181d1a]">Streak Minggu Ini</h3>
+                                                    <div class="flex items-center gap-1 text-[#F97316]">
+                                                        <i class="fa-solid fa-fire text-xs"></i>
+                                                        <span id="streak-label"
+                                                            class="text-[10px] font-bold text-[#414942]">5 Hari
+                                                            Aktif</span>
+                                                    </div>
+                                                </div>
+                                                <div class="mt-2.5 flex items-center justify-between text-center">
+                                                    <div class="flex flex-col items-center gap-1"><span
+                                                            class="text-[9px] font-medium text-[#414942]">Sen</span><span
+                                                            class="flex h-6 w-6 items-center justify-center rounded-full bg-[#316342] text-white text-[9px]"><i
+                                                                class="fa-solid fa-check"></i></span></div>
+                                                    <div class="flex flex-col items-center gap-1"><span
+                                                            class="text-[9px] font-medium text-[#414942]">Sel</span><span
+                                                            class="flex h-6 w-6 items-center justify-center rounded-full bg-[#316342] text-white text-[9px]"><i
+                                                                class="fa-solid fa-check"></i></span></div>
+                                                    <div class="flex flex-col items-center gap-1"><span
+                                                            class="text-[9px] font-medium text-[#414942]">Rab</span><span
+                                                            class="flex h-6 w-6 items-center justify-center rounded-full bg-[#316342] text-white text-[9px]"><i
+                                                                class="fa-solid fa-check"></i></span></div>
+                                                    <div class="flex flex-col items-center gap-1"><span
+                                                            class="text-[9px] font-bold text-[#316342]">Kam</span><span
+                                                            class="flex h-6 w-6 items-center justify-center rounded-full bg-[#ebf5ee] border-2 border-[#316342] text-[9.5px] font-extrabold text-[#316342]">H</span>
+                                                    </div>
+                                                    <div class="flex flex-col items-center gap-1"><span
+                                                            class="text-[9px] font-medium text-[#414942]">Jum</span><span
+                                                            class="flex h-6 w-6 items-center justify-center rounded-full bg-[#F1F5F9]"><span
+                                                                class="h-1 w-1 rounded-full bg-[#CBD5E1]"></span></span>
+                                                    </div>
+                                                    <div class="flex flex-col items-center gap-1"><span
+                                                            class="text-[9px] font-medium text-[#414942]">Sab</span><span
+                                                            class="flex h-6 w-6 items-center justify-center rounded-full bg-[#F1F5F9]"><span
+                                                                class="h-1 w-1 rounded-full bg-[#CBD5E1]"></span></span>
+                                                    </div>
+                                                    <div class="flex flex-col items-center gap-1"><span
+                                                            class="text-[9px] font-medium text-[#414942]">Min</span><span
+                                                            class="flex h-6 w-6 items-center justify-center rounded-full bg-[#F1F5F9]"><span
+                                                                class="h-1 w-1 rounded-full bg-[#CBD5E1]"></span></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- AI Coach Insight Card -->
+                                            <div
+                                                class="rounded-2xl border border-[#c1c9bf] bg-[#ebf5ee]/60 p-3 shadow-xs">
+                                                <div class="flex items-start gap-2.5">
+                                                    <div
+                                                        class="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[#316342] text-white">
+                                                        <i class="fa-solid fa-wand-magic-sparkles text-xs"></i>
+                                                    </div>
+                                                    <div class="min-w-0 flex-1">
+                                                        <div class="flex items-center gap-1.5">
+                                                            <h4 class="text-xs font-bold text-[#181d1a]">Tips Hari Ini
+                                                            </h4>
+                                                            <span
+                                                                class="rounded bg-[#FEF3C7] px-1.5 py-0.5 text-[8.5px] font-bold text-[#D97706]">Rekomendasi
+                                                                AI</span>
+                                                        </div>
+                                                        <p class="mt-1 text-[10.5px] leading-relaxed text-[#354B3F]">
+                                                            Kamu biasanya paling produktif di pagi hari. Selesaikan
+                                                            tugas utama sebelum siang supaya sore dan malam bisa lebih
+                                                            santai.
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- 2. PLANNER TAB -->
+                                        <div id="tab-planner" class="app-tab hidden px-4 pt-2 space-y-3.5">
+                                            <!-- Planner Header -->
+                                            <div class="flex items-center justify-between">
+                                                <div>
+                                                    <h2 class="text-lg font-extrabold text-[#181d1a]">Jadwal &amp; To-Do
+                                                    </h2>
+                                                    <p class="text-[10px] text-[#414942]">Catat tugas penting hari ini
+                                                    </p>
+                                                </div>
+                                                <button type="button" onclick="openAddTaskModal()"
+                                                    class="flex items-center gap-1 px-3 py-1.5 rounded-xl bg-[#316342] text-white text-[10.5px] font-bold shadow-xs hover:bg-[#1e5031] transition">
+                                                    <i class="fa-solid fa-plus text-[9px]"></i>
+                                                    <span>Tugas Baru</span>
+                                                </button>
+                                            </div>
+
+                                            <!-- Mini Calendar Strip -->
+                                            <div class="rounded-2xl border border-[#dfe4df] bg-white p-2.5 shadow-xs">
+                                                <div class="flex items-center justify-between px-1 mb-2">
+                                                    <span class="text-xs font-bold text-[#181d1a]">Oktober 2026</span>
+                                                    <span
+                                                        class="text-[9px] font-bold text-[#1e5031] bg-[#ebf5ee] px-2 py-0.5 rounded-full">Hari
+                                                        Ini</span>
+                                                </div>
+                                                <div class="grid grid-cols-7 gap-1 text-center text-[10px]"
+                                                    id="planner-calendar-strip">
+                                                    <!-- Calendar days populated by JS -->
+                                                </div>
+                                            </div>
+
+                                            <!-- Summary & Filter Chips -->
+                                            <div class="space-y-2">
+                                                <div class="flex items-center justify-between text-xs">
+                                                    <span id="planner-summary-text" class="font-bold text-[#181d1a]">3
+                                                        dari 4 tugas selesai</span>
+                                                    <span class="text-[10px] text-[#1e5031] font-bold"
+                                                        id="planner-pct-badge">75%</span>
+                                                </div>
+                                                <div class="h-1.5 w-full bg-[#ebf5ee] rounded-full overflow-hidden">
+                                                    <div id="planner-progress-bar"
+                                                        class="h-full bg-[#316342] rounded-full transition-all"
+                                                        style="width: 75%;"></div>
+                                                </div>
+                                                <div class="flex gap-1.5 pt-1">
+                                                    <button type="button" onclick="filterPlanner('semua')"
+                                                        class="planner-filter-btn active px-2.5 py-1 rounded-lg text-[9.5px] font-bold bg-[#181d1a] text-white"
+                                                        data-filter="semua">Semua (<span
+                                                            id="count-all">4</span>)</button>
+                                                    <button type="button" onclick="filterPlanner('belum')"
+                                                        class="planner-filter-btn px-2.5 py-1 rounded-lg text-[9.5px] font-bold bg-[#f0f5f0] text-[#414942]"
+                                                        data-filter="belum">Belum Selesai (<span
+                                                            id="count-pending">1</span>)</button>
+                                                    <button type="button" onclick="filterPlanner('selesai')"
+                                                        class="planner-filter-btn px-2.5 py-1 rounded-lg text-[9.5px] font-bold bg-[#f0f5f0] text-[#414942]"
+                                                        data-filter="selesai">Selesai (<span
+                                                            id="count-done">3</span>)</button>
+                                                </div>
+                                            </div>
+
+                                            <!-- Tasks List -->
+                                            <div id="planner-task-list" class="space-y-2 pt-1">
+                                                <!-- Tasks populated by JS -->
+                                            </div>
+                                        </div>
+
+                                        <!-- 3. CATATAN / NOTES TAB -->
+                                        <div id="tab-notes" class="app-tab hidden px-4 pt-2 space-y-3.5">
+                                            <!-- Notes Header -->
+                                            <div class="flex items-center justify-between">
+                                                <div>
+                                                    <h2 class="text-lg font-extrabold text-[#181d1a]">Catatan &amp; Ide
+                                                    </h2>
+                                                    <p class="text-[10px] text-[#414942]">Tulis ide baru, resep, atau
+                                                        catatan harian</p>
+                                                </div>
+                                                <button type="button" onclick="openNoteEditorModal()"
+                                                    class="flex items-center gap-1 px-3 py-1.5 rounded-xl bg-[#316342] text-white text-[10.5px] font-bold shadow-xs hover:bg-[#1e5031] transition">
+                                                    <i class="fa-solid fa-plus text-[9px]"></i>
+                                                    <span>Tulis Catatan</span>
+                                                </button>
+                                            </div>
+
+                                            <!-- Search & Tags -->
+                                            <div class="space-y-2">
+                                                <div class="relative">
+                                                    <input type="text" id="notes-search-input"
+                                                        oninput="handleNotesSearch(this.value)"
+                                                        placeholder="Cari catatan..."
+                                                        class="w-full pl-8 pr-3 py-2 rounded-xl border border-[#dfe4df] bg-white text-xs text-[#181d1a] focus:outline-none focus:border-[#316342]">
+                                                    <i
+                                                        class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-[10px] text-[#717971]"></i>
+                                                </div>
+                                                <div class="flex gap-1.5 overflow-x-auto pb-1 scrollbar-none">
+                                                    <button type="button" onclick="filterNotesCategory('Semua')"
+                                                        class="note-cat-chip active px-2.5 py-1 rounded-lg text-[9px] font-bold bg-[#316342] text-white whitespace-nowrap">Semua</button>
+                                                    <button type="button" onclick="filterNotesCategory('Ide')"
+                                                        class="note-cat-chip px-2.5 py-1 rounded-lg text-[9px] font-bold bg-white border border-[#dfe4df] text-[#414942] whitespace-nowrap">Ide</button>
+                                                    <button type="button" onclick="filterNotesCategory('Rutinitas')"
+                                                        class="note-cat-chip px-2.5 py-1 rounded-lg text-[9px] font-bold bg-white border border-[#dfe4df] text-[#414942] whitespace-nowrap">Rutinitas</button>
+                                                    <button type="button" onclick="filterNotesCategory('Jurnal')"
+                                                        class="note-cat-chip px-2.5 py-1 rounded-lg text-[9px] font-bold bg-white border border-[#dfe4df] text-[#414942] whitespace-nowrap">Jurnal</button>
+                                                </div>
+                                            </div>
+
+                                            <!-- Notes Cards Grid -->
+                                            <div id="notes-grid" class="space-y-2.5">
+                                                <!-- Notes injected by JS -->
+                                            </div>
+                                        </div>
+
+                                        <!-- 4. FINANCE TAB -->
+                                        <div id="tab-finance" class="app-tab hidden px-4 pt-2 space-y-3.5">
+                                            <!-- Header & Month -->
+                                            <div class="flex items-center justify-between">
+                                                <div>
+                                                    <h2 class="text-lg font-extrabold text-[#181d1a]">Catatan Keuangan
+                                                    </h2>
+                                                    <p class="text-[10px] text-[#414942]">Pantau arus uang masuk dan
+                                                        keluar harianmu</p>
+                                                </div>
+                                                <span
+                                                    class="rounded-full bg-white border border-[#dfe4df] px-2.5 py-0.5 text-[10px] font-bold text-[#181d1a] shadow-xs">
+                                                    &lsaquo; Okt 2026 &rsaquo;
+                                                </span>
+                                            </div>
+
+                                            <!-- Summary Cards: Pemasukan & Pengeluaran -->
+                                            <div class="grid grid-cols-2 gap-2">
+                                                <div class="rounded-2xl border border-[#dfe4df] bg-white p-3 shadow-xs">
+                                                    <div
+                                                        class="flex h-7 w-7 items-center justify-center rounded-xl bg-[#ebf5ee] text-[#1e5031]">
+                                                        <i class="fa-solid fa-arrow-trend-up text-xs"></i>
+                                                    </div>
+                                                    <p class="mt-2 text-[10px] text-[#414942]">Pemasukan</p>
+                                                    <p id="finance-income-val"
+                                                        class="text-xs font-extrabold text-[#1e5031] leading-tight">Rp
+                                                        7.500.000</p>
+                                                    <p id="finance-income-tx" class="text-[9px] text-[#717971] mt-0.5">8
+                                                        Catatan</p>
+                                                </div>
+                                                <div class="rounded-2xl border border-[#dfe4df] bg-white p-3 shadow-xs">
+                                                    <div
+                                                        class="flex h-7 w-7 items-center justify-center rounded-xl bg-[#FFEDD5] text-[#F97316]">
+                                                        <i class="fa-solid fa-arrow-trend-down text-xs"></i>
+                                                    </div>
+                                                    <p class="mt-2 text-[10px] text-[#414942]">Pengeluaran</p>
+                                                    <p id="finance-expense-val"
+                                                        class="text-xs font-extrabold text-[#F97316] leading-tight">Rp
+                                                        3.250.000</p>
+                                                    <p id="finance-expense-tx" class="text-[9px] text-[#717971] mt-0.5">
+                                                        14 Catatan</p>
+                                                </div>
+                                            </div>
+
+                                            <!-- Surplus Bar -->
+                                            <div
+                                                class="flex items-center justify-between rounded-xl border border-[#c1c9bf] bg-[#ebf5ee] px-3 py-2">
+                                                <span class="text-[10px] font-semibold text-[#354B3F]">Sisa Saldo
+                                                    Bulanan</span>
+                                                <span id="finance-surplus-badge"
+                                                    class="rounded-md bg-white px-2 py-0.5 text-[9.5px] font-bold text-[#1e5031] shadow-2xs">
+                                                    Sisa Saldo + Rp 4.250.000 (Aman)
+                                                </span>
+                                            </div>
+
+                                            <!-- Chart Simulation -->
+                                            <div
+                                                class="rounded-2xl border border-[#dfe4df] bg-white p-3 shadow-xs space-y-2">
+                                                <div class="flex items-center justify-between">
+                                                    <h3 class="text-xs font-bold text-[#181d1a]">Grafik Mingguan</h3>
+                                                    <button type="button" onclick="openAddTransactionModal()"
+                                                        class="text-[10px] font-bold text-[#316342] hover:underline flex items-center gap-1">
+                                                        <i class="fa-solid fa-plus text-[9px]"></i> Catat Transaksi
+                                                    </button>
+                                                </div>
+                                                <div
+                                                    class="pt-2 flex items-end justify-between h-20 px-2 border-b border-[#f0f5f0]">
+                                                    <div class="flex items-end gap-1">
+                                                        <div class="w-2.5 bg-[#316342] rounded-t h-12"></div>
+                                                        <div class="w-2.5 bg-[#F97316] rounded-t h-7"></div>
+                                                    </div>
+                                                    <div class="flex items-end gap-1">
+                                                        <div class="w-2.5 bg-[#316342] rounded-t h-14"></div>
+                                                        <div class="w-2.5 bg-[#F97316] rounded-t h-9"></div>
+                                                    </div>
+                                                    <div class="flex items-end gap-1">
+                                                        <div class="w-2.5 bg-[#316342] rounded-t h-10"></div>
+                                                        <div class="w-2.5 bg-[#F97316] rounded-t h-6"></div>
+                                                    </div>
+                                                    <div class="flex items-end gap-1">
+                                                        <div class="w-2.5 bg-[#316342] rounded-t h-16"></div>
+                                                        <div class="w-2.5 bg-[#F97316] rounded-t h-8"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="flex justify-between text-[8.5px] text-[#717971] px-1">
+                                                    <span>Minggu 1</span><span>Minggu 2</span><span>Minggu
+                                                        3</span><span>Minggu 4</span>
+                                                </div>
+                                            </div>
+
+                                            <!-- Recent Transactions -->
+                                            <div>
+                                                <div class="mb-2 flex items-center justify-between">
+                                                    <h3 class="text-xs font-bold text-[#181d1a]">Transaksi Terakhir</h3>
+                                                    <span class="text-[9.5px] text-[#1e5031] font-semibold">Tercatat
+                                                        Rapi</span>
+                                                </div>
+                                                <div id="finance-tx-list" class="space-y-1.5">
+                                                    <!-- Populated by JS -->
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- 5. NUTRITION TAB -->
+                                        <div id="tab-nutrition" class="app-tab hidden px-4 pt-2 space-y-3.5">
+                                            <!-- Header & AI Scanner Button -->
+                                            <div class="flex items-center justify-between">
+                                                <div>
+                                                    <h2 class="text-lg font-extrabold text-[#181d1a]">Pantau Nutrisi
+                                                        &amp; Makanan</h2>
+                                                    <p class="text-[10px] text-[#414942]">Hitung kalori dan asupan
+                                                        makanan harian tanpa ribet</p>
+                                                </div>
+                                                <button type="button" onclick="openFoodAiModal()"
+                                                    class="rounded-lg bg-[#ebf5ee] border border-[#c1c9bf] px-2.5 py-1 text-[9.5px] font-bold text-[#1e5031] shadow-xs flex items-center gap-1 hover:bg-[#dfe9e1] transition">
+                                                    <i class="fa-solid fa-camera"></i>
+                                                    <span>Scan Makanan</span>
+                                                </button>
+                                            </div>
+
+                                            <!-- Calorie Ring -->
+                                            <div
+                                                class="rounded-2xl border border-[#dfe4df] bg-white p-3.5 shadow-xs text-center">
+                                                <div id="nutrition-calorie-conic"
+                                                    class="mx-auto flex h-[76px] w-[76px] items-center justify-center rounded-full p-[6px]"
+                                                    style="background: conic-gradient(#316342 0% 62%, #ebf5ee 62% 100%)">
+                                                    <div
+                                                        class="flex h-full w-full flex-col items-center justify-center rounded-full bg-white shadow-inner">
+                                                        <span id="nutrition-cal-val"
+                                                            class="text-sm font-extrabold leading-tight text-[#181d1a]">1.240</span>
+                                                        <span class="text-[8.5px] text-[#414942]">/ 2.000 kkal</span>
+                                                    </div>
+                                                </div>
+                                                <p class="mt-2 text-xs font-bold text-[#181d1a]">Kalori Hari Ini</p>
+                                                <p id="nutrition-cal-desc" class="text-[10px] text-[#414942]">62% dari
+                                                    target harian &bull; Porsi makan cukup seimbang</p>
+                                            </div>
+
+                                            <!-- Macronutrient Progress Bars -->
+                                            <div
+                                                class="rounded-2xl border border-[#dfe4df] bg-white p-3 shadow-xs space-y-2.5">
+                                                <h3 class="text-xs font-bold text-[#181d1a]">Asupan Nutrisi</h3>
+                                                <div>
+                                                    <div class="flex justify-between text-[10px] mb-1"><span
+                                                            class="text-[#414942]">Protein</span><span
+                                                            id="macro-protein" class="font-bold text-[#181d1a]">65 / 90
+                                                            g</span></div>
+                                                    <div class="h-1.5 rounded-full bg-[#ebf5ee]">
+                                                        <div id="macro-protein-bar"
+                                                            class="h-1.5 rounded-full bg-[#316342]" style="width: 72%;">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="flex justify-between text-[10px] mb-1"><span
+                                                            class="text-[#414942]">Karbohidrat</span><span
+                                                            id="macro-carbs" class="font-bold text-[#181d1a]">140 / 220
+                                                            g</span></div>
+                                                    <div class="h-1.5 rounded-full bg-[#FFEDD5]">
+                                                        <div id="macro-carbs-bar"
+                                                            class="h-1.5 rounded-full bg-[#F97316]" style="width: 64%;">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="flex justify-between text-[10px] mb-1"><span
+                                                            class="text-[#414942]">Lemak</span><span id="macro-fat"
+                                                            class="font-bold text-[#181d1a]">38 / 60 g</span></div>
+                                                    <div class="h-1.5 rounded-full bg-[#FEF3C7]">
+                                                        <div id="macro-fat-bar" class="h-1.5 rounded-full bg-[#F59E0B]"
+                                                            style="width: 63%;"></div>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="flex justify-between text-[10px] mb-1 items-center">
+                                                        <span class="text-[#414942]">Air Minum</span>
+                                                        <div class="flex items-center gap-1.5">
+                                                            <button type="button" onclick="changeWater(-1)"
+                                                                class="h-4 w-4 rounded-full bg-[#E0EDFF] text-[#3B82F6] flex items-center justify-center font-bold text-[10px]">-</button>
+                                                            <span id="macro-water" class="font-bold text-[#181d1a]">5 /
+                                                                8 gelas</span>
+                                                            <button type="button" onclick="changeWater(1)"
+                                                                class="h-4 w-4 rounded-full bg-[#3B82F6] text-white flex items-center justify-center font-bold text-[10px]">+</button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="h-1.5 rounded-full bg-[#E0EDFF]">
+                                                        <div id="macro-water-bar"
+                                                            class="h-1.5 rounded-full bg-[#3B82F6]" style="width: 62%;">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Last Food AI Detection -->
+                                            <div
+                                                class="rounded-xl border border-[#c1c9bf] bg-[#ebf5ee] p-2.5 flex items-center gap-2.5">
+                                                <span
+                                                    class="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[#316342] text-white">
+                                                    <i class="fa-solid fa-camera text-xs"></i>
+                                                </span>
+                                                <div class="flex-1 min-w-0">
+                                                    <p id="nutrition-last-plate"
+                                                        class="text-xs font-bold text-[#181d1a] truncate">Nasi Ayam
+                                                        Bakar &amp; Lalapan</p>
+                                                    <p id="nutrition-last-desc"
+                                                        class="text-[9.5px] text-[#1e5031] font-medium">520 kkal &bull;
+                                                        28g Protein &bull; Hasil AI Scan</p>
+                                                </div>
+                                                <button type="button" onclick="openFoodAiModal()"
+                                                    class="text-[10px] font-bold text-[#1e5031] underline">Ganti</button>
+                                            </div>
+                                        </div>
+
+                                        <!-- 6. MEMENTO TAB -->
+                                        <div id="tab-memento" class="app-tab hidden px-4 pt-2 space-y-3.5">
+                                            <!-- Memento Header -->
+                                            <div class="flex items-center justify-between">
+                                                <div>
+                                                    <div class="flex items-center gap-1.5">
+                                                        <h2 class="text-lg font-extrabold text-[#181d1a]">Memento</h2>
+                                                        <span
+                                                            class="rounded-md bg-[#ebf5ee] px-1.5 py-0.5 text-[9px] font-extrabold text-[#1e5031]">Jurnal
+                                                            Memento</span>
+                                                    </div>
+                                                    <p class="text-[10px] text-[#414942]">Simpan foto dan cerita momen
+                                                        berkesan kamu</p>
+                                                </div>
+                                                <button type="button" onclick="openAddMomentModal()"
+                                                    class="flex h-7 w-7 items-center justify-center rounded-full bg-[#316342] text-white shadow-xs hover:bg-[#1e5031] transition"
+                                                    title="Tambah Momen">
+                                                    <i class="fa-solid fa-plus text-xs"></i>
+                                                </button>
+                                            </div>
+
+                                            <!-- Interactive Vector Map Canvas of Batam -->
+                                            <div
+                                                class="rounded-2xl border border-[#dfe4df] bg-white p-3 shadow-xs space-y-2">
+                                                <div class="flex items-center justify-between">
+                                                    <div class="flex items-center gap-1.5">
+                                                        <i class="fa-solid fa-location-dot text-xs text-[#316342]"></i>
+                                                        <h3 class="text-xs font-bold text-[#181d1a]">Peta Lokasi Momen
+                                                        </h3>
+                                                    </div>
+                                                    <span
+                                                        class="rounded bg-[#f6fbf5] px-2 py-0.5 text-[9px] font-bold text-[#414942]">Pulau
+                                                        Batam</span>
+                                                </div>
+
+                                                <div
+                                                    class="relative h-32 w-full rounded-xl border border-[#c1c9bf] bg-gradient-to-br from-[#ebf5ee] via-[#E0F4EA] to-[#D0ECE0] overflow-hidden p-2">
+                                                    <!-- Batam geographic shapes -->
+                                                    <svg class="absolute inset-0 w-full h-full opacity-40"
+                                                        viewBox="0 0 200 100" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M20 50 Q45 20 80 40 T150 35 T190 70 Q160 90 100 80 T30 75 Z"
+                                                            fill="#b9efc5" stroke="#316342" stroke-width="1" />
+                                                    </svg>
+
+                                                    <!-- Clickable Pins -->
+                                                    <button type="button" onclick="showMomentDetail('Barelang')"
+                                                        class="absolute left-1/4 top-1/3 flex flex-col items-center group focus:outline-none">
+                                                        <span
+                                                            class="flex h-5 w-5 items-center justify-center rounded-full bg-[#316342] text-white text-[9px] shadow-sm group-hover:scale-110 transition"><i
+                                                                class="fa-solid fa-location-dot"></i></span>
+                                                        <span
+                                                            class="rounded bg-white/95 px-1.5 text-[7.5px] font-bold text-[#181d1a] shadow-xs">Barelang</span>
+                                                    </button>
+
+                                                    <button type="button" onclick="showMomentDetail('Nongsa')"
+                                                        class="absolute right-1/4 top-1/4 flex flex-col items-center group focus:outline-none">
+                                                        <span
+                                                            class="flex h-5 w-5 items-center justify-center rounded-full bg-[#1e5031] text-white text-[9px] shadow-sm group-hover:scale-125 transition"><i
+                                                                class="fa-solid fa-location-dot"></i></span>
+                                                        <span
+                                                            class="rounded bg-white/95 px-1.5 text-[7.5px] font-bold text-[#181d1a] shadow-xs">Nongsa</span>
+                                                    </button>
+
+                                                    <button type="button" onclick="showMomentDetail('BatamCenter')"
+                                                        class="absolute left-1/2 bottom-1/3 flex flex-col items-center group focus:outline-none">
+                                                        <span
+                                                            class="flex h-5 w-5 items-center justify-center rounded-full bg-[#0F766E] text-white text-[9px] shadow-sm group-hover:scale-125 transition"><i
+                                                                class="fa-solid fa-location-dot"></i></span>
+                                                        <span
+                                                            class="rounded bg-white/95 px-1.5 text-[7.5px] font-bold text-[#181d1a] shadow-xs">Batam
+                                                            Center</span>
+                                                    </button>
+
+                                                    <span
+                                                        class="absolute right-2 bottom-2 rounded-lg bg-white/90 border border-[#ebf5ee] px-2 py-0.5 text-[8.5px] font-bold text-[#0F766E] shadow-xs">
+                                                        Klik pin di peta!
+                                                    </span>
+                                                </div>
+                                            </div>
+
+                                            <!-- Moments Counter -->
+                                            <div
+                                                class="rounded-xl border border-[#c1c9bf] bg-[#ebf5ee] p-2.5 flex items-center gap-2.5">
+                                                <span
+                                                    class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#316342] text-white">
+                                                    <i class="fa-solid fa-photo-film text-xs"></i>
+                                                </span>
+                                                <div class="flex-1 min-w-0">
+                                                    <p class="text-xs font-extrabold text-[#1e5031]">34 Momen Tersimpan
+                                                    </p>
+                                                    <p class="text-[9.5px] text-[#414942]">12 Lokasi di Batam</p>
+                                                </div>
+                                            </div>
+
+                                            <!-- Moments Cards Grid -->
+                                            <div id="memento-cards-grid" class="grid grid-cols-2 gap-2">
+                                                <!-- Cards populated by JS -->
+                                            </div>
+                                        </div>
+
+                                        <!-- 7. PROFILE TAB -->
+                                        <div id="tab-profile" class="app-tab hidden px-4 pt-2 space-y-3.5">
+                                            <!-- Profile Header -->
+                                            <div class="flex items-center justify-between">
+                                                <h2 class="text-lg font-extrabold text-[#181d1a]">Profil Saya</h2>
+                                                <button type="button" onclick="openExecutiveSummary()"
+                                                    class="text-[10px] font-bold text-[#1e5031] bg-[#ebf5ee] border border-[#c1c9bf] px-2.5 py-1 rounded-lg hover:bg-[#dfe9e1] transition flex items-center gap-1">
+                                                    <i class="fa-solid fa-medal"></i>
+                                                    <span>Lihat Rekap</span>
+                                                </button>
+                                            </div>
+
+                                            <!-- User Card -->
+                                            <div
+                                                class="rounded-2xl border border-[#dfe4df] bg-white p-3.5 shadow-xs space-y-3">
+                                                <div class="flex items-center gap-3">
+                                                    <div class="relative">
+                                                        <div id="profile-avatar-circle"
+                                                            class="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-[#316342] to-[#1e5031] text-base font-extrabold text-white shadow-sm">
+                                                            M
+                                                        </div>
+                                                        <span
+                                                            class="absolute -bottom-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-white border border-[#dfe4df] text-[8px] text-[#1e5031]">
+                                                            <i class="fa-solid fa-camera"></i>
+                                                        </span>
+                                                    </div>
+                                                    <div class="min-w-0 flex-1">
+                                                        <p id="profile-name-text"
+                                                            class="text-sm font-extrabold text-[#181d1a] truncate">Megah
+                                                            Pratama</p>
+                                                        <p id="profile-email-text"
+                                                            class="text-[11px] text-[#414942] truncate">
+                                                            megah@lifesync.id</p>
+                                                    </div>
+                                                    <button type="button" onclick="openEditProfileModal()"
+                                                        class="text-[10.5px] font-bold text-[#316342] hover:underline">Ubah</button>
+                                                </div>
+
+                                                <div class="border-t border-[#dfe4df]"></div>
+
+                                                <div class="grid grid-cols-3 text-center gap-1">
+                                                    <div>
+                                                        <p class="text-xs font-extrabold text-[#1e5031]">5</p>
+                                                        <p class="text-[8.5px] text-[#414942]">Hari Aktif</p>
+                                                    </div>
+                                                    <div>
+                                                        <p id="profile-activities-count"
+                                                            class="text-xs font-extrabold text-[#1e5031]">42</p>
+                                                        <p class="text-[8.5px] text-[#414942]">Aktivitas Selesai</p>
+                                                    </div>
+                                                    <div>
+                                                        <p class="text-xs font-extrabold text-[#1e5031]">Okt 2026</p>
+                                                        <p class="text-[8.5px] text-[#414942]">Bergabung</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Menu List -->
+                                            <div class="space-y-1">
+                                                <h3
+                                                    class="mb-1 text-[9.5px] font-bold uppercase tracking-wider text-[#717971]">
+                                                    Pengaturan &amp; Backup</h3>
+                                                <div
+                                                    class="rounded-xl border border-[#dfe4df] bg-white divide-y divide-[#dfe4df] shadow-xs">
+                                                    <button type="button" onclick="triggerCloudSync()"
+                                                        class="w-full text-left flex items-center gap-2.5 p-2.5 hover:bg-[#f6fbf5] transition">
+                                                        <i id="sync-icon-profile"
+                                                            class="fa-solid fa-arrows-rotate w-4 text-center text-[#316342] text-xs"></i>
+                                                        <div class="flex-1 min-w-0">
+                                                            <p class="text-xs font-semibold text-[#181d1a]">Backup ke
+                                                                Cloud</p>
+                                                            <p id="sync-time-desc" class="text-[9px] text-[#414942]">
+                                                                Data otomatis tersimpan di cloud</p>
+                                                        </div>
+                                                        <span id="sync-dot-profile"
+                                                            class="h-2 w-2 rounded-full bg-[#316342]"></span>
+                                                    </button>
+                                                    <button type="button" onclick="openSessionsModal()"
+                                                        class="w-full text-left flex items-center gap-2.5 p-2.5 hover:bg-[#f6fbf5] transition">
+                                                        <i
+                                                            class="fa-solid fa-mobile-screen w-4 text-center text-[#316342] text-xs"></i>
+                                                        <span
+                                                            class="flex-1 text-xs font-semibold text-[#181d1a]">Perangkat
+                                                            Tertaut (2 Perangkat)</span>
+                                                        <i
+                                                            class="fa-solid fa-chevron-right text-[9px] text-[#717971]"></i>
+                                                    </button>
+                                                    <div class="flex items-center justify-between p-2.5">
+                                                        <div class="flex items-center gap-2.5">
+                                                            <i
+                                                                class="fa-regular fa-bell w-4 text-center text-[#316342] text-xs"></i>
+                                                            <span
+                                                                class="text-xs font-semibold text-[#181d1a]">Notifikasi
+                                                                Pengingat Harian</span>
+                                                        </div>
+                                                        <input type="checkbox" checked
+                                                            onchange="triggerNotification(this.checked ? 'Pengingat harian aktif' : 'Pengingat harian dinonaktifkan')"
+                                                            class="accent-[#316342] h-4 w-4 rounded cursor-pointer">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Logout Button -->
+                                            <button type="button" onclick="handleLogout()"
+                                                class="w-full py-2.5 rounded-xl border border-red-200 bg-red-50 hover:bg-red-100 text-red-600 font-bold text-xs flex items-center justify-center gap-2 transition">
+                                                <i class="fa-solid fa-arrow-right-from-bracket text-xs"></i>
+                                                <span>Keluar Akun</span>
+                                            </button>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <!-- ==================== 3. FLOATING BOTTOM APP NAVIGATION ==================== -->
+                                <nav id="phone-bottom-nav" aria-label="Navigasi aplikasi LifeSync"
+                                    class="hidden absolute inset-x-3 bottom-2.5 z-30 rounded-2xl border border-white/80 bg-white/95 backdrop-blur-md px-1.5 py-1 shadow-[0_8px_24px_rgba(0,0,0,0.08)]">
+                                    <div class="flex items-center justify-between">
+                                        <button type="button" onclick="switchPhoneTab('home')"
+                                            class="showcase-nav-btn is-active flex flex-col items-center gap-0.5 px-1 focus:outline-none"
+                                            data-tab="home">
+                                            <i class="fa-solid fa-house text-xs"></i>
+                                            <span class="text-[9px]">Beranda</span>
+                                            <span class="nav-indicator h-0.5 w-0 rounded-full transition-all"></span>
+                                        </button>
+                                        <button type="button" onclick="switchPhoneTab('finance')"
+                                            class="showcase-nav-btn flex flex-col items-center gap-0.5 px-1 focus:outline-none"
+                                            data-tab="finance">
+                                            <i class="fa-solid fa-wallet text-xs"></i>
+                                            <span class="text-[9px]">Keuangan</span>
+                                            <span class="nav-indicator h-0.5 w-0 rounded-full transition-all"></span>
+                                        </button>
+                                        <button type="button" onclick="switchPhoneTab('nutrition')"
+                                            class="showcase-nav-btn flex flex-col items-center gap-0.5 px-1 focus:outline-none"
+                                            data-tab="nutrition">
+                                            <i class="fa-solid fa-utensils text-xs"></i>
+                                            <span class="text-[9px]">Nutrisi</span>
+                                            <span class="nav-indicator h-0.5 w-0 rounded-full transition-all"></span>
+                                        </button>
+                                        <button type="button" onclick="switchPhoneTab('memento')"
+                                            class="showcase-nav-btn flex flex-col items-center gap-0.5 px-1 focus:outline-none"
+                                            data-tab="memento">
+                                            <i class="fa-solid fa-camera text-xs"></i>
+                                            <span class="text-[9px]">Memento</span>
+                                            <span class="nav-indicator h-0.5 w-0 rounded-full transition-all"></span>
+                                        </button>
+                                        <button type="button" onclick="switchPhoneTab('profile')"
+                                            class="showcase-nav-btn flex flex-col items-center gap-0.5 px-1 focus:outline-none"
+                                            data-tab="profile">
+                                            <i class="fa-regular fa-user text-xs"></i>
+                                            <span class="text-[9px]">Profil</span>
+                                            <span class="nav-indicator h-0.5 w-0 rounded-full transition-all"></span>
+                                        </button>
+                                    </div>
+                                </nav>
+
+                                <!-- Bottom Gesture Bar -->
+                                <div
+                                    class="absolute bottom-1 left-1/2 -translate-x-1/2 w-28 h-1 bg-[#181d1a]/25 rounded-full z-40 pointer-events-none">
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- KOLOM KANAN: PANDUAN PENGGUNA & RINGKASAN HARIAN -->
+            <div class="lg:col-span-5 space-y-5">
+
+                <!-- 1. KARTU HARMONI HARI INI (LIVE VALUE DASHBOARD) -->
+                <div class="rounded-3xl border border-[#c1c9bf] bg-white p-6 shadow-sm space-y-4">
+                    <div class="flex items-center justify-between border-b border-[#dfe4df] pb-3.5">
+                        <div class="flex items-center gap-2.5">
+                            <div
+                                class="h-8 w-8 rounded-xl bg-[#ebf5ee] text-[#316342] flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined text-[18px]">analytics</span>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-extrabold text-[#181D1A]">Ringkasan Hari Ini</h3>
+                                <p class="text-[10.5px] text-[#414942]">Pantau kebiasaan, to-do list, dan keuangan
+                                    harianmu</p>
+                            </div>
+                        </div>
+                        <span id="state-session-badge"
+                            class="px-2.5 py-1 rounded-md text-[10.5px] font-semibold bg-[#ebf5ee] text-[#1e5031] border border-[#c1c9bf]">
+                            Pengguna: Megah Pratama
+                        </span>
+                    </div>
+
+                    <!-- 4 Kartu Metrik Keseharian -->
+                    <div class="grid grid-cols-2 gap-3 text-xs">
+                        <div class="p-3.5 rounded-2xl bg-[#f6fbf5] border border-[#dfe4df]">
+                            <div class="flex items-center gap-1.5 text-[#414942] text-[10.5px] font-semibold">
+                                <i class="fa-solid fa-repeat text-[#316342]"></i>
+                                <span>Kebiasaan</span>
+                            </div>
+                            <p id="stat-habits" class="text-lg font-extrabold text-[#1e5031] mt-1">3 / 5</p>
+                            <p class="text-[10px] text-[#414942]">60% target selesai</p>
+                        </div>
+
+                        <div class="p-3.5 rounded-2xl bg-[#f6fbf5] border border-[#dfe4df]">
+                            <div class="flex items-center gap-1.5 text-[#414942] text-[10.5px] font-semibold">
+                                <i class="fa-solid fa-list-check text-[#3B82F6]"></i>
+                                <span>Jadwal &amp; To-Do</span>
+                            </div>
+                            <p id="stat-planner" class="text-lg font-extrabold text-[#3B82F6] mt-1">3 / 4</p>
+                            <p class="text-[10px] text-[#414942]">Tugas berjalan lancar</p>
+                        </div>
+
+                        <div class="p-3.5 rounded-2xl bg-[#f6fbf5] border border-[#dfe4df]">
+                            <div class="flex items-center gap-1.5 text-[#414942] text-[10.5px] font-semibold">
+                                <i class="fa-solid fa-wallet text-[#F97316]"></i>
+                                <span>Sisa Saldo</span>
+                            </div>
+                            <p id="stat-finance" class="text-sm font-extrabold text-[#1e5031] mt-1 truncate">+Rp
+                                4.250.000</p>
+                            <p class="text-[10px] text-[#414942]">Surplus &bull; Saldo Aman</p>
+                        </div>
+
+                        <div class="p-3.5 rounded-2xl bg-[#f6fbf5] border border-[#dfe4df]">
+                            <div class="flex items-center gap-1.5 text-[#414942] text-[10.5px] font-semibold">
+                                <i class="fa-solid fa-utensils text-[#D97706]"></i>
+                                <span>Nutrisi &amp; Hidrasi</span>
+                            </div>
+                            <p id="stat-calories" class="text-sm font-extrabold text-[#D97706] mt-1">1.240 kkal</p>
+                            <p class="text-[10px] text-[#414942]">Air: 5 dari 8 gelas</p>
+                        </div>
+                    </div>
+
+                    <!-- Tombol Hasil Akhir -->
+                    <button type="button" onclick="openExecutiveSummary()"
+                        class="w-full py-3 rounded-xl bg-[#316342] hover:bg-[#1e5031] text-white font-bold text-xs flex items-center justify-center gap-2 shadow-sm transition">
+                        <i class="fa-solid fa-medal text-sm"></i>
+                        <span>Lihat Rekap Lengkap Hari Ini</span>
+                    </button>
+                </div>
+
+                <!-- 2. COBA LANGSUNG AKSI CEPAT (INTERACTIVE PROMPTS FOR PROSPECTIVE USERS) -->
+                <div class="rounded-3xl border border-[#c1c9bf] bg-white p-6 shadow-sm space-y-3.5">
+                    <div class="flex items-center gap-2">
+                        <span
+                            class="flex h-6 w-6 items-center justify-center rounded-lg bg-[#ebf5ee] text-[#1e5031] text-xs font-bold">
+                            <i class="fa-solid fa-hand-pointer"></i>
+                        </span>
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-[#1e5031]">Coba Interaksi Cepat</h4>
+                    </div>
+                    <p class="text-xs text-[#414942] leading-relaxed">
+                        Klik tombol di bawah buat lihat simulasi langsung di layar HP sebelah kiri:
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                        <button type="button" onclick="incrementWater(1); switchPhoneTab('home');"
+                            class="p-3 rounded-xl border border-[#c1c9bf] hover:border-[#316342] bg-[#f6fbf5] hover:bg-[#ebf5ee]/50 text-left transition group">
+                            <p class="font-bold text-[#181D1A] group-hover:text-[#1e5031] flex items-center gap-1.5">
+                                <i class="fa-solid fa-droplet text-[#3B82F6]"></i>
+                                <span>Minum 1 Gelas Air</span>
+                            </p>
+                            <p class="text-[10px] text-[#414942] mt-0.5">Tambah catatan minum air</p>
+                        </button>
+
+                        <button type="button" onclick="switchPhoneTab('nutrition'); openFoodAiModal();"
+                            class="p-3 rounded-xl border border-[#c1c9bf] hover:border-[#316342] bg-[#f6fbf5] hover:bg-[#ebf5ee]/50 text-left transition group">
+                            <p class="font-bold text-[#181D1A] group-hover:text-[#1e5031] flex items-center gap-1.5">
+                                <i class="fa-solid fa-camera text-[#316342]"></i>
+                                <span>Coba AI Scan Makanan</span>
+                            </p>
+                            <p class="text-[10px] text-[#414942] mt-0.5">Simulasi hitung kalori makanan</p>
+                        </button>
+
+                        <button type="button" onclick="switchPhoneTab('notes'); openNoteEditorModal();"
+                            class="p-3 rounded-xl border border-[#c1c9bf] hover:border-[#7E22CE] bg-[#f6fbf5] hover:bg-[#F3E8FF]/40 text-left transition group">
+                            <p class="font-bold text-[#181D1A] group-hover:text-[#7E22CE] flex items-center gap-1.5">
+                                <i class="fa-regular fa-note-sticky text-[#7E22CE]"></i>
+                                <span>Tulis Catatan</span>
+                            </p>
+                            <p class="text-[10px] text-[#414942] mt-0.5">Buka form catatan cepat</p>
+                        </button>
+
+                        <button type="button" onclick="quickFillAll()"
+                            class="p-3 rounded-xl border border-[#c1c9bf] hover:border-[#316342] bg-[#f6fbf5] hover:bg-[#ebf5ee]/50 text-left transition group">
+                            <p class="font-bold text-[#181D1A] group-hover:text-[#1e5031] flex items-center gap-1.5">
+                                <i class="fa-solid fa-circle-check text-[#316342]"></i>
+                                <span>Selesaikan Semua (100%)</span>
+                            </p>
+                            <p class="text-[10px] text-[#414942] mt-0.5">Simulasi semua target selesai</p>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 3. MENGAPA PENGGUNA MEMILIH LIFESYNC (HUMAN VALUES) -->
+                <div class="rounded-3xl border border-[#c1c9bf] bg-white p-6 shadow-sm space-y-3.5">
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-[#1e5031]">Mengapa Memilih LifeSync?</h4>
+                    <div class="space-y-3 text-xs text-[#414942]">
+                        <div class="flex items-start gap-3">
+                            <div
+                                class="h-7 w-7 rounded-lg bg-[#ebf5ee] text-[#1e5031] flex items-center justify-center shrink-0 mt-0.5">
+                                <i class="fa-solid fa-shield-halved text-xs"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-[#181D1A]">100% Bebas Iklan &amp; Pelacak</p>
+                                <p class="text-[11px] leading-relaxed mt-0.5">Data pribadi, to-do list, dan catatan
+                                    keuangan kamu aman, tanpa dijual ke pengiklan.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3">
+                            <div
+                                class="h-7 w-7 rounded-lg bg-[#ebf5ee] text-[#1e5031] flex items-center justify-center shrink-0 mt-0.5">
+                                <i class="fa-solid fa-plane-departure text-xs"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-[#181D1A]">Bekerja Lancar Saat Offline</p>
+                                <p class="text-[11px] leading-relaxed mt-0.5">Lagi di pesawat, perjalanan, atau tempat
+                                    susah sinyal? Semua fitur tetap bisa dipakai dan otomatis di-backup saat online
+                                    lagi.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3">
+                            <div
+                                class="h-7 w-7 rounded-lg bg-[#ebf5ee] text-[#1e5031] flex items-center justify-center shrink-0 mt-0.5">
+                                <i class="fa-solid fa-spa text-xs"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-[#181D1A]">Desain Simpel &amp; Nyaman</p>
+                                <p class="text-[11px] leading-relaxed mt-0.5">Nggak ada notifikasi berisik yang bikin
+                                    stres. LifeSync dirancang biar kamu bisa atur rutinitas harian dengan lebih tenang.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-2 border-t border-[#dfe4df]">
+                        <a href="../index.html#pricing"
+                            class="w-full py-2.5 rounded-xl border border-[#316342] bg-[#ebf5ee] hover:bg-[#dfe9e1] text-[#1e5031] font-bold text-xs flex items-center justify-center gap-2 transition">
+                            <span>Download LifeSync Sekarang &bull; Gratis</span>
+                            <i class="fa-solid fa-arrow-right text-[11px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer
+        class="w-full bg-surface-container-low text-on-surface-variant border-t border-outline-variant/30 py-16 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div
+                class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-10 pb-12 border-b border-outline-variant/20">
+                <!-- Brand & Tagline -->
+                <div class="flex items-center gap-4">
+                    <img src="../assets/lifesync-symbol.png" alt="LifeSync Icon" width="44" height="44"
+                        class="w-11 h-11 rounded-2xl bg-surface-container-lowest p-1 shadow-soft object-contain border border-outline-variant/20" />
+                    <div>
+                        <div class="text-xl font-display font-bold text-on-surface tracking-tight">LifeSync</div>
+                        <div class="text-xs text-primary font-semibold tracking-wider">Daily Habit Tracker and
+                            Assistance</div>
+                    </div>
+                </div>
+
+                <!-- Navigasi Internal (Selaras dengan Landing Page) -->
+                <nav
+                    class="flex flex-wrap items-center gap-x-8 gap-y-3 text-xs sm:text-sm font-medium text-on-surface-variant">
+                    <a href="../index.html" class="hover:text-primary transition-colors duration-200">Beranda</a>
+                    <a href="../index.html#fitur" class="hover:text-primary transition-colors duration-200">Pilar
+                        Fitur</a>
+                    <a href="../index.html#offline"
+                        class="hover:text-primary transition-colors duration-200">Offline-First</a>
+                    <a href="../index.html#ai" class="hover:text-primary transition-colors duration-200">AI Proaktif</a>
+                    <a href="../index.html#pricing" class="hover:text-primary transition-colors duration-200">Pilihan
+                        Akses</a>
+                    <a href="../index.html#kontak" class="hover:text-primary transition-colors duration-200">Kontak</a>
+                </nav>
+
+                <!-- Aksi & Email -->
+                <div class="flex flex-wrap items-center gap-4">
+                    <a href="mailto:partnership@lifesync.id"
+                        class="inline-flex items-center gap-1.5 text-xs text-on-surface-variant hover:text-primary transition-colors">
+                        <span class="material-symbols-outlined text-sm text-secondary">mail</span>
+                        <span>partnership@lifesync.id</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Baris Bawah: Hak Cipta & Jaminan Privasi -->
+            <div
+                class="mt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-on-surface-variant">
+                <div>
+                    &copy; 2026 LifeSync. Seluruh hak cipta dilindungi undang-undang.
+                </div>
+                <div class="flex items-center gap-2 text-xs text-primary font-medium">
+                    <span class="material-symbols-outlined text-sm">verified_user</span>
+                    <span>Penyimpanan Lokal &bull; Bebas Iklan &bull; Privasi Terjaga</span>
+                </div>
+                <div>
+                    Batam, Kepulauan Riau, Indonesia
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- ==================== INTERACTIVE MODALS ==================== -->
+
+    <!-- 1. MODAL TAMBAH TUGAS (PLANNER) -->
+    <div id="modal-add-task"
+        class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
+        <div
+            class="bg-white rounded-3xl max-w-sm w-full p-6 text-[#181d1a] space-y-4 shadow-2xl animate-fade-in border border-[#dfe4df]">
+            <div class="flex items-center justify-between border-b border-[#dfe4df] pb-3">
+                <h3 class="text-sm font-extrabold text-[#181D1A]">Tambah Tugas Baru</h3>
+                <button type="button" onclick="closeModal('modal-add-task')"
+                    class="text-[#414942] hover:text-[#181d1a] text-lg font-bold">&times;</button>
+            </div>
+            <form onsubmit="handleAddTaskSubmit(event)" class="space-y-3">
+                <div>
+                    <label class="block text-[11px] font-bold text-[#181d1a] mb-1">Apa tugas yang mau kamu
+                        kerjakan?</label>
+                    <input type="text" id="task-input-title" required placeholder="Contoh: Belanja bahan masakan"
+                        class="w-full px-3.5 py-2.5 rounded-xl border border-[#c1c9bf] text-xs focus:outline-none focus:border-[#316342]">
+                </div>
+                <div class="grid grid-cols-2 gap-2">
+                    <div>
+                        <label class="block text-[11px] font-bold text-[#181d1a] mb-1">Prioritas</label>
+                        <select id="task-input-priority"
+                            class="w-full px-2.5 py-2.5 rounded-xl border border-[#c1c9bf] text-xs focus:outline-none focus:border-[#316342]">
+                            <option value="Tinggi">Penting</option>
+                            <option value="Sedang" selected>Normal</option>
+                            <option value="Rendah">Santai</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-bold text-[#181d1a] mb-1">Jam / Waktu</label>
+                        <input type="time" id="task-input-time" value="14:00"
+                            class="w-full px-2 py-2.5 rounded-xl border border-[#c1c9bf] text-xs focus:outline-none focus:border-[#316342]">
+                    </div>
+                </div>
+                <div class="flex gap-2 pt-2">
+                    <button type="button" onclick="closeModal('modal-add-task')"
+                        class="flex-1 py-2.5 rounded-xl border border-[#dfe4df] text-xs font-semibold text-[#414942]">Batal</button>
+                    <button type="submit"
+                        class="flex-1 py-2.5 rounded-xl bg-[#316342] text-white text-xs font-bold hover:bg-[#1e5031] transition">Simpan
+                        Tugas</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 2. MODAL TAMBAH HABIT (BERANDA) -->
+    <div id="modal-add-habit"
+        class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
+        <div
+            class="bg-white rounded-3xl max-w-sm w-full p-6 text-[#181d1a] space-y-4 shadow-2xl border border-[#dfe4df]">
+            <div class="flex items-center justify-between border-b border-[#dfe4df] pb-3">
+                <h3 class="text-sm font-extrabold text-[#181D1A]">Tambah Kebiasaan Positif</h3>
+                <button type="button" onclick="closeModal('modal-add-habit')"
+                    class="text-[#414942] hover:text-[#181d1a] text-lg font-bold">&times;</button>
+            </div>
+            <form onsubmit="handleAddHabitSubmit(event)" class="space-y-3">
+                <div>
+                    <label class="block text-[11px] font-bold text-[#181d1a] mb-1">Nama Kebiasaan</label>
+                    <input type="text" id="habit-input-title" required placeholder="Contoh: Bersyukur &amp; Jurnal Pagi"
+                        class="w-full px-3.5 py-2.5 rounded-xl border border-[#c1c9bf] text-xs focus:outline-none focus:border-[#316342]">
+                </div>
+                <div>
+                    <label class="block text-[11px] font-bold text-[#181d1a] mb-1">Waktu / Target</label>
+                    <input type="text" id="habit-input-desc" required placeholder="Contoh: Pagi hari &bull; 10 Menit"
+                        class="w-full px-3.5 py-2.5 rounded-xl border border-[#c1c9bf] text-xs focus:outline-none focus:border-[#316342]">
+                </div>
+                <div class="flex gap-2 pt-2">
+                    <button type="button" onclick="closeModal('modal-add-habit')"
+                        class="flex-1 py-2.5 rounded-xl border border-[#dfe4df] text-xs font-semibold text-[#414942]">Batal</button>
+                    <button type="submit"
+                        class="flex-1 py-2.5 rounded-xl bg-[#316342] text-white text-xs font-bold hover:bg-[#1e5031] transition">Tambahkan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 3. MODAL TAMBAH TRANSAKSI (KEUANGAN) -->
+    <div id="modal-add-tx"
+        class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
+        <div
+            class="bg-white rounded-3xl max-w-sm w-full p-6 text-[#181d1a] space-y-4 shadow-2xl border border-[#dfe4df]">
+            <div class="flex items-center justify-between border-b border-[#dfe4df] pb-3">
+                <h3 class="text-sm font-extrabold text-[#181D1A]">Catat Transaksi</h3>
+                <button type="button" onclick="closeModal('modal-add-tx')"
+                    class="text-[#414942] hover:text-[#181d1a] text-lg font-bold">&times;</button>
+            </div>
+            <form onsubmit="handleAddTxSubmit(event)" class="space-y-3">
+                <div class="grid grid-cols-2 gap-2">
+                    <label
+                        class="flex items-center justify-center gap-1.5 p-2.5 rounded-xl border border-[#c1c9bf] bg-[#ebf5ee] cursor-pointer text-xs font-bold text-[#1e5031]">
+                        <input type="radio" name="tx-type" value="income" class="accent-[#316342]"> Pemasukan
+                    </label>
+                    <label
+                        class="flex items-center justify-center gap-1.5 p-2.5 rounded-xl border border-[#FFEDD5] bg-[#FFF7ED] cursor-pointer text-xs font-bold text-[#F97316]">
+                        <input type="radio" name="tx-type" value="expense" checked class="accent-[#F97316]"> Pengeluaran
+                    </label>
+                </div>
+                <div>
+                    <label class="block text-[11px] font-bold text-[#181d1a] mb-1">Catatan / Keperluan</label>
+                    <input type="text" id="tx-input-title" required placeholder="Contoh: Makan Siang"
+                        class="w-full px-3.5 py-2.5 rounded-xl border border-[#c1c9bf] text-xs focus:outline-none focus:border-[#316342]">
+                </div>
+                <div>
+                    <label class="block text-[11px] font-bold text-[#181d1a] mb-1">Nominal (Rp)</label>
+                    <input type="number" id="tx-input-amount" required placeholder="65000"
+                        class="w-full px-3.5 py-2.5 rounded-xl border border-[#c1c9bf] text-xs focus:outline-none focus:border-[#316342]">
+                </div>
+                <div class="flex gap-2 pt-2">
+                    <button type="button" onclick="closeModal('modal-add-tx')"
+                        class="flex-1 py-2.5 rounded-xl border border-[#dfe4df] text-xs font-semibold text-[#414942]">Batal</button>
+                    <button type="submit"
+                        class="flex-1 py-2.5 rounded-xl bg-[#316342] text-white text-xs font-bold hover:bg-[#1e5031] transition">Simpan
+                        Transaksi</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 4. MODAL NOTE EDITOR (CATATAN) -->
+    <div id="modal-note-editor"
+        class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
+        <div
+            class="bg-white rounded-3xl max-w-sm w-full p-6 text-[#181d1a] space-y-4 shadow-2xl border border-[#dfe4df]">
+            <div class="flex items-center justify-between border-b border-[#dfe4df] pb-3">
+                <span
+                    class="text-[10px] font-bold text-[#1e5031] bg-[#ebf5ee] px-2 py-0.5 rounded-md flex items-center gap-1">
+                    <i class="fa-solid fa-lock text-[9px]"></i> Tersimpan di Perangkat
+                </span>
+                <button type="button" onclick="closeModal('modal-note-editor')"
+                    class="text-[#414942] hover:text-[#181d1a] text-lg font-bold">&times;</button>
+            </div>
+            <form onsubmit="handleSaveNoteSubmit(event)" class="space-y-3">
+                <input type="text" id="note-input-title" required placeholder="Judul catatan..."
+                    class="w-full font-bold text-sm text-[#181d1a] border-b border-[#dfe4df] pb-2 focus:outline-none focus:border-[#316342]">
+                <textarea id="note-input-body" rows="4" placeholder="Tulis ide, resep, atau catatan kamu di sini..."
+                    class="w-full text-xs text-[#181d1a] resize-none focus:outline-none leading-relaxed"></textarea>
+
+                <div class="flex items-center justify-between pt-2 border-t border-[#dfe4df]">
+                    <div class="flex items-center gap-1.5">
+                        <span class="text-[10.5px] text-[#414942] font-semibold">Kategori:</span>
+                        <select id="note-input-tag"
+                            class="text-[10px] font-bold bg-[#f0f5f0] rounded-lg px-2 py-1 border-0 focus:outline-none">
+                            <option value="Ide">#Ide</option>
+                            <option value="Rutinitas">#Rutinitas</option>
+                            <option value="Jurnal">#Jurnal</option>
+                        </select>
+                    </div>
+                    <div class="flex gap-1" id="note-color-picker">
+                        <label class="cursor-pointer" title="Kuning Hangat"><input type="radio" name="note-color"
+                                value="#FEF9C3" checked class="hidden peer"><span
+                                class="h-4 w-4 rounded-full bg-[#FEF9C3] border border-[#CA8A04] block peer-checked:ring-2 peer-checked:ring-[#316342]"></span></label>
+                        <label class="cursor-pointer" title="Hijau Segar"><input type="radio" name="note-color"
+                                value="#ebf5ee" class="hidden peer"><span
+                                class="h-4 w-4 rounded-full bg-[#ebf5ee] border border-[#16A34A] block peer-checked:ring-2 peer-checked:ring-[#316342]"></span></label>
+                        <label class="cursor-pointer" title="Lavender"><input type="radio" name="note-color"
+                                value="#F3E8FF" class="hidden peer"><span
+                                class="h-4 w-4 rounded-full bg-[#F3E8FF] border border-[#9333EA] block peer-checked:ring-2 peer-checked:ring-[#316342]"></span></label>
+                        <label class="cursor-pointer" title="Langit Biru"><input type="radio" name="note-color"
+                                value="#E0F2FE" class="hidden peer"><span
+                                class="h-4 w-4 rounded-full bg-[#E0F2FE] border border-[#0284C7] block peer-checked:ring-2 peer-checked:ring-[#316342]"></span></label>
+                    </div>
+                </div>
+
+                <div class="flex gap-2 pt-2">
+                    <button type="button" onclick="closeModal('modal-note-editor')"
+                        class="flex-1 py-2.5 rounded-xl border border-[#dfe4df] text-xs font-semibold text-[#414942]">Tutup</button>
+                    <button type="submit"
+                        class="flex-1 py-2.5 rounded-xl bg-[#316342] text-white text-xs font-bold hover:bg-[#1e5031] transition">Simpan
+                        Transaksi</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 5. MODAL SIMULASI FOOD AI (NUTRISI) -->
+    <div id="modal-food-ai"
+        class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
+        <div
+            class="bg-white rounded-3xl max-w-sm w-full p-6 text-[#181d1a] space-y-4 shadow-2xl border border-[#dfe4df]">
+            <div class="flex items-center justify-between border-b border-[#dfe4df] pb-3">
+                <div class="flex items-center gap-2">
+                    <span
+                        class="flex h-7 w-7 items-center justify-center rounded-xl bg-[#ebf5ee] text-[#1e5031] text-xs"><i
+                            class="fa-solid fa-camera"></i></span>
+                    <h3 class="text-sm font-extrabold text-[#181D1A]">Scan Makanan dengan AI</h3>
+                </div>
+                <button type="button" onclick="closeModal('modal-food-ai')"
+                    class="text-[#414942] hover:text-[#181d1a] text-lg font-bold">&times;</button>
+            </div>
+
+            <!-- Scanner Viewfinder Box -->
+            <div
+                class="relative h-44 rounded-2xl bg-[#141C17] overflow-hidden flex flex-col items-center justify-center p-3 text-white border border-[#2D3A32]">
+                <div
+                    class="absolute inset-4 border-2 border-dashed border-[#4a7c59]/70 rounded-xl pointer-events-none flex items-center justify-center">
+                    <span class="text-[9.5px] font-bold text-[#4a7c59] bg-black/60 px-2.5 py-0.5 rounded-md">Kamera
+                        Mendeteksi Makanan</span>
+                </div>
+                <i class="fa-solid fa-bowl-food text-4xl text-[#316342] mb-2"></i>
+                <p id="ai-scan-status-text" class="text-xs font-bold">Arahkan kamera ke makanan kamu</p>
+            </div>
+
+            <!-- Pre-defined Food Options -->
+            <div class="space-y-1.5">
+                <p class="text-[10px] font-bold text-[#414942] uppercase tracking-wider">Pilih contoh makanan untuk
+                    simulasi:</p>
+                <button type="button" onclick="applyScannedFood('Nasi Ayam Bakar & Lalapan', 520, 28, 62, 14)"
+                    class="w-full text-left p-3 rounded-xl border border-[#dfe4df] hover:border-[#316342] bg-[#f6fbf5] hover:bg-[#ebf5ee]/30 flex items-center justify-between text-xs transition">
+                    <div>
+                        <p class="font-bold text-[#181d1a]">Nasi Ayam Bakar &amp; Lalapan</p>
+                        <p class="text-[9.5px] text-[#414942]">520 kkal &bull; 28g Protein &bull; Seimbang</p>
+                    </div>
+                    <span class="text-[10.5px] font-bold text-[#1e5031]">Pilih Menu Ini &rarr;</span>
+                </button>
+                <button type="button" onclick="applyScannedFood('Gado-gado Lontong Telur', 380, 16, 48, 12)"
+                    class="w-full text-left p-3 rounded-xl border border-[#dfe4df] hover:border-[#316342] bg-[#f6fbf5] hover:bg-[#ebf5ee]/30 flex items-center justify-between text-xs transition">
+                    <div>
+                        <p class="font-bold text-[#181d1a]">Gado-gado Lontong Telur</p>
+                        <p class="text-[9.5px] text-[#414942]">380 kkal &bull; 16g Protein &bull; Serat Tinggi</p>
+                    </div>
+                    <span class="text-[10.5px] font-bold text-[#1e5031]">Pilih Menu Ini &rarr;</span>
+                </button>
+                <button type="button" onclick="applyScannedFood('Salad Buah & Granola Segar', 210, 6, 38, 4)"
+                    class="w-full text-left p-3 rounded-xl border border-[#dfe4df] hover:border-[#316342] bg-[#f6fbf5] hover:bg-[#ebf5ee]/30 flex items-center justify-between text-xs transition">
+                    <div>
+                        <p class="font-bold text-[#181d1a]">Salad Buah &amp; Granola Segar</p>
+                        <p class="text-[9.5px] text-[#414942]">210 kkal &bull; Vitamin Alami</p>
+                    </div>
+                    <span class="text-[10.5px] font-bold text-[#1e5031]">Pilih Menu Ini &rarr;</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. MODAL DETAIL MEMENTO (BATAM) -->
+    <div id="modal-memento-detail"
+        class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
+        <div
+            class="bg-white rounded-3xl max-w-sm w-full p-6 text-[#181d1a] space-y-4 shadow-2xl border border-[#dfe4df]">
+            <div class="flex items-center justify-between border-b border-[#dfe4df] pb-3">
+                <div class="flex items-center gap-1.5">
+                    <i class="fa-solid fa-location-dot text-[#316342]"></i>
+                    <h3 id="memento-modal-title" class="text-sm font-extrabold text-[#181D1A]">Jembatan Barelang</h3>
+                </div>
+                <button type="button" onclick="closeModal('modal-memento-detail')"
+                    class="text-[#414942] hover:text-[#181d1a] text-lg font-bold">&times;</button>
+            </div>
+            <div id="memento-modal-preview"
+                class="h-36 w-full rounded-2xl bg-[#ebf5ee] flex items-center justify-center text-4xl text-[#1e5031]">
+                <i class="fa-solid fa-bridge-water"></i>
+            </div>
+            <div class="space-y-1">
+                <p id="memento-modal-desc" class="text-xs text-[#354B3F] leading-relaxed">
+                    Menikmati sore di jembatan ikonik Batam bersama sahabat sambil mengabadikan foto matahari tenggelam.
+                </p>
+                <div class="flex items-center justify-between text-[10px] text-[#414942] pt-2">
+                    <span id="memento-modal-tags">8 Foto &bull; Ikon Batam</span>
+                    <span class="font-bold text-[#1e5031]">Kenangan Abadi</span>
+                </div>
+            </div>
+            <button type="button" onclick="closeModal('modal-memento-detail')"
+                class="w-full py-2.5 rounded-xl bg-[#316342] text-white text-xs font-bold hover:bg-[#1e5031] transition">
+                Tutup
+            </button>
+        </div>
+    </div>
+
+    <!-- 7. MODAL REKAP AKTIVITAS HARI INI -->
+    <div id="modal-executive-summary"
+        class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/65 backdrop-blur-sm">
+        <div
+            class="bg-white rounded-3xl max-w-md w-full p-7 text-[#181d1a] space-y-5 shadow-2xl max-h-[92vh] overflow-y-auto border border-[#dfe4df]">
+            <div class="flex items-center justify-between border-b border-[#dfe4df] pb-3.5">
+                <div class="flex items-center gap-2.5">
+                    <img src="../assets/lifesync-symbol.png" alt="LifeSync Icon" class="h-7 w-7 object-contain">
+                    <div>
+                        <h3 class="text-base font-extrabold text-[#181D1A]">Ringkasan Hari Ini</h3>
+                        <p class="text-[10.5px] text-[#414942]">Gambaran progres harian kamu</p>
+                    </div>
+                </div>
+                <button type="button" onclick="closeModal('modal-executive-summary')"
+                    class="text-[#414942] hover:text-[#181d1a] text-xl font-bold">&times;</button>
+            </div>
+
+            <!-- Pesan Apresiasi Diri -->
+            <div class="p-4 rounded-2xl bg-[#ebf5ee] border border-[#c1c9bf]">
+                <p class="font-extrabold text-xs text-[#1e5031] flex items-center gap-1.5">
+                    <i class="fa-solid fa-sparkles"></i>
+                    <span>Kerja Bagus Hari Ini, <span id="sum-user-name">Megah</span>!</span>
+                </p>
+                <p class="text-[11px] text-[#354B3F] mt-1.5 leading-relaxed">
+                    Kamu berhasil selesaikan aktivitas harian dengan seimbang. To-do list beres tepat waktu, dan
+                    pengeluaran tetap terkontrol dengan baik.
+                </p>
+            </div>
+
+            <div class="space-y-2.5 text-xs">
+                <!-- Capaian 4 Aspek Kehidupan -->
+                <div class="grid grid-cols-2 gap-2.5">
+                    <div class="p-3.5 rounded-2xl border border-[#dfe4df] bg-[#f6fbf5]">
+                        <span class="text-[10px] text-[#414942] flex items-center gap-1 font-semibold"><i
+                                class="fa-solid fa-repeat text-[#316342]"></i> Kebiasaan Selesai</span>
+                        <p id="sum-habits-val" class="text-sm font-extrabold text-[#1e5031] mt-1">3 / 5 Target</p>
+                    </div>
+                    <div class="p-3.5 rounded-2xl border border-[#dfe4df] bg-[#f6fbf5]">
+                        <span class="text-[10px] text-[#414942] flex items-center gap-1 font-semibold"><i
+                                class="fa-solid fa-list-check text-[#3B82F6]"></i> Tugas Selesai</span>
+                        <p id="sum-planner-val" class="text-sm font-extrabold text-[#3B82F6] mt-1">3 / 4 Tugas</p>
+                    </div>
+                    <div class="p-3.5 rounded-2xl border border-[#dfe4df] bg-[#f6fbf5]">
+                        <span class="text-[10px] text-[#414942] flex items-center gap-1 font-semibold"><i
+                                class="fa-solid fa-wallet text-[#F97316]"></i> Sisa Saldo</span>
+                        <p id="sum-finance-val" class="text-sm font-extrabold text-[#F97316] mt-1">+Rp 4.250.000</p>
+                    </div>
+                    <div class="p-3.5 rounded-2xl border border-[#dfe4df] bg-[#f6fbf5]">
+                        <span class="text-[10px] text-[#414942] flex items-center gap-1 font-semibold"><i
+                                class="fa-solid fa-utensils text-[#D97706]"></i> Nutrisi Hari Ini</span>
+                        <p id="sum-nutrition-val" class="text-sm font-extrabold text-[#D97706] mt-1">1.240 kkal</p>
+                    </div>
+                </div>
+
+                <!-- Catatan & Memento -->
+                <div class="p-3.5 rounded-2xl border border-[#dfe4df] bg-white flex items-center justify-between">
+                    <div>
+                        <p class="font-bold text-[#181d1a]" id="sum-notes-val">4 Catatan Tersimpan</p>
+                        <p class="text-[10px] text-[#414942]">Ide &amp; catatan harian</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="font-bold text-[#1e5031]">34 Momen Tersimpan</p>
+                        <p class="text-[10px] text-[#414942]">Foto &amp; cerita perjalanan</p>
+                    </div>
+                </div>
+
+                <div class="p-3.5 rounded-2xl bg-[#f6fbf5] border border-[#dfe4df] flex items-center justify-between">
+                    <div>
+                        <p class="font-bold text-[#181D1A]">Mode Privasi</p>
+                        <p class="text-[10px] text-[#414942]" id="sum-user-mode">Data tersimpan aman di perangkat kamu
+                        </p>
+                    </div>
+                    <span class="px-2.5 py-1 rounded-md text-[9px] font-bold bg-[#316342] text-white">Aman &amp;
+                        Privat</span>
+                </div>
+            </div>
+
+            <!-- Call to Action Pengguna -->
+            <div class="space-y-2 pt-2">
+                <a href="../index.html#pricing"
+                    class="w-full py-3 rounded-xl bg-[#316342] hover:bg-[#1e5031] text-white font-bold text-xs flex items-center justify-center gap-2 shadow-sm transition">
+                    <span>Mulai Atur Hari Lebih Rapi &bull; Download Gratis</span>
+                    <i class="fa-solid fa-arrow-right text-[11px]"></i>
+                </a>
+                <button type="button" onclick="closeModal('modal-executive-summary')"
+                    class="w-full py-2.5 rounded-xl border border-[#dfe4df] text-xs font-semibold text-[#414942] hover:bg-neutral-50 transition">
+                    Kembali ke Simulator
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== JAVASCRIPT LOGIC ==================== -->
+    <script>
+        /* ---------------- APP STATE STORE ---------------- */
+        const DEFAULT_STATE = {
+            screen: 'splash', // 'splash', 'onboarding', 'auth', 'main'
+            tab: 'home',    // 'home', 'planner', 'notes', 'finance', 'nutrition', 'memento', 'profile'
+            user: {
+                name: 'Megah Pratama',
+                email: 'megah@lifesync.id',
+                isGuest: false
+            },
+            onboardingIndex: 0,
+            habits: [
+                { id: 1, title: 'Minum Air Putih', desc: '4 / 8 gelas • Sedang Berjalan', icon: 'fa-droplet', iconColor: '#3B82F6', iconBg: '#E0EDFF', done: false, isWater: true, count: 4, target: 8 },
+                { id: 2, title: 'Peregangan Ringan', desc: '10 menit • Selesai pagi tadi', icon: 'fa-person-yoga', iconColor: '#316342', iconBg: '#ebf5ee', done: true },
+                { id: 3, title: 'Membaca Buku Inspiratif', desc: '20:00 • Nanti malam', icon: 'fa-book-open', iconColor: '#64748B', iconBg: '#F1F5F9', done: false },
+                { id: 4, title: 'Catat Pengeluaran Hari Ini', desc: 'Selesai dicatat rapi', icon: 'fa-receipt', iconColor: '#F97316', iconBg: '#FFEDD5', done: true },
+                { id: 5, title: 'Jalan Santai 30 Menit', desc: '17:30 • Selesai', icon: 'fa-person-walking', iconColor: '#8B5CF6', iconBg: '#EDE9FE', done: true }
+            ],
+            tasks: [
+                { id: 1, title: 'Selesaikan laporan rencana mingguan', time: '10:00', priority: 'Tinggi', category: 'Fokus', done: true },
+                { id: 2, title: 'Beli buah & sayur segar untuk smoothie', time: '13:00', priority: 'Sedang', category: 'Keluarga', done: true },
+                { id: 3, title: 'Diskusi ide proyek bersama tim', time: '15:30', priority: 'Tinggi', category: 'Karier', done: true },
+                { id: 4, title: 'Refleksi syukur sebelum istirahat', time: '21:00', priority: 'Rendah', category: 'Pribadi', done: false }
+            ],
+            notes: [
+                { id: 1, title: 'Ide Rencana Liburan & Rehat', body: 'Menikmati akhir pekan tanpa layar gadget, jalan pagi di taman, dan memasak hidangan sehat favorit.', tag: 'Ide', color: '#FEF9C3', date: 'Kemarin' },
+                { id: 2, title: 'Resep Smoothie Hijau Berenergi', body: 'Pisang beku, bayam organik, chia seeds, susu oat, dan sedikit madu alami untuk stamina pagi.', tag: 'Rutinitas', color: '#ebf5ee', date: '2 hari lalu' },
+                { id: 3, title: 'Refleksi Sore di Nongsa Batam', body: 'Deburan ombak dan angin sore mengingatkan untuk selalu melangkah pelan namun konsisten.', tag: 'Jurnal', color: '#F3E8FF', date: '3 hari lalu' },
+                { id: 4, title: 'Daftar Kebutuhan Dapur Sehat', body: 'Alpukat, telur ayam kampung, beras merah, dada ayam fillet, dan kopi arabika lokal.', tag: 'Rutinitas', color: '#E0F2FE', date: '4 hari lalu' }
+            ],
+            finance: {
+                income: 7500000,
+                incomeTx: 8,
+                expense: 3250000,
+                expenseTx: 14,
+                transactions: [
+                    { id: 1, title: 'Pemasukan Bulanan', sub: 'Kemarin • Masuk Rekening', amount: 7500000, type: 'income', icon: 'fa-wallet' },
+                    { id: 2, title: 'Belanja Kebutuhan Rumah', sub: 'Hari ini • Supermarket', amount: -850000, type: 'expense', icon: 'fa-basket-shopping' },
+                    { id: 3, title: 'Kopi & Sarapan Sehat', sub: 'Hari ini • Kafe Tenang', amount: -45000, type: 'expense', icon: 'fa-mug-saucer' }
+                ]
+            },
+            nutrition: {
+                calories: 1240,
+                target: 2000,
+                protein: 65,
+                carbs: 140,
+                fat: 38,
+                water: 5,
+                lastPlate: 'Nasi Ayam Bakar & Lalapan',
+                lastDesc: '520 kkal • 28g Protein • Terdeteksi Cerdas'
+            }
+        };
+
+        let appState = JSON.parse(JSON.stringify(DEFAULT_STATE));
+
+        /* ---------------- INITIALIZATION ---------------- */
+        document.addEventListener('DOMContentLoaded', () => {
+            renderAll();
+            startLiveClock();
+        });
+
+        function startLiveClock() {
+            function update() {
+                const now = new Date();
+                const h = String(now.getHours()).padStart(2, '0');
+                const m = String(now.getMinutes()).padStart(2, '0');
+                const clock = document.getElementById('phone-clock');
+                if (clock) clock.textContent = `${h}:${m}`;
+            }
+            update();
+            setInterval(update, 30000);
+        }
+
+        /* ---------------- RENDER ALL COMPONENTS ---------------- */
+        function renderAll() {
+            renderScreenState();
+            renderHabits();
+            renderPlanner();
+            renderNotes();
+            renderFinance();
+            renderNutrition();
+            renderProfile();
+            renderTelemetry();
+        }
+
+        /* ---------------- SCREEN NAVIGATION ---------------- */
+        function switchPhoneScreen(screenName) {
+            appState.screen = screenName;
+            renderScreenState();
+        }
+
+        function switchPhoneTab(tabName) {
+            appState.screen = 'main';
+            appState.tab = tabName;
+            renderScreenState();
+        }
+
+        function renderScreenState() {
+            const screens = ['splash', 'onboarding', 'auth'];
+            screens.forEach(s => {
+                const el = document.getElementById(`view-${s}`);
+                if (el) el.classList.toggle('hidden', appState.screen !== s);
+            });
+
+            const mainApp = document.getElementById('view-main-app');
+            const bottomNav = document.getElementById('phone-bottom-nav');
+            const isMain = appState.screen === 'main';
+
+            if (mainApp) mainApp.classList.toggle('hidden', !isMain);
+            if (bottomNav) bottomNav.classList.toggle('hidden', !isMain);
+
+            if (isMain) {
+                const tabs = ['home', 'planner', 'notes', 'finance', 'nutrition', 'memento', 'profile'];
+                tabs.forEach(t => {
+                    const tabEl = document.getElementById(`tab-${t}`);
+                    if (tabEl) tabEl.classList.toggle('hidden', appState.tab !== t);
+                });
+
+                // Update bottom nav active status
+                document.querySelectorAll('.showcase-nav-btn').forEach(btn => {
+                    const match = btn.getAttribute('data-tab') === appState.tab;
+                    btn.classList.toggle('is-active', match);
+                });
+            }
+
+            // Update top chips (Clean Segmented Control)
+            document.querySelectorAll('.flow-chip').forEach(chip => {
+                const cKey = chip.getAttribute('data-chip');
+                const active = (appState.screen !== 'main' && appState.screen === cKey) || (appState.screen === 'main' && appState.tab === cKey);
+                chip.classList.toggle('active', active);
+                chip.classList.toggle('bg-white', active);
+                chip.classList.toggle('text-[#1e5031]', active);
+                chip.classList.toggle('font-bold', active);
+                chip.classList.toggle('shadow-xs', active);
+                chip.classList.toggle('text-[#414942]', !active);
+            });
+        }
+
+        /* ---------------- ONBOARDING SLIDES ---------------- */
+        const ONBOARDING_SLIDES = [
+            {
+                title: 'Bangun Rutinitas Tanpa Beban',
+                desc: 'Mulai dari langkah kecil yang konsisten. Rayakan setiap progres harian tanpa dibebani notifikasi yang bikin stres.',
+                badge: '1. Kebiasaan Positif',
+                icon: 'fa-repeat'
+            },
+            {
+                title: 'Atur Jadwal Lebih Rapi',
+                desc: 'Catat to-do, agenda penting, dan keuangan harian dalam satu tempat yang simpel dan bebas distraksi.',
+                badge: '2. Produktivitas Harian',
+                icon: 'fa-list-check'
+            },
+            {
+                title: 'Cek Nutrisi & Simpan Momen Berharga',
+                desc: 'Scan makanan lewat kamera AI dan simpan cerita atau foto perjalanan kamu dengan aman dan privat.',
+                badge: '3. Nutrisi & Memento',
+                icon: 'fa-wand-magic-sparkles'
+            }
+        ];
+
+        function renderOnboardingSlide() {
+            const idx = appState.onboardingIndex;
+            const data = ONBOARDING_SLIDES[idx];
+            document.getElementById('ob-title').textContent = data.title;
+            document.getElementById('ob-desc').textContent = data.desc;
+            document.getElementById('ob-badge').textContent = data.badge;
+            document.getElementById('ob-illustration').innerHTML = `<i class="fa-solid ${data.icon}"></i>`;
+
+            document.getElementById('ob-btn-back').style.opacity = idx > 0 ? '1' : '0';
+            document.getElementById('ob-next-btn').textContent = idx === 2 ? 'Mulai Coba' : 'Lanjut';
+
+            const dots = document.querySelectorAll('.ob-dot');
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('w-6', i === idx);
+                dot.classList.toggle('w-2', i !== idx);
+                dot.classList.toggle('bg-[#316342]', i === idx);
+                dot.classList.toggle('bg-[#dfe4df]', i !== idx);
+            });
+        }
+
+        function nextOnboardingSlide() {
+            if (appState.onboardingIndex < 2) {
+                appState.onboardingIndex++;
+                renderOnboardingSlide();
+            } else {
+                switchPhoneScreen('auth');
+            }
+        }
+
+        function prevOnboardingSlide() {
+            if (appState.onboardingIndex > 0) {
+                appState.onboardingIndex--;
+                renderOnboardingSlide();
+            }
+        }
+
+        /* ---------------- AUTHENTICATION ---------------- */
+        let isRegisterMode = false;
+
+        function toggleAuthMode() {
+            isRegisterMode = !isRegisterMode;
+            document.getElementById('auth-name-group').classList.toggle('hidden', !isRegisterMode);
+            document.getElementById('auth-heading').textContent = isRegisterMode ? 'Daftar Akun Baru' : 'Masuk ke LifeSync';
+            document.getElementById('auth-subheading').textContent = isRegisterMode ? 'Daftar buat aktifkan sinkronisasi otomatis antar perangkat' : 'Pilih cara masuk yang paling pas buat kamu';
+            document.getElementById('auth-submit-btn').textContent = isRegisterMode ? 'Daftar Sekarang' : 'Masuk';
+            document.getElementById('auth-toggle-text').textContent = isRegisterMode ? 'Sudah punya akun?' : 'Belum punya akun?';
+            document.getElementById('auth-toggle-btn').textContent = isRegisterMode ? 'Masuk' : 'Daftar sekarang';
+        }
+
+        function handleAuthSubmit(e) {
+            e.preventDefault();
+            const email = document.getElementById('auth-input-email').value;
+            const name = isRegisterMode ? document.getElementById('auth-input-name').value : 'Megah Pratama';
+            appState.user = { name: name || 'Megah Pratama', email: email || 'megah@lifesync.id', isGuest: false };
+            switchPhoneTab('home');
+            renderProfile();
+            triggerNotification('Selamat datang di LifeSync!');
+        }
+
+        function loginAsDemo() {
+            appState.user = { name: 'Megah Pratama', email: 'megah@lifesync.id', isGuest: false };
+            switchPhoneTab('home');
+            renderProfile();
+            triggerNotification('Masuk sebagai Megah Pratama (Pengguna Aktif)');
+        }
+
+        function loginAsGuest() {
+            appState.user = { name: 'Tamu (Privat)', email: 'tamu@lokal.perangkat', isGuest: true };
+            switchPhoneTab('home');
+            renderProfile();
+            triggerNotification('Masuk dalam Mode Tamu: Data tersimpan aman di perangkat');
+        }
+
+        function simulateForgotPassword() {
+            alert('Reset Password:\nKode verifikasi demo: [ 8 4 9 2 0 1 ]. Akun kamu langsung siap digunakan!');
+            loginAsDemo();
+        }
+
+        /* ---------------- HABITS (HOME TAB) ---------------- */
+        function renderHabits() {
+            const list = document.getElementById('home-habit-list');
+            if (!list) return;
+
+            const total = appState.habits.length;
+            const doneCount = appState.habits.filter(h => h.done).length;
+            const pct = Math.round((doneCount / total) * 100);
+
+            // Update Progress Ring Card
+            document.getElementById('home-progress-badge').textContent = `${pct}% Selesai`;
+            document.getElementById('home-progress-ratio').textContent = `${doneCount}/${total}`;
+            document.getElementById('home-progress-text').textContent = `${doneCount} dari ${total} kebiasaan tuntas`;
+            document.getElementById('home-conic-ring').style.background = `conic-gradient(#316342 0% ${pct}%, #ebf5ee ${pct}% 100%)`;
+
+            list.innerHTML = appState.habits.map(h => {
+                if (h.isWater) {
+                    return `
+                        <div class="flex items-center gap-2.5 rounded-xl border border-[#dfe4df] bg-white p-2.5 shadow-xs">
+                            <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl" style="background:${h.iconBg}; color:${h.iconColor}">
+                                <i class="fa-solid ${h.icon} text-xs"></i>
+                            </div>
+                            <div class="min-w-0 flex-1">
+                                <p class="truncate text-xs font-bold text-[#181d1a]">${h.title}</p>
+                                <p class="text-[9.5px] text-[#414942]">${h.count} / ${h.target} gelas • Tubuh tetap terhidrasi</p>
+                            </div>
+                            <div class="flex items-center gap-1">
+                                <button type="button" onclick="incrementWater(-1)" class="h-6 w-6 rounded-full border border-[#c1c9bf] text-[#414942] flex items-center justify-center text-xs font-bold hover:bg-neutral-100" title="Kurangi 1 Gelas">-</button>
+                                <button type="button" onclick="incrementWater(1)" class="h-6 w-6 rounded-full border border-[#316342] text-[#316342] flex items-center justify-center text-xs font-bold hover:bg-[#ebf5ee]" title="Tambah 1 Gelas">+</button>
+                            </div>
+                        </div>
+                    `;
+                }
+
+                return `
+                    <div class="flex items-center gap-2.5 rounded-xl border ${h.done ? 'border-[#316342] bg-[#ebf5ee]/40' : 'border-[#dfe4df] bg-white'} p-2.5 shadow-xs transition">
+                        <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl" style="background:${h.iconBg}; color:${h.iconColor}">
+                            <i class="fa-solid ${h.icon} text-xs"></i>
+                        </div>
+                        <div class="min-w-0 flex-1 cursor-pointer" onclick="toggleHabit(${h.id})">
+                            <p class="truncate text-xs font-bold text-[#181d1a] ${h.done ? 'line-through opacity-80' : ''}">${h.title}</p>
+                            <p class="text-[9.5px] text-[#414942]">${h.desc}</p>
+                        </div>
+                        <button type="button" onclick="toggleHabit(${h.id})" class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full ${h.done ? 'bg-[#316342] text-white' : 'border border-[#dfe4df] text-transparent hover:border-[#316342]'} text-[10px] transition" title="Tandai Selesai">
+                            <i class="fa-solid fa-check"></i>
+                        </button>
+                    </div>
+                `;
+            }).join('');
+
+            renderTelemetry();
+        }
+
+        function toggleHabit(id) {
+            const habit = appState.habits.find(h => h.id === id);
+            if (habit) {
+                habit.done = !habit.done;
+                habit.desc = habit.done ? 'Selesai hari ini' : 'Belum dilakukan';
+                renderHabits();
+                if (habit.done) {
+                    triggerNotification(`Kebiasaan "${habit.title}" berhasil diselesaikan!`);
+                }
+            }
+        }
+
+        function incrementWater(delta) {
+            const h = appState.habits.find(i => i.isWater);
+            if (h) {
+                h.count = Math.max(0, Math.min(12, h.count + delta));
+                h.done = h.count >= h.target;
+                appState.nutrition.water = h.count;
+                renderHabits();
+                renderNutrition();
+                if (delta > 0) {
+                    triggerNotification(`Bagus! Hidrasi bertambah: ${h.count}/${h.target} gelas.`);
+                }
+            }
+        }
+
+        function openAddHabitModal() {
+            document.getElementById('modal-add-habit').classList.remove('hidden');
+        }
+
+        function handleAddHabitSubmit(e) {
+            e.preventDefault();
+            const title = document.getElementById('habit-input-title').value;
+            const desc = document.getElementById('habit-input-desc').value;
+            appState.habits.push({
+                id: Date.now(),
+                title,
+                desc,
+                icon: 'fa-star',
+                iconColor: '#316342',
+                iconBg: '#ebf5ee',
+                done: false
+            });
+            closeModal('modal-add-habit');
+            document.getElementById('habit-input-title').value = '';
+            document.getElementById('habit-input-desc').value = '';
+            renderHabits();
+            triggerNotification(`Kebiasaan baru "${title}" berhasil ditambahkan!`);
+        }
+
+        /* ---------------- PLANNER TAB ---------------- */
+        let plannerFilter = 'semua';
+
+        function renderPlanner() {
+            const list = document.getElementById('planner-task-list');
+            if (!list) return;
+
+            const total = appState.tasks.length;
+            const done = appState.tasks.filter(t => t.done).length;
+            const pending = total - done;
+            const pct = total === 0 ? 0 : Math.round((done / total) * 100);
+
+            document.getElementById('planner-summary-text').textContent = `${done} dari ${total} tugas tuntas`;
+            document.getElementById('planner-pct-badge').textContent = `${pct}%`;
+            document.getElementById('planner-progress-bar').style.width = `${pct}%`;
+
+            document.getElementById('count-all').textContent = total;
+            document.getElementById('count-pending').textContent = pending;
+            document.getElementById('count-done').textContent = done;
+
+            // Render calendar strip
+            const calStrip = document.getElementById('planner-calendar-strip');
+            if (calStrip && calStrip.children.length === 0) {
+                const days = [
+                    { day: 'Sen', date: 19 },
+                    { day: 'Sel', date: 20 },
+                    { day: 'Rab', date: 21 },
+                    { day: 'Kam', date: 22, active: true },
+                    { day: 'Jum', date: 23 },
+                    { day: 'Sab', date: 24 },
+                    { day: 'Min', date: 25 },
+                ];
+                calStrip.innerHTML = days.map(d => `
+                    <div class="flex flex-col items-center gap-1 p-1 rounded-xl ${d.active ? 'bg-[#316342] text-white font-bold' : 'text-[#414942] hover:bg-[#f0f5f0] cursor-pointer'}">
+                        <span class="text-[8.5px]">${d.day}</span>
+                        <span class="text-xs">${d.date}</span>
+                    </div>
+                `).join('');
+            }
+
+            const filtered = appState.tasks.filter(t => {
+                if (plannerFilter === 'belum') return !t.done;
+                if (plannerFilter === 'selesai') return t.done;
+                return true;
+            });
+
+            list.innerHTML = filtered.map(t => {
+                const prioColor = t.priority === 'Tinggi' ? 'bg-red-50 text-red-600 border-red-200' : (t.priority === 'Sedang' ? 'bg-amber-50 text-amber-700 border-amber-200' : 'bg-blue-50 text-blue-600 border-blue-200');
+                return `
+                    <div class="flex items-center gap-2.5 rounded-xl border border-[#dfe4df] bg-white p-2.5 shadow-xs transition">
+                        <button type="button" onclick="toggleTask(${t.id})" class="flex h-5 w-5 shrink-0 items-center justify-center rounded-lg border ${t.done ? 'bg-[#316342] border-[#316342] text-white' : 'border-[#CBD5E1] text-transparent hover:border-[#316342]'} text-[9px] transition">
+                            <i class="fa-solid fa-check"></i>
+                        </button>
+                        <div class="flex-1 min-w-0" onclick="toggleTask(${t.id})">
+                            <p class="text-xs font-bold text-[#181d1a] truncate ${t.done ? 'line-through opacity-70' : ''}">${t.title}</p>
+                            <div class="flex items-center gap-2 text-[9px] text-[#717971] mt-0.5">
+                                <span><i class="fa-regular fa-clock"></i> ${t.time}</span>
+                                <span class="rounded border px-1 py-0.2 ${prioColor} font-semibold">${t.priority}</span>
+                                <span>#${t.category}</span>
+                            </div>
+                        </div>
+                        <button type="button" onclick="deleteTask(${t.id})" class="text-[#717971] hover:text-red-500 text-xs px-1" title="Hapus Tugas">
+                            <i class="fa-regular fa-trash-can"></i>
+                        </button>
+                    </div>
+                `;
+            }).join('');
+
+            renderTelemetry();
+        }
+
+        function filterPlanner(f) {
+            plannerFilter = f;
+            document.querySelectorAll('.planner-filter-btn').forEach(b => {
+                const match = b.getAttribute('data-filter') === f;
+                b.classList.toggle('active', match);
+                b.classList.toggle('bg-[#181d1a]', match);
+                b.classList.toggle('text-white', match);
+                b.classList.toggle('bg-[#f0f5f0]', !match);
+                b.classList.toggle('text-[#414942]', !match);
+            });
+            renderPlanner();
+        }
+
+        function toggleTask(id) {
+            const task = appState.tasks.find(t => t.id === id);
+            if (task) {
+                task.done = !task.done;
+                renderPlanner();
+                if (task.done) {
+                    triggerNotification(`Tugas "${task.title}" berhasil diselesaikan!`);
+                }
+            }
+        }
+
+        function deleteTask(id) {
+            appState.tasks = appState.tasks.filter(t => t.id !== id);
+            renderPlanner();
+        }
+
+        function openAddTaskModal() {
+            document.getElementById('modal-add-task').classList.remove('hidden');
+        }
+
+        function handleAddTaskSubmit(e) {
+            e.preventDefault();
+            const title = document.getElementById('task-input-title').value;
+            const priority = document.getElementById('task-input-priority').value;
+            const time = document.getElementById('task-input-time').value || '14:00';
+            appState.tasks.push({
+                id: Date.now(),
+                title,
+                priority,
+                time,
+                category: 'Fokus',
+                done: false
+            });
+            closeModal('modal-add-task');
+            document.getElementById('task-input-title').value = '';
+            renderPlanner();
+            triggerNotification(`Agenda "${title}" tersimpan rapi.`);
+        }
+
+        /* ---------------- CATATAN / NOTES TAB ---------------- */
+        let notesTagFilter = 'Semua';
+        let notesSearchQuery = '';
+
+        function renderNotes() {
+            const grid = document.getElementById('notes-grid');
+            if (!grid) return;
+
+            const filtered = appState.notes.filter(n => {
+                const matchTag = notesTagFilter === 'Semua' || n.tag === notesTagFilter;
+                const matchSearch = !notesSearchQuery || n.title.toLowerCase().includes(notesSearchQuery.toLowerCase()) || n.body.toLowerCase().includes(notesSearchQuery.toLowerCase());
+                return matchTag && matchSearch;
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = '<div class="text-center py-6 text-xs text-[#717971]">Tidak ada catatan yang cocok</div>';
+                return;
+            }
+
+            grid.innerHTML = filtered.map(n => `
+                <div class="rounded-2xl border border-[#dfe4df] p-3 shadow-xs space-y-2 transition hover:shadow-md" style="background:${n.color}">
+                    <div class="flex items-start justify-between gap-2">
+                        <h4 class="text-xs font-bold text-[#181d1a] leading-snug">${n.title}</h4>
+                        <span class="rounded-md bg-white/80 px-1.5 py-0.5 text-[8.5px] font-bold text-[#181d1a] shadow-xs">#${n.tag}</span>
+                    </div>
+                    <p class="text-[10.5px] text-[#414942] leading-relaxed line-clamp-2">${n.body}</p>
+                    <div class="flex items-center justify-between text-[9px] text-[#717971] pt-1 border-t border-black/5">
+                        <span>${n.date}</span>
+                        <button type="button" onclick="deleteNote(${n.id})" class="text-[#717971] hover:text-red-600" title="Hapus"><i class="fa-regular fa-trash-can"></i></button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterNotesCategory(cat) {
+            notesTagFilter = cat;
+            document.querySelectorAll('.note-cat-chip').forEach(c => {
+                const match = c.textContent.includes(cat);
+                c.classList.toggle('active', match);
+                c.classList.toggle('bg-[#316342]', match);
+                c.classList.toggle('text-white', match);
+                c.classList.toggle('bg-white', !match);
+                c.classList.toggle('text-[#414942]', !match);
+            });
+            renderNotes();
+        }
+
+        function handleNotesSearch(val) {
+            notesSearchQuery = val;
+            renderNotes();
+        }
+
+        function openNoteEditorModal() {
+            document.getElementById('modal-note-editor').classList.remove('hidden');
+        }
+
+        function handleSaveNoteSubmit(e) {
+            e.preventDefault();
+            const title = document.getElementById('note-input-title').value;
+            const body = document.getElementById('note-input-body').value;
+            const tag = document.getElementById('note-input-tag').value;
+            const color = document.querySelector('input[name="note-color"]:checked')?.value || '#FEF9C3';
+
+            appState.notes.unshift({
+                id: Date.now(),
+                title,
+                body,
+                tag,
+                color,
+                date: 'Hari ini'
+            });
+
+            closeModal('modal-note-editor');
+            document.getElementById('note-input-title').value = '';
+            document.getElementById('note-input-body').value = '';
+            renderNotes();
+            triggerNotification(`Catatan "${title}" berhasil disimpan!`);
+        }
+
+        function deleteNote(id) {
+            appState.notes = appState.notes.filter(n => n.id !== id);
+            renderNotes();
+        }
+
+        /* ---------------- FINANCE TAB ---------------- */
+        function renderFinance() {
+            const f = appState.finance;
+            const fmt = (num) => 'Rp ' + Math.abs(num).toLocaleString('id-ID');
+
+            document.getElementById('finance-income-val').textContent = fmt(f.income);
+            document.getElementById('finance-income-tx').textContent = `${f.incomeTx} Catatan`;
+
+            document.getElementById('finance-expense-val').textContent = fmt(f.expense);
+            document.getElementById('finance-expense-tx').textContent = `${f.expenseTx} Catatan`;
+
+            const surplus = f.income - f.expense;
+            const badge = document.getElementById('finance-surplus-badge');
+            if (badge) {
+                badge.textContent = `Surplus + ${fmt(surplus)} (Aman)`;
+            }
+
+            const list = document.getElementById('finance-tx-list');
+            if (list) {
+                list.innerHTML = f.transactions.map(t => `
+                    <div class="flex items-center gap-2.5 rounded-xl border border-[#dfe4df] bg-white p-2.5 shadow-xs">
+                        <span class="flex h-8 w-8 items-center justify-center rounded-xl ${t.type === 'income' ? 'bg-[#ebf5ee] text-[#1e5031]' : 'bg-[#FFEDD5] text-[#F97316]'}">
+                            <i class="fa-solid ${t.icon} text-xs"></i>
+                        </span>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-xs font-bold text-[#181d1a] truncate">${t.title}</p>
+                            <p class="text-[9px] text-[#717971]">${t.sub}</p>
+                        </div>
+                        <span class="text-xs font-bold ${t.type === 'income' ? 'text-[#1e5031]' : 'text-[#F97316]'}">
+                            ${t.type === 'income' ? '+' : '-'} ${fmt(t.amount)}
+                        </span>
+                    </div>
+                `).join('');
+            }
+
+            renderTelemetry();
+        }
+
+        function openAddTransactionModal() {
+            document.getElementById('modal-add-tx').classList.remove('hidden');
+        }
+
+        function handleAddTxSubmit(e) {
+            e.preventDefault();
+            const type = document.querySelector('input[name="tx-type"]:checked').value;
+            const title = document.getElementById('tx-input-title').value;
+            const amount = parseInt(document.getElementById('tx-input-amount').value, 10) || 0;
+
+            if (type === 'income') {
+                appState.finance.income += amount;
+                appState.finance.incomeTx++;
+            } else {
+                appState.finance.expense += amount;
+                appState.finance.expenseTx++;
+            }
+
+            appState.finance.transactions.unshift({
+                id: Date.now(),
+                title,
+                sub: 'Hari ini • ' + (type === 'income' ? 'Pemasukan' : 'Pengeluaran'),
+                amount,
+                type,
+                icon: type === 'income' ? 'fa-wallet' : 'fa-receipt'
+            });
+
+            closeModal('modal-add-tx');
+            document.getElementById('tx-input-title').value = '';
+            document.getElementById('tx-input-amount').value = '';
+            renderFinance();
+            triggerNotification(`Transaksi "${title}" berhasil dicatat!`);
+        }
+
+        /* ---------------- NUTRITION TAB ---------------- */
+        function renderNutrition() {
+            const n = appState.nutrition;
+            const pct = Math.round((n.calories / n.target) * 100);
+
+            document.getElementById('nutrition-cal-val').textContent = n.calories.toLocaleString('id-ID');
+            document.getElementById('nutrition-calorie-conic').style.background = `conic-gradient(#316342 0% ${pct}%, #ebf5ee ${pct}% 100%)`;
+            document.getElementById('nutrition-cal-desc').textContent = `Target tercapai ${pct}% • Sangat seimbang untuk rutinitas Anda`;
+
+            document.getElementById('macro-protein').textContent = `${n.protein} / 90 g`;
+            document.getElementById('macro-protein-bar').style.width = `${Math.min(100, Math.round((n.protein / 90) * 100))}%`;
+
+            document.getElementById('macro-carbs').textContent = `${n.carbs} / 220 g`;
+            document.getElementById('macro-carbs-bar').style.width = `${Math.min(100, Math.round((n.carbs / 220) * 100))}%`;
+
+            document.getElementById('macro-fat').textContent = `${n.fat} / 60 g`;
+            document.getElementById('macro-fat-bar').style.width = `${Math.min(100, Math.round((n.fat / 60) * 100))}%`;
+
+            document.getElementById('macro-water').textContent = `${n.water} / 8 gelas`;
+            document.getElementById('macro-water-bar').style.width = `${Math.min(100, Math.round((n.water / 8) * 100))}%`;
+
+            document.getElementById('nutrition-last-plate').textContent = n.lastPlate;
+            document.getElementById('nutrition-last-desc').textContent = n.lastDesc;
+
+            renderTelemetry();
+        }
+
+        function changeWater(delta) {
+            incrementWater(delta);
+        }
+
+        function openFoodAiModal() {
+            document.getElementById('modal-food-ai').classList.remove('hidden');
+        }
+
+        function applyScannedFood(title, cal, prot, carb, fat) {
+            appState.nutrition.calories += cal;
+            appState.nutrition.protein += prot;
+            appState.nutrition.carbs += carb;
+            appState.nutrition.fat += fat;
+            appState.nutrition.lastPlate = title;
+            appState.nutrition.lastDesc = `${cal} kkal • ${prot}g Protein • Terdeteksi Cerdas`;
+            closeModal('modal-food-ai');
+            renderNutrition();
+            triggerNotification(`Kamera AI berhasil mendeteksi "${title}" (+${cal} kkal)`);
+        }
+
+        /* ---------------- MEMENTO TAB ---------------- */
+        const BATAM_MOMENTS = {
+            'Barelang': {
+                title: 'Jembatan Barelang',
+                desc: 'Ikon utama Pulau Batam. Menikmati semilir angin laut dan pemandangan pulau-pulau kecil saat matahari tenggelam.',
+                tags: '8 Foto • Ikon Batam • Wisata Sore',
+                icon: 'fa-bridge-water'
+            },
+            'Nongsa': {
+                title: 'Pantai Nongsa & Resort',
+                desc: 'Hamparan pasir putih dan lanskap laut yang tenang dengan pemandangan cakrawala Singapura di kejauhan.',
+                tags: '6 Foto • Sunset Indah • Rehat Tenang',
+                icon: 'fa-umbrella-beach'
+            },
+            'BatamCenter': {
+                title: 'Batam Center & Alun-alun',
+                desc: 'Pusat dinamika kota Batam, festival kuliner khas Melayu, dan Masjid Agung Raja Mahmud.',
+                tags: '11 Foto • Kuliner & Budaya • Pusat Kota',
+                icon: 'fa-city'
+            }
+        };
+
+        function showMomentDetail(key) {
+            const m = BATAM_MOMENTS[key];
+            if (!m) return;
+            document.getElementById('memento-modal-title').textContent = m.title;
+            document.getElementById('memento-modal-desc').textContent = m.desc;
+            document.getElementById('memento-modal-tags').textContent = m.tags;
+            document.getElementById('memento-modal-preview').innerHTML = `<i class="fa-solid ${m.icon}"></i>`;
+            document.getElementById('modal-memento-detail').classList.remove('hidden');
+        }
+
+        function openAddMomentModal() {
+            alert('Jurnal Memento:\nLokasi foto otomatis terdeteksi. Kamu bisa simpan foto momen berkesan lengkap dengan cerita perjalanannya!');
+        }
+
+        // Render Memento Cards
+        const mementoContainer = document.getElementById('memento-cards-grid');
+        if (mementoContainer) {
+            mementoContainer.innerHTML = `
+                <div class="rounded-xl border border-[#dfe4df] bg-white p-2.5 shadow-xs cursor-pointer hover:border-[#316342] transition" onclick="showMomentDetail('Barelang')">
+                    <div class="h-16 w-full rounded-lg bg-[#ebf5ee] flex items-center justify-center text-[#1e5031] mb-1.5">
+                        <i class="fa-solid fa-bridge-water text-lg"></i>
+                    </div>
+                    <p class="text-[11px] font-bold text-[#181d1a] truncate">Jembatan Barelang</p>
+                    <p class="text-[9px] text-[#414942]">8 Foto &bull; Ikon Batam</p>
+                </div>
+                <div class="rounded-xl border border-[#dfe4df] bg-white p-2.5 shadow-xs cursor-pointer hover:border-[#316342] transition" onclick="showMomentDetail('Nongsa')">
+                    <div class="h-16 w-full rounded-lg bg-[#E0EDFF] flex items-center justify-center text-[#3B82F6] mb-1.5">
+                        <i class="fa-solid fa-umbrella-beach text-lg"></i>
+                    </div>
+                    <p class="text-[11px] font-bold text-[#181d1a] truncate">Pantai Nongsa</p>
+                    <p class="text-[9px] text-[#414942]">6 Foto &bull; Sunset Indah</p>
+                </div>
+            `;
+        }
+
+        /* ---------------- PROFILE TAB ---------------- */
+        function renderProfile() {
+            const u = appState.user;
+            document.getElementById('home-greeting-name').textContent = u.isGuest ? 'Halo, Pengunjung Tamu 👋' : `Selamat pagi, ${u.name.split(' ')[0]} 👋`;
+            document.getElementById('home-avatar').textContent = u.name.charAt(0);
+            document.getElementById('profile-name-text').textContent = u.name;
+            document.getElementById('profile-email-text').textContent = u.email;
+            document.getElementById('profile-avatar-circle').textContent = u.name.charAt(0);
+
+            const badge = document.getElementById('state-session-badge');
+            if (badge) {
+                badge.textContent = u.isGuest ? 'Pengguna: Tamu (Privat)' : `Pengguna: ${u.name}`;
+            }
+        }
+
+        function triggerCloudSync() {
+            const icon = document.getElementById('sync-icon-profile');
+            const desc = document.getElementById('sync-time-desc');
+            if (icon) icon.classList.add('fa-spin');
+            if (desc) desc.textContent = 'Menyimpan backup data ke cloud...';
+
+
+            setTimeout(() => {
+                if (icon) icon.classList.remove('fa-spin');
+                if (desc) desc.textContent = 'Semua data tersimpan aman dan terbaru';
+                triggerNotification('Data berhasil di-backup ke cloud!');
+            }, 1200);
+        }
+
+
+        function openSessionsModal() {
+            alert('Perangkat Aktif:\n1. Browser Web (Sedang Dipakai)\n2. HP Pribadi (Sinkron Otomatis)\n\nCatatan dan jadwal kamu otomatis tersinkron di semua perangkat.');
+        }
+
+        function openFaqModal() {
+            alert('Bantuan LifeSync:\n• Tetap Jalan Offline: Tulis catatan dan to-do tanpa kuota atau sinyal.\n• Auto Sync: Otomatis tersimpan ke cloud saat online lagi.\n• 100% Aman: Tanpa iklan dan privasi data kamu terlindungi.');
+        }
+
+        function openEditProfileModal() {
+            const newName = prompt('Ganti nama panggilan kamu:', appState.user.name);
+            if (newName && newName.trim()) {
+                appState.user.name = newName.trim();
+                renderProfile();
+                triggerNotification(`Nama diubah menjadi "${appState.user.name}"`);
+            }
+        }
+
+        function handleLogout() {
+            if (confirm('Keluar dari akun Anda?')) {
+                appState.user = { name: 'Tamu', email: 'tamu@lokal.perangkat', isGuest: true };
+                switchPhoneScreen('auth');
+            }
+        }
+
+        /* ---------------- TELEMETRY & RESULTS ---------------- */
+        function renderTelemetry() {
+            const habitDone = appState.habits.filter(h => h.done).length;
+            const habitTotal = appState.habits.length;
+            document.getElementById('stat-habits').textContent = `${habitDone} / ${habitTotal}`;
+
+            const taskDone = appState.tasks.filter(t => t.done).length;
+            const taskTotal = appState.tasks.length;
+            document.getElementById('stat-planner').textContent = `${taskDone} / ${taskTotal}`;
+
+            const surplus = appState.finance.income - appState.finance.expense;
+            document.getElementById('stat-finance').textContent = `+Rp ${surplus.toLocaleString('id-ID')}`;
+
+            document.getElementById('stat-calories').textContent = `${appState.nutrition.calories.toLocaleString('id-ID')} kkal`;
+        }
+
+        function openExecutiveSummary() {
+            const habitDone = appState.habits.filter(h => h.done).length;
+            const habitTotal = appState.habits.length;
+            const taskDone = appState.tasks.filter(t => t.done).length;
+            const taskTotal = appState.tasks.length;
+            const surplus = appState.finance.income - appState.finance.expense;
+
+            document.getElementById('sum-user-name').textContent = appState.user.name;
+            document.getElementById('sum-user-mode').textContent = appState.user.isGuest ? 'Mode Tamu • Tersimpan di HP' : 'Akun Terdaftar • Tersinkron Multi-Perangkat';
+            document.getElementById('sum-habits-val').textContent = `${habitDone} / ${habitTotal} Target (${Math.round((habitDone / habitTotal) * 100)}%)`;
+            document.getElementById('sum-planner-val').textContent = `${taskDone} / ${taskTotal} Tugas (${Math.round((taskDone / taskTotal) * 100)}%)`;
+            document.getElementById('sum-finance-val').textContent = `+Rp ${surplus.toLocaleString('id-ID')}`;
+            document.getElementById('sum-nutrition-val').textContent = `${appState.nutrition.calories} kkal (Air: ${appState.nutrition.water}/8)`;
+            document.getElementById('sum-notes-val').textContent = `${appState.notes.length} Catatan Tersimpan`;
+
+            document.getElementById('modal-executive-summary').classList.remove('hidden');
+        }
+
+        function openSummaryModal() {
+            openExecutiveSummary();
+        }
+
+        function quickFillAll() {
+            appState.habits.forEach(h => {
+                h.done = true;
+                if (h.isWater) h.count = h.target;
+            });
+            appState.tasks.forEach(t => t.done = true);
+            appState.nutrition.water = 8;
+            renderAll();
+            triggerNotification('Keren! Semua target dan kebiasaan hari ini sudah beres (100%)!');
+        }
+
+        function resetDemoData() {
+            appState = JSON.parse(JSON.stringify(DEFAULT_STATE));
+            renderAll();
+            triggerNotification('Data simulasi sudah di-reset.');
+        }
+
+        function closeModal(id) {
+            const m = document.getElementById(id);
+            if (m) m.classList.add('hidden');
+        }
+
+        function triggerNotification(msg) {
+            const toast = document.createElement('div');
+            toast.className = 'fixed top-16 right-4 sm:right-8 z-50 bg-[#141C17] text-white border border-[#316342]/60 px-4 py-2.5 rounded-xl shadow-xl text-xs font-semibold flex items-center gap-2.5 transition-all duration-300';
+            toast.innerHTML = `<span class="h-2 w-2 rounded-full bg-[#4a7c59]"></span> <span>${msg}</span>`;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 3200);
+        }
+    </script>
+</body>
+
+</html>
