@@ -55,6 +55,7 @@ const SECTIONS = [
     { id: 'section-offline', file: 'sections/offline.html' },
     { id: 'section-ai',      file: 'sections/ai.html' },
     { id: 'section-pricing', file: 'sections/pricing.html' },
+    { id: 'section-faq',     file: 'sections/faq.html' },
     { id: 'section-kontak',  file: 'sections/kontak.html' },
     { id: 'section-footer',  file: 'sections/footer.html' },
 ];
@@ -109,6 +110,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         { name: 'Showcase Navigation', fn: initShowcaseNavigation },
         { name: 'Download Links', fn: initDownloadLinks },
         { name: 'Kontak Form', fn: initKontakForm },
+        { name: 'FAQ Accordion', fn: initFaqAccordion },
         { name: 'Smooth Scroll', fn: initSmoothScroll }
     ];
 
@@ -293,12 +295,10 @@ function initReveal() {
     var items = document.querySelectorAll('.reveal');
     if (items.length === 0) return;
 
-    // Langsung buat elemen yang sudah berada di viewport atau saat dimuat menjadi terlihat
-    items.forEach(function (el) {
-        el.classList.add('is-visible');
-    });
-
-    if (!('IntersectionObserver' in window)) return;
+    if (!('IntersectionObserver' in window)) {
+        items.forEach(function (el) { el.classList.add('is-visible'); });
+        return;
+    }
 
     var observer = new IntersectionObserver(function (entries, obs) {
         entries.forEach(function (entry) {
@@ -307,9 +307,20 @@ function initReveal() {
                 obs.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.05 });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -30px 0px'
+    });
 
-    items.forEach(function (el) { observer.observe(el); });
+    items.forEach(function (el) {
+        var rect = el.getBoundingClientRect();
+        // Elemen yang sudah di dalam viewport saat pertama load langsung diberi is-visible
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+            el.classList.add('is-visible');
+        } else {
+            observer.observe(el);
+        }
+    });
 }
 
 /* ==========================================================
@@ -476,3 +487,33 @@ window.resetKontakForm = function resetKontakForm() {
         if (el) el.classList.add('hidden');
     });
 };
+
+
+/* ==========================================================
+   8. FAQ Accordion Interaction
+   Mendukung toggle interaktif, auto-close item lain, dan animasi rotasi
+   ========================================================== */
+function initFaqAccordion() {
+    var faqItems = document.querySelectorAll('.faq-item');
+    if (!faqItems.length) return;
+
+    faqItems.forEach(function (item) {
+        var summary = item.querySelector('summary');
+        if (!summary) return;
+
+        summary.addEventListener('click', function (e) { e.preventDefault();
+            // Tutup semua item FAQ terlebih dahulu (accordion style)
+            faqItems.forEach(function (other) {
+                other.removeAttribute('open');
+            });
+            // Buka item ini jika sebelumnya tertutup
+            if (!item.hasAttribute('open')) {
+                item.setAttribute('open', '');
+            }
+        });
+    });
+}
+
+
+
+

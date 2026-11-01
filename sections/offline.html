@@ -1,72 +1,126 @@
-﻿<!-- ============================================================
-      OFFLINE-FIRST ARCHITECTURE
-      Gojek-inspired: clean two-column layout
+<!-- ============================================================
+      OFFLINE-FIRST ARCHITECTURE - LifeSync
+      Clean, Authoritative High-Trust Architecture Showcase
       ============================================================ -->
-<section id="offline" class="py-20 bg-brand-50">
+<section id="offline" class="py-20 lg:py-28 bg-brand-50/60 relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-2 gap-16 items-center">
-            <!-- Konten kiri -->
-            <div class="space-y-6">
-                <span class="inline-flex items-center gap-2 border-b-2 border-brand-500 pb-1 text-xs font-bold text-brand-700 uppercase tracking-widest">
-                    <i class="fa-solid fa-database"></i> Offline-First Architecture
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            
+            <!-- Konten Kiri -->
+            <div class="space-y-6 reveal">
+                <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-100 text-brand-800 text-xs font-bold uppercase tracking-widest shadow-xs">
+                    <i class="fa-solid fa-database text-brand-600"></i>
+                    <span>Offline-First Architecture</span>
                 </span>
-                <h2 class="text-3xl sm:text-4xl font-black text-ink tracking-tight">
-                    Bekerja Optimal Tanpa Internet
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-ink tracking-tight">
+                    Bekerja Optimal Tanpa Ketergantungan Internet
                 </h2>
-                <p class="text-base text-ink-soft leading-relaxed">
-                    LifeSync dirancang dengan pendekatan offline-first. Pada kondisi tanpa internet, aplikasi menggunakan SQLite sebagai database lokal sehingga seluruh fitur utama tetap dapat diakses. Sinkronisasi ke cloud otomatis berjalan saat online bagi pengguna Premium.
+                <p class="text-base sm:text-lg text-ink-soft leading-relaxed">
+                    LifeSync dibangun dengan pendekatan <strong class="text-ink font-semibold">Local-First</strong>. Seluruh habit, catatan tugas, dan keuangan tersimpan di penyimpanan lokal perangkat Anda. Aplikasi terbuka dalam 0 milidetik tanpa *loading spinner*, dan otomatis tersinkronisasi ke cloud begitu jaringan tersedia.
                 </p>
-                <div class="mt-8 flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-brand-100 flex items-center justify-center text-brand-600">
-                        <i class="fa-solid fa-check"></i>
+
+                <div class="space-y-3.5 pt-2">
+                    <div class="flex items-center gap-3.5 p-3.5 rounded-xl bg-white border border-brand-100 shadow-xs">
+                        <div class="w-10 h-10 rounded-xl bg-brand-100 flex items-center justify-center text-brand-600 flex-shrink-0">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold text-ink">Penyimpanan Lokal Mandiri</p>
+                            <p class="text-xs text-ink-soft">Data selalu dapat diakses dan diedit di mode pesawat atau tanpa sinyal.</p>
+                        </div>
                     </div>
-                    <span class="text-sm font-medium text-ink">Semua data tersimpan lokal di perangkat Anda</span>
-                </div>
-                <div class="mt-4 flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-brand-100 flex items-center justify-center text-brand-600">
-                        <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                    <div class="flex items-center gap-3.5 p-3.5 rounded-xl bg-white border border-brand-100 shadow-xs">
+                        <div class="w-10 h-10 rounded-xl bg-secondary-100 flex items-center justify-center text-secondary-600 flex-shrink-0">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold text-ink">Sinkronisasi Cloud Otomatis</p>
+                            <p class="text-xs text-ink-soft">Resolusi konflik pintar di latar belakang begitu koneksi internet pulih.</p>
+                        </div>
                     </div>
-                    <span class="text-sm font-medium text-ink">Sinkron otomatis saat terhubung internet</span>
+
+                    <div class="flex items-center gap-3.5 p-3.5 rounded-xl bg-white border border-brand-100 shadow-xs">
+                        <div class="w-10 h-10 rounded-xl bg-tertiary-100 flex items-center justify-center text-tertiary-600 flex-shrink-0">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold text-ink">Enkripsi Data Tingkat Tinggi</p>
+                            <p class="text-xs text-ink-soft">Data pribadi Anda tidak pernah dijual atau diserahkan ke pihak ketiga.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Showcase kanan -->
-            <div class="relative">
-                <div class="relative rounded-xl bg-neutral-900 p-8 shadow-2xl overflow-hidden border border-neutral-800">
-                    <div class="absolute inset-0 -z-10 bg-brand-500/10 blur-[80px] rounded-full"></div>
-                    <h3 class="text-xl font-bold text-white mb-6">Tech Stack</h3>
-                    <ul class="space-y-4">
-                        <li class="flex items-center justify-between p-4 rounded-xl bg-white/5 border border-white/10">
-                            <div class="flex items-center gap-3">
-                                <i class="fa-solid fa-mobile text-brand-400"></i>
-                                <span class="text-sm font-medium text-white">Mobile Frontend</span>
+            <!-- Showcase Kanan: Architecture Pipeline Diagram -->
+            <div class="relative reveal reveal-delay-2">
+                <div class="relative rounded-2xl bg-neutral-900 p-7 sm:p-9 border border-neutral-800 shadow-2xl overflow-hidden">
+                    
+                    <!-- Ambient Top Glow -->
+                    <div class="absolute -top-12 -right-12 w-48 h-48 bg-brand-500/10 rounded-full blur-2xl pointer-events-none"></div>
+
+                    <div class="flex items-center justify-between mb-6 pb-4 border-b border-neutral-800">
+                        <div class="flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-brand-400 animate-pulse"></span>
+                            <h3 class="text-xs font-bold text-slate-300 uppercase tracking-widest">Alur Sinkronisasi Data</h3>
+                        </div>
+                        <span class="text-[11px] font-mono text-brand-400 bg-brand-950/80 px-2.5 py-0.5 rounded border border-brand-800/50">Local-First</span>
+                    </div>
+
+                    <div class="space-y-3">
+                        <!-- Layer 1: Local Device -->
+                        <div class="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:border-brand-500/40 transition-colors">
+                            <div class="w-10 h-10 rounded-xl bg-brand-500/20 border border-brand-500/30 flex items-center justify-center flex-shrink-0 text-brand-400 text-base">
+                                <i class="fa-solid fa-mobile-screen"></i>
                             </div>
-                            <span class="text-xs font-bold text-brand-300 bg-brand-500/20 px-2 py-0.5 rounded">Flutter & Dart</span>
-                        </li>
-                        <li class="flex items-center justify-between p-4 rounded-xl bg-white/5 border border-white/10">
-                            <div class="flex items-center gap-3">
-                                <i class="fa-solid fa-server text-brand-400"></i>
-                                <span class="text-sm font-medium text-white">Backend Cloud</span>
+                            <div class="flex-1 min-w-0">
+                                <p class="text-sm font-bold text-white">Perangkat Lokal (Storage)</p>
+                                <p class="text-[11px] text-slate-400 mt-0.5">Operasional 100% instan &bull; Latensi baca 0ms</p>
                             </div>
-                            <span class="text-xs font-bold text-brand-300 bg-brand-500/20 px-2 py-0.5 rounded">Laravel REST API</span>
-                        </li>
-                        <li class="flex items-center justify-between p-4 rounded-xl bg-white/5 border border-white/10">
-                            <div class="flex items-center gap-3">
-                                <i class="fa-solid fa-database text-brand-400"></i>
-                                <span class="text-sm font-medium text-white">Local Database</span>
+                            <span class="text-[10px] font-bold text-brand-300 bg-brand-500/20 px-2.5 py-1 rounded-full border border-brand-500/30">Selalu Aktif</span>
+                        </div>
+
+                        <!-- Connector 1 -->
+                        <div class="flex justify-center py-0.5">
+                            <span class="flex items-center justify-center w-6 h-6 rounded-full bg-white/5 text-slate-500 text-xs">
+                                <i class="fa-solid fa-arrow-down"></i>
+                            </span>
+                        </div>
+
+                        <!-- Layer 2: Automatic Sync Engine -->
+                        <div class="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:border-secondary/40 transition-colors">
+                            <div class="w-10 h-10 rounded-xl bg-secondary-500/20 border border-secondary-500/30 flex items-center justify-center flex-shrink-0 text-secondary-400 text-base">
+                                <i class="fa-solid fa-rotate"></i>
                             </div>
-                            <span class="text-xs font-bold text-brand-300 bg-brand-500/20 px-2 py-0.5 rounded">SQLite</span>
-                        </li>
-                        <li class="flex items-center justify-between p-4 rounded-xl bg-white/5 border border-white/10">
-                            <div class="flex items-center gap-3">
-                                <i class="fa-solid fa-bell text-brand-400"></i>
-                                <span class="text-sm font-medium text-white">Push Notification</span>
+                            <div class="flex-1 min-w-0">
+                                <p class="text-sm font-bold text-white">Engine Sinkronisasi Cerdas</p>
+                                <p class="text-[11px] text-slate-400 mt-0.5">Deteksi status koneksi &amp; auto-merge tanpa konflik</p>
                             </div>
-                            <span class="text-xs font-bold text-brand-300 bg-brand-500/20 px-2 py-0.5 rounded">Firebase FCM</span>
-                        </li>
-                    </ul>
+                            <span class="text-[10px] font-bold text-secondary-300 bg-secondary-500/20 px-2.5 py-1 rounded-full border border-secondary-500/30">On Demand</span>
+                        </div>
+
+                        <!-- Connector 2 -->
+                        <div class="flex justify-center py-0.5">
+                            <span class="flex items-center justify-center w-6 h-6 rounded-full bg-white/5 text-slate-500 text-xs">
+                                <i class="fa-solid fa-arrow-down"></i>
+                            </span>
+                        </div>
+
+                        <!-- Layer 3: Cloud Vault -->
+                        <div class="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:border-tertiary/40 transition-colors">
+                            <div class="w-10 h-10 rounded-xl bg-tertiary-500/20 border border-tertiary-500/30 flex items-center justify-center flex-shrink-0 text-tertiary-400 text-base">
+                                <i class="fa-solid fa-cloud-arrow-up"></i>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <p class="text-sm font-bold text-white">Cloud Storage Terenkripsi</p>
+                                <p class="text-[11px] text-slate-400 mt-0.5">Backup real-time &amp; sinkron multi-perangkat</p>
+                            </div>
+                            <span class="text-[10px] font-bold text-tertiary-300 bg-tertiary-500/20 px-2.5 py-1 rounded-full border border-tertiary-500/30">Cloud Sync</span>
+                        </div>
+                    </div>
                 </div>
             </div>
+
         </div>
     </div>
 </section>
