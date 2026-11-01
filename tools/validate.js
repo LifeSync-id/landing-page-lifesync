@@ -25,6 +25,7 @@ const FILES = [
     'pages/memento.html',
     'pages/fitur-todo.html',
     'pages/fitur-notes.html',
+    'pages/mockup.html',
 ];
 
 const TAG_RE = /<(\/?)([a-zA-Z][a-zA-Z0-9-]*)((?:"[^"]*"|'[^']*'|[^>"'])*?)(\/?)>/g;

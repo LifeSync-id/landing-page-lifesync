@@ -30,7 +30,7 @@
                 </a>
 
                 <!-- Navigasi Desktop (Selaras dengan Footer) -->
-                <nav class="hidden lg:flex items-center gap-1 bg-surface-container-low/70 px-3 py-1.5 rounded-full border border-outline-variant/30" aria-label="Navigasi utama">
+                <nav class="hidden lg:flex items-center gap-1 bg-surface-container-low/70 px-3 py-1.5 rounded-xl border border-outline-variant/30" aria-label="Navigasi utama">
                     <a href="#fitur" class="nav-link">Pilar Fitur</a>
                     <a href="#offline" class="nav-link">Offline-First</a>
                     <a href="#ai" class="nav-link">AI Proaktif</a>
@@ -40,15 +40,21 @@
 
                 <!-- Aksi Kanan -->
                 <div class="flex items-center gap-3">
+                    <a href="pages/mockup.html"
+                       class="hidden md:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-primary/30 bg-primary/10 hover:bg-primary/20 text-primary font-semibold text-xs transition">
+                        <span class="material-symbols-outlined text-[15px]">smartphone</span>
+                        <span>Coba Aplikasi</span>
+                    </a>
+
                     <a href="#pricing" data-download
-                       class="btn-interactive hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary hover:bg-primary-container text-on-primary font-semibold text-sm shadow-sm">
+                       class="btn-interactive hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary hover:bg-primary-container text-on-primary font-semibold text-sm shadow-sm">
                         <span>Mulai Gratis</span>
                         <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
                     </a>
 
                     <!-- Tombol Menu Mobile -->
                     <button id="nav-toggle" type="button"
-                            class="lg:hidden grid place-items-center h-10 w-10 rounded-full border border-outline-variant/60 bg-surface-container-lowest text-on-surface shadow-tactile transition hover:border-primary hover:text-primary"
+                            class="lg:hidden grid place-items-center h-10 w-10 rounded-xl border border-outline-variant/60 bg-surface-container-lowest text-on-surface shadow-tactile transition hover:border-primary hover:text-primary"
                             aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="nav-mobile-menu">
                         <i id="nav-toggle-icon" class="fa-solid fa-bars text-base"></i>
                     </button>
@@ -66,11 +72,16 @@
             <a href="#pricing" class="mobile-link">Pilihan Akses</a>
             <a href="#kontak" class="mobile-link">Kontak</a>
 
-            <div class="pt-3 mt-2 border-t border-outline-variant/30">
+            <div class="pt-3 mt-2 border-t border-outline-variant/30 flex flex-col gap-2">
                 <a href="#pricing" data-download
-                   class="btn-interactive w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-primary text-on-primary font-semibold text-sm shadow-sm">
+                   class="btn-interactive w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-primary text-on-primary font-semibold text-sm shadow-sm">
                     <span>Mulai Gratis Sekarang</span>
                     <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                </a>
+                <a href="pages/mockup.html"
+                   class="btn-secondary-interactive w-full inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl border border-primary/30 bg-primary/10 text-primary font-semibold text-sm shadow-xs">
+                    <span class="material-symbols-outlined text-[16px]">smartphone</span>
+                    <span>Coba Langsung di Browser</span>
                 </a>
             </div>
         </nav>

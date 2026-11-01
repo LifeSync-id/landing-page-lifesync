@@ -366,7 +366,7 @@ section[id] {
 
 /* Flutter AppBottomNav-style floating bubble navigation */
 .showcase-nav-button {
-    color: #6B8077;
+    color: var(--on-surface-variant, #414942);
     position: relative;
     transition: color 0.2s ease;
     cursor: pointer;
@@ -379,32 +379,32 @@ section[id] {
     align-items: center;
     justify-content: center;
     border-radius: 9999px;
-    color: #6B8077;
+    color: var(--on-surface-variant, #414942);
     transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .showcase-nav-button .showcase-nav-label {
     font-size: 9px;
     font-weight: 500;
-    color: #6B8077;
+    color: var(--on-surface-variant, #414942);
     transition: color 0.2s ease, font-weight 0.2s ease, transform 0.2s ease;
 }
 
 .showcase-nav-button:hover .showcase-nav-icon {
-    color: #00B368;
-    background-color: #F4F9F6;
+    color: var(--primary, #316342);
+    background-color: var(--surface-container-low, #f0f5f0);
 }
 
 .showcase-nav-button.is-active .showcase-nav-icon {
-    background: linear-gradient(135deg, #00B368 0%, #009153 100%);
+    background: linear-gradient(135deg, var(--primary, #316342) 0%, #1e5031 100%);
     color: #FFFFFF;
     border: 2px solid #FFFFFF;
-    box-shadow: 0 6px 14px rgba(0, 179, 104, 0.35);
+    box-shadow: 0 6px 14px rgba(49, 99, 66, 0.35);
     transform: translateY(-8px) scale(1.12);
 }
 
 .showcase-nav-button.is-active .showcase-nav-label {
-    color: #00B368;
+    color: var(--primary, #316342);
     font-weight: 700;
     transform: translateY(-2px);
 }
