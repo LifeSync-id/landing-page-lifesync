@@ -55,6 +55,7 @@ const SECTIONS = [
     { id: 'section-offline', file: 'sections/offline.html' },
     { id: 'section-ai',      file: 'sections/ai.html' },
     { id: 'section-pricing', file: 'sections/pricing.html' },
+    { id: 'section-faq',     file: 'sections/faq.html' },
     { id: 'section-kontak',  file: 'sections/kontak.html' },
     { id: 'section-footer',  file: 'sections/footer.html' },
 ];
@@ -109,6 +110,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         { name: 'Showcase Navigation', fn: initShowcaseNavigation },
         { name: 'Download Links', fn: initDownloadLinks },
         { name: 'Kontak Form', fn: initKontakForm },
+        { name: 'FAQ Accordion', fn: initFaqAccordion },
         { name: 'Smooth Scroll', fn: initSmoothScroll }
     ];
 
@@ -485,3 +487,33 @@ window.resetKontakForm = function resetKontakForm() {
         if (el) el.classList.add('hidden');
     });
 };
+
+
+/* ==========================================================
+   8. FAQ Accordion Interaction
+   Mendukung toggle interaktif, auto-close item lain, dan animasi rotasi
+   ========================================================== */
+function initFaqAccordion() {
+    var faqItems = document.querySelectorAll('.faq-item');
+    if (!faqItems.length) return;
+
+    faqItems.forEach(function (item) {
+        var summary = item.querySelector('summary');
+        if (!summary) return;
+
+        summary.addEventListener('click', function (e) { e.preventDefault();
+            // Tutup semua item FAQ terlebih dahulu (accordion style)
+            faqItems.forEach(function (other) {
+                other.removeAttribute('open');
+            });
+            // Buka item ini jika sebelumnya tertutup
+            if (!item.hasAttribute('open')) {
+                item.setAttribute('open', '');
+            }
+        });
+    });
+}
+
+
+
+

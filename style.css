@@ -349,3 +349,22 @@ section[id] {
         transform: none !important;
     }
 }
+
+/* Floating Micro-Interactions */
+@keyframes floatSlow {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+}
+
+@keyframes floatReverse {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(8px); }
+}
+
+.animate-float-slow {
+    animation: floatSlow 5s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+    animation: floatReverse 6s ease-in-out infinite;
+}
