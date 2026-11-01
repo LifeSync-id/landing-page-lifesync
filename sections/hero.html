@@ -1,328 +1,654 @@
 <!-- ============================================================
-      HERO SECTION - LifeSync Product Profile Website
-      Clean, Bold, Ultra-Professional SaaS Layout with Interactive Prototype
+      HERO SECTION - LifeSync (Daily Habit Tracker and Assistance)
+      Kiri: Headline & Manfaat Manusiawi
+      Kanan: Showcase Interaktif Prototipe Mobile Asli (LifeSync Mobile)
       ============================================================ -->
-<section id="top" class="relative overflow-hidden bg-[#F7FAF7] pt-[104px] lg:pt-[150px] pb-20 lg:pb-28">
+<section id="top" class="relative overflow-hidden bg-surface pt-[104px] lg:pt-[150px] pb-20 lg:pb-32">
 
-    <!-- Dekorasi background grid minimalis -->
+    <!-- Ambient Grid & Soft Glow Background -->
     <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
         <div class="absolute inset-0 hero-grid opacity-60"></div>
-        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-brand-100/30 rounded-full blur-3xl -z-10"></div>
+        <div class="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-primary-fixed/20 rounded-full blur-3xl pointer-events-none"></div>
     </div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div class="grid lg:grid-cols-[1fr_1fr] gap-12 lg:gap-16 items-center">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
-            <!-- ============ KOLOM KIRI: KONTEN VALUE PROPOSITION ============ -->
-            <div class="space-y-6 sm:space-y-7">
+            <!-- ============ KOLOM KIRI: KONTEN ============ -->
+            <div class="space-y-6">
 
-                <!-- Pill Eyebrow Badge -->
-                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-50 border border-brand-200/80 text-brand-700 text-xs font-bold tracking-wide shadow-xs">
-                    <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
-                    <span>LifeSync &bull; Ekosistem Produktivitas &amp; Habit Personal</span>
-                </div>
+                <!-- Eyebrow Tagline -->
+                <p class="text-xs font-bold uppercase tracking-widest text-primary">
+                    Daily Habit Tracker and Assistance &bull; Bantu Kamu Atur Rutinitas Harian Lebih Rapi
+                </p>
 
-                <!-- High-Impact Headline -->
-                <h1 class="text-4xl sm:text-5xl lg:text-[54px] lg:leading-[1.12] font-black tracking-tight text-ink">
-                    Satu Aplikasi untuk <br class="hidden sm:inline">
-                    <span class="bg-gradient-to-r from-brand-600 via-brand-500 to-emerald-600 bg-clip-text text-transparent">Menyelaraskan Hidup</span> Anda.
+                <!-- Main Headline -->
+                <h1 class="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-on-surface leading-[1.12]">
+                    Satu Aplikasi untuk Menjaga <span class="text-primary italic font-serif">Kebiasaan</span>, <span class="text-secondary italic font-serif">Waktu</span>, dan Rutinitas Harian.
                 </h1>
 
-                <!-- Clear, Professional Subheadline -->
-                <p class="text-base sm:text-lg text-ink-soft leading-relaxed max-w-xl">
-                    Padukan catatan tugas to-do list, habit tracker mandiri, kalender waktu, hingga wawasan finansial dalam satu ekosistem mindful. Bekerja 100% lancar secara offline, dengan sinkronisasi otomatis ke cloud saat online.
+                <!-- Subheadline -->
+                <p class="text-base sm:text-lg text-on-surface-variant leading-relaxed">
+                    Gabungkan to-do list, habit tracker, catatan ide, pembukuan simpel, sampai scan nutrisi makanan harianmu. Bekerja lancar saat offline, otomatis tersinkron ke cloud, dan bikin harimu jauh lebih teratur.
                 </p>
 
-                <!-- Dual CTA Buttons -->
-                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-1">
+                <!-- Dual Call to Action Buttons -->
+                <div class="flex flex-col sm:flex-row flex-wrap items-center gap-3 pt-2">
                     <a href="#pricing" data-download
-                       class="btn-interactive inline-flex items-center justify-center gap-2.5 rounded-xl bg-brand-500 hover:bg-brand-600 px-7 py-4 text-sm sm:text-base font-bold text-white shadow-glow hover:shadow-glow-lg transition-all active:scale-95">
-                        <i class="fa-solid fa-download text-sm"></i>
-                        <span>Unduh Aplikasi Gratis</span>
+                       class="btn-interactive w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl bg-primary hover:bg-primary-container text-on-primary font-semibold text-sm shadow-sm">
+                        <span>Mulai Gratis Sekarang</span>
+                        <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                    </a>
+                    <a href="pages/mockup.html"
+                       class="btn-secondary-interactive w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-primary-fixed/40 border border-primary/40 text-primary font-bold text-sm shadow-tactile hover:bg-primary-fixed/60">
+                        <span class="material-symbols-outlined text-[18px]">smartphone</span>
+                        <span>Coba Aplikasi di Browser</span>
                     </a>
                     <a href="#fitur"
-                       class="btn-secondary-interactive inline-flex items-center justify-center gap-2.5 rounded-xl bg-white hover:bg-brand-50/50 border border-slate-200/90 hover:border-brand-300 px-7 py-4 text-sm sm:text-base font-bold text-ink shadow-xs transition-all active:scale-95">
-                        <i class="fa-solid fa-circle-play text-sm text-brand-600"></i>
-                        <span>Jelajahi Fitur Utama</span>
+                       class="btn-secondary-interactive w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-surface-container-lowest border border-outline-variant/60 text-on-surface font-semibold text-sm shadow-tactile">
+                        <span class="material-symbols-outlined text-[18px] text-primary">auto_awesome_motion</span>
+                        <span>6 Pilar Fitur</span>
                     </a>
                 </div>
 
-                <!-- Platform Assurance Note -->
-                <p class="text-xs text-ink-muted flex items-center gap-2">
-                    <i class="fa-brands fa-android text-brand-600 text-sm"></i>
-                    <i class="fa-brands fa-apple text-ink text-sm"></i>
-                    <span>Tersedia untuk Android &amp; iOS &bull; 100% Bebas Iklan &bull; Privasi Terjaga</span>
-                </p>
+                <!-- 3 Manfaat Utama (Human-Centric) -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 w-full pt-6 mt-4 border-t border-outline-variant/30">
+                    <div class="flex items-center gap-3 p-3 rounded-2xl bg-surface-container-low/70 border border-outline-variant/30">
+                        <div class="w-8 h-8 rounded-xl bg-primary-fixed flex items-center justify-center text-on-primary-fixed flex-shrink-0">
+                            <span class="material-symbols-outlined text-[18px]">offline_pin</span>
+                        </div>
+                        <div class="text-left min-w-0">
+                            <p class="text-xs font-semibold text-on-surface">Offline Sepenuhnya</p>
+                            <p class="text-[10px] text-on-surface-variant truncate">Bisa dipakai tanpa kuota</p>
+                        </div>
+                    </div>
 
-                <!-- Statistik Kepercayaan / Social Proof Badges -->
-                <div class="pt-6 border-t border-slate-200/70 grid grid-cols-3 gap-4 sm:gap-6 text-ink-soft">
-                    <div class="flex flex-col items-start">
-                        <span class="text-xl sm:text-2xl font-black text-ink tracking-tight">4 Pilar</span>
-                        <span class="text-xs sm:text-sm text-ink-muted">Aktivitas Terpadu</span>
+                    <div class="flex items-center gap-3 p-3 rounded-2xl bg-surface-container-low/70 border border-outline-variant/30">
+                        <div class="w-8 h-8 rounded-xl bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed flex-shrink-0">
+                            <span class="material-symbols-outlined text-[18px]">sync</span>
+                        </div>
+                        <div class="text-left min-w-0">
+                            <p class="text-xs font-semibold text-on-surface">Sinkronisasi Otomatis</p>
+                            <p class="text-[10px] text-on-surface-variant truncate">Multi-perangkat gratis</p>
+                        </div>
                     </div>
-                    <div class="flex flex-col items-start border-l border-slate-200 pl-4 sm:pl-6">
-                        <span class="text-xl sm:text-2xl font-black text-brand-600 tracking-tight">100%</span>
-                        <span class="text-xs sm:text-sm text-ink-muted">Dukungan Offline</span>
-                    </div>
-                    <div class="flex flex-col items-start border-l border-slate-200 pl-4 sm:pl-6">
-                        <span class="text-xl sm:text-2xl font-black text-ink tracking-tight">AI Cerdas</span>
-                        <span class="text-xs sm:text-sm text-ink-muted">Wawasan Personal</span>
+
+                    <div class="flex items-center gap-3 p-3 rounded-2xl bg-surface-container-low/70 border border-outline-variant/30">
+                        <div class="w-8 h-8 rounded-xl bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed flex-shrink-0">
+                            <span class="material-symbols-outlined text-[18px]">verified_user</span>
+                        </div>
+                        <div class="text-left min-w-0">
+                            <p class="text-xs font-semibold text-on-surface">Bebas Iklan &amp; Pelacak</p>
+                            <p class="text-[10px] text-on-surface-variant truncate">Fokus ke rutinitas harian</p>
+                        </div>
                     </div>
                 </div>
+
             </div>
 
-            <!-- ============ KOLOM KANAN: SHOWCASE PROTOTYPE DENGAN FLOATING BADGES ============ -->
-            <div class="flex justify-center items-center relative">
-                
-                <div class="relative w-full max-w-[360px]">
+            <!-- ============ KOLOM KANAN: SHOWCASE APLIKASI (MOBILE PROTOTYPE) ============ -->
+            <div class="flex justify-center items-center">
+                <div class="relative w-full max-w-[365px] animate-float-slow">
+                    <!-- Physical side buttons -->
+                    <span class="phone-btn-vol-up" aria-hidden="true"></span>
+                    <span class="phone-btn-vol-down" aria-hidden="true"></span>
+                    <span class="phone-btn-power" aria-hidden="true"></span>
                     
-                    <!-- Ambient Glow Effect -->
-                    <div class="absolute -inset-4 bg-brand-400/20 rounded-[3.5rem] blur-2xl -z-10 pointer-events-none"></div>
-
-                    <!-- Floating Badge 1: Streak (Top Right) -->
-                    <div class="hidden sm:flex absolute -top-4 -right-6 z-20 items-center gap-2.5 px-3.5 py-2 rounded-2xl bg-white/95 backdrop-blur-md border border-brand-200/80 shadow-lg text-xs font-bold text-ink animate-float-slow">
-                        <span class="flex h-7 w-7 items-center justify-center rounded-xl bg-brand-100 text-brand-600 text-sm shadow-xs">
-                            <i class="fa-solid fa-fire"></i>
-                        </span>
-                        <div>
-                            <p class="text-[9px] text-ink-muted uppercase tracking-wider font-semibold">Streak Kebiasaan</p>
-                            <p class="text-xs font-extrabold text-brand-700">24 Hari Konsisten!</p>
-                        </div>
-                    </div>
-
-                    <!-- Floating Badge 2: Offline-First (Bottom Left) -->
-                    <div class="hidden sm:flex absolute -bottom-4 -left-6 z-20 items-center gap-2.5 px-3.5 py-2 rounded-2xl bg-white/95 backdrop-blur-md border border-brand-200/80 shadow-lg text-xs font-bold text-ink animate-float-reverse">
-                        <span class="flex h-7 w-7 items-center justify-center rounded-xl bg-blue-100 text-blue-600 text-sm shadow-xs">
-                            <i class="fa-solid fa-bolt"></i>
-                        </span>
-                        <div>
-                            <p class="text-[9px] text-ink-muted uppercase tracking-wider font-semibold">Mode Offline-First</p>
-                            <p class="text-xs font-extrabold text-ink">0ms Latensi Lokal</p>
-                        </div>
-                    </div>
-
-                    <!-- Hardware Buttons -->
-                    <span class="absolute -left-[3px] top-32 z-10 h-12 w-[3px] rounded-l bg-[#647068]" aria-hidden="true"></span>
-                    <span class="absolute -left-[3px] top-48 z-10 h-16 w-[3px] rounded-l bg-[#647068]" aria-hidden="true"></span>
-                    <span class="absolute -right-[3px] top-40 z-10 h-20 w-[3px] rounded-r bg-[#647068]" aria-hidden="true"></span>
-
-                    <!-- Phone Chassis Outer Frame -->
-                    <div class="rounded-[3rem] border border-[#AEB8B0] bg-gradient-to-br from-[#DCE2DD] via-[#AAB4AC] to-[#E7EBE8] p-[8px] shadow-[0_28px_75px_-22px_rgba(36,53,43,0.38)]">
-                      <div class="rounded-[2.55rem] border border-[#8E9991] bg-[#242D27] p-[3px]">
-                       <div class="relative h-[740px] overflow-hidden rounded-[2.35rem] bg-[#F7FAF7] select-none">
-                        <div class="h-full overflow-hidden px-3.5 pt-3 pb-24">
-                            
-                            <!-- Phone Status Bar -->
-                            <div class="relative mb-3 flex h-5 items-center justify-between px-2 text-[9px] font-bold text-neutral-800">
-                                <span>09:41</span>
-                                <span class="absolute left-1/2 top-1/2 h-4 w-20 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#111713]" aria-hidden="true"></span>
-                                <span class="flex items-center gap-1.5">
-                                    <i class="fa-solid fa-signal" aria-hidden="true"></i>
-                                    <i class="fa-solid fa-wifi" aria-hidden="true"></i>
-                                    <i class="fa-solid fa-battery-full" aria-hidden="true"></i>
-                                </span>
-                            </div>
-
-                            <!-- Phone App Header -->
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center gap-2">
-                                    <img src="assets/lifesync-symbol.png" alt="" class="h-7 w-7 object-contain">
-                                    <img src="assets/lifesync-logo-name.png" alt="" class="h-8 w-auto object-contain">
-                                </div>
-                                <div class="flex items-center gap-3.5 text-neutral-400">
-                                    <i class="fa-regular fa-circle-question text-lg" aria-hidden="true"></i>
-                                    <i class="fa-regular fa-bell text-lg" aria-hidden="true"></i>
-                                </div>
-                            </div>
-
-                            <!-- VIEW 1: HOME (Habit & Daily Progress) -->
-                            <div data-showcase-view="home">
-                                <div class="mt-4 flex items-center justify-between gap-2">
-                                    <div class="min-w-0">
-                                        <h2 class="text-[1.05rem] font-bold leading-tight tracking-tight text-neutral-900">Selamat malam, Warga <span aria-hidden="true">👋</span></h2>
-                                        <p class="mt-1 text-xs font-medium text-neutral-500">Mari jalani hari yang lebih teratur.</p>
-                                    </div>
-                                    <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-brand-50 text-lg font-bold text-brand-600 shadow-xs">M</div>
-                                </div>
-
-                                <!-- Daily progress card -->
-                                <div class="mt-4 rounded-xl border border-[#DEE6DF] bg-white p-3.5 shadow-sm">
-                                    <div class="flex items-center justify-between gap-2">
-                                        <h3 class="text-xs font-bold text-neutral-900 uppercase tracking-wider">Progress Hari Ini</h3>
-                                        <span class="text-xs font-extrabold text-brand-600">60%</span>
-                                    </div>
-                                    <div class="mt-3 flex items-center gap-3">
-                                        <div class="flex h-[68px] w-[68px] shrink-0 items-center justify-center rounded-full p-[5px]" style="background: conic-gradient(#16A34A 0% 60%, #E6F5EB 60% 100%)">
-                                            <div class="flex h-full w-full flex-col items-center justify-center rounded-full bg-white shadow-xs">
-                                                <span class="text-base font-bold leading-tight text-neutral-900">3/5</span>
-                                                <span class="text-[9px] text-neutral-400">Target</span>
-                                            </div>
-                                        </div>
-                                        <div class="min-w-0 flex-1">
-                                            <p class="text-xs font-bold leading-snug text-neutral-900">3 dari 5 aktivitas selesai</p>
-                                            <p class="mt-1 text-[10px] leading-relaxed text-neutral-500">Kamu berada di jalur yang sangat baik untuk menjaga konsistensi hari ini.</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Productivity shortcuts -->
-                                <div class="mt-4">
-                                    <h3 class="mb-2.5 text-xs font-bold uppercase tracking-wider text-neutral-400">Pintasan Produktivitas</h3>
-                                    <div class="grid grid-cols-2 gap-2">
-                                        <div class="rounded-xl border border-[#DEE6DF] bg-white p-3 shadow-xs">
-                                            <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-50 text-brand-600 mb-1.5">
-                                                <i class="fa-solid fa-list-check text-sm" aria-hidden="true"></i>
-                                            </div>
-                                            <p class="text-xs font-bold text-neutral-900">To-Do List</p>
-                                            <p class="text-[10px] text-neutral-400">4 tugas hari ini</p>
-                                        </div>
-                                        <div class="rounded-xl border border-[#DEE6DF] bg-white p-3 shadow-xs">
-                                            <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-tertiary-50 text-tertiary-600 mb-1.5">
-                                                <i class="fa-regular fa-note-sticky text-sm" aria-hidden="true"></i>
-                                            </div>
-                                            <p class="text-xs font-bold text-neutral-900">Catatan Cepat</p>
-                                            <p class="text-[10px] text-neutral-400">Tulis ide &amp; jurnal</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Today's activities list -->
-                                <div class="mt-4">
-                                    <div class="mb-2.5 flex items-center justify-between">
-                                        <h3 class="text-xs font-bold uppercase tracking-wider text-neutral-400">Rutinitas Hari Ini</h3>
-                                        <span class="text-[11px] font-bold text-brand-600">Lihat Semua</span>
-                                    </div>
-                                    <div class="space-y-1.5">
-                                        <div class="flex items-center gap-2.5 rounded-lg border border-[#DEE6DF] bg-white p-2.5 shadow-xs">
-                                            <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-blue-100 text-blue-500">
-                                                <i class="fa-solid fa-droplet text-sm" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="min-w-0 flex-1">
-                                                <p class="truncate text-xs font-semibold text-neutral-900">Minum Air Lemon</p>
-                                                <p class="text-[10px] text-neutral-400">4 / 8 gelas &bull; Berjalan</p>
-                                            </div>
-                                            <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 border-brand-500 text-brand-600"><i class="fa-solid fa-plus text-[10px]" aria-hidden="true"></i></span>
-                                        </div>
-                                        <div class="flex items-center gap-2.5 rounded-lg border border-brand-500 bg-brand-50/50 p-2.5 shadow-xs">
-                                            <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#E4F7EF] text-brand-600">
-                                                <i class="fa-solid fa-person-yoga text-sm" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="min-w-0 flex-1">
-                                                <p class="truncate text-xs font-semibold text-neutral-900">Peregangan Ringan</p>
-                                                <p class="text-[10px] text-neutral-400">10 menit &bull; Selesai</p>
-                                            </div>
-                                            <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-500 text-white"><i class="fa-solid fa-check text-[10px]" aria-hidden="true"></i></span>
-                                        </div>
-                                        <div class="flex items-center gap-2.5 rounded-lg border border-[#DEE6DF] bg-white p-2.5 shadow-xs">
-                                            <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-slate-500">
-                                                <i class="fa-solid fa-book-open text-sm" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="min-w-0 flex-1">
-                                                <p class="truncate text-xs font-semibold text-neutral-900">Membaca Buku</p>
-                                                <p class="text-[10px] text-neutral-400">20:00 &bull; 20 Halaman</p>
-                                            </div>
-                                            <span class="h-6 w-6 shrink-0 rounded-full border-2 border-[#DEE6DF]"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- VIEW 2: FINANCE -->
-                            <div data-showcase-view="finance" class="hidden mt-4 space-y-3.5">
-                                <div>
-                                    <h2 class="text-lg font-bold text-neutral-900">Keuangan Sadar</h2>
-                                    <p class="text-xs text-neutral-500">Ringkasan arus kas bulan ini</p>
-                                </div>
-                                <div class="rounded-xl border border-brand-200 bg-brand-50/50 p-4 shadow-xs">
-                                    <p class="text-[11px] font-semibold text-brand-700">Saldo Bersih</p>
-                                    <p class="text-2xl font-black text-ink mt-0.5">Rp 4.250.000</p>
-                                    <div class="mt-3 grid grid-cols-2 gap-2 text-xs">
-                                        <div class="p-2 bg-white rounded-lg border border-brand-100">
-                                            <span class="text-[10px] text-neutral-400">Pemasukan</span>
-                                            <p class="font-bold text-brand-600">+Rp 5.000.000</p>
-                                        </div>
-                                        <div class="p-2 bg-white rounded-lg border border-brand-100">
-                                            <span class="text-[10px] text-neutral-400">Pengeluaran</span>
-                                            <p class="font-bold text-secondary-600">-Rp 750.000</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- VIEW 3: NOTES -->
-                            <div data-showcase-view="notes" class="hidden mt-4 space-y-3.5">
-                                <div>
-                                    <h2 class="text-lg font-bold text-neutral-900">Catatan &amp; Ide</h2>
-                                    <p class="text-xs text-neutral-500">Kumpulan catatan dan arsip ide Anda</p>
-                                </div>
-                                <div class="rounded-xl border border-slate-200 bg-white p-3.5 shadow-xs">
-                                    <div class="flex items-center gap-2 mb-2 pb-1.5 border-b border-slate-100 text-[10px] font-semibold text-neutral-400">
-                                        <span class="text-brand-600 font-bold">&check; Checklist Mode</span>
-                                        <span>&bull; Terenkripsi</span>
-                                    </div>
-                                    <p class="text-xs font-bold text-neutral-900">Brief Proyek &amp; Catatan Ide</p>
-                                    <p class="text-[11px] text-neutral-500 mt-1">Dokumen terhubung langsung ke jadwal kalender harian.</p>
-                                </div>
-                            </div>
-
-                            <!-- VIEW 4: MEMENTO -->
-                            <div data-showcase-view="memento" class="hidden mt-4 space-y-3.5">
-                                <div class="flex items-center justify-between">
-                                    <div>
-                                        <h2 class="text-lg font-bold text-neutral-900">Memento</h2>
-                                        <p class="text-xs text-neutral-500">Jurnal kenangan &amp; geotag</p>
-                                    </div>
-                                    <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-50 text-brand-600 text-xs">
-                                        <i class="fa-solid fa-map-pin"></i>
+                    <!-- Phone Bezel & Outer Frame -->
+                    <div class="rounded-[3rem] border border-[#AEB8B0] bg-gradient-to-br from-[#E2E6E3] via-[#B2BCB4] to-[#DFE4E0] p-[7px] shadow-[0_28px_75px_-20px_rgba(24,38,30,0.36)]">
+                        <div class="rounded-[2.65rem] border border-[#8E9991] bg-[#181d1a] p-[3px]">
+                            <!-- Phone Display Canvas -->
+                            <div class="relative h-[720px] overflow-hidden rounded-[2.45rem] bg-[#f6fbf5] flex flex-col select-none text-[#181d1a]">
+                                
+                                <!-- 1. Status Bar (Fixed at top) -->
+                                <div class="relative shrink-0 px-5 pt-3 pb-1.5 flex items-center justify-between text-[10px] font-bold text-[#181d1a] z-20 bg-[#f6fbf5]">
+                                    <span class="tracking-tight">09:41</span>
+                                    <!-- Kamera Depan (Punch Hole) -->
+                                    <span class="absolute left-1/2 top-3 h-3 w-3 -translate-x-1/2 rounded-full bg-[#181d1a] flex items-center justify-center pointer-events-none" aria-hidden="true">
+                                        <span class="h-1 w-1 rounded-full bg-[#2A352F]"></span>
+                                    </span>
+                                    <span class="flex items-center gap-1.5 text-[9px] text-[#181d1a]">
+                                        <i class="fa-solid fa-signal" aria-hidden="true"></i>
+                                        <i class="fa-solid fa-wifi" aria-hidden="true"></i>
+                                        <i class="fa-solid fa-battery-full text-[11px]" aria-hidden="true"></i>
                                     </span>
                                 </div>
-                                <div class="rounded-xl border border-slate-200 bg-white p-3.5 shadow-xs">
-                                    <span class="text-[10px] px-2 py-0.5 rounded bg-brand-50 text-brand-700 font-bold">Ubud, Bali</span>
-                                    <p class="text-xs font-semibold text-neutral-900 mt-2 italic">"Pagi tenang menikmati refleksi kebiasaan baru."</p>
+                                
+                                <!-- 2. Scrollable App Views Canvas -->
+                                <div class="flex-1 overflow-y-auto phone-screen-scroll px-3.5 pt-1 pb-24 space-y-4">
+
+                                    <!-- ==================== 1. HOME VIEW ==================== -->
+                                    <div data-showcase-view="home" class="space-y-3.5">
+                                        <!-- TopBar: Logo & Action Icons -->
+                                        <div class="flex items-center justify-between pt-1">
+                                            <div class="flex items-center gap-2">
+                                                <img src="assets/lifesync-symbol.png" alt="LifeSync Icon" class="h-6 w-6 object-contain">
+                                                <span class="text-base font-extrabold tracking-tight text-[#181d1a]">LifeSync</span>
+                                            </div>
+                                            <div class="flex items-center gap-1 text-[#414942]">
+                                                <span class="flex h-7 w-7 items-center justify-center rounded-full hover:bg-neutral-100"><i class="fa-regular fa-circle-question text-sm" aria-hidden="true"></i></span>
+                                                <span class="flex h-7 w-7 items-center justify-center rounded-full hover:bg-neutral-100"><i class="fa-regular fa-bell text-sm" aria-hidden="true"></i></span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Greeting Section -->
+                                        <div class="flex items-center justify-between gap-2 pt-0.5">
+                                            <div class="min-w-0">
+                                                <h2 class="text-lg font-extrabold text-[#181d1a] leading-tight">Selamat pagi, Megah 👋</h2>
+                                                <p class="text-[11px] text-[#414942] mt-0.5">Yuk mulai hari dengan lebih teratur.</p>
+                                            </div>
+                                            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#ebf5ee] border border-[#c1c9bf] text-sm font-extrabold text-[#316342] shadow-xs">
+                                                M
+                                            </div>
+                                        </div>
+
+                                        <!-- Progress Card with Ring -->
+                                        <div class="rounded-2xl border border-[#dfe4df] bg-white p-3.5 shadow-xs">
+                                            <div class="flex items-center justify-between gap-2">
+                                                <div class="flex items-center gap-1.5">
+                                                    <span class="h-2 w-2 rounded-full bg-[#316342]"></span>
+                                                    <h3 class="text-xs font-bold text-[#181d1a]">Progress Hari Ini</h3>
+                                                </div>
+                                                <span class="rounded-full bg-[#ebf5ee] border border-[#c1c9bf] px-2 py-0.5 text-[9.5px] font-bold text-[#316342]">60% Selesai</span>
+                                            </div>
+                                            <div class="mt-3 flex items-center gap-3">
+                                                <div class="flex h-[64px] w-[64px] shrink-0 items-center justify-center rounded-full p-[5px]" style="background: conic-gradient(#316342 0% 60%, #ebf5ee 60% 100%)">
+                                                    <div class="flex h-full w-full flex-col items-center justify-center rounded-full bg-white shadow-inner">
+                                                        <span class="text-sm font-extrabold leading-tight text-[#181d1a]">3/5</span>
+                                                        <span class="text-[8.5px] font-medium text-[#414942]">Target</span>
+                                                    </div>
+                                                </div>
+                                                <div class="min-w-0 flex-1">
+                                                    <p class="text-xs font-bold text-[#181d1a]">3 dari 5 aktivitas selesai</p>
+                                                    <p class="mt-1 text-[10px] leading-relaxed text-[#414942]">Kamu berada di jalur yang sangat baik untuk mencapai target produktivitas harian.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Shortcut Modul: Planner & Catatan -->
+                                        <div>
+                                            <h3 class="mb-2 text-xs font-bold text-[#181d1a]">Produktivitas</h3>
+                                            <div class="grid grid-cols-2 gap-2">
+                                                <div class="rounded-2xl border border-[#dfe4df] bg-white p-3 shadow-xs">
+                                                    <div class="flex h-8 w-8 items-center justify-center rounded-xl bg-[#ebf5ee] text-[#316342]">
+                                                        <i class="fa-solid fa-list-check text-xs" aria-hidden="true"></i>
+                                                    </div>
+                                                    <p class="mt-2 text-xs font-bold text-[#181d1a]">Planner</p>
+                                                    <p class="text-[9.5px] text-[#414942]">To-do &amp; kalender</p>
+                                                </div>
+                                                <div class="rounded-2xl border border-[#dfe4df] bg-white p-3 shadow-xs">
+                                                    <div class="flex h-8 w-8 items-center justify-center rounded-xl bg-[#F3E8FF] text-[#7E22CE]">
+                                                        <i class="fa-regular fa-note-sticky text-xs" aria-hidden="true"></i>
+                                                    </div>
+                                                    <p class="mt-2 text-xs font-bold text-[#181d1a]">Catatan</p>
+                                                    <p class="text-[9.5px] text-[#414942]">Tulis ide &amp; jurnal</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Daftar Hari Ini (Habit Tiles) -->
+                                        <div>
+                                            <div class="mb-2 flex items-center justify-between">
+                                                <h3 class="text-xs font-bold text-[#181d1a]">Hari Ini</h3>
+                                                <span class="text-[10.5px] font-semibold text-[#316342]">Lihat Semua</span>
+                                            </div>
+                                            <div class="space-y-2">
+                                                <!-- Minum Air -->
+                                                <div class="flex items-center gap-2.5 rounded-xl border border-[#dfe4df] bg-white p-2.5 shadow-xs">
+                                                    <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[#E0EDFF] text-[#3B82F6]">
+                                                        <i class="fa-solid fa-droplet text-xs" aria-hidden="true"></i>
+                                                    </div>
+                                                    <div class="min-w-0 flex-1">
+                                                        <p class="truncate text-xs font-bold text-[#181d1a]">Minum Air</p>
+                                                        <p class="text-[9.5px] text-[#414942]">4 / 8 gelas &bull; Sedang Berjalan</p>
+                                                    </div>
+                                                    <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-[#316342] text-[#316342] text-[10px]">
+                                                        <i class="fa-solid fa-plus" aria-hidden="true"></i>
+                                                    </span>
+                                                </div>
+
+                                                <!-- Peregangan Ringan -->
+                                                <div class="flex items-center gap-2.5 rounded-xl border border-[#316342] bg-[#ebf5ee]/40 p-2.5 shadow-xs">
+                                                    <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[#ebf5ee] text-[#316342]">
+                                                        <i class="fa-solid fa-person-yoga text-xs" aria-hidden="true"></i>
+                                                    </div>
+                                                    <div class="min-w-0 flex-1">
+                                                        <p class="truncate text-xs font-bold text-[#181d1a]">Peregangan Ringan</p>
+                                                        <p class="text-[9.5px] text-[#414942]">10 menit &bull; Selesai</p>
+                                                    </div>
+                                                    <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#316342] text-white text-[10px]">
+                                                        <i class="fa-solid fa-check" aria-hidden="true"></i>
+                                                    </span>
+                                                </div>
+
+                                                <!-- Membaca Buku -->
+                                                <div class="flex items-center gap-2.5 rounded-xl border border-[#dfe4df] bg-white p-2.5 shadow-xs">
+                                                    <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[#F1F5F9] text-[#64748B]">
+                                                        <i class="fa-solid fa-book-open text-xs" aria-hidden="true"></i>
+                                                    </div>
+                                                    <div class="min-w-0 flex-1">
+                                                        <p class="truncate text-xs font-bold text-[#181d1a]">Membaca Buku</p>
+                                                        <p class="text-[9.5px] text-[#414942]">20:00 &bull; Mendatang</p>
+                                                    </div>
+                                                    <span class="h-6 w-6 shrink-0 rounded-full border border-[#dfe4df]"></span>
+                                                </div>
+
+                                                <!-- Catat Pengeluaran -->
+                                                <div class="flex items-center gap-2.5 rounded-xl border border-[#dfe4df] bg-white p-2.5 shadow-xs">
+                                                    <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[#FFEDD5] text-[#F97316]">
+                                                        <i class="fa-solid fa-receipt text-xs" aria-hidden="true"></i>
+                                                    </div>
+                                                    <div class="min-w-0 flex-1">
+                                                        <p class="truncate text-xs font-bold text-[#181d1a]">Catat Pengeluaran</p>
+                                                        <p class="text-[9.5px] text-[#414942]">Belum dilakukan hari ini</p>
+                                                    </div>
+                                                    <span class="h-6 w-6 shrink-0 rounded-full border border-[#dfe4df]"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Ringkasan Minggu Ini -->
+                                        <div class="rounded-2xl border border-[#dfe4df] bg-white p-3 shadow-xs">
+                                            <div class="flex items-center justify-between pb-2.5 border-b border-[#f6fbf5]">
+                                                <h3 class="text-xs font-bold text-[#181d1a]">Minggu Ini</h3>
+                                                <div class="flex items-center gap-1 text-[#F97316]">
+                                                    <i class="fa-solid fa-fire text-xs" aria-hidden="true"></i>
+                                                    <span class="text-[10px] font-bold text-[#414942]">5 Hari Beruntun</span>
+                                                </div>
+                                            </div>
+                                            <div class="mt-2.5 flex items-center justify-between text-center">
+                                                <div class="flex flex-col items-center gap-1.5"><span class="text-[9px] font-medium text-[#414942]">Sen</span><span class="flex h-6 w-6 items-center justify-center rounded-full bg-[#316342] text-white text-[9px]"><i class="fa-solid fa-check"></i></span></div>
+                                                <div class="flex flex-col items-center gap-1.5"><span class="text-[9px] font-medium text-[#414942]">Sel</span><span class="flex h-6 w-6 items-center justify-center rounded-full bg-[#316342] text-white text-[9px]"><i class="fa-solid fa-check"></i></span></div>
+                                                <div class="flex flex-col items-center gap-1.5"><span class="text-[9px] font-medium text-[#414942]">Rab</span><span class="flex h-6 w-6 items-center justify-center rounded-full bg-[#316342] text-white text-[9px]"><i class="fa-solid fa-check"></i></span></div>
+                                                <div class="flex flex-col items-center gap-1.5"><span class="text-[9px] font-bold text-[#316342]">Kam</span><span class="flex h-6 w-6 items-center justify-center rounded-full bg-[#ebf5ee] border-2 border-[#316342] text-[9.5px] font-extrabold text-[#316342]">H</span></div>
+                                                <div class="flex flex-col items-center gap-1.5"><span class="text-[9px] font-medium text-[#414942]">Jum</span><span class="flex h-6 w-6 items-center justify-center rounded-full bg-[#F1F5F9]"><span class="h-1 w-1 rounded-full bg-[#CBD5E1]"></span></span></div>
+                                                <div class="flex flex-col items-center gap-1.5"><span class="text-[9px] font-medium text-[#414942]">Sab</span><span class="flex h-6 w-6 items-center justify-center rounded-full bg-[#F1F5F9]"><span class="h-1 w-1 rounded-full bg-[#CBD5E1]"></span></span></div>
+                                                <div class="flex flex-col items-center gap-1.5"><span class="text-[9px] font-medium text-[#414942]">Min</span><span class="flex h-6 w-6 items-center justify-center rounded-full bg-[#F1F5F9]"><span class="h-1 w-1 rounded-full bg-[#CBD5E1]"></span></span></div>
+                                            </div>
+                                        </div>
+
+                                        <!-- AI Insight Card -->
+                                        <div class="rounded-2xl border border-[#c1c9bf] bg-[#ebf5ee]/40 p-3 shadow-xs">
+                                            <div class="flex items-start gap-2.5">
+                                                <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[#ebf5ee] text-[#316342]">
+                                                    <i class="fa-solid fa-wand-magic-sparkles text-xs" aria-hidden="true"></i>
+                                                </div>
+                                                <div class="min-w-0 flex-1">
+                                                    <div class="flex items-center gap-1.5">
+                                                        <h4 class="text-xs font-bold text-[#181d1a]">Insight Hari Ini</h4>
+                                                        <span class="rounded bg-[#FEF3C7] px-1.5 py-0.5 text-[8.5px] font-bold text-[#D97706]">AI Coach</span>
+                                                    </div>
+                                                    <p class="mt-1 text-[10px] leading-relaxed text-[#414942]">Kamu lebih konsisten menyelesaikan aktivitas di pagi hari. Pertahankan ritme ini untuk energi maksimal seharian!</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- ==================== 2. FINANCE VIEW ==================== -->
+                                    <div data-showcase-view="finance" class="hidden space-y-3.5">
+                                        <!-- Header & Month Selector -->
+                                        <div class="flex items-center justify-between pt-1">
+                                            <div>
+                                                <h2 class="text-lg font-extrabold text-[#181d1a] leading-tight">Keuangan</h2>
+                                                <p class="text-[10px] text-[#414942]">Pantau pemasukan dan pengeluaranmu</p>
+                                            </div>
+                                            <span class="rounded-full bg-white border border-[#dfe4df] px-2.5 py-0.5 text-[10px] font-bold text-[#181d1a] shadow-xs">
+                                                &lsaquo; Okt 2026 &rsaquo;
+                                            </span>
+                                        </div>
+
+                                        <!-- FinanceSummaryCards: Pemasukan & Pengeluaran -->
+                                        <div class="grid grid-cols-2 gap-2">
+                                            <div class="rounded-2xl border border-[#dfe4df] bg-white p-3 shadow-xs">
+                                                <div class="flex h-7 w-7 items-center justify-center rounded-xl bg-[#ebf5ee] text-[#316342]">
+                                                    <i class="fa-solid fa-arrow-trend-up text-xs" aria-hidden="true"></i>
+                                                </div>
+                                                <p class="mt-2 text-[10px] text-[#414942]">Pemasukan</p>
+                                                <p class="text-xs font-extrabold text-[#316342] leading-tight">Rp 7.500.000</p>
+                                                <p class="text-[9px] text-[#717971] mt-0.5">8 Transaksi</p>
+                                            </div>
+                                            <div class="rounded-2xl border border-[#dfe4df] bg-white p-3 shadow-xs">
+                                                <div class="flex h-7 w-7 items-center justify-center rounded-xl bg-[#FFEDD5] text-[#F97316]">
+                                                    <i class="fa-solid fa-arrow-trend-down text-xs" aria-hidden="true"></i>
+                                                </div>
+                                                <p class="mt-2 text-[10px] text-[#414942]">Pengeluaran</p>
+                                                <p class="text-xs font-extrabold text-[#F97316] leading-tight">Rp 3.250.000</p>
+                                                <p class="text-[9px] text-[#717971] mt-0.5">14 Transaksi</p>
+                                            </div>
+                                        </div>
+
+                                        <!-- Strip Selisih (Surplus) -->
+                                        <div class="flex items-center justify-between rounded-xl border border-[#ebf5ee] bg-[#f6fbf5] px-3 py-2">
+                                            <span class="text-[10px] font-semibold text-[#414942]">Total 22 Transaksi</span>
+                                            <span class="rounded-full bg-[#ebf5ee] px-2 py-0.5 text-[9.5px] font-bold text-[#316342]">
+                                                Selisih + Rp 4.250.000 (Surplus)
+                                            </span>
+                                        </div>
+
+                                        <!-- Ringkasan Keuangan (Bagan Tren Bar) -->
+                                        <div class="rounded-2xl border border-[#dfe4df] bg-white p-3 shadow-xs space-y-2.5">
+                                            <div class="flex items-center justify-between">
+                                                <h3 class="text-xs font-bold text-[#181d1a]">Ringkasan Keuangan</h3>
+                                                <span class="text-[10px] font-semibold text-[#316342]">Detail</span>
+                                            </div>
+                                            <!-- Segmented Tabs -->
+                                            <div class="flex rounded-xl bg-[#f0f5f0] p-1 text-[9.5px] font-medium text-[#414942]">
+                                                <span class="flex-1 text-center py-1 rounded-lg">Harian</span>
+                                                <span class="flex-1 text-center py-1 rounded-lg bg-white font-bold text-[#181d1a] shadow-xs">Mingguan</span>
+                                                <span class="flex-1 text-center py-1 rounded-lg">Bulanan</span>
+                                            </div>
+                                            <!-- Mini Bar Chart Simulation -->
+                                            <div class="pt-2 flex items-end justify-between h-20 px-2 border-b border-[#f0f5f0]">
+                                                <div class="flex items-end gap-1"><div class="w-2.5 bg-[#316342] rounded-t h-12"></div><div class="w-2.5 bg-[#F97316] rounded-t h-7"></div></div>
+                                                <div class="flex items-end gap-1"><div class="w-2.5 bg-[#316342] rounded-t h-14"></div><div class="w-2.5 bg-[#F97316] rounded-t h-9"></div></div>
+                                                <div class="flex items-end gap-1"><div class="w-2.5 bg-[#316342] rounded-t h-10"></div><div class="w-2.5 bg-[#F97316] rounded-t h-6"></div></div>
+                                                <div class="flex items-end gap-1"><div class="w-2.5 bg-[#316342] rounded-t h-16"></div><div class="w-2.5 bg-[#F97316] rounded-t h-8"></div></div>
+                                            </div>
+                                            <div class="flex justify-between text-[8.5px] text-[#717971] px-1">
+                                                <span>Mg 1</span><span>Mg 2</span><span>Mg 3</span><span>Mg 4</span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Transaksi Terkini -->
+                                        <div>
+                                            <div class="mb-2 flex items-center justify-between">
+                                                <h3 class="text-xs font-bold text-[#181d1a]">Transaksi Terkini</h3>
+                                                <span class="text-[10px] font-semibold text-[#316342]">Lihat Semua</span>
+                                            </div>
+                                            <div class="space-y-1.5">
+                                                <div class="flex items-center gap-2.5 rounded-xl border border-[#dfe4df] bg-white p-2.5 shadow-xs">
+                                                    <span class="flex h-8 w-8 items-center justify-center rounded-xl bg-[#ebf5ee] text-[#316342]"><i class="fa-solid fa-wallet text-xs"></i></span>
+                                                    <div class="flex-1 min-w-0"><p class="text-xs font-bold text-[#181d1a] truncate">Gaji Bulanan</p><p class="text-[9px] text-[#717971]">Kemarin &bull; Pemasukan</p></div>
+                                                    <span class="text-xs font-bold text-[#316342]">+ Rp 7.500.000</span>
+                                                </div>
+                                                <div class="flex items-center gap-2.5 rounded-xl border border-[#dfe4df] bg-white p-2.5 shadow-xs">
+                                                    <span class="flex h-8 w-8 items-center justify-center rounded-xl bg-[#FFEDD5] text-[#F97316]"><i class="fa-solid fa-basket-shopping text-xs"></i></span>
+                                                    <div class="flex-1 min-w-0"><p class="text-xs font-bold text-[#181d1a] truncate">Belanja Bulanan</p><p class="text-[9px] text-[#717971]">Hari ini &bull; Belanja</p></div>
+                                                    <span class="text-xs font-bold text-[#F97316]">- Rp 850.000</span>
+                                                </div>
+                                                <div class="flex items-center gap-2.5 rounded-xl border border-[#dfe4df] bg-white p-2.5 shadow-xs">
+                                                    <span class="flex h-8 w-8 items-center justify-center rounded-xl bg-[#FFEDD5] text-[#F97316]"><i class="fa-solid fa-mug-saucer text-xs"></i></span>
+                                                    <div class="flex-1 min-w-0"><p class="text-xs font-bold text-[#181d1a] truncate">Kopi &amp; Sarapan</p><p class="text-[9px] text-[#717971]">Hari ini &bull; Makanan</p></div>
+                                                    <span class="text-xs font-bold text-[#F97316]">- Rp 45.000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- ==================== 3. NUTRITION VIEW ==================== -->
+                                    <div data-showcase-view="nutrition" class="hidden space-y-3.5">
+                                        <!-- Header & AI Scanner Badge -->
+                                        <div class="flex items-center justify-between pt-1">
+                                            <div>
+                                                <h2 class="text-lg font-extrabold text-[#181d1a] leading-tight">Nutrisi</h2>
+                                                <p class="text-[10px] text-[#414942]">Pantau nutrisi piring &amp; asupan harian</p>
+                                            </div>
+                                            <span class="rounded-full bg-[#ebf5ee] border border-[#c1c9bf] px-2.5 py-0.5 text-[9.5px] font-bold text-[#316342] shadow-xs">
+                                                AI Food Scan
+                                            </span>
+                                        </div>
+
+                                        <!-- Ring Kalori Hari Ini -->
+                                        <div class="rounded-2xl border border-[#dfe4df] bg-white p-3.5 shadow-xs text-center">
+                                            <div class="mx-auto flex h-[76px] w-[76px] items-center justify-center rounded-full p-[6px]" style="background: conic-gradient(#316342 0% 62%, #ebf5ee 62% 100%)">
+                                                <div class="flex h-full w-full flex-col items-center justify-center rounded-full bg-white shadow-inner">
+                                                    <span class="text-sm font-extrabold leading-tight text-[#181d1a]">1.240</span>
+                                                    <span class="text-[8.5px] text-[#414942]">/ 2.000 kkal</span>
+                                                </div>
+                                            </div>
+                                            <p class="mt-2 text-xs font-bold text-[#181d1a]">Kalori Hari Ini</p>
+                                            <p class="text-[10px] text-[#414942]">Target tercapai 62% dari kebutuhan energi harian</p>
+                                        </div>
+
+                                        <!-- Komposisi Makronutrisi -->
+                                        <div class="rounded-2xl border border-[#dfe4df] bg-white p-3 shadow-xs space-y-2">
+                                            <h3 class="text-xs font-bold text-[#181d1a]">Target Makronutrisi</h3>
+                                            <!-- Protein -->
+                                            <div>
+                                                <div class="flex justify-between text-[10px] mb-1"><span class="text-[#414942]">Protein</span><span class="font-bold text-[#181d1a]">65 / 90 g</span></div>
+                                                <div class="h-1.5 rounded-full bg-[#ebf5ee]"><div class="h-1.5 w-[72%] rounded-full bg-[#316342]"></div></div>
+                                            </div>
+                                            <!-- Karbohidrat -->
+                                            <div>
+                                                <div class="flex justify-between text-[10px] mb-1"><span class="text-[#414942]">Karbohidrat</span><span class="font-bold text-[#181d1a]">140 / 220 g</span></div>
+                                                <div class="h-1.5 rounded-full bg-[#FFEDD5]"><div class="h-1.5 w-[64%] rounded-full bg-[#F97316]"></div></div>
+                                            </div>
+                                            <!-- Lemak -->
+                                            <div>
+                                                <div class="flex justify-between text-[10px] mb-1"><span class="text-[#414942]">Lemak</span><span class="font-bold text-[#181d1a]">38 / 60 g</span></div>
+                                                <div class="h-1.5 rounded-full bg-[#FEF3C7]"><div class="h-1.5 w-[63%] rounded-full bg-[#F59E0B]"></div></div>
+                                            </div>
+                                            <!-- Air Minum -->
+                                            <div>
+                                                <div class="flex justify-between text-[10px] mb-1"><span class="text-[#414942]">Air Minum</span><span class="font-bold text-[#181d1a]">5 / 8 gelas</span></div>
+                                                <div class="h-1.5 rounded-full bg-[#E0EDFF]"><div class="h-1.5 w-[62%] rounded-full bg-[#3B82F6]"></div></div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Piring Terakhir Terdeteksi AI -->
+                                        <div class="rounded-xl border border-[#ebf5ee] bg-[#f6fbf5] p-2.5 flex items-center gap-2.5">
+                                            <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[#316342] text-white">
+                                                <i class="fa-solid fa-camera text-xs" aria-hidden="true"></i>
+                                            </span>
+                                            <div class="flex-1 min-w-0">
+                                                <p class="text-xs font-bold text-[#181d1a] truncate">Nasi Ayam Bakar &amp; Lalapan</p>
+                                                <p class="text-[9.5px] text-[#1e5031] font-medium">520 kkal &bull; 28g Protein &bull; Terverifikasi AI</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- ==================== 4. MEMENTO VIEW ==================== -->
+                                    <div data-showcase-view="memento" class="hidden space-y-3.5">
+                                        <!-- Header & Batam Sync Badge -->
+                                        <div class="flex items-center justify-between pt-1">
+                                            <div>
+                                                <div class="flex items-center gap-1.5">
+                                                    <h2 class="text-lg font-extrabold text-[#181d1a] leading-tight">Memento</h2>
+                                                    <span class="rounded-md bg-[#ebf5ee] px-1.5 py-0.5 text-[9px] font-extrabold text-[#316342]">Batam Sync</span>
+                                                </div>
+                                                <p class="text-[10px] text-[#414942]">Kenangan yang tersimpan dalam perjalananmu</p>
+                                            </div>
+                                            <div class="flex items-center gap-1 text-[#316342]">
+                                                <span class="flex h-7 w-7 items-center justify-center rounded-full hover:bg-neutral-100"><i class="fa-solid fa-magnifying-glass text-xs" aria-hidden="true"></i></span>
+                                                <span class="flex h-7 w-7 items-center justify-center rounded-full hover:bg-neutral-100"><i class="fa-regular fa-map text-xs" aria-hidden="true"></i></span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Peta Jejak Momen (Interactive Mini Map) -->
+                                        <div class="rounded-2xl border border-[#dfe4df] bg-white p-3 shadow-xs space-y-2">
+                                            <div class="flex items-center justify-between">
+                                                <div class="flex items-center gap-1.5">
+                                                    <i class="fa-solid fa-location-dot text-xs text-[#316342]" aria-hidden="true"></i>
+                                                    <h3 class="text-xs font-bold text-[#181d1a]">Peta Jejak Momen</h3>
+                                                </div>
+                                                <span class="rounded bg-[#f6fbf5] px-2 py-0.5 text-[9px] font-bold text-[#414942]">Pulau Batam</span>
+                                            </div>
+                                            <!-- Mini Vector Canvas Map -->
+                                            <div class="relative h-28 w-full rounded-xl border border-[#ebf5ee] bg-gradient-to-br from-[#ebf5ee] via-[#ebf5ee] to-[#ebf5ee] overflow-hidden p-2">
+                                                <!-- Batam decorative geographic outlines -->
+                                                <div class="absolute inset-0 opacity-40">
+                                                    <svg class="w-full h-full" viewBox="0 0 200 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M20 50 Q45 20 80 40 T150 35 T190 70 Q160 90 100 80 T30 75 Z" fill="#ebf5ee" stroke="#316342" stroke-width="1"/>
+                                                        <circle cx="65" cy="42" r="3" fill="#316342"/>
+                                                        <circle cx="120" cy="48" r="3" fill="#316342"/>
+                                                        <circle cx="145" cy="62" r="3" fill="#316342"/>
+                                                    </svg>
+                                                </div>
+                                                <!-- Interactive Map Pins -->
+                                                <div class="absolute left-1/4 top-1/3 flex flex-col items-center">
+                                                    <span class="flex h-5 w-5 items-center justify-center rounded-full bg-[#316342] text-white text-[9px] shadow-sm"><i class="fa-solid fa-location-dot"></i></span>
+                                                    <span class="rounded bg-white/90 px-1 text-[7.5px] font-bold text-[#181d1a] shadow-xs">Barelang</span>
+                                                </div>
+                                                <div class="absolute right-1/4 bottom-1/4 flex flex-col items-center">
+                                                    <span class="flex h-4 w-4 items-center justify-center rounded-full bg-[#1e5031] text-white text-[8px] shadow-sm"><i class="fa-solid fa-location-dot"></i></span>
+                                                    <span class="rounded bg-white/90 px-1 text-[7.5px] font-bold text-[#181d1a] shadow-xs">Nongsa</span>
+                                                </div>
+                                                <!-- Action Button on Map -->
+                                                <span class="absolute right-2 bottom-2 rounded-lg bg-white border border-[#ebf5ee] px-2 py-0.5 text-[8.5px] font-bold text-[#0F766E] shadow-xs">
+                                                    <i class="fa-solid fa-expand mr-0.5" aria-hidden="true"></i> Fokuskan Peta
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Counter Banner (34 Momen Tersimpan) -->
+                                        <div class="rounded-xl border border-[#c1c9bf] bg-[#ebf5ee] p-2.5 flex items-center gap-2.5">
+                                            <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#316342] text-white">
+                                                <i class="fa-solid fa-photo-film text-xs" aria-hidden="true"></i>
+                                            </span>
+                                            <div class="flex-1 min-w-0">
+                                                <p class="text-xs font-extrabold text-[#1e5031]">34 Momen Tersimpan</p>
+                                                <p class="text-[9.5px] text-[#414942]">12 Lokasi Bersejarah di Batam</p>
+                                            </div>
+                                        </div>
+
+                                        <!-- Grid Momen Mini -->
+                                        <div class="grid grid-cols-2 gap-2">
+                                            <div class="rounded-xl border border-[#dfe4df] bg-white p-2.5 shadow-xs">
+                                                <div class="h-16 w-full rounded-lg bg-[#ebf5ee] flex items-center justify-center text-[#316342] mb-1.5">
+                                                    <i class="fa-solid fa-bridge-water text-lg" aria-hidden="true"></i>
+                                                </div>
+                                                <p class="text-[11px] font-bold text-[#181d1a] truncate">Jembatan Barelang</p>
+                                                <p class="text-[9px] text-[#414942]">8 Foto &bull; Ikon Batam</p>
+                                            </div>
+                                            <div class="rounded-xl border border-[#dfe4df] bg-white p-2.5 shadow-xs">
+                                                <div class="h-16 w-full rounded-lg bg-[#E0EDFF] flex items-center justify-center text-[#3B82F6] mb-1.5">
+                                                    <i class="fa-solid fa-umbrella-beach text-lg" aria-hidden="true"></i>
+                                                </div>
+                                                <p class="text-[11px] font-bold text-[#181d1a] truncate">Pantai Nongsa</p>
+                                                <p class="text-[9px] text-[#414942]">6 Foto &bull; Sunset Indah</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- ==================== 5. PROFILE VIEW ==================== -->
+                                    <div data-showcase-view="profile" class="hidden space-y-3.5">
+                                        <!-- Header -->
+                                        <div class="pt-1">
+                                            <h2 class="text-lg font-extrabold text-[#181d1a]">Profil</h2>
+                                        </div>
+
+                                        <!-- ProfileHeaderCard: Avatar & Stats -->
+                                        <div class="rounded-2xl border border-[#dfe4df] bg-white p-3.5 shadow-xs space-y-3">
+                                            <div class="flex items-center gap-3">
+                                                <div class="relative">
+                                                    <div class="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-[#316342] to-[#1e5031] text-base font-extrabold text-white shadow-sm">
+                                                        M
+                                                    </div>
+                                                    <span class="absolute -bottom-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-white border border-[#dfe4df] text-[8px] text-[#1e5031]">
+                                                        <i class="fa-solid fa-camera"></i>
+                                                    </span>
+                                                </div>
+                                                <div class="min-w-0 flex-1">
+                                                    <p class="text-sm font-extrabold text-[#181d1a] truncate">Megah</p>
+                                                    <p class="text-[11px] text-[#414942] truncate">megah@lifesync.id</p>
+                                                </div>
+                                            </div>
+                                            <!-- Divider -->
+                                            <div class="border-t border-[#dfe4df]"></div>
+                                            <!-- 3 Stats -->
+                                            <div class="grid grid-cols-3 text-center gap-1">
+                                                <div>
+                                                    <p class="text-xs font-extrabold text-[#1e5031]">5</p>
+                                                    <p class="text-[8.5px] text-[#414942]">Hari Beruntun</p>
+                                                </div>
+                                                <div>
+                                                    <p class="text-xs font-extrabold text-[#1e5031]">42</p>
+                                                    <p class="text-[8.5px] text-[#414942]">Aktivitas Selesai</p>
+                                                </div>
+                                                <div>
+                                                    <p class="text-xs font-extrabold text-[#1e5031]">Okt 2026</p>
+                                                    <p class="text-[8.5px] text-[#414942]">Bergabung</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Section: Akun -->
+                                        <div>
+                                            <h3 class="mb-1.5 text-[9.5px] font-bold uppercase tracking-wider text-[#717971]">Akun</h3>
+                                            <div class="rounded-xl border border-[#dfe4df] bg-white divide-y divide-[#dfe4df] shadow-xs">
+                                                <div class="flex items-center gap-2.5 p-2.5">
+                                                    <i class="fa-regular fa-user w-4 text-center text-[#316342] text-xs"></i>
+                                                    <span class="flex-1 text-xs font-semibold text-[#181d1a]">Kelola Profil</span>
+                                                    <i class="fa-solid fa-chevron-right text-[9px] text-[#717971]"></i>
+                                                </div>
+                                                <div class="flex items-center gap-2.5 p-2.5">
+                                                    <i class="fa-solid fa-mobile-screen w-4 text-center text-[#316342] text-xs"></i>
+                                                    <span class="flex-1 text-xs font-semibold text-[#181d1a]">Perangkat Login</span>
+                                                    <i class="fa-solid fa-chevron-right text-[9px] text-[#717971]"></i>
+                                                </div>
+                                                <div class="flex items-center gap-2.5 p-2.5">
+                                                    <i class="fa-solid fa-arrows-rotate w-4 text-center text-[#316342] text-xs"></i>
+                                                    <div class="flex-1 min-w-0">
+                                                        <p class="text-xs font-semibold text-[#181d1a]">Sinkronkan Sekarang</p>
+                                                        <p class="text-[9px] text-[#414942]">Status: Terakhir disinkronkan baru saja</p>
+                                                    </div>
+                                                    <span class="h-2 w-2 rounded-full bg-[#316342]"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Section: Preferensi -->
+                                        <div>
+                                            <h3 class="mb-1.5 text-[9.5px] font-bold uppercase tracking-wider text-[#717971]">Preferensi</h3>
+                                            <div class="rounded-xl border border-[#dfe4df] bg-white p-2.5 flex items-center justify-between shadow-xs">
+                                                <div class="flex items-center gap-2.5">
+                                                    <i class="fa-regular fa-bell text-[#316342] text-xs"></i>
+                                                    <div>
+                                                        <p class="text-xs font-semibold text-[#181d1a]">Notifikasi Harian</p>
+                                                        <p class="text-[9px] text-[#414942]">Pengingat kebiasaan harian</p>
+                                                    </div>
+                                                </div>
+                                                <!-- Toggle Switch Active -->
+                                                <div class="h-5 w-9 rounded-full bg-[#316342] p-0.5 flex justify-end items-center cursor-pointer">
+                                                    <div class="h-4 w-4 rounded-full bg-white shadow-xs"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
+
+                                <!-- 3. Bottom Navigation Bar (Floating Bubble Pill matching Flutter AppBottomNav) -->
+                                <nav aria-label="Navigasi showcase aplikasi" class="absolute inset-x-3 bottom-2.5 z-30 rounded-2xl border border-white/80 bg-white/92 backdrop-blur-md px-1.5 py-1 shadow-[0_8px_24px_rgba(0,0,0,0.08)]">
+                                    <div class="flex items-center justify-between">
+                                        <button type="button" class="showcase-nav-button is-active flex flex-col items-center gap-0.5 px-1 focus:outline-none" data-showcase-tab="home" aria-label="Beranda" aria-pressed="true">
+                                            <span class="showcase-nav-icon"><i class="fa-solid fa-house text-xs" aria-hidden="true"></i></span>
+                                            <span class="showcase-nav-label">Beranda</span>
+                                        </button>
+                                        <button type="button" class="showcase-nav-button flex flex-col items-center gap-0.5 px-1 focus:outline-none" data-showcase-tab="finance" aria-label="Keuangan" aria-pressed="false">
+                                            <span class="showcase-nav-icon"><i class="fa-solid fa-wallet text-xs" aria-hidden="true"></i></span>
+                                            <span class="showcase-nav-label">Keuangan</span>
+                                        </button>
+                                        <button type="button" class="showcase-nav-button flex flex-col items-center gap-0.5 px-1 focus:outline-none" data-showcase-tab="nutrition" aria-label="Nutrisi" aria-pressed="false">
+                                            <span class="showcase-nav-icon"><i class="fa-solid fa-utensils text-xs" aria-hidden="true"></i></span>
+                                            <span class="showcase-nav-label">Nutrisi</span>
+                                        </button>
+                                        <button type="button" class="showcase-nav-button flex flex-col items-center gap-0.5 px-1 focus:outline-none" data-showcase-tab="memento" aria-label="Memento" aria-pressed="false">
+                                            <span class="showcase-nav-icon"><i class="fa-solid fa-camera text-xs" aria-hidden="true"></i></span>
+                                            <span class="showcase-nav-label">Memento</span>
+                                        </button>
+                                        <button type="button" class="showcase-nav-button flex flex-col items-center gap-0.5 px-1 focus:outline-none" data-showcase-tab="profile" aria-label="Profil" aria-pressed="false">
+                                            <span class="showcase-nav-icon"><i class="fa-regular fa-user text-xs" aria-hidden="true"></i></span>
+                                            <span class="showcase-nav-label">Profil</span>
+                                        </button>
+                                    </div>
+                                </nav>
+
                             </div>
-
-                            <!-- VIEW 5: PROFILE -->
-                            <div data-showcase-view="profile" class="hidden mt-4 space-y-3.5">
-                                <div class="text-center">
-                                    <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-brand-100 text-xl font-bold text-brand-700 shadow-xs">W</div>
-                                    <h2 class="mt-2 text-base font-bold text-neutral-900">Warga LifeSync</h2>
-                                    <p class="text-[11px] text-neutral-400">Status Akun: Aktif &bull; Sinkronisasi Siap</p>
-                                </div>
-                            </div>
-
                         </div>
+                    </div>
 
-                        <!-- Bottom Navigation Bar Inside Phone (5 Interactive Tabs) -->
-                        <div class="absolute bottom-0 inset-x-0 h-16 bg-white/95 backdrop-blur-md border-t border-[#DEE6DF] px-4 flex items-center justify-between z-30">
-                            <button type="button" data-showcase-tab="home" class="showcase-nav-button is-active flex flex-col items-center justify-center flex-1 h-full focus:outline-none">
-                                <span class="showcase-nav-icon flex h-7 w-7 items-center justify-center rounded-full text-sm transition-all"><i class="fa-solid fa-house"></i></span>
-                                <span class="text-[9px] font-semibold mt-0.5">Beranda</span>
-                            </button>
-                            <button type="button" data-showcase-tab="finance" class="showcase-nav-button flex flex-col items-center justify-center flex-1 h-full focus:outline-none">
-                                <span class="showcase-nav-icon flex h-7 w-7 items-center justify-center rounded-full text-sm transition-all"><i class="fa-solid fa-wallet"></i></span>
-                                <span class="text-[9px] font-semibold mt-0.5">Finansial</span>
-                            </button>
-                            <button type="button" data-showcase-tab="notes" class="showcase-nav-button flex flex-col items-center justify-center flex-1 h-full focus:outline-none">
-                                <span class="showcase-nav-icon flex h-7 w-7 items-center justify-center rounded-full text-sm transition-all"><i class="fa-regular fa-note-sticky"></i></span>
-                                <span class="text-[9px] font-semibold mt-0.5">Catatan</span>
-                            </button>
-                            <button type="button" data-showcase-tab="memento" class="showcase-nav-button flex flex-col items-center justify-center flex-1 h-full focus:outline-none">
-                                <span class="showcase-nav-icon flex h-7 w-7 items-center justify-center rounded-full text-sm transition-all"><i class="fa-solid fa-map-location-dot"></i></span>
-                                <span class="text-[9px] font-semibold mt-0.5">Memento</span>
-                            </button>
-                            <button type="button" data-showcase-tab="profile" class="showcase-nav-button flex flex-col items-center justify-center flex-1 h-full focus:outline-none">
-                                <span class="showcase-nav-icon flex h-7 w-7 items-center justify-center rounded-full text-sm transition-all"><i class="fa-regular fa-user"></i></span>
-                                <span class="text-[9px] font-semibold mt-0.5">Profil</span>
-                            </button>
-                        </div>
-
-                       </div>
-                      </div>
+                    <!-- Banner Link ke Mockup Interaktif -->
+                    <div class="mt-4 text-center">
+                        <a href="pages/mockup.html" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-surface-container-lowest border border-outline-variant/60 hover:border-primary text-primary font-semibold text-xs shadow-xs transition-all duration-200 group">
+                            <span class="material-symbols-outlined text-[16px] text-primary">smartphone</span>
+                            <span>Coba Langsung LifeSync di Browser</span>
+                            <span class="material-symbols-outlined text-[14px] group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+                        </a>
                     </div>
                 </div>
-
             </div>
+
         </div>
     </div>
 </section>

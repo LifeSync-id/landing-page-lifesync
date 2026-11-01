@@ -17,7 +17,6 @@ const FILES = [
     'sections/offline.html',
     'sections/ai.html',
     'sections/pricing.html',
-    'sections/faq.html',
     'sections/kontak.html',
     'sections/footer.html',
     'pages/nutrisi.html',

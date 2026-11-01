@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id" class="scroll-smooth">
 <head>
     <!-- Google tag (gtag.js) -->
@@ -13,16 +13,24 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LifeSync - Daily Habit Tracker & AI Assistance</title>
-    <meta name="description" content="LifeSync adalah aplikasi Daily Habit Tracker & Assistance yang menyatukan kesehatan, waktu, keuangan, dan produktivitas dalam satu ekosistem. Kerjakan kebiasaan harian dengan bantuan AI, bahkan saat offline.">
+    <title>LifeSync - Daily Habit Tracker and Assistance</title>
+    <meta name="description" content="LifeSync adalah aplikasi Daily Habit Tracker and Assistance yang menyatukan kesehatan, waktu, keuangan, dan produktivitas dalam satu ekosistem. Kerjakan kebiasaan harian dengan bantuan AI, bahkan saat offline.">
     <meta name="theme-color" content="#16A34A">
     <link rel="icon" type="image/png" href="assets/lifesync-symbol.png">
 
     <!-- Open Graph / Social Preview -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="LifeSync - Daily Habit Tracker & AI Assistance">
+    <meta property="og:title" content="LifeSync - Daily Habit Tracker and Assistance">
     <meta property="og:description" content="Satukan kesehatan, waktu, keuangan, dan produktivitas dalam satu aplikasi. Download App LifeSync sekarang.">
     <meta property="og:image" content="assets/lifesync-banner.png">
+
+    <!-- Google Fonts & Material Symbols Outlined -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+    <!-- FontAwesome Fallback Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -31,104 +39,98 @@
             theme: {
                 extend: {
                     colors: {
-                        // Primary Green
+                        // Daily Habit Tracker and Assistance - Canonical Palette
+                        surface: {
+                            DEFAULT: '#f6fbf5',
+                            dim: '#d7dbd6',
+                            bright: '#f6fbf5',
+                            variant: '#dfe4df'
+                        },
+                        'surface-container': {
+                            lowest: '#ffffff',
+                            low: '#f0f5f0',
+                            DEFAULT: '#ebefea',
+                            high: '#e5e9e4',
+                            highest: '#dfe4df'
+                        },
+                        'on-surface': {
+                            DEFAULT: '#181d1a',
+                            variant: '#414942'
+                        },
+                        'inverse-surface': '#2c322e',
+                        'inverse-on-surface': '#edf2ed',
+                        outline: {
+                            DEFAULT: '#717971',
+                            variant: '#c1c9bf'
+                        },
                         primary: {
-                            DEFAULT: '#16A34A',
-                            50:  '#F0FDF4',
-                            100: '#DCFCE7',
-                            200: '#BBF7D0',
-                            300: '#86EFAC',
-                            400: '#4ADE80',
-                            500: '#16A34A',
-                            600: '#15803D',
-                            700: '#166534',
-                            800: '#14532D',
-                            900: '#052E16'
+                            DEFAULT: '#316342',
+                            container: '#4a7c59',
+                            fixed: '#b9efc5',
+                            'fixed-dim': '#9dd3aa'
                         },
-                        // brand aliases primary for template compatibility
-                        brand: {
-                            DEFAULT: '#16A34A',
-                            50:  '#F0FDF4',
-                            100: '#DCFCE7',
-                            200: '#BBF7D0',
-                            300: '#86EFAC',
-                            400: '#4ADE80',
-                            500: '#16A34A',
-                            600: '#15803D',
-                            700: '#166534',
-                            800: '#14532D',
-                            900: '#052E16'
+                        'on-primary': {
+                            DEFAULT: '#ffffff',
+                            container: '#e1ffe5',
+                            fixed: '#00210e',
+                            'fixed-variant': '#1e5031'
                         },
-                        // Lime accent
                         secondary: {
-                            DEFAULT: '#84CC16',
-                            50:  '#F7FEE7',
-                            100: '#ECFCCB',
-                            200: '#D9F99D',
-                            300: '#BEF264',
-                            400: '#A3E635',
-                            500: '#84CC16',
-                            600: '#65A30D',
-                            700: '#4D7C0F',
-                            800: '#3F6212',
-                            900: '#365314'
+                            DEFAULT: '#9a442d',
+                            container: '#fc9174',
+                            fixed: '#ffdbd2',
+                            'fixed-dim': '#ffb4a1'
                         },
-                        // Sky blue for information and assistance
+                        'on-secondary': {
+                            DEFAULT: '#ffffff',
+                            container: '#742814',
+                            fixed: '#3c0800',
+                            'fixed-variant': '#7c2e19'
+                        },
                         tertiary: {
-                            DEFAULT: '#0EA5E9',
-                            50:  '#F0F9FF',
-                            100: '#E0F2FE',
-                            200: '#BAE6FD',
-                            300: '#7DD3FC',
-                            400: '#38BDF8',
-                            500: '#0EA5E9',
-                            600: '#0284C7',
-                            700: '#0369A1',
-                            800: '#075985',
-                            900: '#0C4A6E'
+                            DEFAULT: '#356243',
+                            container: '#4e7b5a',
+                            fixed: '#bdeec7',
+                            'fixed-dim': '#a1d2ac'
                         },
-                        // Accent aliases
-                        accent: {
-                            DEFAULT: '#84CC16',
-                            orange:  '#84CC16',
-                            coral:   '#84CC16',
-                            teal:    '#0EA5E9',
-                            tertiary:'#0EA5E9',
-                            purple:  '#0EA5E9',
-                            blue:    '#0EA5E9',
-                            emerald: '#16A34A'
+                        'on-tertiary': {
+                            DEFAULT: '#ffffff',
+                            container: '#dfffe3',
+                            fixed: '#00210e',
+                            'fixed-variant': '#234f32'
                         },
-                        // Neutral shades
-                        neutral: {
-                            900: '#24352B',
-                            800: '#33483A',
-                            700: '#465B4D',
-                            600: '#5E7165',
-                            500: '#788A7D',
-                            400: '#9BA99F',
-                            300: '#C4CEC6',
-                            200: '#DEE6DF',
-                            100: '#EDF3ED',
-                            50:  '#F7FAF7'
+                        // Backward compatibility aliases
+                        brand: {
+                            DEFAULT: '#316342',
+                            50: '#f0f5f0',
+                            100: '#b9efc5',
+                            200: '#9dd3aa',
+                            300: '#6ea880',
+                            400: '#4a7c59',
+                            500: '#316342',
+                            600: '#285336',
+                            700: '#1e5031',
+                            800: '#143821',
+                            900: '#00210e'
                         },
-                        // Text colors
                         ink: {
-                            DEFAULT: '#24352B',
-                            soft:    '#5E7165',
-                            muted:   '#9BA99F'
+                            DEFAULT: '#181d1a',
+                            soft: '#414942',
+                            muted: '#717971'
                         }
                     },
                     fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif']
+                        sans: ['"Plus Jakarta Sans"', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
+                        serif: ['ui-serif', 'Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif']
                     },
                     boxShadow: {
-                        glow:      '0 18px 45px -18px rgba(22, 163, 74, 0.45)',
-                        'glow-lg': '0 28px 70px -22px rgba(22, 163, 74, 0.55)',
-                        card:      '0 22px 60px -30px rgba(36, 53, 43, 0.25)',
-                        soft:      '0 4px 20px -4px rgba(36, 53, 43, 0.05), 0 2px 6px -2px rgba(36, 53, 43, 0.03)',
-                        'soft-hover': '0 10px 25px -5px rgba(22, 163, 74, 0.12), 0 4px 10px -2px rgba(22, 163, 74, 0.06)'
+                        tactile: '0 4px 20px -4px rgba(24, 29, 26, 0.05), 0 2px 6px -2px rgba(24, 29, 26, 0.03)',
+                        'tactile-hover': '0 12px 28px -6px rgba(49, 99, 66, 0.12), 0 4px 10px -2px rgba(49, 99, 66, 0.06)',
+                        ambient: '0 20px 40px -15px rgba(24, 29, 26, 0.08)'
                     },
                     borderRadius: {
+                        '2xl': '1rem',
+                        '3xl': '1.5rem',
                         '4xl': '2rem',
                         '5xl': '2.5rem'
                     }
@@ -136,16 +138,10 @@
             }
         };
     </script>
-    <!-- Font: Plus Jakarta Sans (tipografi resmi LifeSync) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="bg-[#F7FAF7] text-ink font-sans antialiased selection:bg-brand-500 selection:text-white">
+<body class="bg-surface text-on-surface font-sans antialiased selection:bg-primary-fixed selection:text-on-primary-fixed">
 
     <!-- 1. HEADER / NAVBAR -->
     <div id="section-header"></div>
@@ -153,22 +149,19 @@
     <!-- 2. HERO SECTION -->
     <div id="section-hero"></div>
 
-    <!-- 3. FITUR UTAMA -->
+    <!-- 3. FITUR UTAMA (6 PILAR KEHIDUPAN) -->
     <div id="section-fitur"></div>
 
-    <!-- 4. ARSITEKTUR OFFLINE-FIRST -->
+    <!-- 4. ARSITEKTUR OFFLINE-FIRST & SINKRONISASI -->
     <div id="section-offline"></div>
 
-    <!-- 5. AI ASSISTANCE -->
+    <!-- 5. ASISTEN AI PROAKTIF (FOOD AI & COACH) -->
     <div id="section-ai"></div>
 
-    <!-- 6. PRICING / TIPE AKUN -->
+    <!-- 6. PRICING / PILIHAN AKSES JUJUR -->
     <div id="section-pricing"></div>
 
-    <!-- 7. FAQ (TANYA JAWAB) -->
-    <div id="section-faq"></div>
-
-    <!-- 8. KONTAK KAMI -->
+    <!-- 7. KONTAK KAMI & KOLABORASI -->
     <div id="section-kontak"></div>
 
     <!-- 8. FOOTER -->
