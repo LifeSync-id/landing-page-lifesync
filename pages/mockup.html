@@ -1462,6 +1462,17 @@
 
     <!-- ==================== JAVASCRIPT LOGIC ==================== -->
     <script>
+        /* ---------------- TELEMETRY ANALYTICS HELPER ---------------- */
+        function trackMockupEvent(eventName, params) {
+            try {
+                if (typeof window.gtag === 'function') {
+                    window.gtag('event', eventName, params || {});
+                }
+            } catch (err) {
+                console.warn('Mockup telemetry error:', err);
+            }
+        }
+
         /* ---------------- APP STATE STORE ---------------- */
         const DEFAULT_STATE = {
             screen: 'splash', // 'splash', 'onboarding', 'auth', 'main'
@@ -1520,6 +1531,33 @@
         document.addEventListener('DOMContentLoaded', () => {
             renderAll();
             startLiveClock();
+            trackMockupEvent('mockup_loaded', { initial_screen: appState.screen });
+
+            // Tracker tombol Kembali ke Beranda
+            document.querySelectorAll('a[href="../index.html"], a[href="../index.html#fitur"]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    trackMockupEvent('mockup_back_home', {
+                        last_screen: appState.screen,
+                        last_tab: appState.tab
+                    });
+                });
+            });
+
+            // Engaged Simulator Time Tracker (15s, 30s, 60s, 120s)
+            let mockupActiveSecs = 0;
+            const milestones = [15, 30, 60, 120];
+            const fired = {};
+            setInterval(() => {
+                if (!document.hidden) {
+                    mockupActiveSecs++;
+                    milestones.forEach(sec => {
+                        if (mockupActiveSecs >= sec && !fired[sec]) {
+                            fired[sec] = true;
+                            trackMockupEvent('mockup_engaged_time', { seconds: sec });
+                        }
+                    });
+                }
+            }, 1000);
         });
 
         function startLiveClock() {
@@ -1548,14 +1586,31 @@
 
         /* ---------------- SCREEN NAVIGATION ---------------- */
         function switchPhoneScreen(screenName) {
+            const prevScreen = appState.screen;
             appState.screen = screenName;
             renderScreenState();
+            trackMockupEvent('mockup_screen_switch', {
+                screen_name: screenName,
+                from_screen: prevScreen
+            });
+            if (prevScreen === 'splash' && screenName !== 'splash') {
+                trackMockupEvent('mockup_start', { starting_point: screenName });
+            }
         }
 
         function switchPhoneTab(tabName) {
+            const prevScreen = appState.screen;
+            const prevTab = appState.tab;
             appState.screen = 'main';
             appState.tab = tabName;
             renderScreenState();
+            trackMockupEvent('mockup_tab_switch', {
+                tab_name: tabName,
+                from_tab: prevTab
+            });
+            if (prevScreen === 'splash') {
+                trackMockupEvent('mockup_start', { starting_point: 'direct_' + tabName });
+            }
         }
 
         function renderScreenState() {
@@ -1645,8 +1700,10 @@
             if (appState.onboardingIndex < 2) {
                 appState.onboardingIndex++;
                 renderOnboardingSlide();
+                trackMockupEvent('mockup_onboarding_slide', { slide_index: appState.onboardingIndex + 1 });
             } else {
                 switchPhoneScreen('auth');
+                trackMockupEvent('mockup_onboarding_complete', {});
             }
         }
 
@@ -1685,6 +1742,7 @@
             switchPhoneTab('home');
             renderProfile();
             triggerNotification('Masuk sebagai Megah Pratama (Pengguna Aktif)');
+            trackMockupEvent('mockup_login_demo', { user_type: 'registered' });
         }
 
         function loginAsGuest() {
@@ -1692,6 +1750,7 @@
             switchPhoneTab('home');
             renderProfile();
             triggerNotification('Masuk dalam Mode Tamu: Data tersimpan aman di perangkat');
+            trackMockupEvent('mockup_login_guest', { user_type: 'guest' });
         }
 
         function simulateForgotPassword() {
@@ -1761,6 +1820,10 @@
                 if (habit.done) {
                     triggerNotification(`Kebiasaan "${habit.title}" berhasil diselesaikan!`);
                 }
+                trackMockupEvent('mockup_habit_toggle', {
+                    habit_title: habit.title,
+                    is_done: habit.done
+                });
             }
         }
 
@@ -1775,6 +1838,10 @@
                 if (delta > 0) {
                     triggerNotification(`Bagus! Hidrasi bertambah: ${h.count}/${h.target} gelas.`);
                 }
+                trackMockupEvent('mockup_water_click', {
+                    water_count: h.count,
+                    delta: delta
+                });
             }
         }
 
@@ -1894,6 +1961,10 @@
                 if (task.done) {
                     triggerNotification(`Tugas "${task.title}" berhasil diselesaikan!`);
                 }
+                trackMockupEvent('mockup_task_toggle', {
+                    task_title: task.title,
+                    is_done: task.done
+                });
             }
         }
 
@@ -2114,6 +2185,7 @@
 
         function openFoodAiModal() {
             document.getElementById('modal-food-ai').classList.remove('hidden');
+            trackMockupEvent('mockup_ai_scanner_open', {});
         }
 
         function applyScannedFood(title, cal, prot, carb, fat) {
@@ -2126,6 +2198,10 @@
             closeModal('modal-food-ai');
             renderNutrition();
             triggerNotification(`Kamera AI berhasil mendeteksi "${title}" (+${cal} kkal)`);
+            trackMockupEvent('mockup_ai_food_detected', {
+                food_name: title,
+                calories: cal
+            });
         }
 
         /* ---------------- MEMENTO TAB ---------------- */
@@ -2158,6 +2234,7 @@
             document.getElementById('memento-modal-tags').textContent = m.tags;
             document.getElementById('memento-modal-preview').innerHTML = `<i class="fa-solid ${m.icon}"></i>`;
             document.getElementById('modal-memento-detail').classList.remove('hidden');
+            trackMockupEvent('mockup_memento_view', { moment: key });
         }
 
         function openAddMomentModal() {
@@ -2206,7 +2283,8 @@
             if (icon) icon.classList.add('fa-spin');
             if (desc) desc.textContent = 'Menyimpan backup data ke cloud...';
 
-            
+            trackMockupEvent('mockup_cloud_sync', {});
+
             setTimeout(() => {
                 if (icon) icon.classList.remove('fa-spin');
                 if (desc) desc.textContent = 'Semua data tersimpan aman dan terbaru';
@@ -2256,6 +2334,7 @@
         }
 
         function openExecutiveSummary() {
+            trackMockupEvent('mockup_executive_summary_view', {});
             const habitDone = appState.habits.filter(h => h.done).length;
             const habitTotal = appState.habits.length;
             const taskDone = appState.tasks.filter(t => t.done).length;
@@ -2286,12 +2365,14 @@
             appState.nutrition.water = 8;
             renderAll();
             triggerNotification('Keren! Semua target dan kebiasaan hari ini sudah beres (100%)!');
+            trackMockupEvent('mockup_quick_fill_100', {});
         }
 
         function resetDemoData() {
             appState = JSON.parse(JSON.stringify(DEFAULT_STATE));
             renderAll();
             triggerNotification('Data simulasi sudah di-reset.');
+            trackMockupEvent('mockup_reset_demo', {});
         }
 
         function closeModal(id) {

@@ -85,10 +85,10 @@
                 </div>
 
                 <div class="pt-8 mt-6 border-t border-outline-variant/30">
-                    <a href="#top" class="w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-2xl bg-surface-container-high hover:bg-surface-container text-on-surface font-semibold text-sm transition-all duration-200 border border-outline-variant/40">
+                    <button type="button" data-open-dev-modal="free" class="w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-2xl bg-surface-container-high hover:bg-surface-container text-on-surface font-semibold text-sm transition-all duration-200 border border-outline-variant/40 cursor-pointer">
                         <span>Mulai Gunakan Gratis</span>
-                        <span class="material-symbols-outlined text-base">arrow_upward</span>
-                    </a>
+                        <span class="material-symbols-outlined text-base">arrow_forward</span>
+                    </button>
                 </div>
             </div>
 
@@ -146,10 +146,10 @@
                 </div>
 
                 <div class="pt-8 mt-6 border-t border-outline-variant/30">
-                    <a href="#kontak" class="w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-2xl bg-primary hover:bg-primary-container text-on-primary font-bold text-sm transition-all duration-200 shadow-md">
+                    <button type="button" data-open-dev-modal="premium" class="w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-2xl bg-primary hover:bg-primary-container text-on-primary font-bold text-sm transition-all duration-200 shadow-md cursor-pointer">
                         <span>Mulai Akses Premium</span>
                         <span class="material-symbols-outlined text-base">arrow_forward</span>
-                    </a>
+                    </button>
                     <p class="text-center text-xs text-outline mt-2.5">Batalkan kapan saja tanpa komitmen rumit.</p>
                 </div>
             </div>
@@ -189,5 +189,75 @@
             </div>
         </div>
 
+    </div>
+
+    <!-- ==================== MODAL STATUS PENGEMBANGAN ==================== -->
+    <div id="modal-pricing-dev" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 hidden" role="dialog" aria-modal="true" aria-labelledby="dev-modal-title">
+        <!-- Backdrop -->
+        <div id="dev-modal-backdrop" class="fixed inset-0 bg-neutral-900/60 backdrop-blur-sm transition-opacity"></div>
+
+        <!-- Modal Dialog Card -->
+        <div class="relative w-full max-w-lg bg-surface-container-lowest rounded-3xl border border-outline-variant/40 shadow-2xl p-6 sm:p-8 z-10 transition-all transform scale-100">
+            <!-- Close Button -->
+            <button type="button" id="dev-modal-close-btn" class="absolute top-5 right-5 h-9 w-9 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface-variant flex items-center justify-center transition-colors cursor-pointer" aria-label="Tutup dialog">
+                <span class="material-symbols-outlined text-lg">close</span>
+            </button>
+
+            <!-- Icon & Subtitle -->
+            <div class="flex items-center gap-3.5 mb-4">
+                <div class="h-12 w-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center flex-shrink-0">
+                    <span class="material-symbols-outlined text-2xl">engineering</span>
+                </div>
+                <div>
+                    <span id="dev-modal-plan-title" class="text-xs font-bold uppercase tracking-wider text-primary block">
+                        Aplikasi Sedang Dikembangkan
+                    </span>
+                    <span class="text-[11.5px] font-medium text-on-surface-variant">
+                        Pemberitahuan Ketersediaan
+                    </span>
+                </div>
+            </div>
+
+            <!-- Title & Body -->
+            <div class="space-y-2.5 mb-6">
+                <h3 id="dev-modal-title" class="text-xl sm:text-2xl font-display font-bold text-on-surface tracking-tight">
+                    Aplikasi Masih Dalam Proses Pengembangan
+                </h3>
+                <p id="dev-modal-plan-desc" class="text-sm text-on-surface-variant leading-relaxed">
+                    Aplikasi LifeSync saat ini masih aktif dikembangkan. Versi publik belum dirilis untuk diunduh di Google Play Store maupun App Store.
+                </p>
+            </div>
+
+            <!-- Alternative Options Card -->
+            <div class="bg-surface-container-low rounded-2xl p-4 sm:p-5 border border-outline-variant/30 space-y-3 mb-6">
+                <p class="text-xs font-bold uppercase tracking-wider text-on-surface">Yang dapat Anda akses saat ini:</p>
+                
+                <div class="flex items-start gap-3">
+                    <span class="material-symbols-outlined text-primary text-lg flex-shrink-0 mt-0.5">smartphone</span>
+                    <div class="text-xs text-on-surface-variant leading-relaxed">
+                        <strong class="text-on-surface font-semibold">Simulator Demo:</strong> Anda dapat mencoba purwarupa interaktif langsung di browser untuk melihat gambaran antarmuka dan alur fitur yang sedang kami bangun.
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                    <span class="material-symbols-outlined text-secondary text-lg flex-shrink-0 mt-0.5">mark_email_unread</span>
+                    <div class="text-xs text-on-surface-variant leading-relaxed">
+                        <strong class="text-on-surface font-semibold">Kontak &amp; Masukan:</strong> Jika Anda memiliki pertanyaan atau ingin menyampaikan saran fitur, Anda dapat menghubungi kami melalui formulir kontak.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row items-center gap-3">
+                <a href="pages/mockup.html" id="dev-modal-cta-mockup" class="w-full sm:flex-1 inline-flex items-center justify-center gap-2 py-3 px-5 rounded-2xl bg-primary hover:bg-primary-container text-on-primary font-bold text-xs sm:text-sm transition-all duration-200 shadow-sm text-center">
+                    <span class="material-symbols-outlined text-base">play_circle</span>
+                    <span>Coba Demo Mockup</span>
+                </a>
+                <a href="#kontak" id="dev-modal-cta-kontak" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 py-3 px-5 rounded-2xl bg-surface-container-high hover:bg-surface-container text-on-surface font-semibold text-xs sm:text-sm transition-all duration-200 border border-outline-variant/40 text-center">
+                    <span>Hubungi Kami</span>
+                    <span class="material-symbols-outlined text-base">arrow_forward</span>
+                </a>
+            </div>
+        </div>
     </div>
 </section>
