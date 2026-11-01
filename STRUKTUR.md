@@ -39,7 +39,6 @@ Setiap file adalah **halaman lengkap** (sendirian, tidak dimuat via fetch) yang 
 | `nutrisi.html` | NutriScan & Nutrisi |
 | `memento.html` | Memento Journaling |
 | `fitur-notes.html` | Notes & Catatan |
-| `mockup.html` | Simulator Interaktif Full-Flow Aplikasi Mobile (Splash, Onboarding, Auth, Beranda, Planner, Catatan, Keuangan, Nutrisi AI, Memento, Profil & Rekap Harian) |
 
 Setiap halaman detail memiliki:
 - Tombol "Kembali ke Fitur Utama" (kembali ke `index.html#fitur`)

@@ -1,114 +1,109 @@
 /**
- * LifeSync - Tailwind Configuration (Daily Habit Tracker and Assistance)
- * Palet warna kanonikal LifeSync
+ * LifeSync - Tailwind Configuration
+ * Palet warna LifeSync
  */
 tailwind.config = {
     theme: {
         extend: {
             colors: {
-                surface: {
-                    DEFAULT: '#f6fbf5',
-                    dim: '#d7dbd6',
-                    bright: '#f6fbf5',
-                    variant: '#dfe4df'
-                },
-                'surface-container': {
-                    lowest: '#ffffff',
-                    low: '#f0f5f0',
-                    DEFAULT: '#ebefea',
-                    high: '#e5e9e4',
-                    highest: '#dfe4df'
-                },
-                'on-surface': {
-                    DEFAULT: '#181d1a',
-                    variant: '#414942'
-                },
-                'inverse-surface': '#2c322e',
-                'inverse-on-surface': '#edf2ed',
-                outline: {
-                    DEFAULT: '#717971',
-                    variant: '#c1c9bf'
-                },
+                // Primary Green
                 primary: {
-                    DEFAULT: '#316342',
-                    default: '#316342',
-                    dark: '#1e5031',
-                    light: '#4a7c59',
-                    container: '#4a7c59',
-                    fixed: '#b9efc5',
-                    'fixed-dim': '#9dd3aa'
+                    DEFAULT: '#16A34A',
+                    50:  '#F0FDF4',
+                    100: '#DCFCE7',
+                    200: '#BBF7D0',
+                    300: '#86EFAC',
+                    400: '#4ADE80',
+                    500: '#16A34A',
+                    600: '#15803D',
+                    700: '#166534',
+                    800: '#14532D',
+                    900: '#052E16'
                 },
-                'on-primary': {
-                    DEFAULT: '#ffffff',
-                    container: '#e1ffe5',
-                    fixed: '#00210e',
-                    'fixed-variant': '#1e5031'
-                },
-                secondary: {
-                    DEFAULT: '#9a442d',
-                    default: '#9a442d',
-                    dark: '#742814',
-                    light: '#fc9174',
-                    container: '#fc9174',
-                    fixed: '#ffdbd2',
-                    'fixed-dim': '#ffb4a1'
-                },
-                'on-secondary': {
-                    DEFAULT: '#ffffff',
-                    container: '#742814',
-                    fixed: '#3c0800',
-                    'fixed-variant': '#7c2e19'
-                },
-                tertiary: {
-                    DEFAULT: '#356243',
-                    default: '#356243',
-                    dark: '#1e5031',
-                    light: '#4e7b5a',
-                    container: '#4e7b5a',
-                    fixed: '#bdeec7',
-                    'fixed-dim': '#a1d2ac'
-                },
-                'on-tertiary': {
-                    DEFAULT: '#ffffff',
-                    container: '#dfffe3',
-                    fixed: '#00210e',
-                    'fixed-variant': '#234f32'
-                },
-                // Backward compatibility aliases
+                // brand aliases primary for template compatibility
                 brand: {
-                    DEFAULT: '#316342',
-                    50: '#f0f5f0',
-                    100: '#b9efc5',
-                    200: '#9dd3aa',
-                    300: '#6ea880',
-                    400: '#4a7c59',
-                    500: '#316342',
-                    600: '#285336',
-                    700: '#1e5031',
-                    800: '#143821',
-                    900: '#00210e'
+                    DEFAULT: '#16A34A',
+                    50:  '#F0FDF4',
+                    100: '#DCFCE7',
+                    200: '#BBF7D0',
+                    300: '#86EFAC',
+                    400: '#4ADE80',
+                    500: '#16A34A',
+                    600: '#15803D',
+                    700: '#166534',
+                    800: '#14532D',
+                    900: '#052E16'
                 },
+                // Lime accent
+                secondary: {
+                    DEFAULT: '#84CC16',
+                    50:  '#F7FEE7',
+                    100: '#ECFCCB',
+                    200: '#D9F99D',
+                    300: '#BEF264',
+                    400: '#A3E635',
+                    500: '#84CC16',
+                    600: '#65A30D',
+                    700: '#4D7C0F',
+                    800: '#3F6212',
+                    900: '#365314'
+                },
+                // Sky blue for information and assistance
+                tertiary: {
+                    DEFAULT: '#0EA5E9',
+                    50:  '#F0F9FF',
+                    100: '#E0F2FE',
+                    200: '#BAE6FD',
+                    300: '#7DD3FC',
+                    400: '#38BDF8',
+                    500: '#0EA5E9',
+                    600: '#0284C7',
+                    700: '#0369A1',
+                    800: '#075985',
+                    900: '#0C4A6E'
+                },
+                // Accent aliases
+                accent: {
+                    DEFAULT: '#84CC16',
+                    orange:  '#84CC16',
+                    coral:   '#84CC16',
+                    teal:    '#0EA5E9',
+                    tertiary:'#0EA5E9',
+                    purple:  '#0EA5E9',
+                    blue:    '#0EA5E9',
+                    emerald: '#16A34A'
+                },
+                // Neutral shades
+                neutral: {
+                    900: '#24352B',
+                    800: '#33483A',
+                    700: '#465B4D',
+                    600: '#5E7165',
+                    500: '#788A7D',
+                    400: '#9BA99F',
+                    300: '#C4CEC6',
+                    200: '#DEE6DF',
+                    100: '#EDF3ED',
+                    50:  '#F7FAF7'
+                },
+                // Text colors
                 ink: {
-                    DEFAULT: '#181d1a',
-                    soft: '#414942',
-                    muted: '#717971'
+                    DEFAULT: '#24352B',
+                    soft:    '#5E7165',
+                    muted:   '#9BA99F'
                 }
             },
             fontFamily: {
-                sans: ['"Plus Jakarta Sans"', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
-                display: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
-                serif: ['ui-serif', 'Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif']
+                sans: ['"Plus Jakarta Sans"', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif']
             },
             boxShadow: {
-                soft: '0 2px 8px -2px rgba(24, 29, 26, 0.05), 0 1px 3px -1px rgba(24, 29, 26, 0.03)',
-                card: '0 4px 20px -4px rgba(24, 29, 26, 0.06), 0 2px 6px -2px rgba(24, 29, 26, 0.04)',
-                tactile: '0 4px 20px -4px rgba(24, 29, 26, 0.05), 0 2px 6px -2px rgba(24, 29, 26, 0.03)',
-                'tactile-hover': '0 12px 28px -6px rgba(49, 99, 66, 0.12), 0 4px 10px -2px rgba(49, 99, 66, 0.06)',
-                ambient: '0 20px 40px -15px rgba(24, 29, 26, 0.08)'
+                glow:         '0 18px 45px -18px rgba(22, 163, 74, 0.45)',
+                'glow-lg':    '0 28px 70px -22px rgba(22, 163, 74, 0.55)',
+                card:         '0 22px 60px -30px rgba(36, 53, 43, 0.25)',
+                soft:         '0 4px 20px -4px rgba(36, 53, 43, 0.05), 0 2px 6px -2px rgba(36, 53, 43, 0.03)',
+                'soft-hover': '0 10px 25px -5px rgba(22, 163, 74, 0.12), 0 4px 10px -2px rgba(22, 163, 74, 0.06)'
             },
             borderRadius: {
-                '2xl': '1rem',
-                '3xl': '1.5rem',
                 '4xl': '2rem',
                 '5xl': '2.5rem'
             }

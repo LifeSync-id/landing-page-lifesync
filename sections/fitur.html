@@ -1,233 +1,103 @@
 <!-- ============================================================
       FITUR UTAMA - LifeSync
-      6 Pilar Ekosistem Kehidupan Terpadu (Daily Habit Tracker & Assistance)
-      Fokus Manfaat Nyata & Bahasa Manusiawi Bebas Jargon
+      4 Pilar Produktivitas Personal & Mindful Living
       ============================================================ -->
-<section id="fitur" class="py-24 bg-surface-container-low border-b border-outline-variant/30 relative overflow-hidden">
-    <!-- Subtle architectural background glow -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <!-- Section Header (Clean Typography, No Pill Slop) -->
-        <div class="text-center max-w-3xl mx-auto mb-16 space-y-3 reveal">
-            <p class="text-xs font-bold uppercase tracking-widest text-primary">
-                6 Pilar Ekosistem Kehidupan
-            </p>
-            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-on-surface tracking-tight">
-                Satu Ruang Tenang untuk Seluruh Dimensi Hidup
+<section id="fitur" class="py-20 lg:py-28 bg-[#F7FAF7] relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Section Header -->
+        <div class="text-center max-w-2xl mx-auto mb-16 space-y-4 reveal">
+            <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-50 border border-brand-200/80 text-xs font-bold text-brand-700 uppercase tracking-widest shadow-xs">
+                <i class="fa-solid fa-shapes text-brand-500"></i>
+                <span>Fitur Unggulan</span>
+            </span>
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-ink tracking-tight">
+                Empat Pilar Produktivitas Personal
             </h2>
-            <p class="text-base sm:text-lg text-on-surface-variant max-w-2xl mx-auto leading-relaxed">
-                Bukan sekadar to-do list biasa yang membuat lelah. LifeSync merajut catatan, kebiasaan, waktu, keuangan, nutrisi, dan memori ke dalam satu kesatuan yang selaras.
+            <p class="text-base sm:text-lg text-ink-soft max-w-xl mx-auto leading-relaxed">
+                Dirancang terpadu untuk menyederhanakan dan mengoptimalkan aktivitas harian Anda dalam satu ekosistem mindful tanpa berpindah-pindah aplikasi.
             </p>
         </div>
 
-        <!-- 6 Core Pillars Grid (3x2 on desktop) -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            <!-- 1. Catatan & To-Do Terstruktur -->
-            <div class="group relative bg-surface-container-lowest rounded-2xl p-7 border border-outline-variant/40 hover:border-primary/40 shadow-soft hover:shadow-card transition-all duration-300 flex flex-col justify-between reveal">
+        <!-- 4 Pilar Grid (Responsive 1/2/4 Columns) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            
+            <!-- 1. Todo & Task Planner -->
+            <a href="pages/fitur-todo.html" data-feature="todo" 
+               class="group feature-card card-interactive reveal reveal-delay-1 flex flex-col justify-between p-7 rounded-2xl border border-slate-200/80 bg-white hover:border-brand-300 hover:shadow-card transition-all duration-300 cursor-pointer">
                 <div>
-                    <div class="flex items-center justify-between mb-5">
-                        <div class="w-12 h-12 rounded-xl bg-primary-fixed flex items-center justify-center text-on-primary-fixed transition-colors group-hover:bg-primary group-hover:text-on-primary">
-                            <span class="material-symbols-outlined text-2xl">edit_note</span>
-                        </div>
-                        <span class="text-xs font-semibold text-primary uppercase tracking-wider">
-                            Pikiran &amp; Ide
-                        </span>
+                    <div class="w-14 h-14 rounded-2xl bg-brand-50 border border-brand-100 flex items-center justify-center text-brand-600 text-2xl mb-5 group-hover:scale-110 group-hover:bg-brand-500 group-hover:text-white transition-all duration-300 shadow-xs">
+                        <i class="fa-solid fa-list-check"></i>
                     </div>
-                    <h3 class="text-xl font-display font-bold text-on-surface mb-2.5 group-hover:text-primary transition-colors">
-                        Catatan &amp; To-Do Terstruktur
-                    </h3>
-                    <p class="text-sm text-on-surface-variant leading-relaxed mb-4">
-                        Tulis ide, checklist proyek, dan dokumen dengan format yang rapi. Dilengkapi folder teratur, pencarian label, pin catatan penting, serta perlindungan tulisan agar tidak pernah tertimpa.
+                    <span class="text-[10px] font-bold text-brand-700 uppercase tracking-wider block mb-1">Pilar 01 &bull; Waktu &amp; Agenda</span>
+                    <h3 class="text-lg font-bold text-ink mb-2">Todo &amp; Kalender Visual</h3>
+                    <p class="text-xs sm:text-sm text-ink-soft leading-relaxed">
+                        Pengelolaan tugas harian, prioritas aktivitas, dan agenda kalender visual terstruktur dalam satu garis waktu rapi.
                     </p>
-                    <ul class="space-y-2 text-xs text-on-surface-variant mb-6 border-t border-outline-variant/20 pt-4">
-                        <li class="flex items-center gap-2">
-                            <span class="material-symbols-outlined text-primary text-base">check_circle</span>
-                            <span>Folder bertingkat &amp; pencarian label cepat</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <span class="material-symbols-outlined text-primary text-base">check_circle</span>
-                            <span>Tulisan Anda selalu aman dan tidak akan tertimpa</span>
-                        </li>
-                    </ul>
                 </div>
-                <a href="pages/fitur-notes.html" class="inline-flex items-center gap-1.5 text-xs font-bold text-primary group-hover:translate-x-1 transition-all duration-200">
-                    <span>Pelajari Fitur Catatan</span>
-                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                </a>
-            </div>
+                <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-brand-600">
+                    <span>Pelajari Fitur</span>
+                    <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1.5 transition-transform duration-300"></i>
+                </div>
+            </a>
 
-            <!-- 2. Habit Tracker Mandiri -->
-            <div class="group relative bg-surface-container-lowest rounded-2xl p-7 border border-outline-variant/40 hover:border-primary/40 shadow-soft hover:shadow-card transition-all duration-300 flex flex-col justify-between reveal reveal-delay-1">
+            <!-- 2. Pencatatan Keuangan -->
+            <a href="pages/keuangan.html" data-feature="keuangan" 
+               class="group feature-card card-interactive reveal reveal-delay-2 flex flex-col justify-between p-7 rounded-2xl border border-slate-200/80 bg-white hover:border-secondary/40 hover:shadow-card transition-all duration-300 cursor-pointer">
                 <div>
-                    <div class="flex items-center justify-between mb-5">
-                        <div class="w-12 h-12 rounded-xl bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed transition-colors group-hover:bg-tertiary group-hover:text-on-primary">
-                            <span class="material-symbols-outlined text-2xl">repeat</span>
-                        </div>
-                        <span class="text-xs font-semibold text-tertiary uppercase tracking-wider">
-                            Konsistensi Diri
-                        </span>
+                    <div class="w-14 h-14 rounded-2xl bg-secondary-50 border border-secondary-100 flex items-center justify-center text-secondary-600 text-2xl mb-5 group-hover:scale-110 group-hover:bg-secondary-500 group-hover:text-white transition-all duration-300 shadow-xs">
+                        <i class="fa-solid fa-wallet"></i>
                     </div>
-                    <h3 class="text-xl font-display font-bold text-on-surface mb-2.5 group-hover:text-tertiary transition-colors">
-                        Habit Tracker Mandiri
-                    </h3>
-                    <p class="text-sm text-on-surface-variant leading-relaxed mb-4">
-                        Bangun kebiasaan baik tanpa mencampurnya dengan tumpukan tugas kerja. Pantau kemajuan Anda secara tenang dengan target yang realistis dan visual perkembangan yang memuaskan.
+                    <span class="text-[10px] font-bold text-secondary-700 uppercase tracking-wider block mb-1">Pilar 02 &bull; Finansial Sadar</span>
+                    <h3 class="text-lg font-bold text-ink mb-2">Keuangan Pribadi</h3>
+                    <p class="text-xs sm:text-sm text-ink-soft leading-relaxed">
+                        Pencatatan arus kas, alokasi anggaran, dan pantauan pemasukan serta pengeluaran harian tanpa spreadsheet rumit.
                     </p>
-                    <ul class="space-y-2 text-xs text-on-surface-variant mb-6 border-t border-outline-variant/20 pt-4">
-                        <li class="flex items-center gap-2">
-                            <span class="material-symbols-outlined text-tertiary text-base">check_circle</span>
-                            <span>Terpisah dari to-do agar pikiran tidak terbebani</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <span class="material-symbols-outlined text-tertiary text-base">check_circle</span>
-                            <span>Target harian atau mingguan sesuai ritme pribadi</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <span class="material-symbols-outlined text-tertiary text-base">notifications_active</span>
-                            <span>Pengingat personal non-template sesuai konteks (Premium)</span>
-                        </li>
-                    </ul>
                 </div>
-                <a href="pages/fitur-todo.html" class="inline-flex items-center gap-1.5 text-xs font-bold text-tertiary group-hover:translate-x-1 transition-all duration-200">
-                    <span>Lihat Panduan Kebiasaan</span>
-                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                </a>
-            </div>
+                <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-secondary-600">
+                    <span>Pelajari Fitur</span>
+                    <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1.5 transition-transform duration-300"></i>
+                </div>
+            </a>
 
-            <!-- 3. Planner & Kalender Acara -->
-            <div class="group relative bg-surface-container-lowest rounded-2xl p-7 border border-outline-variant/40 hover:border-primary/40 shadow-soft hover:shadow-card transition-all duration-300 flex flex-col justify-between reveal reveal-delay-2">
+            <!-- 3. Notes & Catatan Ide -->
+            <a href="pages/fitur-notes.html" data-feature="notes" 
+               class="group feature-card card-interactive reveal reveal-delay-3 flex flex-col justify-between p-7 rounded-2xl border border-slate-200/80 bg-white hover:border-tertiary/40 hover:shadow-card transition-all duration-300 cursor-pointer">
                 <div>
-                    <div class="flex items-center justify-between mb-5">
-                        <div class="w-12 h-12 rounded-xl bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed transition-colors group-hover:bg-secondary group-hover:text-on-primary">
-                            <span class="material-symbols-outlined text-2xl">calendar_month</span>
-                        </div>
-                        <span class="text-xs font-semibold text-secondary uppercase tracking-wider">
-                            Waktu &amp; Agenda
-                        </span>
+                    <div class="w-14 h-14 rounded-2xl bg-tertiary-50 border border-tertiary-100 flex items-center justify-center text-tertiary-600 text-2xl mb-5 group-hover:scale-110 group-hover:bg-tertiary-500 group-hover:text-white transition-all duration-300 shadow-xs">
+                        <i class="fa-regular fa-note-sticky"></i>
                     </div>
-                    <h3 class="text-xl font-display font-bold text-on-surface mb-2.5 group-hover:text-secondary transition-colors">
-                        Planner &amp; Kalender Acara
-                    </h3>
-                    <p class="text-sm text-on-surface-variant leading-relaxed mb-4">
-                        Lihat alur waktu Anda dengan jernih. Susun agenda dalam tampilan harian, mingguan, atau bulanan yang lapang, dilengkapi pengingat jadwal berulang otomatis.
+                    <span class="text-[10px] font-bold text-tertiary-700 uppercase tracking-wider block mb-1">Pilar 03 &bull; Catatan &amp; Ide</span>
+                    <h3 class="text-lg font-bold text-ink mb-2">Notes &amp; Catatan Ide</h3>
+                    <p class="text-xs sm:text-sm text-ink-soft leading-relaxed">
+                        Ruang bebas untuk menulis ide kreatif, ringkasan rapat, dan dokumen checklist tugas dengan editor Rich Text.
                     </p>
-                    <ul class="space-y-2 text-xs text-on-surface-variant mb-6 border-t border-outline-variant/20 pt-4">
-                        <li class="flex items-center gap-2">
-                            <span class="material-symbols-outlined text-secondary text-base">check_circle</span>
-                            <span>Pengingat acara otomatis tanpa perlu disetel ulang</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <span class="material-symbols-outlined text-secondary text-base">check_circle</span>
-                            <span>Klasifikasi prioritas untuk fokus pada hal terpenting</span>
-                        </li>
-                    </ul>
                 </div>
-                <a href="pages/kalender.html" class="inline-flex items-center gap-1.5 text-xs font-bold text-secondary group-hover:translate-x-1 transition-all duration-200">
-                    <span>Jelajahi Kalender</span>
-                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                </a>
-            </div>
+                <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-tertiary-600">
+                    <span>Pelajari Fitur</span>
+                    <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1.5 transition-transform duration-300"></i>
+                </div>
+            </a>
 
-            <!-- 4. Finansial & Arus Kas -->
-            <div class="group relative bg-surface-container-lowest rounded-2xl p-7 border border-outline-variant/40 hover:border-primary/40 shadow-soft hover:shadow-card transition-all duration-300 flex flex-col justify-between reveal">
+            <!-- 4. Memento Journaling -->
+            <a href="pages/memento.html" data-feature="memento" 
+               class="group feature-card card-interactive reveal reveal-delay-4 flex flex-col justify-between p-7 rounded-2xl border border-slate-200/80 bg-white hover:border-brand-300 hover:shadow-card transition-all duration-300 cursor-pointer">
                 <div>
-                    <div class="flex items-center justify-between mb-5">
-                        <div class="w-12 h-12 rounded-xl bg-primary-fixed flex items-center justify-center text-on-primary-fixed transition-colors group-hover:bg-primary group-hover:text-on-primary">
-                            <span class="material-symbols-outlined text-2xl">account_balance_wallet</span>
-                        </div>
-                        <span class="text-xs font-semibold text-primary uppercase tracking-wider">
-                            Arus Kas Pribadi
-                        </span>
+                    <div class="w-14 h-14 rounded-2xl bg-brand-50 border border-brand-100 flex items-center justify-center text-brand-700 text-2xl mb-5 group-hover:scale-110 group-hover:bg-brand-600 group-hover:text-white transition-all duration-300 shadow-xs">
+                        <i class="fa-solid fa-map-location-dot"></i>
                     </div>
-                    <h3 class="text-xl font-display font-bold text-on-surface mb-2.5 group-hover:text-primary transition-colors">
-                        Finansial &amp; Arus Kas
-                    </h3>
-                    <p class="text-sm text-on-surface-variant leading-relaxed mb-4">
-                        Catat pemasukan dan pengeluaran secara cepat bahkan saat offline. Pahami ke mana uang Anda pergi melalui grafik komposisi pengeluaran yang mudah dibaca.
+                    <span class="text-[10px] font-bold text-brand-700 uppercase tracking-wider block mb-1">Pilar 04 &bull; Refleksi Hidup</span>
+                    <h3 class="text-lg font-bold text-ink mb-2">Memento (Journal &amp; GPS)</h3>
+                    <p class="text-xs sm:text-sm text-ink-soft leading-relaxed">
+                        Dokumentasi momen berharga dilengkapi visual foto kenangan dan titik lokasi peta personal yang sepenuhnya privat.
                     </p>
-                    <ul class="space-y-2 text-xs text-on-surface-variant mb-6 border-t border-outline-variant/20 pt-4">
-                        <li class="flex items-center gap-2">
-                            <span class="material-symbols-outlined text-primary text-base">check_circle</span>
-                            <span>Ringkasan otomatis bulanan tanpa kalkulasi rumit</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <span class="material-symbols-outlined text-primary text-base">check_circle</span>
-                            <span>Kategori belanja fleksibel dengan visual grafik yang jelas</span>
-                        </li>
-                    </ul>
                 </div>
-                <a href="pages/keuangan.html" class="inline-flex items-center gap-1.5 text-xs font-bold text-primary group-hover:translate-x-1 transition-all duration-200">
-                    <span>Buka Fitur Finansial</span>
-                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                </a>
-            </div>
+                <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-brand-600">
+                    <span>Pelajari Fitur</span>
+                    <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1.5 transition-transform duration-300"></i>
+                </div>
+            </a>
 
-            <!-- 5. Kesehatan & Pemindai Nutrisi AI -->
-            <div class="group relative bg-surface-container-lowest rounded-2xl p-7 border border-outline-variant/40 hover:border-primary/40 shadow-soft hover:shadow-card transition-all duration-300 flex flex-col justify-between reveal reveal-delay-1">
-                <div>
-                    <div class="flex items-center justify-between mb-5">
-                        <div class="w-12 h-12 rounded-xl bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed transition-colors group-hover:bg-secondary group-hover:text-on-primary">
-                            <span class="material-symbols-outlined text-2xl">restaurant</span>
-                        </div>
-                        <span class="text-xs font-semibold text-secondary uppercase tracking-wider">
-                            Gizi &amp; Pola Makan
-                        </span>
-                    </div>
-                    <h3 class="text-xl font-display font-bold text-on-surface mb-2.5 group-hover:text-secondary transition-colors">
-                        Kesehatan &amp; Nutrisi
-                    </h3>
-                    <p class="text-sm text-on-surface-variant leading-relaxed mb-4">
-                        Arahkan kamera ke makanan Anda. Sistem mengenali menu, mencocokkan data gizi terpercaya, dan menyajikan takaran kalori serta protein tanpa perlu mengetik gramatur manual.
-                    </p>
-                    <ul class="space-y-2 text-xs text-on-surface-variant mb-6 border-t border-outline-variant/20 pt-4">
-                        <li class="flex items-center gap-2">
-                            <span class="material-symbols-outlined text-secondary text-base">check_circle</span>
-                            <span>Pindai piring makanan dalam hitungan detik</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <span class="material-symbols-outlined text-secondary text-base">check_circle</span>
-                            <span>Rincian kalori, protein, karbohidrat, dan lemak sehat</span>
-                        </li>
-                    </ul>
-                </div>
-                <a href="pages/nutrisi.html" class="inline-flex items-center gap-1.5 text-xs font-bold text-secondary group-hover:translate-x-1 transition-all duration-200">
-                    <span>Cek Pemindai Nutrisi</span>
-                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                </a>
-            </div>
-
-            <!-- 6. Memento Journal -->
-            <div class="group relative bg-surface-container-lowest rounded-2xl p-7 border border-outline-variant/40 hover:border-primary/40 shadow-soft hover:shadow-card transition-all duration-300 flex flex-col justify-between reveal reveal-delay-2">
-                <div>
-                    <div class="flex items-center justify-between mb-5">
-                        <div class="w-12 h-12 rounded-xl bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed transition-colors group-hover:bg-tertiary group-hover:text-on-primary">
-                            <span class="material-symbols-outlined text-2xl">pin_drop</span>
-                        </div>
-                        <span class="text-xs font-semibold text-tertiary uppercase tracking-wider">
-                            Kenangan Hidup
-                        </span>
-                    </div>
-                    <h3 class="text-xl font-display font-bold text-on-surface mb-2.5 group-hover:text-tertiary transition-colors">
-                        Memento Journal
-                    </h3>
-                    <p class="text-sm text-on-surface-variant leading-relaxed mb-4">
-                        Abadikan refleksi personal dan momen berharga yang tertaut langsung dengan titik lokasi peta dan foto kenangan, tersimpan rapi dan privat hanya untuk Anda.
-                    </p>
-                    <ul class="space-y-2 text-xs text-on-surface-variant mb-6 border-t border-outline-variant/20 pt-4">
-                        <li class="flex items-center gap-2">
-                            <span class="material-symbols-outlined text-tertiary text-base">check_circle</span>
-                            <span>Peta perjalanan personal untuk menelusuri tempat berkesan</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <span class="material-symbols-outlined text-tertiary text-base">check_circle</span>
-                            <span>Arsip foto privat tanpa algoritma media sosial yang bising</span>
-                        </li>
-                    </ul>
-                </div>
-                <a href="pages/memento.html" class="inline-flex items-center gap-1.5 text-xs font-bold text-tertiary group-hover:translate-x-1 transition-all duration-200">
-                    <span>Buka Jurnal Memento</span>
-                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                </a>
-            </div>
         </div>
     </div>
 </section>

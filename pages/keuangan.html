@@ -1,109 +1,61 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="id">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LSL8LFE6YG"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-LSL8LFE6YG');
-    </script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LifeSync - Keuangan &amp; Arus Kas Pribadi</title>
+    <title>LifeSync - Catatan Keuangan</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="../tailwind-config.js"></script>
     <link rel="stylesheet" href="../style.css">
     <link rel="icon" type="image/png" href="../assets/lifesync-symbol.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,500..800;1,500..800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="bg-surface-container-low text-on-surface p-6 sm:p-12 font-sans selection:bg-primary-default selection:text-on-primary min-h-screen">
-    <div class="max-w-4xl mx-auto bg-surface-container-lowest p-8 sm:p-10 rounded-3xl shadow-card space-y-6 border border-outline-variant/40">
-        <a href="../index.html#fitur" class="inline-flex items-center gap-1.5 text-xs font-bold text-primary hover:text-primary-dark transition-colors">
-            <span class="material-symbols-outlined text-sm">arrow_back</span>
-            <span>Kembali ke Fitur Utama LifeSync</span>
+<body class="bg-[#F7FAF7] text-neutral-900 p-6 sm:p-12 font-sans selection:bg-brand-500 selection:text-white">
+    <div class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-sm space-y-6 border border-[#DEE6DF]">
+        <a href="../index.html" class="inline-flex items-center gap-2 text-sm font-bold text-brand-600 hover:text-brand-700 transition">
+            <i class="fa-solid fa-arrow-left"></i> Kembali ke Halaman Utama
         </a>
-
-        <div class="flex items-center space-x-4 border-b border-outline-variant/30 pb-5">
-            <div class="w-14 h-14 bg-primary-fixed text-primary rounded-2xl flex items-center justify-center flex-shrink-0">
-                <span class="material-symbols-outlined text-3xl">account_balance_wallet</span>
+        <div class="flex items-center space-x-4 border-b border-[#DEE6DF] pb-4">
+            <div class="w-12 h-12 bg-secondary-50 text-secondary-500 rounded-2xl flex items-center justify-center text-2xl font-bold">
+                <i class="fa-solid fa-coins"></i>
             </div>
             <div>
-                <h1 class="text-2xl sm:text-3xl font-display font-bold text-on-surface">Pencatatan &amp; Arus Kas Finansial</h1>
-                <p class="text-xs sm:text-sm text-on-surface-variant font-mono">Pencatatan Cepat &bull; Grafik Donut &bull; Ringkasan Bulanan Otomatis</p>
+                <h1 class="text-2xl font-black text-neutral-900">Pencatatan &amp; Pemantauan Keuangan</h1>
+                <p class="text-sm text-neutral-600">Fitur Unggulan LifeSync</p>
             </div>
         </div>
-
-        <p class="text-on-surface-variant leading-relaxed text-sm sm:text-base">
-            Kendalikan kesehatan finansial pribadi Anda tanpa kerumitan spreadsheet akuntansi. LifeSync menyediakan pencatatan arus kas pemasukan dan pengeluaran harian secepat kilat dengan visualisasi proporsi biaya yang intuitif.
+        <p class="text-neutral-600 leading-relaxed text-sm sm:text-base mb-4">
+            LifeSync membantu pengguna mencatat setiap transaksi keuangan pribadi harian, baik pemasukan maupun pengeluaran. Pengguna dapat mengkategorikan transaksi, melihat ringkasan saldo, dan mendapatkan insight finansial untuk mengatur keuangan dengan lebih bijak.
         </p>
 
         <div class="grid md:grid-cols-2 gap-6">
-            <div class="p-6 rounded-2xl border border-outline-variant/30 bg-surface-container-low">
-                <h3 class="text-base font-display font-bold text-on-surface mb-3 flex items-center gap-2">
-                    <span class="material-symbols-outlined text-primary text-xl">payments</span>
-                    <span>Pencatatan Cepat &amp; Kategori Kustom</span>
+            <div class="p-6 rounded-lg border border-[#DEE6DF] bg-white">
+                <h3 class="text-lg font-bold text-neutral-900 mb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-wallet text-brand-600"></i> Pencatatan Transaksi
                 </h3>
-                <ul class="space-y-3 text-xs sm:text-sm text-on-surface-variant">
-                    <li class="flex items-start gap-2.5">
-                        <span class="material-symbols-outlined text-primary text-base flex-shrink-0 mt-0.5">check_circle</span>
-                        <span>Catat transaksi dalam 3 detik: nominal, tanggal, dan pos anggaran</span>
-                    </li>
-                    <li class="flex items-start gap-2.5">
-                        <span class="material-symbols-outlined text-primary text-base flex-shrink-0 mt-0.5">check_circle</span>
-                        <span>Kategori bebas disesuaikan (Kebutuhan Pokok, Transportasi, Hiburan, Tabungan)</span>
-                    </li>
-                    <li class="flex items-start gap-2.5">
-                        <span class="material-symbols-outlined text-primary text-base flex-shrink-0 mt-0.5">check_circle</span>
-                        <span>Dukungan penuh saat offline tanpa perlu login atau sinyal</span>
-                    </li>
-                    <li class="flex items-start gap-2.5">
-                        <span class="material-symbols-outlined text-primary text-base flex-shrink-0 mt-0.5">check_circle</span>
-                        <span>Edit atau batalkan transaksi kapan saja tanpa merusak saldo</span>
-                    </li>
+                <ul class="space-y-3 text-sm text-neutral-600">
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-xs text-brand-500 mt-0.5"></i> <span class="leading-relaxed">Catat pemasukan dan pengeluaran dengan jumlah, tanggal, dan keterangan</span></li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-xs text-brand-500 mt-0.5"></i> <span class="leading-relaxed">Pilih kategori transaksi (makanan, transportasi, hiburan, tagihan, dll)</span></li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-xs text-brand-500 mt-0.5"></i> <span class="leading-relaxed">Edit atau hapus catatan transaksi kapan saja</span></li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-xs text-brand-500 mt-0.5"></i> <span class="leading-relaxed">Riwayat transaksi tersimpan secara lokal di perangkat</span></li>
                 </ul>
             </div>
-
-            <div class="p-6 rounded-2xl border border-outline-variant/30 bg-surface-container-low">
-                <h3 class="text-base font-display font-bold text-on-surface mb-3 flex items-center gap-2">
-                    <span class="material-symbols-outlined text-primary text-xl">pie_chart</span>
-                    <span>Visualisasi &amp; Wawasan Anggaran</span>
+            <div class="p-6 rounded-lg border border-[#DEE6DF] bg-white">
+                <h3 class="text-lg font-bold text-neutral-900 mb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-chart-pie text-brand-600"></i> Insight Keuangan
                 </h3>
-                <ul class="space-y-3 text-xs sm:text-sm text-on-surface-variant">
-                    <li class="flex items-start gap-2.5">
-                        <span class="material-symbols-outlined text-primary text-base flex-shrink-0 mt-0.5">check_circle</span>
-                        <span>Donut chart interaktif menunjukkan persentase alokasi dana per kategori</span>
-                    </li>
-                    <li class="flex items-start gap-2.5">
-                        <span class="material-symbols-outlined text-primary text-base flex-shrink-0 mt-0.5">check_circle</span>
-                        <span>Agregasi otomatis saldo dan total mutasi bulanan</span>
-                    </li>
-                    <li class="flex items-start gap-2.5">
-                        <span class="material-symbols-outlined text-primary text-base flex-shrink-0 mt-0.5">check_circle</span>
-                        <span>Perbandingan arus kas masuk vs keluar secara real-time</span>
-                    </li>
-                    <li class="flex items-start gap-2.5">
-                        <span class="material-symbols-outlined text-primary text-base flex-shrink-0 mt-0.5">check_circle</span>
-                        <span>Fitur wawasan AI tingkat lanjut tersedia opsional pada paket Premium</span>
-                    </li>
+                <ul class="space-y-3 text-sm text-neutral-600">
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-xs text-brand-500 mt-0.5"></i> <span class="leading-relaxed">Ringkasan saldo terkini dan total pemasukan/pengeluaran</span></li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-xs text-brand-500 mt-0.5"></i> <span class="leading-relaxed">Grafik distribusi pengeluaran per kategori</span></li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-xs text-brand-500 mt-0.5"></i> <span class="leading-relaxed">Analisis pola pengeluaran harian, mingguan, dan bulanan</span></li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-xs text-brand-500 mt-0.5"></i> <span class="leading-relaxed">Fitur insight lanjutan tersedia untuk pengguna Premium</span></li>
                 </ul>
             </div>
         </div>
 
-        <div class="p-6 rounded-2xl border border-primary-default/20 bg-surface-container-low">
-            <h3 class="text-sm font-bold text-primary mb-1.5 flex items-center gap-2">
-                <span class="material-symbols-outlined text-base">verified_user</span>
-                <span>Kerahasiaan Finansial Pribadi</span>
-            </h3>
-            <p class="text-xs sm:text-sm text-on-surface-variant leading-relaxed">
-                Data keuangan Anda tidak pernah kami perdagangkan atau digunakan untuk profiling iklan. Seluruh mutasi tersimpan di perangkat lokal Anda dan hanya dapat diakses oleh akun Anda sendiri.
-            </p>
+        <div class="p-6 rounded-lg border border-brand-100 bg-brand-50">
+            <h3 class="text-lg font-bold text-brand-700 mb-3">Manfaat bagi Pengguna</h3>
+            <p class="text-sm text-brand-600 leading-relaxed">Dengan pencatatan keuangan terstruktur, pengguna bisa mengontrol pengeluaran, menghindari boros, dan merencanakan tabungan serta investasi untuk masa depan.</p>
         </div>
     </div>
 </body>

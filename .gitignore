@@ -11,6 +11,3 @@ tools/.chrome-profile/
 .DS_Store
 Thumbs.db
 *.log
-plan
-__pycache__/
-*.pyc

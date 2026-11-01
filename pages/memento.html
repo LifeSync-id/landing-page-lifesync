@@ -1,109 +1,61 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="id">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LSL8LFE6YG"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-LSL8LFE6YG');
-    </script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LifeSync - Memento (Jurnal Refleksi &amp; Foto GPS)</title>
+    <title>LifeSync - Memento Journaling</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="../tailwind-config.js"></script>
     <link rel="stylesheet" href="../style.css">
     <link rel="icon" type="image/png" href="../assets/lifesync-symbol.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,500..800;1,500..800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="bg-surface-container-low text-on-surface p-6 sm:p-12 font-sans selection:bg-tertiary-default selection:text-on-primary min-h-screen">
-    <div class="max-w-4xl mx-auto bg-surface-container-lowest p-8 sm:p-10 rounded-3xl shadow-card space-y-6 border border-outline-variant/40">
-        <a href="../index.html#fitur" class="inline-flex items-center gap-1.5 text-xs font-bold text-tertiary hover:text-tertiary-dark transition-colors">
-            <span class="material-symbols-outlined text-sm">arrow_back</span>
-            <span>Kembali ke Fitur Utama LifeSync</span>
+<body class="bg-[#F7FAF7] text-neutral-900 p-6 sm:p-12 font-sans selection:bg-brand-500 selection:text-white">
+    <div class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-sm space-y-6 border border-[#DEE6DF]">
+        <a href="../index.html" class="inline-flex items-center gap-2 text-sm font-bold text-brand-600 hover:text-brand-700 transition">
+            <i class="fa-solid fa-arrow-left"></i> Kembali ke Halaman Utama
         </a>
-
-        <div class="flex items-center space-x-4 border-b border-outline-variant/30 pb-5">
-            <div class="w-14 h-14 bg-tertiary-fixed text-tertiary rounded-2xl flex items-center justify-center flex-shrink-0">
-                <span class="material-symbols-outlined text-3xl">pin_drop</span>
+        <div class="flex items-center space-x-4 border-b border-[#DEE6DF] pb-4">
+            <div class="w-12 h-12 bg-brand-100 text-brand-700 rounded-2xl flex items-center justify-center text-2xl font-bold">
+                <i class="fa-solid fa-map-location-dot"></i>
             </div>
             <div>
-                <h1 class="text-2xl sm:text-3xl font-display font-bold text-on-surface">Memento Journal &amp; Peta GPS</h1>
-                <p class="text-xs sm:text-sm text-on-surface-variant font-mono">Dokumentasi Foto &bull; Titik Lokasi Peta &bull; Penyimpanan Privat</p>
+                <h1 class="text-2xl font-black text-neutral-900">Memento (GPS Photo Journal)</h1>
+                <p class="text-sm text-neutral-600">Fitur Unggulan LifeSync</p>
             </div>
         </div>
-
-        <p class="text-on-surface-variant leading-relaxed text-sm sm:text-base">
-            Hidup bukan hanya deretan target yang harus dicoret, tetapi kumpulan momen bermakna yang pantas dikenang. Memento memungkinkan Anda mencatat refleksi batin, menyematkan foto memori, dan mengaitkannya dengan titik koordinat geografis tempat momen itu terjadi.
+        <p class="text-neutral-600 leading-relaxed text-sm sm:text-base mb-4">
+            LifeSync menyediakan layanan journaling untuk mencatat momen berharga dalam hidup. Setiap catatan dapat dilengkapi foto dan otomatis ditandai lokasi melalui GPS Tagging, sehingga momen bisa divisualisasikan pada peta dan diakses kapan saja.
         </p>
 
         <div class="grid md:grid-cols-2 gap-6">
-            <div class="p-6 rounded-2xl border border-outline-variant/30 bg-surface-container-low">
-                <h3 class="text-base font-display font-bold text-on-surface mb-3 flex items-center gap-2">
-                    <span class="material-symbols-outlined text-tertiary text-xl">add_photo_alternate</span>
-                    <span>Jurnal Foto &amp; Koordinat GPS</span>
+            <div class="p-6 rounded-lg border border-[#DEE6DF] bg-white">
+                <h3 class="text-lg font-bold text-neutral-900 mb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-map-location-dot text-brand-600"></i> GPS Tagging
                 </h3>
-                <ul class="space-y-3 text-xs sm:text-sm text-on-surface-variant">
-                    <li class="flex items-start gap-2.5">
-                        <span class="material-symbols-outlined text-tertiary text-base flex-shrink-0 mt-0.5">check_circle</span>
-                        <span>Sematkan foto kenangan langsung ke lembar jurnal refleksi</span>
-                    </li>
-                    <li class="flex items-start gap-2.5">
-                        <span class="material-symbols-outlined text-tertiary text-base flex-shrink-0 mt-0.5">check_circle</span>
-                        <span>Penandaan koordinat GPS otomatis saat momen diabadikan</span>
-                    </li>
-                    <li class="flex items-start gap-2.5">
-                        <span class="material-symbols-outlined text-tertiary text-base flex-shrink-0 mt-0.5">check_circle</span>
-                        <span>Stiker ekspresi visual &amp; catatan suasana hati (mood)</span>
-                    </li>
-                    <li class="flex items-start gap-2.5">
-                        <span class="material-symbols-outlined text-tertiary text-base flex-shrink-0 mt-0.5">check_circle</span>
-                        <span>File foto tersimpan aman dan terkompresi efisien di perangkat</span>
-                    </li>
+                <ul class="space-y-3 text-sm text-neutral-600">
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-xs text-brand-500 mt-0.5"></i> <span class="leading-relaxed">Setiap foto journal otomatis mencatat titik koordinat lokasi</span></li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-xs text-brand-500 mt-0.5"></i> <span class="leading-relaxed">Lokasi disimpan beserta nama tempat dan tanggal catatan</span></li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-xs text-brand-500 mt-0.5"></i> <span class="leading-relaxed">Pengguna dapat menambahkan catatan teks bersama foto</span></li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-xs text-brand-500 mt-0.5"></i> <span class="leading-relaxed">Semua data tersimpan secara aman di perangkat lokal</span></li>
                 </ul>
             </div>
-
-            <div class="p-6 rounded-2xl border border-outline-variant/30 bg-surface-container-low">
-                <h3 class="text-base font-display font-bold text-on-surface mb-3 flex items-center gap-2">
-                    <span class="material-symbols-outlined text-tertiary text-xl">map</span>
-                    <span>Tampilan Napak Tilas Peta Interaktif</span>
+            <div class="p-6 rounded-lg border border-[#DEE6DF] bg-white">
+                <h3 class="text-lg font-bold text-neutral-900 mb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-map text-brand-600"></i> Visualisasi Peta
                 </h3>
-                <ul class="space-y-3 text-xs sm:text-sm text-on-surface-variant">
-                    <li class="flex items-start gap-2.5">
-                        <span class="material-symbols-outlined text-tertiary text-base flex-shrink-0 mt-0.5">check_circle</span>
-                        <span>Visualisasi penanda memori di peta perjalanan personal Anda</span>
-                    </li>
-                    <li class="flex items-start gap-2.5">
-                        <span class="material-symbols-outlined text-tertiary text-base flex-shrink-0 mt-0.5">check_circle</span>
-                        <span>Ketuk penanda lokasi untuk membuka kembali cerita dan foto terkait</span>
-                    </li>
-                    <li class="flex items-start gap-2.5">
-                        <span class="material-symbols-outlined text-tertiary text-base flex-shrink-0 mt-0.5">check_circle</span>
-                        <span>Filter perjalanan berdasarkan rentang waktu atau kota</span>
-                    </li>
-                    <li class="flex items-start gap-2.5">
-                        <span class="material-symbols-outlined text-tertiary text-base flex-shrink-0 mt-0.5">check_circle</span>
-                        <span>Privasi total: peta memori Anda hanya untuk mata Anda sendiri</span>
-                    </li>
+                <ul class="space-y-3 text-sm text-neutral-600">
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-xs text-brand-500 mt-0.5"></i> <span class="leading-relaxed">Momen journal ditampilkan sebagai penanda pada peta interaktif</span></li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-xs text-brand-500 mt-0.5"></i> <span class="leading-relaxed">Klik penanda untuk melihat foto dan catatan momen tersebut</span></li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-xs text-brand-500 mt-0.5"></i> <span class="leading-relaxed">Telusuri kembali perjalanan dan momen yang telah dicatat</span></li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-check text-xs text-brand-500 mt-0.5"></i> <span class="leading-relaxed">Filter momen berdasarkan tanggal atau lokasi</span></li>
                 </ul>
             </div>
         </div>
 
-        <div class="p-6 rounded-2xl border border-tertiary-default/20 bg-surface-container-low">
-            <h3 class="text-sm font-bold text-tertiary mb-1.5 flex items-center gap-2">
-                <span class="material-symbols-outlined text-base">favorite</span>
-                <span>Arsip Kenangan Pribadi yang Otentik</span>
-            </h3>
-            <p class="text-xs sm:text-sm text-on-surface-variant leading-relaxed">
-                Bukan untuk pamer di media sosial publik, melainkan ruang suci untuk mengapresiasi perjalanan Anda. Kembali ke tempat-tempat yang pernah Anda kunjungi dan kenang kembali pertumbuhan diri Anda seiring waktu.
-            </p>
+        <div class="p-6 rounded-lg border border-brand-100 bg-brand-50">
+            <h3 class="text-lg font-bold text-brand-700 mb-3">Manfaat bagi Pengguna</h3>
+            <p class="text-sm text-brand-600 leading-relaxed">Dengan Memento Journaling, pengguna bisa melengkapi kenangan berharga dengan lokasi dan foto, lalu menikmati kembali momen-momen tersebut kapan saja melalui peta interaktif.</p>
         </div>
     </div>
 </body>

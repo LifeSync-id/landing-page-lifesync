@@ -55,6 +55,7 @@ const SECTIONS = [
     { id: 'section-offline', file: 'sections/offline.html' },
     { id: 'section-ai',      file: 'sections/ai.html' },
     { id: 'section-pricing', file: 'sections/pricing.html' },
+    { id: 'section-faq',     file: 'sections/faq.html' },
     { id: 'section-kontak',  file: 'sections/kontak.html' },
     { id: 'section-footer',  file: 'sections/footer.html' },
 ];
@@ -109,6 +110,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         { name: 'Showcase Navigation', fn: initShowcaseNavigation },
         { name: 'Download Links', fn: initDownloadLinks },
         { name: 'Kontak Form', fn: initKontakForm },
+        { name: 'FAQ Accordion', fn: initFaqAccordion },
         { name: 'Smooth Scroll', fn: initSmoothScroll }
     ];
 
@@ -156,12 +158,8 @@ function initNavbar() {
         toggle.setAttribute('aria-expanded', String(open));
         toggle.setAttribute('aria-label', open ? 'Tutup menu navigasi' : 'Buka menu navigasi');
         if (icon) {
-            if (icon.classList.contains('material-symbols-outlined')) {
-                icon.textContent = open ? 'close' : 'menu';
-            } else {
-                icon.classList.toggle('fa-bars', !open);
-                icon.classList.toggle('fa-xmark', open);
-            }
+            icon.classList.toggle('fa-bars', !open);
+            icon.classList.toggle('fa-xmark', open);
         }
     }
 
@@ -187,10 +185,10 @@ function initNavbar() {
         var scrolled = y > 10;
 
         if (scrolled) {
-            navbar.classList.add('bg-surface/90', 'backdrop-blur-xl', 'shadow-soft');
+            navbar.classList.add('bg-white/95', 'backdrop-blur-xl', 'shadow-sm');
             navbar.classList.remove('bg-transparent');
             if (bar) {
-                bar.classList.add('border-outline-variant/30');
+                bar.classList.add('border-slate-100');
                 bar.classList.remove('border-transparent');
             }
         } else {
@@ -225,7 +223,7 @@ function initNavbar() {
         navLinks.forEach(function (link) {
             var href = link.getAttribute('href');
             var active = href === '#' + current;
-            link.classList.toggle('text-primary-default', active);
+            link.classList.toggle('text-brand-600', active);
             link.classList.toggle('font-bold', active);
         });
     }
@@ -489,3 +487,33 @@ window.resetKontakForm = function resetKontakForm() {
         if (el) el.classList.add('hidden');
     });
 };
+
+
+/* ==========================================================
+   8. FAQ Accordion Interaction
+   Mendukung toggle interaktif, auto-close item lain, dan animasi rotasi
+   ========================================================== */
+function initFaqAccordion() {
+    var faqItems = document.querySelectorAll('.faq-item');
+    if (!faqItems.length) return;
+
+    faqItems.forEach(function (item) {
+        var summary = item.querySelector('summary');
+        if (!summary) return;
+
+        summary.addEventListener('click', function (e) { e.preventDefault();
+            // Tutup semua item FAQ terlebih dahulu (accordion style)
+            faqItems.forEach(function (other) {
+                other.removeAttribute('open');
+            });
+            // Buka item ini jika sebelumnya tertutup
+            if (!item.hasAttribute('open')) {
+                item.setAttribute('open', '');
+            }
+        });
+    });
+}
+
+
+
+
