@@ -31,6 +31,11 @@
     <script src="../tailwind-config.js"></script>
 
     <style>
+        html, body {
+            overflow-x: hidden;
+            max-width: 100vw;
+        }
+
         body {
             font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
             background-color: #f6fbf5;
@@ -89,6 +94,12 @@
             border-radius: 0 3px 3px 0;
         }
 
+        @media (max-width: 420px) {
+            .phone-btn-vol-up { left: -6px; width: 3px; }
+            .phone-btn-vol-down { left: -6px; width: 3px; }
+            .phone-btn-power { right: -6px; width: 3px; }
+        }
+
 
 
         /* Material Symbols helper */
@@ -138,42 +149,47 @@
 <body class="min-h-screen bg-[#f6fbf5] text-[#181d1a] ambient-mesh selection:bg-primary/20 selection:text-primary">
 
     <!-- ==================== HEADER UTAMA ==================== -->
-    <!-- ==================== HEADER UTAMA ==================== -->
-    <header class="sticky top-0 z-50 border-b border-[#dfe4df] bg-white/95 backdrop-blur-md px-4 py-3 sm:px-8 shadow-xs">
-        <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+    <header class="sticky top-0 z-50 border-b border-[#dfe4df] bg-white/95 backdrop-blur-md px-3 sm:px-6 md:px-8 py-2.5 sm:py-3 shadow-xs">
+        <div class="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-4 min-w-0">
 
             <!-- Brand: Samakan Ikon & Logo Banner dengan Landing Page -->
-            <div class="flex items-center gap-3 shrink-0">
-                <a href="../index.html" class="flex items-center gap-2.5 sm:gap-3 shrink-0 group focus:outline-none" aria-label="LifeSync - Beranda">
+            <div class="flex items-center gap-2 sm:gap-3 shrink-0 min-w-0">
+                <a href="../index.html" class="flex items-center gap-2 sm:gap-2.5 shrink-0 group focus:outline-none" aria-label="LifeSync - Beranda">
                     <img src="../assets/lifesync-symbol.png" alt="Logo LifeSync" width="48" height="48"
-                         class="h-9 w-9 sm:h-10 sm:w-10 md:h-11 md:w-11 object-contain transition-transform duration-300 group-hover:scale-105">
+                         class="h-8 w-8 sm:h-10 sm:w-10 md:h-11 md:w-11 object-contain transition-transform duration-300 group-hover:scale-105">
                     <img src="../assets/lifesync-logo-name.png" alt="LifeSync" width="220" height="56"
-                         class="h-10 sm:h-12 md:h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
+                         class="h-8 sm:h-10 md:h-12 w-auto object-contain hidden min-[480px]:block transition-transform duration-300 group-hover:scale-105">
                 </a>
             </div>
 
             <!-- Action Buttons & Tombol Kembali ke Beranda -->
-            <div class="flex items-center gap-2 sm:gap-3">
+            <div class="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
                 <a href="../index.html"
-                   class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-[#316342]/30 bg-[#ebf5ee] hover:bg-[#dfe9e1] text-xs font-bold text-[#1e5031] transition shadow-2xs"
-                   title="Kembali ke Beranda Utama">
-                    <span class="material-symbols-outlined text-[16px]">arrow_back</span>
-                    <span class="hidden sm:inline">Kembali ke Beranda</span>
-                    <span class="sm:hidden">Beranda</span>
+                   class="inline-flex items-center justify-center gap-1 p-2 sm:px-3 sm:py-2 rounded-xl border border-[#316342]/30 bg-[#ebf5ee] hover:bg-[#dfe9e1] text-xs font-bold text-[#1e5031] transition shadow-2xs"
+                   title="Kembali ke Beranda Utama" aria-label="Kembali ke Beranda">
+                    <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+                    <span class="hidden md:inline">Beranda</span>
                 </a>
 
-                <button type="button" onclick="resetDemoData()" class="px-3 py-2 rounded-xl border border-[#c1c9bf] bg-white hover:bg-[#f6fbf5] text-xs font-semibold text-[#414942] hover:text-[#181D1A] transition flex items-center gap-1.5 shadow-2xs" title="Reset Simulasi">
-                    <i class="fa-solid fa-arrow-rotate-left text-[11px]"></i>
-                    <span class="hidden md:inline">Mulai Ulang</span>
+                <button type="button" onclick="resetDemoData()"
+                        class="inline-flex items-center justify-center p-2 sm:px-3 sm:py-2 rounded-xl border border-[#c1c9bf] bg-white hover:bg-[#f6fbf5] text-xs font-semibold text-[#414942] hover:text-[#181D1A] transition shadow-2xs"
+                        title="Mulai Ulang Simulasi" aria-label="Mulai Ulang Simulasi">
+                    <i class="fa-solid fa-arrow-rotate-left text-[12px]"></i>
+                    <span class="hidden lg:inline ml-1.5">Mulai Ulang</span>
                 </button>
-                <button type="button" onclick="openExecutiveSummary()" class="px-3.5 py-2 rounded-xl bg-white hover:bg-[#f6fbf5] text-xs font-bold text-[#414942] hover:text-[#1e5031] border border-[#c1c9bf] transition flex items-center gap-1.5 shadow-2xs">
+
+                <button type="button" onclick="openExecutiveSummary()"
+                        class="inline-flex items-center justify-center gap-1 p-2 sm:px-3.5 sm:py-2 rounded-xl bg-white hover:bg-[#f6fbf5] text-xs font-bold text-[#414942] hover:text-[#1e5031] border border-[#c1c9bf] transition shadow-2xs"
+                        title="Rekap Hari Ini" aria-label="Rekap Hari Ini">
                     <i class="fa-solid fa-medal text-[12px] text-[#1e5031]"></i>
-                    <span class="hidden md:inline">Rekap Hari Ini</span>
-                    <span class="md:hidden">Rekap</span>
+                    <span class="hidden sm:inline">Rekap</span>
                 </button>
-                <a href="../index.html#pricing" class="px-4 py-2 rounded-xl bg-[#316342] hover:bg-[#1e5031] text-xs font-bold text-white transition flex items-center gap-1.5 shadow-sm">
+
+                <a href="../index.html#pricing"
+                   class="inline-flex items-center justify-center gap-1.5 px-3 sm:px-4 py-2 rounded-xl bg-[#316342] hover:bg-[#1e5031] text-xs font-bold text-white transition shadow-sm whitespace-nowrap"
+                   title="Mulai Gratis LifeSync">
                     <span>Mulai Gratis</span>
-                    <i class="fa-solid fa-arrow-right text-[11px]"></i>
+                    <i class="fa-solid fa-arrow-right text-[10px]"></i>
                 </a>
             </div>
 
@@ -241,8 +257,8 @@
         <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
 
             <!-- KOLOM KIRI: SMARTPHONE PROTOTYPE (PREMIUM HARDWARE FRAME) -->
-            <div class="lg:col-span-7 flex justify-center items-center py-2">
-                <div id="phone-wrapper" class="relative w-full max-w-[390px] transition-transform duration-300 origin-top">
+            <div class="lg:col-span-7 flex justify-center items-center py-2 px-3 sm:px-0">
+                <div id="phone-wrapper" class="relative w-full max-w-[calc(100%-20px)] sm:max-w-[390px] mx-auto transition-transform duration-300 origin-top">
 
                     <!-- Hardware Side Buttons -->
                     <span class="phone-btn-vol-up" aria-hidden="true"></span>
@@ -254,7 +270,7 @@
                         <div class="rounded-[2.8rem] border border-[#8B9C92] bg-[#141C17] p-[3.5px]">
 
                             <!-- Phone Display Glass Canvas -->
-                            <div class="relative h-[740px] overflow-hidden rounded-[2.55rem] bg-[#f6fbf5] text-[#181d1a] flex flex-col select-none shadow-inner">
+                            <div class="relative h-[680px] sm:h-[720px] md:h-[740px] overflow-hidden rounded-[2.55rem] bg-[#f6fbf5] text-[#181d1a] flex flex-col select-none shadow-inner">
 
                                 <!-- ==================== 1. STATUS BAR ==================== -->
                                 <div class="relative shrink-0 px-6 pt-3 pb-1.5 flex items-center justify-between text-[11px] font-bold text-[#181d1a] z-30 bg-[#f6fbf5]/90 backdrop-blur-sm">
@@ -1651,6 +1667,9 @@
                 chip.classList.toggle('font-bold', active);
                 chip.classList.toggle('shadow-xs', active);
                 chip.classList.toggle('text-[#414942]', !active);
+                if (active && typeof chip.scrollIntoView === 'function') {
+                    chip.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                }
             });
         }
 
