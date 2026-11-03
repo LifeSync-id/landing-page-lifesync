@@ -21,6 +21,8 @@ const ITEMS = [
     'style.css',
     'tailwind-config.js',
     '.nojekyll',
+    'favicon.ico',
+    'robots.txt',
     'sections',
     'pages',
     'assets',

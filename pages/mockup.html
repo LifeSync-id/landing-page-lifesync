@@ -16,7 +16,13 @@
     <title>LifeSync - Coba Langsung Aplikasi (Simulator Interaktif)</title>
     <meta name="description" content="Rasakan langsung pengalaman menggunakan LifeSync di browser Anda. Uji coba pelacak kebiasaan, agenda to-do, catatan, pemantau keuangan, pemindai nutrisi AI, hingga kenangan perjalanan.">
     <meta name="theme-color" content="#316342">
+    <!-- Google Search Engine & Browser Favicons (Kelipatan 48px Standar Resmi Google Search) -->
+    <link rel="icon" type="image/png" sizes="48x48" href="../assets/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="../assets/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="../assets/favicon-192x192.png">
     <link rel="icon" type="image/png" href="../assets/lifesync-symbol.png">
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
 
     <!-- Google Fonts & Material Symbols -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -116,20 +122,6 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Active Nav Bottom Button */
-        .showcase-nav-btn {
-            color: #414942;
-            transition: all 0.2s ease;
-        }
-        .showcase-nav-btn.is-active {
-            color: #316342;
-            font-weight: 800;
-        }
-        .showcase-nav-btn.is-active .nav-indicator {
-            width: 16px;
-            background-color: #316342;
-        }
-
         /* Smooth View Transitions */
         .app-view {
             animation: fadeInView 0.25s cubic-bezier(0.16, 1, 0.3, 1);
@@ -148,11 +140,13 @@
 </head>
 <body class="min-h-screen bg-[#f6fbf5] text-[#181d1a] ambient-mesh selection:bg-primary/20 selection:text-primary">
 
-    <!-- ==================== HEADER UTAMA ==================== -->
+    <!-- ============================================================
+         HEADER - LifeSync Interactive Simulator
+         ============================================================ -->
     <header class="sticky top-0 z-50 border-b border-[#dfe4df] bg-white/95 backdrop-blur-md px-3 sm:px-6 md:px-8 py-2.5 sm:py-3 shadow-xs">
         <div class="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-4 min-w-0">
 
-            <!-- Brand: Samakan Ikon & Logo Banner dengan Landing Page -->
+            <!-- Brand: Logo & Nama LifeSync -->
             <div class="flex items-center gap-2 sm:gap-3 shrink-0 min-w-0">
                 <a href="../index.html" class="flex items-center gap-2 sm:gap-2.5 shrink-0 group focus:outline-none" aria-label="LifeSync - Beranda">
                     <img src="../assets/lifesync-symbol.png" alt="Logo LifeSync" width="48" height="48"
@@ -162,7 +156,7 @@
                 </a>
             </div>
 
-            <!-- Action Buttons & Tombol Kembali ke Beranda -->
+            <!-- Action Buttons: Navigasi Cepat & Kontrol Demo -->
             <div class="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
                 <a href="../index.html"
                    class="inline-flex items-center justify-center gap-1 p-2 sm:px-3 sm:py-2 rounded-xl border border-[#316342]/30 bg-[#ebf5ee] hover:bg-[#dfe9e1] text-xs font-bold text-[#1e5031] transition shadow-2xs"
@@ -432,7 +426,7 @@
                                     </div>
 
                                     <!-- ==================== MAIN APP VIEWS CONTAINER ==================== -->
-                                    <div id="view-main-app" class="hidden flex-1 flex flex-col relative pb-20">
+                                    <div id="view-main-app" class="hidden flex-1 flex flex-col relative pb-24">
 
                                         <!-- 1. HOME TAB -->
                                         <div id="tab-home" class="app-tab px-4 pt-2 space-y-3.5">
@@ -938,32 +932,27 @@
                                 </div>
 
                                 <!-- ==================== 3. FLOATING BOTTOM APP NAVIGATION ==================== -->
-                                <nav id="phone-bottom-nav" aria-label="Navigasi aplikasi LifeSync" class="hidden absolute inset-x-3 bottom-2.5 z-30 rounded-2xl border border-white/80 bg-white/95 backdrop-blur-md px-1.5 py-1 shadow-[0_8px_24px_rgba(0,0,0,0.08)]">
+                                <nav id="phone-bottom-nav" aria-label="Navigasi showcase aplikasi" class="hidden absolute inset-x-3 bottom-2.5 z-30 rounded-2xl border border-white/80 bg-white/92 backdrop-blur-md px-1.5 py-1 shadow-[0_8px_24px_rgba(0,0,0,0.08)]">
                                     <div class="flex items-center justify-between">
-                                        <button type="button" onclick="switchPhoneTab('home')" class="showcase-nav-btn is-active flex flex-col items-center gap-0.5 px-1 focus:outline-none" data-tab="home">
-                                            <i class="fa-solid fa-house text-xs"></i>
-                                            <span class="text-[9px]">Beranda</span>
-                                            <span class="nav-indicator h-0.5 w-0 rounded-full transition-all"></span>
+                                        <button type="button" onclick="switchPhoneTab('home')" class="showcase-nav-button is-active flex flex-col items-center gap-0.5 px-1 focus:outline-none" data-tab="home" aria-label="Beranda" aria-pressed="true">
+                                            <span class="showcase-nav-icon"><i class="fa-solid fa-house text-xs" aria-hidden="true"></i></span>
+                                            <span class="showcase-nav-label">Beranda</span>
                                         </button>
-                                        <button type="button" onclick="switchPhoneTab('finance')" class="showcase-nav-btn flex flex-col items-center gap-0.5 px-1 focus:outline-none" data-tab="finance">
-                                            <i class="fa-solid fa-wallet text-xs"></i>
-                                            <span class="text-[9px]">Keuangan</span>
-                                            <span class="nav-indicator h-0.5 w-0 rounded-full transition-all"></span>
+                                        <button type="button" onclick="switchPhoneTab('finance')" class="showcase-nav-button flex flex-col items-center gap-0.5 px-1 focus:outline-none" data-tab="finance" aria-label="Keuangan" aria-pressed="false">
+                                            <span class="showcase-nav-icon"><i class="fa-solid fa-wallet text-xs" aria-hidden="true"></i></span>
+                                            <span class="showcase-nav-label">Keuangan</span>
                                         </button>
-                                        <button type="button" onclick="switchPhoneTab('nutrition')" class="showcase-nav-btn flex flex-col items-center gap-0.5 px-1 focus:outline-none" data-tab="nutrition">
-                                            <i class="fa-solid fa-utensils text-xs"></i>
-                                            <span class="text-[9px]">Nutrisi</span>
-                                            <span class="nav-indicator h-0.5 w-0 rounded-full transition-all"></span>
+                                        <button type="button" onclick="switchPhoneTab('nutrition')" class="showcase-nav-button flex flex-col items-center gap-0.5 px-1 focus:outline-none" data-tab="nutrition" aria-label="Nutrisi" aria-pressed="false">
+                                            <span class="showcase-nav-icon"><i class="fa-solid fa-utensils text-xs" aria-hidden="true"></i></span>
+                                            <span class="showcase-nav-label">Nutrisi</span>
                                         </button>
-                                        <button type="button" onclick="switchPhoneTab('memento')" class="showcase-nav-btn flex flex-col items-center gap-0.5 px-1 focus:outline-none" data-tab="memento">
-                                            <i class="fa-solid fa-camera text-xs"></i>
-                                            <span class="text-[9px]">Memento</span>
-                                            <span class="nav-indicator h-0.5 w-0 rounded-full transition-all"></span>
+                                        <button type="button" onclick="switchPhoneTab('memento')" class="showcase-nav-button flex flex-col items-center gap-0.5 px-1 focus:outline-none" data-tab="memento" aria-label="Memento" aria-pressed="false">
+                                            <span class="showcase-nav-icon"><i class="fa-solid fa-camera text-xs" aria-hidden="true"></i></span>
+                                            <span class="showcase-nav-label">Memento</span>
                                         </button>
-                                        <button type="button" onclick="switchPhoneTab('profile')" class="showcase-nav-btn flex flex-col items-center gap-0.5 px-1 focus:outline-none" data-tab="profile">
-                                            <i class="fa-regular fa-user text-xs"></i>
-                                            <span class="text-[9px]">Profil</span>
-                                            <span class="nav-indicator h-0.5 w-0 rounded-full transition-all"></span>
+                                        <button type="button" onclick="switchPhoneTab('profile')" class="showcase-nav-button flex flex-col items-center gap-0.5 px-1 focus:outline-none" data-tab="profile" aria-label="Profil" aria-pressed="false">
+                                            <span class="showcase-nav-icon"><i class="fa-regular fa-user text-xs" aria-hidden="true"></i></span>
+                                            <span class="showcase-nav-label">Profil</span>
                                         </button>
                                     </div>
                                 </nav>
@@ -1651,9 +1640,10 @@
                 });
 
                 // Update bottom nav active status
-                document.querySelectorAll('.showcase-nav-btn').forEach(btn => {
+                document.querySelectorAll('.showcase-nav-button').forEach(btn => {
                     const match = btn.getAttribute('data-tab') === appState.tab;
                     btn.classList.toggle('is-active', match);
+                    btn.setAttribute('aria-pressed', String(match));
                 });
             }
 
@@ -2400,8 +2390,8 @@
         }
 
         function triggerNotification(msg) {
-                        const toast = document.createElement('div');
-            toast.className = 'fixed top-16 right-4 sm:right-8 z-50 bg-[#141C17] text-white border border-[#316342]/60 px-4 py-2.5 rounded-xl shadow-xl text-xs font-semibold flex items-center gap-2.5 transition-all duration-300';
+            const toast = document.createElement('div');
+            toast.className = 'fixed top-24 right-4 sm:right-8 z-50 bg-[#141C17] text-white border border-[#316342]/60 px-4 py-2.5 rounded-xl shadow-xl text-xs font-semibold flex items-center gap-2.5 transition-all duration-300';
             toast.innerHTML = `<span class="h-2 w-2 rounded-full bg-[#4a7c59]"></span> <span>${msg}</span>`;
             document.body.appendChild(toast);
             setTimeout(() => toast.remove(), 3200);
