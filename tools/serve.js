@@ -2,14 +2,17 @@
  * Server statis sederhana untuk development/testing lokal.
  * Tanpa dependensi eksternal (hanya modul bawaan Node).
  *
- * Jalankan: node tools/serve.js [port]
+ * Jalankan: node tools/serve.js [port] [host]
+ * Contoh akses jaringan lokal: node tools/serve.js 8765 0.0.0.0
  */
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
+const os = require('os');
 
 const ROOT = path.resolve(__dirname, '..');
-const PORT = Number(process.argv[2]) || 8765;
+const PORT = Number(process.argv[2]) || Number(process.env.PORT) || 8765;
+const HOST = process.argv[3] || process.env.HOST || '127.0.0.1';
 
 const MIME = {
     '.html': 'text/html; charset=utf-8',
@@ -53,7 +56,24 @@ const server = http.createServer((req, res) => {
     });
 });
 
-server.listen(PORT, '127.0.0.1', () => {
-    console.log(`LifeSync dev server berjalan di http://127.0.0.1:${PORT}`);
+server.listen(PORT, HOST, () => {
+    const displayHost = HOST === '0.0.0.0' || HOST === '::' ? 'localhost' : HOST;
+    console.log(`LifeSync dev server berjalan di http://${displayHost}:${PORT}`);
     console.log(`Root: ${ROOT}`);
+
+    if (HOST === '0.0.0.0' || HOST === '::') {
+        const addresses = Object.values(os.networkInterfaces())
+            .flat()
+            .filter((net) => net && (net.family === 'IPv4' || net.family === 4) && !net.internal)
+            .map((net) => net.address);
+
+        if (addresses.length === 0) {
+            console.log('Tidak ada alamat IPv4 lokal yang terdeteksi.');
+        } else {
+            addresses.forEach((address) => {
+                console.log(`Jaringan lokal: http://${address}:${PORT}`);
+            });
+        }
+        console.log('Pastikan Windows Firewall mengizinkan Node.js di jaringan privat.');
+    }
 });

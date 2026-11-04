@@ -17,12 +17,11 @@
     <meta name="description" content="Rasakan langsung pengalaman menggunakan LifeSync di browser Anda. Uji coba pelacak kebiasaan, agenda to-do, catatan, pemantau keuangan, pemindai nutrisi AI, hingga kenangan perjalanan.">
     <meta name="theme-color" content="#316342">
     <!-- Google Search Engine & Browser Favicons (Kelipatan 48px Standar Resmi Google Search) -->
-    <link rel="icon" type="image/png" sizes="48x48" href="../assets/favicon-48x48.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="../assets/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="../assets/favicon-192x192.png">
-    <link rel="icon" type="image/png" href="../assets/lifesync-symbol.png">
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="https://www.lifesync.id/assets/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="https://www.lifesync.id/assets/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="https://www.lifesync.id/assets/favicon-192x192.png">
+    <link rel="icon" href="https://www.lifesync.id/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://www.lifesync.id/assets/apple-touch-icon.png">
 
     <!-- Google Fonts & Material Symbols -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -69,6 +68,27 @@
         }
         .phone-screen-scroll::-webkit-scrollbar-thumb:hover {
             background: rgba(49, 99, 66, 0.45);
+        }
+
+        /* In-phone notification capsule (di bawah punch hole kamera) */
+        .phone-toast {
+            opacity: 0;
+            transform: translateY(-8px) scale(0.97);
+            transition: opacity 0.22s ease, transform 0.22s ease;
+            will-change: opacity, transform;
+        }
+        .phone-toast.is-visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        .phone-toast.is-hiding {
+            opacity: 0;
+            transform: translateY(-6px) scale(0.97);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .phone-toast {
+                transition: none;
+            }
         }
 
         /* Smartphone Hardware Buttons */
@@ -222,11 +242,11 @@
                 </button>
                 <button type="button" onclick="switchPhoneTab('planner')" class="flow-chip px-3.5 py-1.5 rounded-lg text-xs font-semibold text-[#414942] hover:text-[#181D1A] transition whitespace-nowrap flex items-center gap-1.5" data-chip="planner">
                     <i class="fa-solid fa-list-check text-[11px]"></i>
-                    <span>5. To-Do &amp; Jadwal</span>
+                    <span>5. Planner</span>
                 </button>
                 <button type="button" onclick="switchPhoneTab('notes')" class="flow-chip px-3.5 py-1.5 rounded-lg text-xs font-semibold text-[#414942] hover:text-[#181D1A] transition whitespace-nowrap flex items-center gap-1.5" data-chip="notes">
                     <i class="fa-regular fa-note-sticky text-[11px]"></i>
-                    <span>6. Catatan &amp; Ide</span>
+                    <span>6. Catatan</span>
                 </button>
                 <button type="button" onclick="switchPhoneTab('finance')" class="flow-chip px-3.5 py-1.5 rounded-lg text-xs font-semibold text-[#414942] hover:text-[#181D1A] transition whitespace-nowrap flex items-center gap-1.5" data-chip="finance">
                     <i class="fa-solid fa-wallet text-[11px]"></i>
@@ -238,21 +258,21 @@
                 </button>
                 <button type="button" onclick="switchPhoneTab('memento')" class="flow-chip px-3.5 py-1.5 rounded-lg text-xs font-semibold text-[#414942] hover:text-[#181D1A] transition whitespace-nowrap flex items-center gap-1.5" data-chip="memento">
                     <i class="fa-solid fa-camera text-[11px]"></i>
-                    <span>9. Jurnal Memento</span>
+                    <span>9. Memento</span>
                 </button>
                 <button type="button" onclick="switchPhoneTab('profile')" class="flow-chip px-3.5 py-1.5 rounded-lg text-xs font-semibold text-[#414942] hover:text-[#181D1A] transition whitespace-nowrap flex items-center gap-1.5" data-chip="profile">
                     <i class="fa-regular fa-user text-[11px]"></i>
-                    <span>10. Profil &amp; Rekap</span>
+                    <span>10. Profil</span>
                 </button>
             </div>
         </div>
 
         <!-- ==================== DISPLAY FRAME & USER IMPACT PANE ==================== -->
-        <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+        <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start min-w-0">
 
             <!-- KOLOM KIRI: SMARTPHONE PROTOTYPE (PREMIUM HARDWARE FRAME) -->
-            <div class="lg:col-span-7 flex justify-center items-center py-2 px-3 sm:px-0">
-                <div id="phone-wrapper" class="relative w-full max-w-[calc(100%-20px)] sm:max-w-[390px] mx-auto transition-transform duration-300 origin-top">
+            <div class="lg:col-span-7 min-w-0 flex justify-center items-center py-2 px-3 sm:px-0">
+                <div id="phone-wrapper" class="relative w-full min-w-0 max-w-[calc(100%-20px)] sm:max-w-[390px] mx-auto transition-transform duration-300 origin-top">
 
                     <!-- Hardware Side Buttons -->
                     <span class="phone-btn-vol-up" aria-hidden="true"></span>
@@ -284,36 +304,49 @@
                                     </div>
                                 </div>
 
+                                <!-- ==================== 1b. NOTIFIKASI DALAM PONSEL ==================== -->
+                                <div id="phone-toast-host" class="pointer-events-none absolute inset-x-0 top-11 z-40 flex flex-col items-center gap-1.5 px-3" aria-live="polite" aria-atomic="false"></div>
+
                                 <!-- ==================== 2. SCREEN CANVAS CONTAINER ==================== -->
                                 <div id="phone-screen-container" class="flex-1 overflow-y-auto phone-screen-scroll relative flex flex-col">
 
                                     <!-- SCREEN: SPLASH -->
-                                    <div id="view-splash" class="app-view flex-1 flex flex-col items-center justify-center p-6 text-center bg-gradient-to-b from-[#f6fbf5] via-[#f6fbf5] to-[#f6fbf5]">
-                                        <div class="relative mb-6">
-                                            <div class="h-24 w-24 rounded-3xl bg-white shadow-card border border-[#c1c9bf] flex items-center justify-center p-3">
-                                                <img src="../assets/lifesync-symbol.png" alt="LifeSync Logo" class="h-16 w-16 object-contain">
+                                    <div id="view-splash" class="app-view relative flex flex-1 flex-col items-center justify-center overflow-hidden bg-[#f6fbf5] px-6 py-8 text-center">
+                                        <!-- Aurora mesh glow -->
+                                        <div class="pointer-events-none absolute -left-10 -top-16 h-44 w-44 rounded-full bg-[#b9efc5]/60 blur-3xl"></div>
+                                        <div class="pointer-events-none absolute -right-12 top-24 h-52 w-52 rounded-full bg-[#C9DEFA]/50 blur-3xl"></div>
+                                        <div class="pointer-events-none absolute bottom-4 left-6 h-36 w-36 rounded-full bg-[#FDE68A]/40 blur-3xl"></div>
+
+                                        <div class="relative flex flex-col items-center">
+                                            <div class="mb-5 inline-flex items-center gap-2 rounded-full border border-[#316342]/20 bg-white/90 px-3.5 py-1.5 shadow-sm">
+                                                <span class="h-1.5 w-1.5 rounded-full bg-[#316342]"></span>
+                                                <span class="text-[9px] font-bold uppercase tracking-[0.16em] text-[#1e5031]">Habit &amp; AI Assistant</span>
                                             </div>
+
+                                            <div class="relative flex h-36 w-36 items-center justify-center">
+                                                <span class="absolute inset-0 rounded-full border border-[#316342]/15"></span>
+                                                <span class="absolute inset-4 rounded-full border border-[#2B7DE9]/20 bg-[#316342]/5"></span>
+                                                <div class="relative flex h-24 w-24 items-center justify-center rounded-[28px] border border-white bg-white p-3 shadow-[0_16px_40px_-16px_rgba(49,99,66,0.45)]">
+                                                    <img src="../assets/lifesync-symbol.png" alt="LifeSync Logo" class="h-full w-full object-contain">
+                                                </div>
+                                            </div>
+
+                                            <div class="mt-4 flex items-baseline justify-center gap-1.5">
+                                                <h2 class="bg-gradient-to-r from-[#067BBC] via-[#2E9A6F] to-[#58B531] bg-clip-text text-3xl font-extrabold tracking-tight text-transparent">LifeSync</h2>
+                                                <span class="h-2 w-2 rounded-full bg-[#9dd3aa]"></span>
+                                            </div>
+                                            <p class="mt-1 text-[12.5px] font-medium text-[#414942]">Daily Habit Tracker &amp; Assistance</p>
                                         </div>
 
-                                        <h2 class="text-2xl font-extrabold text-[#181d1a] tracking-tight">LifeSync</h2>
-                                        <p class="text-xs text-[#316342] font-bold uppercase tracking-widest mt-1">Daily Habit Tracker &amp; Assistance</p>
-                                        <p class="text-[11.5px] text-[#414942] mt-2 max-w-[240px] leading-relaxed">Satu aplikasi buat bantu kamu atur kebiasaan, jadwal, dan kesehatan tiap hari.</p>
-
-                                        <div class="w-full max-w-[210px] mt-8 space-y-2">
-                                            <div class="h-1.5 w-full bg-[#dfe4df] rounded-full overflow-hidden">
-                                                <div id="splash-bar" class="h-full bg-[#316342] rounded-full transition-all duration-700 w-3/4"></div>
+                                        <div class="absolute bottom-6 left-1/2 w-[calc(100%-3rem)] max-w-[210px] -translate-x-1/2 space-y-3">
+                                            <p id="splash-status" class="text-[11px] font-semibold text-[#414942]">Memuat kebiasaan harianmu...</p>
+                                            <div class="h-1 w-full overflow-hidden rounded-full bg-[#316342]/15">
+                                                <div id="splash-bar" class="h-full w-3/4 rounded-full bg-[#316342] transition-all duration-700"></div>
                                             </div>
-                                            <p id="splash-status" class="text-[10px] text-[#414942] font-medium">Menyiapkan data kamu...</p>
-                                        </div>
-
-                                        <div class="mt-8 flex flex-col items-center gap-2.5 w-full max-w-[210px]">
-                                            <button type="button" onclick="switchPhoneScreen('onboarding')" class="w-full py-2.5 rounded-xl bg-[#316342] text-white text-xs font-bold shadow-sm hover:bg-[#1e5031] transition flex items-center justify-center gap-1.5">
-                                                <span>Mulai Jelajahi</span>
-                                                <i class="fa-solid fa-arrow-right text-[11px]"></i>
+                                            <button type="button" onclick="switchPhoneScreen('onboarding')" class="w-full rounded-xl bg-[#316342] py-2.5 text-xs font-bold text-white shadow-sm transition hover:bg-[#1e5031]">
+                                                Lanjut
                                             </button>
-                                            <button type="button" onclick="switchPhoneTab('home')" class="text-[11px] font-bold text-[#414942] hover:text-[#316342] hover:underline transition">
-                                                Langsung ke Beranda &rarr;
-                                            </button>
+                                            <p class="text-[9px] font-semibold tracking-widest text-[#717971]">v1.0.0</p>
                                         </div>
                                     </div>
 
@@ -335,14 +368,11 @@
                                                 <i class="fa-solid fa-repeat"></i>
                                             </div>
                                             <div>
-                                                <span id="ob-badge" class="px-2.5 py-1 rounded-md text-[10.5px] font-bold bg-[#ebf5ee] text-[#1e5031] inline-block tracking-wide">
-                                                    1. Kebiasaan Positif
-                                                </span>
-                                                <h3 id="ob-title" class="text-xl font-extrabold text-[#181d1a] mt-2.5">
-                                                    Bangun Rutinitas Tanpa Beban
+                                                <h3 id="ob-title" class="text-2xl font-extrabold text-[#181d1a] mt-1">
+                                                    Bangun Kebiasaan Lebih Baik
                                                 </h3>
-                                                <p id="ob-desc" class="text-xs text-[#414942] mt-1.5 max-w-[260px] mx-auto leading-relaxed">
-                                                    Mulai dari langkah kecil yang konsisten. Rayakan setiap progres harian tanpa dibebani notifikasi yang bikin stres.
+                                                <p id="ob-desc" class="text-xs text-[#414942] mt-2 max-w-[260px] mx-auto leading-relaxed">
+                                                    Bangun rutinitas positif dan pantau kebiasaan harianmu dengan lebih mudah.
                                                 </p>
                                             </div>
                                         </div>
@@ -371,15 +401,15 @@
                                             </div>
 
                                             <div class="text-center">
-                                                <h3 id="auth-heading" class="text-lg font-extrabold text-[#181d1a]">Masuk ke LifeSync</h3>
-                                                <p id="auth-subheading" class="text-xs text-[#414942] mt-0.5">Pilih cara masuk yang paling pas buat kamu</p>
+                                                <h3 id="auth-heading" class="text-lg font-extrabold text-[#181d1a]">Selamat Datang Kembali</h3>
+                                                <p id="auth-subheading" class="text-xs text-[#414942] mt-0.5">Kelola aktivitas dan keseharianmu bersama LifeSync.</p>
                                             </div>
 
                                             <!-- Form Inputs -->
                                             <form id="auth-form" onsubmit="handleAuthSubmit(event)" class="space-y-3">
                                                 <div id="auth-name-group" class="hidden">
-                                                    <label class="block text-[11px] font-bold text-[#181d1a] mb-1">Nama Panggilan</label>
-                                                    <input type="text" id="auth-input-name" placeholder="Megah Pratama" class="w-full px-3.5 py-2.5 rounded-xl border border-[#c1c9bf] bg-white text-xs text-[#181d1a] focus:outline-none focus:border-[#316342]">
+                                                    <label class="block text-[11px] font-bold text-[#181d1a] mb-1">Nama Lengkap</label>
+                                                    <input type="text" id="auth-input-name" placeholder="Nama lengkap kamu" class="w-full px-3.5 py-2.5 rounded-xl border border-[#c1c9bf] bg-white text-xs text-[#181d1a] focus:outline-none focus:border-[#316342]">
                                                 </div>
                                                 <div>
                                                     <label class="block text-[11px] font-bold text-[#181d1a] mb-1">Email</label>
@@ -388,9 +418,9 @@
                                                 <div>
                                                     <div class="flex items-center justify-between mb-1">
                                                         <label class="text-[11px] font-bold text-[#181d1a]">Password</label>
-                                                        <button type="button" onclick="simulateForgotPassword()" class="text-[10px] text-[#316342] font-bold hover:underline">Lupa password?</button>
+                                                        <button type="button" onclick="simulateForgotPassword()" class="text-[10px] text-[#316342] font-bold hover:underline">Lupa Password?</button>
                                                     </div>
-                                                    <input type="password" id="auth-input-pass" value="password123" required class="w-full px-3.5 py-2.5 rounded-xl border border-[#c1c9bf] bg-white text-xs text-[#181d1a] focus:outline-none focus:border-[#316342]">
+                                                    <input type="password" id="auth-input-pass" value="password123" placeholder="Masukkan password akun" required class="w-full px-3.5 py-2.5 rounded-xl border border-[#c1c9bf] bg-white text-xs text-[#181d1a] focus:outline-none focus:border-[#316342]">
                                                 </div>
 
                                                 <button type="submit" id="auth-submit-btn" class="w-full py-2.5 rounded-xl bg-[#316342] hover:bg-[#1e5031] text-white font-bold text-xs shadow-sm transition">
@@ -398,20 +428,11 @@
                                                 </button>
                                             </form>
 
-                                            <div class="relative text-center my-2">
-                                                <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-[#dfe4df]"></div></div>
-                                                <span class="relative bg-[#f6fbf5] px-2 text-[10px] text-[#717971]">opsi cepat untuk mencoba</span>
-                                            </div>
-
-                                            <!-- Quick Demo & Guest Buttons -->
-                                            <div class="space-y-2">
-                                                <button type="button" onclick="loginAsDemo()" class="w-full py-2.5 rounded-xl border border-[#316342] bg-[#ebf5ee] hover:bg-[#dfe9e1] text-[#1e5031] font-bold text-xs flex items-center justify-center gap-2 transition shadow-xs">
-                                                    <i class="fa-solid fa-sparkles text-[11px]"></i>
-                                                    <span>Masuk Cepat (Akun Demo: Megah)</span>
-                                                </button>
+                                            <!-- Guest Button -->
+                                            <div>
                                                 <button type="button" onclick="loginAsGuest()" class="w-full py-2.5 rounded-xl border border-[#dfe4df] bg-white hover:bg-neutral-50 text-[#181d1a] font-semibold text-xs flex items-center justify-center gap-2 transition shadow-xs">
-                                                    <i class="fa-solid fa-lock text-[11px] text-[#414942]"></i>
-                                                    <span>Coba Mode Tamu (Tanpa Akun / Login)</span>
+                                                    <i class="fa-solid fa-user text-[11px] text-[#414942]"></i>
+                                                    <span>Lanjut sebagai Tamu</span>
                                                 </button>
                                             </div>
                                         </div>
@@ -420,7 +441,7 @@
                                         <div class="pt-3 text-center text-xs text-[#414942]">
                                             <span id="auth-toggle-text">Belum punya akun?</span>
                                             <button type="button" onclick="toggleAuthMode()" id="auth-toggle-btn" class="font-bold text-[#316342] hover:underline ml-1">
-                                                Daftar sekarang
+                                                Daftar
                                             </button>
                                         </div>
                                     </div>
@@ -450,7 +471,7 @@
                                             <div class="flex items-center justify-between gap-2 pt-0.5">
                                                 <div class="min-w-0">
                                                     <h2 id="home-greeting-name" class="text-lg font-extrabold text-[#181d1a] leading-tight">Selamat pagi, Megah 👋</h2>
-                                                    <p class="text-[11px] text-[#414942] mt-0.5">Yuk mulai hari dengan lebih teratur.</p>
+                                                    <p class="text-[11px] text-[#414942] mt-0.5">Mari jalani hari yang lebih teratur.</p>
                                                 </div>
                                                 <div id="home-avatar" class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#ebf5ee] border border-[#c1c9bf] text-sm font-extrabold text-[#1e5031] shadow-xs">
                                                     M
@@ -462,7 +483,7 @@
                                                 <div class="flex items-center justify-between gap-2">
                                                     <div class="flex items-center gap-1.5">
                                                         <span class="h-2 w-2 rounded-full bg-[#316342]"></span>
-                                                        <h3 class="text-xs font-bold text-[#181d1a]">Progres Hari Ini</h3>
+                                                        <h3 class="text-xs font-bold text-[#181d1a]">Progress Hari Ini</h3>
                                                     </div>
                                                     <span id="home-progress-badge" class="rounded-md bg-[#ebf5ee] border border-[#c1c9bf] px-2 py-0.5 text-[9.5px] font-bold text-[#1e5031]">
                                                         60% Selesai
@@ -476,53 +497,40 @@
                                                         </div>
                                                     </div>
                                                     <div class="min-w-0 flex-1">
-                                                        <p id="home-progress-text" class="text-xs font-bold text-[#181d1a]">3 dari 5 kebiasaan selesai</p>
-                                                        <p class="mt-1 text-[10px] leading-relaxed text-[#414942]">Klik centang di bawah buat tandai kebiasaanmu!</p>
+                                                        <p id="home-progress-text" class="text-xs font-bold text-[#181d1a]">3 dari 5 habit selesai</p>
+                                                        <p class="mt-1 text-[10px] leading-relaxed text-[#414942]">Sedikit demi sedikit tetap berarti. Lanjutkan habit berikutnya.</p>
                                                     </div>
                                                 </div>
                                             </div>
 
                                             <!-- Shortcuts to Planner & Catatan -->
                                             <div>
-                                                <h3 class="mb-2 text-xs font-bold text-[#181d1a]">Akses Cepat</h3>
+                                                <h3 class="mb-2 text-xs font-bold text-[#181d1a]">Produktivitas</h3>
                                                 <div class="grid grid-cols-2 gap-2">
                                                     <button type="button" onclick="switchPhoneTab('planner')" class="text-left rounded-2xl border border-[#dfe4df] bg-white p-3 shadow-xs hover:border-[#316342] transition group">
                                                         <div class="flex h-8 w-8 items-center justify-center rounded-xl bg-[#ebf5ee] text-[#1e5031] group-hover:scale-105 transition">
                                                             <i class="fa-solid fa-list-check text-xs"></i>
                                                         </div>
-                                                        <p class="mt-2 text-xs font-bold text-[#181d1a]">Agenda &amp; To-Do</p>
-                                                        <p class="text-[9.5px] text-[#414942]">Waktu lebih tertata</p>
+                                                        <p class="mt-2 text-xs font-bold text-[#181d1a]">Planner</p>
+                                                        <p class="text-[9.5px] text-[#414942]">To-do &amp; kalender</p>
                                                     </button>
                                                     <button type="button" onclick="switchPhoneTab('notes')" class="text-left rounded-2xl border border-[#dfe4df] bg-white p-3 shadow-xs hover:border-[#7E22CE] transition group">
                                                         <div class="flex h-8 w-8 items-center justify-center rounded-xl bg-[#F3E8FF] text-[#7E22CE] group-hover:scale-105 transition">
                                                             <i class="fa-regular fa-note-sticky text-xs"></i>
                                                         </div>
-                                                        <p class="mt-2 text-xs font-bold text-[#181d1a]">Catatan Ide</p>
-                                                        <p class="text-[9.5px] text-[#414942]">Tulis ide &amp; resep</p>
+                                                        <p class="mt-2 text-xs font-bold text-[#181d1a]">Catatan</p>
+                                                        <p class="text-[9.5px] text-[#414942]">Tulis ide &amp; jurnal</p>
                                                     </button>
-                                                </div>
-                                            </div>
-
-                                            <!-- Habit Tiles (Interactive Checkboxes & Water Counter) -->
-                                            <div>
-                                                <div class="mb-2 flex items-center justify-between">
-                                                    <h3 class="text-xs font-bold text-[#181d1a]">Kebiasaan Hari Ini</h3>
-                                                    <button type="button" onclick="openAddHabitModal()" class="text-[10px] font-bold text-[#316342] hover:underline flex items-center gap-1">
-                                                        <i class="fa-solid fa-plus text-[9px]"></i> Tambah Baru
-                                                    </button>
-                                                </div>
-                                                <div id="home-habit-list" class="space-y-2">
-                                                    <!-- Injected dynamically by JS -->
                                                 </div>
                                             </div>
 
                                             <!-- Week Streak Heatmap -->
                                             <div class="rounded-2xl border border-[#dfe4df] bg-white p-3 shadow-xs">
                                                 <div class="flex items-center justify-between pb-2.5 border-b border-[#f6fbf5]">
-                                                    <h3 class="text-xs font-bold text-[#181d1a]">Streak Minggu Ini</h3>
+                                                    <h3 class="text-xs font-bold text-[#181d1a]">Minggu Ini</h3>
                                                     <div class="flex items-center gap-1 text-[#F97316]">
                                                         <i class="fa-solid fa-fire text-xs"></i>
-                                                        <span id="streak-label" class="text-[10px] font-bold text-[#414942]">5 Hari Aktif</span>
+                                                        <span id="streak-label" class="text-[10px] font-bold text-[#414942]">5 hari beruntun</span>
                                                     </div>
                                                 </div>
                                                 <div class="mt-2.5 flex items-center justify-between text-center">
@@ -536,21 +544,35 @@
                                                 </div>
                                             </div>
 
-                                            <!-- AI Coach Insight Card -->
-                                            <div class="rounded-2xl border border-[#c1c9bf] bg-[#ebf5ee]/60 p-3 shadow-xs">
+                                            <!-- Insight Card -->
+                                            <div class="rounded-2xl border border-[#C9DEFA] bg-[#F3F8FF] p-3 shadow-xs">
                                                 <div class="flex items-start gap-2.5">
-                                                    <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[#316342] text-white">
-                                                        <i class="fa-solid fa-wand-magic-sparkles text-xs"></i>
+                                                    <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[#E0EDFF] text-[#2B7DE9]">
+                                                        <i class="fa-regular fa-lightbulb text-xs"></i>
                                                     </div>
                                                     <div class="min-w-0 flex-1">
                                                         <div class="flex items-center gap-1.5">
-                                                            <h4 class="text-xs font-bold text-[#181d1a]">Tips Hari Ini</h4>
-                                                            <span class="rounded bg-[#FEF3C7] px-1.5 py-0.5 text-[8.5px] font-bold text-[#D97706]">Rekomendasi AI</span>
+                                                            <h4 class="text-xs font-bold text-[#181d1a]">Insight Hari Ini</h4>
+                                                            <span class="rounded bg-[#E0EDFF] px-1.5 py-0.5 text-[8.5px] font-bold text-[#2B7DE9]">Lokal</span>
                                                         </div>
-                                                        <p class="mt-1 text-[10.5px] leading-relaxed text-[#354B3F]">
+                                                        <p class="mt-1 text-[10.5px] leading-relaxed text-[#414942]">
                                                             Kamu biasanya paling produktif di pagi hari. Selesaikan tugas utama sebelum siang supaya sore dan malam bisa lebih santai.
                                                         </p>
                                                     </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Habit Tiles (Interactive Checkboxes & Water Counter) -->
+                                            <div>
+                                                <div class="mb-2 flex items-center justify-between">
+                                                    <h3 class="text-xs font-bold text-[#181d1a]">Keseharian</h3>
+                                                    <button type="button" onclick="triggerNotification('Semua kebiasaan harian bisa kamu kelola dari menu Keseharian.')" class="text-[10px] font-bold text-[#316342] hover:underline flex items-center gap-1">
+                                                        <span>Lihat Semua</span>
+                                                        <i class="fa-solid fa-chevron-right text-[8px]"></i>
+                                                    </button>
+                                                </div>
+                                                <div id="home-habit-list" class="space-y-2">
+                                                    <!-- Injected dynamically by JS -->
                                                 </div>
                                             </div>
                                         </div>
@@ -607,8 +629,8 @@
                                             <!-- Notes Header -->
                                             <div class="flex items-center justify-between">
                                                 <div>
-                                                    <h2 class="text-lg font-extrabold text-[#181d1a]">Catatan &amp; Ide</h2>
-                                                    <p class="text-[10px] text-[#414942]">Tulis ide baru, resep, atau catatan harian</p>
+                                                    <h2 class="text-lg font-extrabold text-[#181d1a]">Catatan</h2>
+                                                    <p class="text-[10px] text-[#414942]">Tulis ide, daftar, dan jurnal harianmu.</p>
                                                 </div>
                                                 <button type="button" onclick="openNoteEditorModal()" class="flex items-center gap-1 px-3 py-1.5 rounded-xl bg-[#316342] text-white text-[10.5px] font-bold shadow-xs hover:bg-[#1e5031] transition">
                                                     <i class="fa-solid fa-plus text-[9px]"></i>
@@ -618,9 +640,14 @@
 
                                             <!-- Search & Tags -->
                                             <div class="space-y-2">
-                                                <div class="relative">
-                                                    <input type="text" id="notes-search-input" oninput="handleNotesSearch(this.value)" placeholder="Cari catatan..." class="w-full pl-8 pr-3 py-2 rounded-xl border border-[#dfe4df] bg-white text-xs text-[#181d1a] focus:outline-none focus:border-[#316342]">
-                                                    <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-[10px] text-[#717971]"></i>
+                                                <div class="flex items-center gap-2">
+                                                    <div class="relative flex-1">
+                                                        <input type="text" id="notes-search-input" oninput="handleNotesSearch(this.value)" placeholder="Cari catatan..." class="w-full pl-8 pr-3 py-2 rounded-xl border border-[#dfe4df] bg-white text-xs text-[#181d1a] focus:outline-none focus:border-[#316342]">
+                                                        <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-[10px] text-[#717971]"></i>
+                                                    </div>
+                                                    <button type="button" onclick="triggerNotification('Filter catatan: tag, warna, dan urutan bisa diatur di sini.')" class="flex h-8 w-9 shrink-0 items-center justify-center rounded-xl border border-[#dfe4df] bg-white text-[#414942] hover:border-[#316342] transition" title="Filter catatan">
+                                                        <i class="fa-solid fa-sliders text-[11px]"></i>
+                                                    </button>
                                                 </div>
                                                 <div class="flex gap-1.5 overflow-x-auto pb-1 scrollbar-none">
                                                     <button type="button" onclick="filterNotesCategory('Semua')" class="note-cat-chip active px-2.5 py-1 rounded-lg text-[9px] font-bold bg-[#316342] text-white whitespace-nowrap">Semua</button>
@@ -641,10 +668,10 @@
                                             <!-- Header & Month -->
                                             <div class="flex items-center justify-between">
                                                 <div>
-                                                    <h2 class="text-lg font-extrabold text-[#181d1a]">Catatan Keuangan</h2>
-                                                    <p class="text-[10px] text-[#414942]">Pantau arus uang masuk dan keluar harianmu</p>
+                                                    <h2 class="text-lg font-extrabold text-[#181d1a]">Keuangan</h2>
+                                                    <p class="text-[10px] text-[#414942]">Pantau pemasukan dan pengeluaranmu</p>
                                                 </div>
-                                                <span class="rounded-full bg-white border border-[#dfe4df] px-2.5 py-0.5 text-[10px] font-bold text-[#181d1a] shadow-xs">
+                                                <span class="shrink-0 whitespace-nowrap rounded-full bg-white border border-[#dfe4df] px-2.5 py-0.5 text-[10px] font-bold text-[#181d1a] shadow-xs">
                                                     &lsaquo; Okt 2026 &rsaquo;
                                                 </span>
                                             </div>
@@ -656,34 +683,37 @@
                                                         <i class="fa-solid fa-arrow-trend-up text-xs"></i>
                                                     </div>
                                                     <p class="mt-2 text-[10px] text-[#414942]">Pemasukan</p>
-                                                    <p id="finance-income-val" class="text-xs font-extrabold text-[#1e5031] leading-tight">Rp 7.500.000</p>
-                                                    <p id="finance-income-tx" class="text-[9px] text-[#717971] mt-0.5">8 Catatan</p>
+                                                    <p id="finance-income-val" class="whitespace-nowrap text-[11px] font-extrabold text-[#1e5031] leading-tight">Rp 7.500.000</p>
+                                                    <p id="finance-income-tx" class="text-[9px] text-[#717971] mt-0.5">8 Transaksi</p>
                                                 </div>
                                                 <div class="rounded-2xl border border-[#dfe4df] bg-white p-3 shadow-xs">
                                                     <div class="flex h-7 w-7 items-center justify-center rounded-xl bg-[#FFEDD5] text-[#F97316]">
                                                         <i class="fa-solid fa-arrow-trend-down text-xs"></i>
                                                     </div>
                                                     <p class="mt-2 text-[10px] text-[#414942]">Pengeluaran</p>
-                                                    <p id="finance-expense-val" class="text-xs font-extrabold text-[#F97316] leading-tight">Rp 3.250.000</p>
-                                                    <p id="finance-expense-tx" class="text-[9px] text-[#717971] mt-0.5">14 Catatan</p>
+                                                    <p id="finance-expense-val" class="whitespace-nowrap text-[11px] font-extrabold text-[#F97316] leading-tight">Rp 3.250.000</p>
+                                                    <p id="finance-expense-tx" class="text-[9px] text-[#717971] mt-0.5">14 Transaksi</p>
                                                 </div>
                                             </div>
 
-                                            <!-- Surplus Bar -->
-                                            <div class="flex items-center justify-between rounded-xl border border-[#c1c9bf] bg-[#ebf5ee] px-3 py-2">
-                                                <span class="text-[10px] font-semibold text-[#354B3F]">Sisa Saldo Bulanan</span>
-                                                <span id="finance-surplus-badge" class="rounded-md bg-white px-2 py-0.5 text-[9.5px] font-bold text-[#1e5031] shadow-2xs">
-                                                    Sisa Saldo + Rp 4.250.000 (Aman)
+                                            <!-- Total & Selisih Strip -->
+                                            <div class="flex flex-nowrap items-center justify-between gap-2 rounded-xl border border-[#dfe4df] bg-[#f0f5f0] px-3 py-2">
+                                                <span id="finance-total-tx" class="min-w-0 truncate text-[9.5px] font-semibold text-[#414942]">Total 22 Transaksi</span>
+                                                <span id="finance-surplus-badge" class="shrink-0 whitespace-nowrap rounded-full bg-[#ebf5ee] px-2 py-0.5 text-[8px] font-bold text-[#1e5031]">
+                                                    Selisih + Rp 4.250.000 (Surplus)
                                                 </span>
                                             </div>
 
-                                            <!-- Chart Simulation -->
+                                            <!-- Ringkasan Keuangan -->
                                             <div class="rounded-2xl border border-[#dfe4df] bg-white p-3 shadow-xs space-y-2">
                                                 <div class="flex items-center justify-between">
-                                                    <h3 class="text-xs font-bold text-[#181d1a]">Grafik Mingguan</h3>
-                                                    <button type="button" onclick="openAddTransactionModal()" class="text-[10px] font-bold text-[#316342] hover:underline flex items-center gap-1">
-                                                        <i class="fa-solid fa-plus text-[9px]"></i> Catat Transaksi
-                                                    </button>
+                                                    <h3 class="text-xs font-bold text-[#181d1a]">Ringkasan Keuangan</h3>
+                                                    <button type="button" onclick="triggerNotification('Detail tren keuangan bisa kamu lihat di halaman Ringkasan Keuangan.')" class="text-[10px] font-bold text-[#316342] hover:underline">Lihat Detail</button>
+                                                </div>
+                                                <div class="flex gap-1 p-1 rounded-xl bg-[#f0f5f0]">
+                                                    <button type="button" onclick="setFinanceTab(this)" class="finance-tab-btn flex-1 rounded-lg py-1 text-[9.5px] font-bold text-[#414942]">Harian</button>
+                                                    <button type="button" onclick="setFinanceTab(this)" class="finance-tab-btn active flex-1 rounded-lg bg-white py-1 text-[9.5px] font-bold text-[#1e5031] shadow-xs">Mingguan</button>
+                                                    <button type="button" onclick="setFinanceTab(this)" class="finance-tab-btn flex-1 rounded-lg py-1 text-[9.5px] font-bold text-[#414942]">Bulanan</button>
                                                 </div>
                                                 <div class="pt-2 flex items-end justify-between h-20 px-2 border-b border-[#f0f5f0]">
                                                     <div class="flex items-end gap-1"><div class="w-2.5 bg-[#316342] rounded-t h-12"></div><div class="w-2.5 bg-[#F97316] rounded-t h-7"></div></div>
@@ -696,16 +726,43 @@
                                                 </div>
                                             </div>
 
+                                            <!-- Kategori Pengeluaran -->
+                                            <div class="rounded-2xl border border-[#dfe4df] bg-white p-3 shadow-xs space-y-2">
+                                                <div class="flex items-center justify-between">
+                                                    <h3 class="text-xs font-bold text-[#181d1a]">Kategori Pengeluaran</h3>
+                                                    <button type="button" onclick="triggerNotification('Semua kategori pengeluaran bisa kamu atur di halaman Kategori.')" class="text-[10px] font-bold text-[#316342] hover:underline">Lihat Semua</button>
+                                                </div>
+                                                <div class="flex items-center gap-4 py-1">
+                                                    <div class="relative flex h-[86px] w-[86px] shrink-0 items-center justify-center rounded-full" style="background: conic-gradient(#316342 0% 45%, #F97316 45% 70%, #2B7DE9 70% 90%, #CBD5E1 90% 100%)">
+                                                        <div class="flex h-[58px] w-[58px] flex-col items-center justify-center rounded-full bg-white">
+                                                            <span class="text-[7px] font-medium text-[#717971]">Pengeluaran</span>
+                                                            <span class="text-[11px] font-extrabold text-[#181d1a]">100%</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="min-w-0 flex-1 space-y-1.5">
+                                                        <div class="flex items-center gap-1.5 text-[9px] text-[#414942]"><span class="h-2 w-2 rounded-full bg-[#316342]"></span><span class="flex-1 truncate">Makan &amp; Minum</span><span class="font-bold text-[#181d1a]">45%</span></div>
+                                                        <div class="flex items-center gap-1.5 text-[9px] text-[#414942]"><span class="h-2 w-2 rounded-full bg-[#F97316]"></span><span class="flex-1 truncate">Transportasi</span><span class="font-bold text-[#181d1a]">25%</span></div>
+                                                        <div class="flex items-center gap-1.5 text-[9px] text-[#414942]"><span class="h-2 w-2 rounded-full bg-[#2B7DE9]"></span><span class="flex-1 truncate">Belanja</span><span class="font-bold text-[#181d1a]">20%</span></div>
+                                                        <div class="flex items-center gap-1.5 text-[9px] text-[#414942]"><span class="h-2 w-2 rounded-full bg-[#CBD5E1]"></span><span class="flex-1 truncate">Lainnya</span><span class="font-bold text-[#181d1a]">10%</span></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                             <!-- Recent Transactions -->
                                             <div>
                                                 <div class="mb-2 flex items-center justify-between">
-                                                    <h3 class="text-xs font-bold text-[#181d1a]">Transaksi Terakhir</h3>
-                                                    <span class="text-[9.5px] text-[#1e5031] font-semibold">Tercatat Rapi</span>
+                                                    <h3 class="text-xs font-bold text-[#181d1a]">Transaksi Terkini</h3>
+                                                    <button type="button" onclick="triggerNotification('Semua transaksi bisa kamu lihat di halaman Transaksi.')" class="text-[9.5px] font-semibold text-[#1e5031] hover:underline">Lihat Semua</button>
                                                 </div>
                                                 <div id="finance-tx-list" class="space-y-1.5">
                                                     <!-- Populated by JS -->
                                                 </div>
                                             </div>
+
+                                            <button type="button" onclick="openAddTransactionModal()" class="sticky bottom-2 ml-auto flex items-center gap-1.5 rounded-2xl bg-[#316342] px-4 py-2.5 text-xs font-bold text-white shadow-lg transition hover:bg-[#1e5031]">
+                                                <i class="fa-solid fa-plus text-[10px]"></i>
+                                                <span>Tambah</span>
+                                            </button>
                                         </div>
 
                                         <!-- 5. NUTRITION TAB -->
@@ -780,13 +837,10 @@
                                             <!-- Memento Header -->
                                             <div class="flex items-center justify-between">
                                                 <div>
-                                                    <div class="flex items-center gap-1.5">
-                                                        <h2 class="text-lg font-extrabold text-[#181d1a]">Memento</h2>
-                                                        <span class="rounded-md bg-[#ebf5ee] px-1.5 py-0.5 text-[9px] font-extrabold text-[#1e5031]">Jurnal Memento</span>
-                                                    </div>
-                                                    <p class="text-[10px] text-[#414942]">Simpan foto dan cerita momen berkesan kamu</p>
+                                                    <h2 class="text-lg font-extrabold text-[#181d1a]">Memento</h2>
+                                                    <p class="text-[10px] text-[#414942]">Kenangan yang tersimpan dalam perjalananmu</p>
                                                 </div>
-                                                <button type="button" onclick="openAddMomentModal()" class="flex h-7 w-7 items-center justify-center rounded-full bg-[#316342] text-white shadow-xs hover:bg-[#1e5031] transition" title="Tambah Momen">
+                                                <button type="button" onclick="openAddMomentModal()" class="flex h-7 w-7 items-center justify-center rounded-full bg-[#316342] text-white shadow-xs hover:bg-[#1e5031] transition" title="Tambah Kenangan">
                                                     <i class="fa-solid fa-plus text-xs"></i>
                                                 </button>
                                             </div>
@@ -796,7 +850,7 @@
                                                 <div class="flex items-center justify-between">
                                                     <div class="flex items-center gap-1.5">
                                                         <i class="fa-solid fa-location-dot text-xs text-[#316342]"></i>
-                                                        <h3 class="text-xs font-bold text-[#181d1a]">Peta Lokasi Momen</h3>
+                                                        <h3 class="text-xs font-bold text-[#181d1a]">Peta Jejak Momen</h3>
                                                     </div>
                                                     <span class="rounded bg-[#f6fbf5] px-2 py-0.5 text-[9px] font-bold text-[#414942]">Pulau Batam</span>
                                                 </div>
@@ -823,9 +877,9 @@
                                                         <span class="rounded bg-white/95 px-1.5 text-[7.5px] font-bold text-[#181d1a] shadow-xs">Batam Center</span>
                                                     </button>
 
-                                                    <span class="absolute right-2 bottom-2 rounded-lg bg-white/90 border border-[#ebf5ee] px-2 py-0.5 text-[8.5px] font-bold text-[#0F766E] shadow-xs">
-                                                        Klik pin di peta!
-                                                    </span>
+                                                    <button type="button" onclick="triggerNotification('Peta jejak momen diperbesar. Semua lokasi kenanganmu tampil di sini.')" class="absolute right-2 bottom-2 rounded-lg border border-[#ebf5ee] bg-white/95 px-2 py-0.5 text-[8.5px] font-bold text-[#0F766E] shadow-xs hover:bg-white transition">
+                                                        <i class="fa-solid fa-expand text-[7px]"></i> Fokuskan Peta
+                                                    </button>
                                                 </div>
                                             </div>
 
@@ -836,13 +890,50 @@
                                                 </span>
                                                 <div class="flex-1 min-w-0">
                                                     <p class="text-xs font-extrabold text-[#1e5031]">34 Momen Tersimpan</p>
-                                                    <p class="text-[9.5px] text-[#414942]">12 Lokasi di Batam</p>
+                                                    <p class="text-[9.5px] text-[#414942]">12 Lokasi Berbeda di Kepulauan Riau</p>
                                                 </div>
                                             </div>
 
-                                            <!-- Moments Cards Grid -->
-                                            <div id="memento-cards-grid" class="grid grid-cols-2 gap-2">
-                                                <!-- Cards populated by JS -->
+                                            <!-- Kenangan Terbaru -->
+                                            <div>
+                                                <div class="mb-2 flex items-center justify-between">
+                                                    <div>
+                                                        <h3 class="text-xs font-bold text-[#181d1a]">Kenangan Terbaru</h3>
+                                                        <p class="text-[9px] text-[#414942]">Diurutkan berdasarkan waktu kunjungan</p>
+                                                    </div>
+                                                    <button type="button" onclick="triggerNotification('Semua kenangan tersimpan rapi di Memento.')" class="flex items-center gap-0.5 text-[10px] font-bold text-[#316342] hover:underline">
+                                                        <span>Lihat Semua</span>
+                                                        <i class="fa-solid fa-chevron-right text-[8px]"></i>
+                                                    </button>
+                                                </div>
+                                                <div id="memento-cards-grid" class="flex gap-2 overflow-x-auto pb-1 scrollbar-none">
+                                                    <!-- Cards populated by JS -->
+                                                </div>
+                                            </div>
+
+                                            <!-- Album Rekomendasi -->
+                                            <div>
+                                                <div class="mb-2 flex items-center justify-between">
+                                                    <h3 class="text-xs font-bold text-[#181d1a]">Album Rekomendasi</h3>
+                                                    <span class="rounded-md bg-[#ebf5ee] px-1.5 py-0.5 text-[8.5px] font-bold text-[#1e5031]">Smart Tagging</span>
+                                                </div>
+                                                <div class="grid grid-cols-3 gap-2">
+                                                    <div class="rounded-xl border border-[#dfe4df] bg-white p-2 shadow-xs">
+                                                        <div class="flex h-14 items-center justify-center rounded-lg bg-[#ebf5ee] text-[#1e5031]"><i class="fa-solid fa-umbrella-beach text-base"></i></div>
+                                                        <p class="mt-1.5 truncate text-[9.5px] font-bold text-[#181d1a]">Akhir Pekan</p>
+                                                        <p class="text-[8px] text-[#414942]">12 momen</p>
+                                                    </div>
+                                                    <div class="rounded-xl border border-[#dfe4df] bg-white p-2 shadow-xs">
+                                                        <div class="flex h-14 items-center justify-center rounded-lg bg-[#FFEDD5] text-[#F97316]"><i class="fa-solid fa-utensils text-base"></i></div>
+                                                        <p class="mt-1.5 truncate text-[9.5px] font-bold text-[#181d1a]">Kuliner Batam</p>
+                                                        <p class="text-[8px] text-[#414942]">8 momen</p>
+                                                    </div>
+                                                    <div class="rounded-xl border border-[#dfe4df] bg-white p-2 shadow-xs">
+                                                        <div class="flex h-14 items-center justify-center rounded-lg bg-[#E0EDFF] text-[#2B7DE9]"><i class="fa-solid fa-sun text-base"></i></div>
+                                                        <p class="mt-1.5 truncate text-[9.5px] font-bold text-[#181d1a]">Sunset Nongsa</p>
+                                                        <p class="text-[8px] text-[#414942]">6 momen</p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
 
@@ -850,11 +941,7 @@
                                         <div id="tab-profile" class="app-tab hidden px-4 pt-2 space-y-3.5">
                                             <!-- Profile Header -->
                                             <div class="flex items-center justify-between">
-                                                <h2 class="text-lg font-extrabold text-[#181d1a]">Profil Saya</h2>
-                                                <button type="button" onclick="openExecutiveSummary()" class="text-[10px] font-bold text-[#1e5031] bg-[#ebf5ee] border border-[#c1c9bf] px-2.5 py-1 rounded-lg hover:bg-[#dfe9e1] transition flex items-center gap-1">
-                                                    <i class="fa-solid fa-medal"></i>
-                                                    <span>Lihat Rekap</span>
-                                                </button>
+                                                <h2 class="text-lg font-extrabold text-[#181d1a]">Profil</h2>
                                             </div>
 
                                             <!-- User Card -->
@@ -880,7 +967,7 @@
                                                 <div class="grid grid-cols-3 text-center gap-1">
                                                     <div>
                                                         <p class="text-xs font-extrabold text-[#1e5031]">5</p>
-                                                        <p class="text-[8.5px] text-[#414942]">Hari Aktif</p>
+                                                        <p class="text-[8.5px] text-[#414942]">Hari Beruntun</p>
                                                     </div>
                                                     <div>
                                                         <p id="profile-activities-count" class="text-xs font-extrabold text-[#1e5031]">42</p>
@@ -893,38 +980,92 @@
                                                 </div>
                                             </div>
 
-                                            <!-- Menu List -->
+                                            <!-- Akun -->
                                             <div class="space-y-1">
-                                                <h3 class="mb-1 text-[9.5px] font-bold uppercase tracking-wider text-[#717971]">Pengaturan &amp; Backup</h3>
+                                                <h3 class="mb-1 text-[9.5px] font-bold uppercase tracking-wider text-[#717971]">Akun</h3>
                                                 <div class="rounded-xl border border-[#dfe4df] bg-white divide-y divide-[#dfe4df] shadow-xs">
+                                                    <button type="button" onclick="openEditProfileModal()" class="w-full text-left flex items-center gap-2.5 p-2.5 hover:bg-[#f6fbf5] transition">
+                                                        <i class="fa-regular fa-user w-4 text-center text-[#316342] text-xs"></i>
+                                                        <div class="flex-1 min-w-0">
+                                                            <p class="text-xs font-semibold text-[#181d1a]">Kelola Profil</p>
+                                                            <p class="text-[9px] text-[#414942]">Foto, nama, dan password</p>
+                                                        </div>
+                                                        <i class="fa-solid fa-chevron-right text-[9px] text-[#717971]"></i>
+                                                    </button>
+                                                    <button type="button" onclick="openSessionsModal()" class="w-full text-left flex items-center gap-2.5 p-2.5 hover:bg-[#f6fbf5] transition">
+                                                        <i class="fa-solid fa-mobile-screen w-4 text-center text-[#316342] text-xs"></i>
+                                                        <div class="flex-1 min-w-0">
+                                                            <p class="text-xs font-semibold text-[#181d1a]">Perangkat Login</p>
+                                                            <p class="text-[9px] text-[#414942]">Lihat &amp; keluarkan sesi di perangkat lain</p>
+                                                        </div>
+                                                        <i class="fa-solid fa-chevron-right text-[9px] text-[#717971]"></i>
+                                                    </button>
                                                     <button type="button" onclick="triggerCloudSync()" class="w-full text-left flex items-center gap-2.5 p-2.5 hover:bg-[#f6fbf5] transition">
                                                         <i id="sync-icon-profile" class="fa-solid fa-arrows-rotate w-4 text-center text-[#316342] text-xs"></i>
                                                         <div class="flex-1 min-w-0">
-                                                            <p class="text-xs font-semibold text-[#181d1a]">Backup ke Cloud</p>
+                                                            <p class="text-xs font-semibold text-[#181d1a]">Sinkronkan Sekarang</p>
                                                             <p id="sync-time-desc" class="text-[9px] text-[#414942]">Data otomatis tersimpan di cloud</p>
                                                         </div>
                                                         <span id="sync-dot-profile" class="h-2 w-2 rounded-full bg-[#316342]"></span>
                                                     </button>
-                                                    <button type="button" onclick="openSessionsModal()" class="w-full text-left flex items-center gap-2.5 p-2.5 hover:bg-[#f6fbf5] transition">
-                                                        <i class="fa-solid fa-mobile-screen w-4 text-center text-[#316342] text-xs"></i>
-                                                        <span class="flex-1 text-xs font-semibold text-[#181d1a]">Perangkat Tertaut (2 Perangkat)</span>
-                                                        <i class="fa-solid fa-chevron-right text-[9px] text-[#717971]"></i>
-                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <!-- Preferensi -->
+                                            <div class="space-y-1">
+                                                <h3 class="mb-1 text-[9.5px] font-bold uppercase tracking-wider text-[#717971]">Preferensi</h3>
+                                                <div class="rounded-xl border border-[#dfe4df] bg-white shadow-xs">
                                                     <div class="flex items-center justify-between p-2.5">
                                                         <div class="flex items-center gap-2.5">
                                                             <i class="fa-regular fa-bell w-4 text-center text-[#316342] text-xs"></i>
-                                                            <span class="text-xs font-semibold text-[#181d1a]">Notifikasi Pengingat Harian</span>
+                                                            <div>
+                                                                <p class="text-xs font-semibold text-[#181d1a]">Notifikasi</p>
+                                                                <p class="text-[9px] text-[#414942]">Pengingat kebiasaan harian</p>
+                                                            </div>
                                                         </div>
                                                         <input type="checkbox" checked onchange="triggerNotification(this.checked ? 'Pengingat harian aktif' : 'Pengingat harian dinonaktifkan')" class="accent-[#316342] h-4 w-4 rounded cursor-pointer">
                                                     </div>
                                                 </div>
                                             </div>
 
+                                            <!-- Bantuan -->
+                                            <div class="space-y-1">
+                                                <h3 class="mb-1 text-[9.5px] font-bold uppercase tracking-wider text-[#717971]">Bantuan</h3>
+                                                <div class="rounded-xl border border-[#dfe4df] bg-white divide-y divide-[#dfe4df] shadow-xs">
+                                                    <button type="button" onclick="openFaqModal()" class="w-full text-left flex items-center gap-2.5 p-2.5 hover:bg-[#f6fbf5] transition">
+                                                        <i class="fa-regular fa-circle-question w-4 text-center text-[#316342] text-xs"></i>
+                                                        <div class="flex-1 min-w-0">
+                                                            <p class="text-xs font-semibold text-[#181d1a]">FAQ</p>
+                                                            <p class="text-[9px] text-[#414942]">Pertanyaan yang sering diajukan</p>
+                                                        </div>
+                                                        <i class="fa-solid fa-chevron-right text-[9px] text-[#717971]"></i>
+                                                    </button>
+                                                    <button type="button" onclick="triggerNotification('Hubungi kami di support@lifesync.id')" class="w-full text-left flex items-center gap-2.5 p-2.5 hover:bg-[#f6fbf5] transition">
+                                                        <i class="fa-regular fa-envelope w-4 text-center text-[#316342] text-xs"></i>
+                                                        <div class="flex-1 min-w-0">
+                                                            <p class="text-xs font-semibold text-[#181d1a]">Hubungi Kami</p>
+                                                            <p class="text-[9px] text-[#414942]">support@lifesync.id</p>
+                                                        </div>
+                                                        <i class="fa-solid fa-chevron-right text-[9px] text-[#717971]"></i>
+                                                    </button>
+                                                    <button type="button" onclick="triggerNotification('LifeSync v1.0.0 — Daily Habit Tracker and Assistance')" class="w-full text-left flex items-center gap-2.5 p-2.5 hover:bg-[#f6fbf5] transition">
+                                                        <i class="fa-solid fa-circle-info w-4 text-center text-[#316342] text-xs"></i>
+                                                        <div class="flex-1 min-w-0">
+                                                            <p class="text-xs font-semibold text-[#181d1a]">Tentang Aplikasi</p>
+                                                            <p class="text-[9px] text-[#414942]">Informasi versi &amp; aplikasi</p>
+                                                        </div>
+                                                        <i class="fa-solid fa-chevron-right text-[9px] text-[#717971]"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+
                                             <!-- Logout Button -->
                                             <button type="button" onclick="handleLogout()" class="w-full py-2.5 rounded-xl border border-red-200 bg-red-50 hover:bg-red-100 text-red-600 font-bold text-xs flex items-center justify-center gap-2 transition">
                                                 <i class="fa-solid fa-arrow-right-from-bracket text-xs"></i>
-                                                <span>Keluar Akun</span>
+                                                <span>Keluar</span>
                                             </button>
+
+                                            <p class="pb-1 text-center text-[9px] text-[#717971]">LifeSync v1.0.0</p>
                                         </div>
 
                                     </div>
@@ -1666,21 +1807,18 @@
         /* ---------------- ONBOARDING SLIDES ---------------- */
         const ONBOARDING_SLIDES = [
             {
-                title: 'Bangun Rutinitas Tanpa Beban',
-                desc: 'Mulai dari langkah kecil yang konsisten. Rayakan setiap progres harian tanpa dibebani notifikasi yang bikin stres.',
-                badge: '1. Kebiasaan Positif',
+                title: 'Bangun Kebiasaan Lebih Baik',
+                desc: 'Bangun rutinitas positif dan pantau kebiasaan harianmu dengan lebih mudah.',
                 icon: 'fa-repeat'
             },
             {
-                title: 'Atur Jadwal Lebih Rapi',
-                desc: 'Catat to-do, agenda penting, dan keuangan harian dalam satu tempat yang simpel dan bebas distraksi.',
-                badge: '2. Produktivitas Harian',
-                icon: 'fa-list-check'
+                title: 'Atur Aktivitas Harianmu',
+                desc: 'Kelola aktivitas, planner, keuangan, dan berbagai kebutuhan harian dalam satu aplikasi.',
+                icon: 'fa-calendar-check'
             },
             {
-                title: 'Cek Nutrisi & Simpan Momen Berharga',
-                desc: 'Scan makanan lewat kamera AI dan simpan cerita atau foto perjalanan kamu dengan aman dan privat.',
-                badge: '3. Nutrisi & Memento',
+                title: 'Kenali Dirimu Lebih Baik',
+                desc: 'Pantau nutrisi, simpan momen berharga, dan dapatkan bantuan dari LifeSync AI.',
                 icon: 'fa-wand-magic-sparkles'
             }
         ];
@@ -1690,11 +1828,10 @@
             const data = ONBOARDING_SLIDES[idx];
             document.getElementById('ob-title').textContent = data.title;
             document.getElementById('ob-desc').textContent = data.desc;
-            document.getElementById('ob-badge').textContent = data.badge;
             document.getElementById('ob-illustration').innerHTML = `<i class="fa-solid ${data.icon}"></i>`;
 
             document.getElementById('ob-btn-back').style.opacity = idx > 0 ? '1' : '0';
-            document.getElementById('ob-next-btn').textContent = idx === 2 ? 'Mulai Coba' : 'Lanjut';
+            document.getElementById('ob-next-btn').textContent = idx === 2 ? 'Mulai Sekarang' : 'Lanjut';
 
             const dots = document.querySelectorAll('.ob-dot');
             dots.forEach((dot, i) => {
@@ -1729,11 +1866,11 @@
         function toggleAuthMode() {
             isRegisterMode = !isRegisterMode;
             document.getElementById('auth-name-group').classList.toggle('hidden', !isRegisterMode);
-            document.getElementById('auth-heading').textContent = isRegisterMode ? 'Daftar Akun Baru' : 'Masuk ke LifeSync';
-            document.getElementById('auth-subheading').textContent = isRegisterMode ? 'Daftar buat aktifkan sinkronisasi otomatis antar perangkat' : 'Pilih cara masuk yang paling pas buat kamu';
+            document.getElementById('auth-heading').textContent = isRegisterMode ? 'Buat Akun LifeSync' : 'Selamat Datang Kembali';
+            document.getElementById('auth-subheading').textContent = isRegisterMode ? 'Mulai kebiasaan baikmu hari ini' : 'Kelola aktivitas dan keseharianmu bersama LifeSync.';
             document.getElementById('auth-submit-btn').textContent = isRegisterMode ? 'Daftar Sekarang' : 'Masuk';
             document.getElementById('auth-toggle-text').textContent = isRegisterMode ? 'Sudah punya akun?' : 'Belum punya akun?';
-            document.getElementById('auth-toggle-btn').textContent = isRegisterMode ? 'Masuk' : 'Daftar sekarang';
+            document.getElementById('auth-toggle-btn').textContent = isRegisterMode ? 'Masuk' : 'Daftar';
         }
 
         function handleAuthSubmit(e) {
@@ -1746,14 +1883,6 @@
             triggerNotification('Selamat datang di LifeSync!');
         }
 
-        function loginAsDemo() {
-            appState.user = { name: 'Megah Pratama', email: 'megah@lifesync.id', isGuest: false };
-            switchPhoneTab('home');
-            renderProfile();
-            triggerNotification('Masuk sebagai Megah Pratama (Pengguna Aktif)');
-            trackMockupEvent('mockup_login_demo', { user_type: 'registered' });
-        }
-
         function loginAsGuest() {
             appState.user = { name: 'Tamu (Privat)', email: 'tamu@lokal.perangkat', isGuest: true };
             switchPhoneTab('home');
@@ -1763,8 +1892,7 @@
         }
 
         function simulateForgotPassword() {
-            alert('Reset Password:\nKode verifikasi demo: [ 8 4 9 2 0 1 ]. Akun kamu langsung siap digunakan!');
-            loginAsDemo();
+            triggerNotification('Kode verifikasi demo: 849201. Akun kamu langsung siap digunakan.', 'Reset Password');
         }
 
         /* ---------------- HABITS (HOME TAB) ---------------- */
@@ -1779,7 +1907,7 @@
             // Update Progress Ring Card
             document.getElementById('home-progress-badge').textContent = `${pct}% Selesai`;
             document.getElementById('home-progress-ratio').textContent = `${doneCount}/${total}`;
-            document.getElementById('home-progress-text').textContent = `${doneCount} dari ${total} kebiasaan tuntas`;
+            document.getElementById('home-progress-text').textContent = `${doneCount} dari ${total} habit selesai`;
             document.getElementById('home-conic-ring').style.background = `conic-gradient(#316342 0% ${pct}%, #ebf5ee ${pct}% 100%)`;
 
             list.innerHTML = appState.habits.map(h => {
@@ -2095,15 +2223,20 @@
             const fmt = (num) => 'Rp ' + Math.abs(num).toLocaleString('id-ID');
 
             document.getElementById('finance-income-val').textContent = fmt(f.income);
-            document.getElementById('finance-income-tx').textContent = `${f.incomeTx} Catatan`;
+            document.getElementById('finance-income-tx').textContent = `${f.incomeTx} Transaksi`;
 
             document.getElementById('finance-expense-val').textContent = fmt(f.expense);
-            document.getElementById('finance-expense-tx').textContent = `${f.expenseTx} Catatan`;
+            document.getElementById('finance-expense-tx').textContent = `${f.expenseTx} Transaksi`;
 
             const surplus = f.income - f.expense;
+            const totalTx = document.getElementById('finance-total-tx');
+            if (totalTx) {
+                totalTx.textContent = `Total ${f.incomeTx + f.expenseTx} Transaksi`;
+            }
             const badge = document.getElementById('finance-surplus-badge');
             if (badge) {
-                badge.textContent = `Surplus + ${fmt(surplus)} (Aman)`;
+                const isSurplus = surplus >= 0;
+                badge.textContent = `Selisih ${isSurplus ? '+' : '-'} ${fmt(Math.abs(surplus))} (${isSurplus ? 'Surplus' : 'Defisit'})`;
             }
 
             const list = document.getElementById('finance-tx-list');
@@ -2115,9 +2248,9 @@
                         </span>
                         <div class="flex-1 min-w-0">
                             <p class="text-xs font-bold text-[#181d1a] truncate">${t.title}</p>
-                            <p class="text-[9px] text-[#717971]">${t.sub}</p>
+                            <p class="text-[9px] text-[#717971] truncate">${t.sub}</p>
                         </div>
-                        <span class="text-xs font-bold ${t.type === 'income' ? 'text-[#1e5031]' : 'text-[#F97316]'}">
+                        <span class="shrink-0 whitespace-nowrap text-xs font-bold ${t.type === 'income' ? 'text-[#1e5031]' : 'text-[#F97316]'}">
                             ${t.type === 'income' ? '+' : '-'} ${fmt(t.amount)}
                         </span>
                     </div>
@@ -2125,6 +2258,15 @@
             }
 
             renderTelemetry();
+        }
+
+        function setFinanceTab(btn) {
+            document.querySelectorAll('.finance-tab-btn').forEach(b => {
+                b.classList.remove('active', 'bg-white', 'text-[#1e5031]', 'shadow-xs');
+                b.classList.add('text-[#414942]');
+            });
+            btn.classList.add('active', 'bg-white', 'text-[#1e5031]', 'shadow-xs');
+            btn.classList.remove('text-[#414942]');
         }
 
         function openAddTransactionModal() {
@@ -2247,26 +2389,33 @@
         }
 
         function openAddMomentModal() {
-            alert('Jurnal Memento:\nLokasi foto otomatis terdeteksi. Kamu bisa simpan foto momen berkesan lengkap dengan cerita perjalanannya!');
+            triggerNotification('Lokasi foto otomatis terdeteksi. Simpan momen lengkap dengan cerita perjalanannya.', 'Memento');
         }
 
         // Render Memento Cards
         const mementoContainer = document.getElementById('memento-cards-grid');
         if (mementoContainer) {
             mementoContainer.innerHTML = `
-                <div class="rounded-xl border border-[#dfe4df] bg-white p-2.5 shadow-xs cursor-pointer hover:border-[#316342] transition" onclick="showMomentDetail('Barelang')">
-                    <div class="h-16 w-full rounded-lg bg-[#ebf5ee] flex items-center justify-center text-[#1e5031] mb-1.5">
+                <div class="w-32 shrink-0 rounded-xl border border-[#dfe4df] bg-white p-2.5 shadow-xs cursor-pointer hover:border-[#316342] transition" onclick="showMomentDetail('Barelang')">
+                    <div class="h-20 w-full rounded-lg bg-[#ebf5ee] flex items-center justify-center text-[#1e5031] mb-1.5">
                         <i class="fa-solid fa-bridge-water text-lg"></i>
                     </div>
                     <p class="text-[11px] font-bold text-[#181d1a] truncate">Jembatan Barelang</p>
                     <p class="text-[9px] text-[#414942]">8 Foto &bull; Ikon Batam</p>
                 </div>
-                <div class="rounded-xl border border-[#dfe4df] bg-white p-2.5 shadow-xs cursor-pointer hover:border-[#316342] transition" onclick="showMomentDetail('Nongsa')">
-                    <div class="h-16 w-full rounded-lg bg-[#E0EDFF] flex items-center justify-center text-[#3B82F6] mb-1.5">
+                <div class="w-32 shrink-0 rounded-xl border border-[#dfe4df] bg-white p-2.5 shadow-xs cursor-pointer hover:border-[#316342] transition" onclick="showMomentDetail('Nongsa')">
+                    <div class="h-20 w-full rounded-lg bg-[#E0EDFF] flex items-center justify-center text-[#3B82F6] mb-1.5">
                         <i class="fa-solid fa-umbrella-beach text-lg"></i>
                     </div>
                     <p class="text-[11px] font-bold text-[#181d1a] truncate">Pantai Nongsa</p>
                     <p class="text-[9px] text-[#414942]">6 Foto &bull; Sunset Indah</p>
+                </div>
+                <div class="w-32 shrink-0 rounded-xl border border-[#dfe4df] bg-white p-2.5 shadow-xs cursor-pointer hover:border-[#316342] transition" onclick="showMomentDetail('BatamCenter')">
+                    <div class="h-20 w-full rounded-lg bg-[#FFEDD5] flex items-center justify-center text-[#F97316] mb-1.5">
+                        <i class="fa-solid fa-city text-lg"></i>
+                    </div>
+                    <p class="text-[11px] font-bold text-[#181d1a] truncate">Batam Center</p>
+                    <p class="text-[9px] text-[#414942]">11 Foto &bull; Pusat Kota</p>
                 </div>
             `;
         }
@@ -2274,7 +2423,7 @@
         /* ---------------- PROFILE TAB ---------------- */
         function renderProfile() {
             const u = appState.user;
-            document.getElementById('home-greeting-name').textContent = u.isGuest ? 'Halo, Pengunjung Tamu 👋' : `Selamat pagi, ${u.name.split(' ')[0]} 👋`;
+            document.getElementById('home-greeting-name').textContent = u.isGuest ? 'Halo, Guest 👋' : `Selamat pagi, ${u.name.split(' ')[0]} 👋`;
             document.getElementById('home-avatar').textContent = u.name.charAt(0);
             document.getElementById('profile-name-text').textContent = u.name;
             document.getElementById('profile-email-text').textContent = u.email;
@@ -2290,40 +2439,61 @@
             const icon = document.getElementById('sync-icon-profile');
             const desc = document.getElementById('sync-time-desc');
             if (icon) icon.classList.add('fa-spin');
-            if (desc) desc.textContent = 'Menyimpan backup data ke cloud...';
+            if (desc) desc.textContent = 'Menyinkronkan data ke cloud...';
 
             trackMockupEvent('mockup_cloud_sync', {});
 
             setTimeout(() => {
                 if (icon) icon.classList.remove('fa-spin');
                 if (desc) desc.textContent = 'Semua data tersimpan aman dan terbaru';
-                triggerNotification('Data berhasil di-backup ke cloud!');
+                triggerNotification('Sinkronisasi berhasil. Data kamu sudah terbaru.');
             }, 1200);
         }
 
         
         function openSessionsModal() {
-            alert('Perangkat Aktif:\n1. Browser Web (Sedang Dipakai)\n2. HP Pribadi (Sinkron Otomatis)\n\nCatatan dan jadwal kamu otomatis tersinkron di semua perangkat.');
+            showPhoneDialog({
+                title: 'Perangkat Aktif',
+                message: '1. Browser Web — sedang dipakai\n2. HP Pribadi — sinkron otomatis\n\nCatatan dan jadwal otomatis tersinkron di semua perangkat.',
+                confirmLabel: 'Mengerti',
+                showCancel: false
+            });
         }
 
         function openFaqModal() {
-            alert('Bantuan LifeSync:\n• Tetap Jalan Offline: Tulis catatan dan to-do tanpa kuota atau sinyal.\n• Auto Sync: Otomatis tersimpan ke cloud saat online lagi.\n• 100% Aman: Tanpa iklan dan privasi data kamu terlindungi.');
+            showPhoneDialog({
+                title: 'Bantuan LifeSync',
+                message: '• Tetap jalan saat offline\n• Auto sync saat online lagi\n• Tanpa iklan, data kamu aman',
+                confirmLabel: 'Mengerti',
+                showCancel: false
+            });
         }
 
         function openEditProfileModal() {
-            const newName = prompt('Ganti nama panggilan kamu:', appState.user.name);
-            if (newName && newName.trim()) {
-                appState.user.name = newName.trim();
-                renderProfile();
-                triggerNotification(`Nama diubah menjadi "${appState.user.name}"`);
-            }
+            showPhoneDialog({
+                title: 'Ubah Profil',
+                message: 'Ganti nama panggilan kamu.',
+                confirmLabel: 'Simpan',
+                inputValue: appState.user.name,
+                onConfirm: (value) => {
+                    if (!value) return;
+                    appState.user.name = value;
+                    renderProfile();
+                    triggerNotification(`Nama diubah menjadi "${appState.user.name}"`);
+                }
+            });
         }
 
         function handleLogout() {
-            if (confirm('Keluar dari akun Anda?')) {
-                appState.user = { name: 'Tamu', email: 'tamu@lokal.perangkat', isGuest: true };
-                switchPhoneScreen('auth');
-            }
+            showPhoneDialog({
+                title: 'Keluar Akun',
+                message: 'Keluar dari akun sekarang? Data di perangkat tetap tersimpan.',
+                confirmLabel: 'Keluar',
+                onConfirm: () => {
+                    appState.user = { name: 'Tamu', email: 'tamu@lokal.perangkat', isGuest: true };
+                    switchPhoneScreen('auth');
+                }
+            });
         }
 
         /* ---------------- TELEMETRY & RESULTS ---------------- */
@@ -2389,12 +2559,162 @@
             if (m) m.classList.add('hidden');
         }
 
-        function triggerNotification(msg) {
+        /* ---------------- IN-PHONE NOTIFICATIONS ---------------- */
+        function getPhoneNotificationHost() {
+            return document.getElementById('phone-toast-host');
+        }
+
+        function dismissPhoneNotification(el) {
+            if (!el || el.dataset.closing === '1') return;
+            el.dataset.closing = '1';
+            el.classList.remove('is-visible');
+            el.classList.add('is-hiding');
+            setTimeout(() => el.remove(), 240);
+        }
+
+        function triggerNotification(message, title = '') {
+            const host = getPhoneNotificationHost();
+            if (!host) return;
+
+            const notices = host.querySelectorAll('.phone-toast--notice');
+            const maxNotices = host.querySelector('.phone-toast--dialog') ? 1 : 2;
+            if (notices.length >= maxNotices) {
+                notices[0].remove();
+            }
+
             const toast = document.createElement('div');
-            toast.className = 'fixed top-24 right-4 sm:right-8 z-50 bg-[#141C17] text-white border border-[#316342]/60 px-4 py-2.5 rounded-xl shadow-xl text-xs font-semibold flex items-center gap-2.5 transition-all duration-300';
-            toast.innerHTML = `<span class="h-2 w-2 rounded-full bg-[#4a7c59]"></span> <span>${msg}</span>`;
-            document.body.appendChild(toast);
-            setTimeout(() => toast.remove(), 3200);
+            toast.className = 'phone-toast phone-toast--notice pointer-events-auto w-full max-w-[300px] rounded-2xl border border-[#316342]/60 bg-[#141C17] px-3 py-2.5 text-white shadow-[0_12px_28px_-12px_rgba(0,0,0,0.65)]';
+            toast.setAttribute('role', 'status');
+
+            const row = document.createElement('div');
+            row.className = 'flex items-start gap-2';
+
+            const dot = document.createElement('span');
+            dot.className = 'mt-[3px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#7BC48C]';
+
+            const body = document.createElement('div');
+            body.className = 'min-w-0 flex-1';
+
+            if (title) {
+                const titleEl = document.createElement('p');
+                titleEl.className = 'text-[10px] font-extrabold leading-tight text-white';
+                titleEl.textContent = title;
+                body.appendChild(titleEl);
+            }
+
+            const messageEl = document.createElement('p');
+            messageEl.className = 'whitespace-pre-line text-[10.5px] font-semibold leading-snug text-white/90';
+            messageEl.style.overflowWrap = 'anywhere';
+            messageEl.textContent = message;
+            body.appendChild(messageEl);
+
+            row.append(dot, body);
+            toast.appendChild(row);
+            host.appendChild(toast);
+            requestAnimationFrame(() => toast.classList.add('is-visible'));
+
+            const timer = setTimeout(() => dismissPhoneNotification(toast), 3800);
+            toast.addEventListener('click', () => {
+                clearTimeout(timer);
+                dismissPhoneNotification(toast);
+            });
+        }
+
+        function showPhoneDialog({ title, message, confirmLabel = 'Mengerti', inputValue = null, showCancel = true, onConfirm }) {
+            const host = getPhoneNotificationHost();
+            if (!host) return;
+
+            host.querySelectorAll('.phone-toast--notice').forEach(el => el.remove());
+            const existing = host.querySelector('.phone-toast--dialog');
+            if (existing) existing.remove();
+
+            const dialog = document.createElement('div');
+            dialog.className = 'phone-toast phone-toast--dialog pointer-events-auto w-full max-w-[300px] rounded-2xl border border-[#316342]/60 bg-[#141C17] p-3 text-white shadow-[0_12px_28px_-12px_rgba(0,0,0,0.65)]';
+            dialog.setAttribute('role', 'dialog');
+            dialog.setAttribute('aria-modal', 'false');
+
+            const head = document.createElement('div');
+            head.className = 'flex items-start gap-2';
+
+            const dot = document.createElement('span');
+            dot.className = 'mt-[3px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#7BC48C]';
+
+            const copy = document.createElement('div');
+            copy.className = 'min-w-0 flex-1';
+
+            const titleEl = document.createElement('p');
+            titleEl.className = 'text-[10.5px] font-extrabold leading-tight text-white';
+            titleEl.textContent = title;
+
+            const messageEl = document.createElement('p');
+            messageEl.className = 'mt-0.5 whitespace-pre-line text-[10px] font-semibold leading-snug text-white/80';
+            messageEl.style.overflowWrap = 'anywhere';
+            messageEl.textContent = message;
+
+            copy.append(titleEl, messageEl);
+            head.append(dot, copy);
+            dialog.appendChild(head);
+
+            let input = null;
+            if (inputValue !== null) {
+                input = document.createElement('input');
+                input.type = 'text';
+                input.value = inputValue;
+                input.maxLength = 40;
+                input.className = 'mt-2 w-full rounded-lg border border-white/20 bg-white/10 px-2.5 py-1.5 text-[11px] font-semibold text-white focus:border-white/60 focus:outline-none';
+                dialog.appendChild(input);
+            }
+
+            const actions = document.createElement('div');
+            actions.className = 'mt-2.5 flex items-center justify-end gap-1.5';
+
+            const cancelBtn = document.createElement('button');
+            cancelBtn.type = 'button';
+            cancelBtn.className = 'rounded-lg px-2.5 py-1 text-[10px] font-bold text-white/60 transition hover:text-white';
+            cancelBtn.textContent = 'Batal';
+
+            const confirmBtn = document.createElement('button');
+            confirmBtn.type = 'button';
+            confirmBtn.className = 'rounded-lg bg-[#316342] px-3 py-1 text-[10px] font-bold text-white transition hover:bg-[#1e5031]';
+            confirmBtn.textContent = confirmLabel;
+
+            actions.append(cancelBtn, confirmBtn);
+            if (!showCancel) {
+                cancelBtn.remove();
+            }
+            dialog.appendChild(actions);
+
+            const timer = setTimeout(closeDialog, 12000);
+
+            function closeDialog() {
+                clearTimeout(timer);
+                dismissPhoneNotification(dialog);
+            }
+
+            function confirmDialog() {
+                const value = input ? input.value.trim() : undefined;
+                closeDialog();
+                if (typeof onConfirm === 'function') onConfirm(value);
+            }
+
+            cancelBtn.addEventListener('click', closeDialog);
+            confirmBtn.addEventListener('click', confirmDialog);
+            if (input) {
+                input.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        confirmDialog();
+                    }
+                });
+            }
+
+            host.appendChild(dialog);
+            requestAnimationFrame(() => {
+                dialog.classList.add('is-visible');
+                if (input) {
+                    input.focus({ preventScroll: true });
+                }
+            });
         }
     </script>
 </body>
