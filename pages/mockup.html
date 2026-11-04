@@ -566,10 +566,15 @@
                                             <div>
                                                 <div class="mb-2 flex items-center justify-between">
                                                     <h3 class="text-xs font-bold text-[#181d1a]">Keseharian</h3>
-                                                    <button type="button" onclick="triggerNotification('Semua kebiasaan harian bisa kamu kelola dari menu Keseharian.')" class="text-[10px] font-bold text-[#316342] hover:underline flex items-center gap-1">
-                                                        <span>Lihat Semua</span>
-                                                        <i class="fa-solid fa-chevron-right text-[8px]"></i>
-                                                    </button>
+                                                    <div class="flex shrink-0 items-center gap-1.5">
+                                                        <button type="button" onclick="triggerNotification('Semua kebiasaan harian bisa kamu kelola dari menu Keseharian.')" class="text-[10px] font-bold text-[#316342] hover:underline flex items-center gap-1 whitespace-nowrap">
+                                                            <span>Lihat Semua</span>
+                                                            <i class="fa-solid fa-chevron-right text-[8px]"></i>
+                                                        </button>
+                                                        <button type="button" onclick="openAddHabitModal()" title="Tambah kebiasaan" aria-label="Tambah kebiasaan" class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg bg-[#316342] text-white shadow-xs transition hover:bg-[#1e5031]">
+                                                            <i class="fa-solid fa-plus text-[9px]"></i>
+                                                        </button>
+                                                    </div>
                                                 </div>
                                                 <div id="home-habit-list" class="space-y-2">
                                                     <!-- Injected dynamically by JS -->
@@ -1611,12 +1616,279 @@
         /* ---------------- TELEMETRY ANALYTICS HELPER ---------------- */
         function trackMockupEvent(eventName, params) {
             try {
+                const payload = Object.assign({}, params || {});
+                if (payload.feature === undefined) {
+                    payload.feature = currentFeatureKey();
+                }
                 if (typeof window.gtag === 'function') {
-                    window.gtag('event', eventName, params || {});
+                    window.gtag('event', eventName, payload);
                 }
             } catch (err) {
                 console.warn('Mockup telemetry error:', err);
             }
+        }
+
+        /* ---------------- FEATURE ATTENTION TRACKER (GA4) ----------------
+           Mengukur fitur mana yang paling menarik perhatian pengguna:
+           - mockup_feature_enter   : masuk ke sebuah layar/tab fitur
+           - mockup_feature_dwell   : durasi perhatian (detik) saat keluar/milestone
+           - mockup_feature_action  : aksi yang dilakukan pada sebuah fitur
+           - mockup_attention_summary: ringkasan sesi saat halaman ditinggalkan
+        ------------------------------------------------------------------ */
+        const ATTENTION_LABEL = {
+            splash: 'Tampilan Awal',
+            onboarding: 'Kenalan Fitur',
+            auth: 'Login & Tamu',
+            home: 'Beranda',
+            planner: 'Planner',
+            notes: 'Catatan',
+            finance: 'Keuangan',
+            nutrition: 'Nutrisi',
+            memento: 'Memento',
+            profile: 'Profil',
+            ringkasan: 'Rekap Hari Ini',
+            panel_aksi: 'Panel Aksi Cepat'
+        };
+
+        const MODAL_FEATURE = {
+            'modal-add-task': 'planner',
+            'modal-add-habit': 'home',
+            'modal-add-tx': 'finance',
+            'modal-note-editor': 'notes',
+            'modal-food-ai': 'nutrition',
+            'modal-memento-detail': 'memento',
+            'modal-executive-summary': 'ringkasan'
+        };
+
+        /* Nama fungsi pada atribut onclick/onsubmit -> label aksi untuk GA4 */
+        const ACTION_LABEL = {
+            toggleHabit: 'tandai_kebiasaan',
+            incrementWater: 'tambah_air',
+            changeWater: 'ubah_air',
+            openAddHabitModal: 'buka_tambah_kebiasaan',
+            handleAddHabitSubmit: 'simpan_kebiasaan',
+            openAddTaskModal: 'buka_tambah_tugas',
+            handleAddTaskSubmit: 'simpan_tugas',
+            filterPlanner: 'filter_planner',
+            toggleTask: 'tandai_tugas',
+            deleteTask: 'hapus_tugas',
+            openNoteEditorModal: 'buka_editor_catatan',
+            handleSaveNoteSubmit: 'simpan_catatan',
+            filterNotesCategory: 'filter_catatan',
+            handleNotesSearch: 'cari_catatan',
+            deleteNote: 'hapus_catatan',
+            setFinanceTab: 'ubah_periode_keuangan',
+            openAddTransactionModal: 'buka_tambah_transaksi',
+            handleAddTxSubmit: 'simpan_transaksi',
+            openFoodAiModal: 'buka_ai_scan',
+            applyScannedFood: 'pilih_hasil_scan',
+            showMomentDetail: 'buka_momen',
+            openAddMomentModal: 'buka_tambah_momen',
+            openEditProfileModal: 'buka_ubah_profil',
+            openSessionsModal: 'buka_perangkat_aktif',
+            triggerCloudSync: 'sinkron_cloud',
+            openFaqModal: 'buka_faq',
+            handleLogout: 'keluar_akun',
+            openExecutiveSummary: 'buka_rekap_harian',
+            quickFillAll: 'isi_semua_target_100',
+            resetDemoData: 'mulai_ulang_simulasi',
+            nextOnboardingSlide: 'lanjut_onboarding',
+            prevOnboardingSlide: 'kembali_onboarding',
+            toggleAuthMode: 'ganti_mode_masuk',
+            handleAuthSubmit: 'masuk_atau_daftar',
+            loginAsGuest: 'masuk_sebagai_tamu',
+            simulateForgotPassword: 'lupa_password',
+            triggerNotification: 'lihat_info_simulasi',
+            closeModal: 'tutup_modal'
+        };
+
+        const ATTENTION_MILESTONE_MS = 15000;
+        const attention = {
+            current: null,
+            startedAt: Date.now(),
+            lastFlushAt: Date.now(),
+            lastSummaryAt: 0,
+            visitSeconds: 0,
+            visits: {},
+            seconds: {},
+            actions: 0
+        };
+
+        function attentionLabel(feature) {
+            return ATTENTION_LABEL[feature] || feature;
+        }
+
+        /* Fitur yang sedang aktif; dipakai untuk melengkapi parameter event lain */
+        function currentFeatureKey() {
+            if (attention.current) return attention.current;
+            if (typeof appState === 'undefined' || !appState) return 'unknown';
+            return appState.screen === 'main' ? appState.tab : appState.screen;
+        }
+
+        /* Kirim durasi perhatian pada fitur yang baru saja ditinggalkan */
+        function attentionFlush(reason) {
+            const feature = attention.current;
+            if (!feature) return;
+            if (attention.seconds[feature] === undefined) attention.seconds[feature] = 0;
+            trackMockupEvent('mockup_feature_dwell', {
+                feature: feature,
+                feature_label: attentionLabel(feature),
+                seconds: attention.visitSeconds,
+                total_seconds: attention.seconds[feature],
+                total_visits: attention.visits[feature] || 0,
+                visit_index: attention.visits[feature] || 0,
+                end_reason: reason
+            });
+            attention.visitSeconds = 0;
+            attention.lastFlushAt = Date.now();
+        }
+
+        /* Catat perpindahan ke sebuah layar/tab fitur */
+        function attentionEnter(feature) {
+            if (!feature || feature === attention.current) return;
+            const from = attention.current;
+            attentionFlush('switch');
+            attention.current = feature;
+            attention.visitSeconds = 0;
+            attention.visits[feature] = (attention.visits[feature] || 0) + 1;
+            if (attention.seconds[feature] === undefined) attention.seconds[feature] = 0;
+            trackMockupEvent('mockup_feature_enter', {
+                feature: feature,
+                feature_label: attentionLabel(feature),
+                from_feature: from || 'none',
+                visit_index: attention.visits[feature]
+            });
+            attention.lastFlushAt = Date.now();
+        }
+
+        /* Ringkasan sesi: fitur paling menarik + rincian durasi per fitur */
+        function attentionEnd(reason) {
+            const features = Object.keys(attention.seconds);
+            if (!features.length) return;
+            if (Date.now() - attention.lastSummaryAt < 3000) return;
+            attention.lastSummaryAt = Date.now();
+
+            const top = features.slice().sort(function (a, b) {
+                return attention.seconds[b] - attention.seconds[a];
+            })[0];
+            const breakdown = features.map(function (key) {
+                return key + '=' + attention.seconds[key];
+            }).join(';');
+
+            trackMockupEvent('mockup_attention_summary', {
+                feature: top,
+                top_feature: top,
+                top_feature_label: attentionLabel(top),
+                top_feature_seconds: attention.seconds[top],
+                features_tried: features.length,
+                session_seconds: Math.round((Date.now() - attention.startedAt) / 1000),
+                actions_count: attention.actions,
+                dwell_breakdown: breakdown,
+                end_reason: reason
+            });
+        }
+
+        /* Catat satu aksi pengguna pada sebuah fitur */
+        function trackFeature(feature, action, extra) {
+            attention.actions += 1;
+            const params = Object.assign({
+                feature: feature || currentFeatureKey(),
+                action: action
+            }, extra || {});
+            trackMockupEvent('mockup_feature_action', params);
+        }
+
+        /* Tentukan fitur dari elemen yang diklik (modal > tab > layar > panel kanan) */
+        function deriveFeatureFromEl(el) {
+            if (!el || typeof el.closest !== 'function') return currentFeatureKey();
+
+            const modal = el.closest('[id^="modal-"]');
+            if (modal) return MODAL_FEATURE[modal.id] || 'modal';
+
+            const tab = el.closest('[id^="tab-"]');
+            if (tab) return tab.id.replace('tab-', '');
+
+            const view = el.closest('[id^="view-"]');
+            if (view && view.id !== 'view-main-app') return view.id.replace('view-', '');
+
+            if (el.closest && el.closest('.lg\\:col-span-5')) return 'panel_aksi';
+
+            return currentFeatureKey();
+        }
+
+        /* Ambil nama fungsi pertama yang dikenal dari atribut onclick/onsubmit */
+        function parseActionFromAttr(raw) {
+            if (!raw) return null;
+            const calls = raw.match(/[A-Za-z_$][\w$]*(?=\s*\()/g) || [];
+            for (let i = 0; i < calls.length; i++) {
+                if (ACTION_LABEL[calls[i]]) return ACTION_LABEL[calls[i]];
+            }
+            return null;
+        }
+
+        function initFeatureAttention() {
+            attentionEnter('splash'); // kunjungan pembuka layar awal
+
+            /* Timer perhatian: 1 detik hanya dihitung saat halaman benar-benar terlihat */
+            setInterval(function () {
+                if (document.visibilityState !== 'visible') return;
+                const feature = attention.current;
+                if (!feature) return;
+                attention.seconds[feature] = (attention.seconds[feature] || 0) + 1;
+                attention.visitSeconds += 1;
+                if (Date.now() - attention.lastFlushAt >= ATTENTION_MILESTONE_MS) {
+                    attentionFlush('milestone');
+                }
+            }, 1000);
+
+            /* Delegasi klik: semua tombol dengan onclick ikut tercatat, termasuk yang di-render ulang */
+            document.addEventListener('click', function (e) {
+                const el = e.target && e.target.closest ? e.target.closest('[onclick], a[href]') : null;
+                if (!el) return;
+
+                let action = parseActionFromAttr(el.getAttribute('onclick'));
+                if (!action && el.tagName === 'A') {
+                    const href = el.getAttribute('href') || '';
+                    if (href.indexOf('../index.html') === 0) {
+                        action = href.indexOf('#pricing') > -1 ? 'cta_mulai_gratis' : 'kembali_ke_beranda';
+                    } else if (href.indexOf('#') === 0) {
+                        action = 'pindah_bagian';
+                    }
+                }
+                if (!action) return;
+                trackFeature(deriveFeatureFromEl(el), action, { element: (el.tagName || '').toLowerCase() });
+            }, true);
+
+            /* Delegasi submit: form di dalam modal (tambah tugas, catatan, transaksi, dll.) */
+            document.addEventListener('submit', function (e) {
+                const action = parseActionFromAttr(e.target.getAttribute('onsubmit'));
+                if (!action) return;
+                trackFeature(deriveFeatureFromEl(e.target), action, { element: 'form' });
+            }, true);
+
+            /* Delegasi input: dibatasi 1 event per 2 detik per kolom (mis. pencarian catatan) */
+            document.addEventListener('input', function (e) {
+                const el = e.target;
+                if (!el || !el.getAttribute) return;
+                const action = parseActionFromAttr(el.getAttribute('oninput'));
+                if (!action) return;
+                const now = Date.now();
+                if (el.dataset.attentionAt && now - Number(el.dataset.attentionAt) < 2000) return;
+                el.dataset.attentionAt = String(now);
+                trackFeature(deriveFeatureFromEl(el), action, { element: 'input' });
+            }, true);
+
+            /* Simpan data perhatian saat halaman ditinggalkan atau disembunyikan */
+            document.addEventListener('visibilitychange', function () {
+                if (document.visibilityState === 'hidden') {
+                    attentionFlush('hidden');
+                    attentionEnd('hidden');
+                }
+            });
+            window.addEventListener('pagehide', function () {
+                attentionFlush('pagehide');
+                attentionEnd('pagehide');
+            });
         }
 
         /* ---------------- APP STATE STORE ---------------- */
@@ -1677,6 +1949,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             renderAll();
             startLiveClock();
+            initFeatureAttention();
             trackMockupEvent('mockup_loaded', { initial_screen: appState.screen });
 
             // Tracker tombol Kembali ke Beranda
@@ -1737,10 +2010,13 @@
             renderScreenState();
             trackMockupEvent('mockup_screen_switch', {
                 screen_name: screenName,
-                from_screen: prevScreen
+                from_screen: prevScreen,
+                feature: screenName,
+                from_feature: prevScreen
             });
+            attentionEnter(screenName);
             if (prevScreen === 'splash' && screenName !== 'splash') {
-                trackMockupEvent('mockup_start', { starting_point: screenName });
+                trackMockupEvent('mockup_start', { starting_point: screenName, feature: screenName });
             }
         }
 
@@ -1752,8 +2028,11 @@
             renderScreenState();
             trackMockupEvent('mockup_tab_switch', {
                 tab_name: tabName,
-                from_tab: prevTab
+                from_tab: prevTab,
+                feature: tabName,
+                from_feature: prevScreen === 'main' ? prevTab : prevScreen
             });
+            attentionEnter(tabName);
             if (prevScreen === 'splash') {
                 trackMockupEvent('mockup_start', { starting_point: 'direct_' + tabName });
             }
