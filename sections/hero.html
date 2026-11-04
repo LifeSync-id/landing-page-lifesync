@@ -135,7 +135,7 @@
                                         <div class="flex items-center justify-between gap-2 pt-0.5">
                                             <div class="min-w-0">
                                                 <h2 class="text-lg font-extrabold text-[#181d1a] leading-tight">Selamat pagi, Megah 👋</h2>
-                                                <p class="text-[11px] text-[#414942] mt-0.5">Yuk mulai hari dengan lebih teratur.</p>
+                                                <p class="text-[11px] text-[#414942] mt-0.5">Mari jalani hari yang lebih teratur.</p>
                                             </div>
                                             <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#ebf5ee] border border-[#c1c9bf] text-sm font-extrabold text-[#316342] shadow-xs">
                                                 M
@@ -149,7 +149,7 @@
                                                     <span class="h-2 w-2 rounded-full bg-[#316342]"></span>
                                                     <h3 class="text-xs font-bold text-[#181d1a]">Progress Hari Ini</h3>
                                                 </div>
-                                                <span class="rounded-full bg-[#ebf5ee] border border-[#c1c9bf] px-2 py-0.5 text-[9.5px] font-bold text-[#316342]">60% Selesai</span>
+                                                <span class="rounded-md bg-[#ebf5ee] border border-[#c1c9bf] px-2 py-0.5 text-[9.5px] font-bold text-[#1e5031]">60% Selesai</span>
                                             </div>
                                             <div class="mt-3 flex items-center gap-3">
                                                 <div class="flex h-[64px] w-[64px] shrink-0 items-center justify-center rounded-full p-[5px]" style="background: conic-gradient(#316342 0% 60%, #ebf5ee 60% 100%)">
@@ -159,8 +159,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="min-w-0 flex-1">
-                                                    <p class="text-xs font-bold text-[#181d1a]">3 dari 5 aktivitas selesai</p>
-                                                    <p class="mt-1 text-[10px] leading-relaxed text-[#414942]">Kamu berada di jalur yang sangat baik untuk mencapai target produktivitas harian.</p>
+                                                    <p class="text-xs font-bold text-[#181d1a]">3 dari 5 habit selesai</p>
+                                                    <p class="mt-1 text-[10px] leading-relaxed text-[#414942]">Sedikit demi sedikit tetap berarti. Lanjutkan habit berikutnya.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -186,11 +186,50 @@
                                             </div>
                                         </div>
 
-                                        <!-- Daftar Hari Ini (Habit Tiles) -->
+                                        <!-- Ringkasan Minggu Ini -->
+                                        <div class="rounded-2xl border border-[#dfe4df] bg-white p-3 shadow-xs">
+                                            <div class="flex items-center justify-between pb-2.5 border-b border-[#f6fbf5]">
+                                                <h3 class="text-xs font-bold text-[#181d1a]">Minggu Ini</h3>
+                                                <div class="flex items-center gap-1 text-[#F97316]">
+                                                    <i class="fa-solid fa-fire text-xs" aria-hidden="true"></i>
+                                                    <span class="text-[10px] font-bold text-[#414942]">5 hari beruntun</span>
+                                                </div>
+                                            </div>
+                                            <div class="mt-2.5 flex items-center justify-between text-center">
+                                                <div class="flex flex-col items-center gap-1"><span class="text-[9px] font-medium text-[#414942]">Sen</span><span class="flex h-6 w-6 items-center justify-center rounded-full bg-[#316342] text-white text-[9px]"><i class="fa-solid fa-check"></i></span></div>
+                                                <div class="flex flex-col items-center gap-1"><span class="text-[9px] font-medium text-[#414942]">Sel</span><span class="flex h-6 w-6 items-center justify-center rounded-full bg-[#316342] text-white text-[9px]"><i class="fa-solid fa-check"></i></span></div>
+                                                <div class="flex flex-col items-center gap-1"><span class="text-[9px] font-medium text-[#414942]">Rab</span><span class="flex h-6 w-6 items-center justify-center rounded-full bg-[#316342] text-white text-[9px]"><i class="fa-solid fa-check"></i></span></div>
+                                                <div class="flex flex-col items-center gap-1"><span class="text-[9px] font-bold text-[#316342]">Kam</span><span class="flex h-6 w-6 items-center justify-center rounded-full bg-[#ebf5ee] border-2 border-[#316342] text-[9.5px] font-extrabold text-[#316342]">H</span></div>
+                                                <div class="flex flex-col items-center gap-1"><span class="text-[9px] font-medium text-[#414942]">Jum</span><span class="flex h-6 w-6 items-center justify-center rounded-full bg-[#F1F5F9]"><span class="h-1 w-1 rounded-full bg-[#CBD5E1]"></span></span></div>
+                                                <div class="flex flex-col items-center gap-1"><span class="text-[9px] font-medium text-[#414942]">Sab</span><span class="flex h-6 w-6 items-center justify-center rounded-full bg-[#F1F5F9]"><span class="h-1 w-1 rounded-full bg-[#CBD5E1]"></span></span></div>
+                                                <div class="flex flex-col items-center gap-1"><span class="text-[9px] font-medium text-[#414942]">Min</span><span class="flex h-6 w-6 items-center justify-center rounded-full bg-[#F1F5F9]"><span class="h-1 w-1 rounded-full bg-[#CBD5E1]"></span></span></div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Insight Card -->
+                                        <div class="rounded-2xl border border-[#C9DEFA] bg-[#F3F8FF] p-3 shadow-xs">
+                                            <div class="flex items-start gap-2.5">
+                                                <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[#E0EDFF] text-[#2B7DE9]">
+                                                    <i class="fa-regular fa-lightbulb text-xs" aria-hidden="true"></i>
+                                                </div>
+                                                <div class="min-w-0 flex-1">
+                                                    <div class="flex items-center gap-1.5">
+                                                        <h4 class="text-xs font-bold text-[#181d1a]">Insight Hari Ini</h4>
+                                                        <span class="rounded bg-[#E0EDFF] px-1.5 py-0.5 text-[8.5px] font-bold text-[#2B7DE9]">Lokal</span>
+                                                    </div>
+                                                    <p class="mt-1 text-[10.5px] leading-relaxed text-[#414942]">Kamu biasanya paling produktif di pagi hari. Selesaikan tugas utama sebelum siang supaya sore dan malam bisa lebih santai.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Keseharian (Habit Tiles) -->
                                         <div>
                                             <div class="mb-2 flex items-center justify-between">
-                                                <h3 class="text-xs font-bold text-[#181d1a]">Hari Ini</h3>
-                                                <span class="text-[10.5px] font-semibold text-[#316342]">Lihat Semua</span>
+                                                <h3 class="text-xs font-bold text-[#181d1a]">Keseharian</h3>
+                                                <span class="flex items-center gap-0.5 text-[10px] font-bold text-[#316342]">
+                                                    <span>Lihat Semua</span>
+                                                    <i class="fa-solid fa-chevron-right text-[8px]" aria-hidden="true"></i>
+                                                </span>
                                             </div>
                                             <div class="space-y-2">
                                                 <!-- Minum Air -->
@@ -246,42 +285,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <!-- Ringkasan Minggu Ini -->
-                                        <div class="rounded-2xl border border-[#dfe4df] bg-white p-3 shadow-xs">
-                                            <div class="flex items-center justify-between pb-2.5 border-b border-[#f6fbf5]">
-                                                <h3 class="text-xs font-bold text-[#181d1a]">Minggu Ini</h3>
-                                                <div class="flex items-center gap-1 text-[#F97316]">
-                                                    <i class="fa-solid fa-fire text-xs" aria-hidden="true"></i>
-                                                    <span class="text-[10px] font-bold text-[#414942]">5 Hari Beruntun</span>
-                                                </div>
-                                            </div>
-                                            <div class="mt-2.5 flex items-center justify-between text-center">
-                                                <div class="flex flex-col items-center gap-1.5"><span class="text-[9px] font-medium text-[#414942]">Sen</span><span class="flex h-6 w-6 items-center justify-center rounded-full bg-[#316342] text-white text-[9px]"><i class="fa-solid fa-check"></i></span></div>
-                                                <div class="flex flex-col items-center gap-1.5"><span class="text-[9px] font-medium text-[#414942]">Sel</span><span class="flex h-6 w-6 items-center justify-center rounded-full bg-[#316342] text-white text-[9px]"><i class="fa-solid fa-check"></i></span></div>
-                                                <div class="flex flex-col items-center gap-1.5"><span class="text-[9px] font-medium text-[#414942]">Rab</span><span class="flex h-6 w-6 items-center justify-center rounded-full bg-[#316342] text-white text-[9px]"><i class="fa-solid fa-check"></i></span></div>
-                                                <div class="flex flex-col items-center gap-1.5"><span class="text-[9px] font-bold text-[#316342]">Kam</span><span class="flex h-6 w-6 items-center justify-center rounded-full bg-[#ebf5ee] border-2 border-[#316342] text-[9.5px] font-extrabold text-[#316342]">H</span></div>
-                                                <div class="flex flex-col items-center gap-1.5"><span class="text-[9px] font-medium text-[#414942]">Jum</span><span class="flex h-6 w-6 items-center justify-center rounded-full bg-[#F1F5F9]"><span class="h-1 w-1 rounded-full bg-[#CBD5E1]"></span></span></div>
-                                                <div class="flex flex-col items-center gap-1.5"><span class="text-[9px] font-medium text-[#414942]">Sab</span><span class="flex h-6 w-6 items-center justify-center rounded-full bg-[#F1F5F9]"><span class="h-1 w-1 rounded-full bg-[#CBD5E1]"></span></span></div>
-                                                <div class="flex flex-col items-center gap-1.5"><span class="text-[9px] font-medium text-[#414942]">Min</span><span class="flex h-6 w-6 items-center justify-center rounded-full bg-[#F1F5F9]"><span class="h-1 w-1 rounded-full bg-[#CBD5E1]"></span></span></div>
-                                            </div>
-                                        </div>
-
-                                        <!-- AI Insight Card -->
-                                        <div class="rounded-2xl border border-[#c1c9bf] bg-[#ebf5ee]/40 p-3 shadow-xs">
-                                            <div class="flex items-start gap-2.5">
-                                                <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[#ebf5ee] text-[#316342]">
-                                                    <i class="fa-solid fa-wand-magic-sparkles text-xs" aria-hidden="true"></i>
-                                                </div>
-                                                <div class="min-w-0 flex-1">
-                                                    <div class="flex items-center gap-1.5">
-                                                        <h4 class="text-xs font-bold text-[#181d1a]">Insight Hari Ini</h4>
-                                                        <span class="rounded bg-[#FEF3C7] px-1.5 py-0.5 text-[8.5px] font-bold text-[#D97706]">AI Coach</span>
-                                                    </div>
-                                                    <p class="mt-1 text-[10px] leading-relaxed text-[#414942]">Kamu lebih konsisten menyelesaikan aktivitas di pagi hari. Pertahankan ritme ini untuk energi maksimal seharian!</p>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
 
                                     <!-- ==================== 2. FINANCE VIEW ==================== -->
@@ -292,7 +295,7 @@
                                                 <h2 class="text-lg font-extrabold text-[#181d1a] leading-tight">Keuangan</h2>
                                                 <p class="text-[10px] text-[#414942]">Pantau pemasukan dan pengeluaranmu</p>
                                             </div>
-                                            <span class="rounded-full bg-white border border-[#dfe4df] px-2.5 py-0.5 text-[10px] font-bold text-[#181d1a] shadow-xs">
+                                            <span class="shrink-0 whitespace-nowrap rounded-full bg-white border border-[#dfe4df] px-2.5 py-0.5 text-[10px] font-bold text-[#181d1a] shadow-xs">
                                                 &lsaquo; Okt 2026 &rsaquo;
                                             </span>
                                         </div>
@@ -304,7 +307,7 @@
                                                     <i class="fa-solid fa-arrow-trend-up text-xs" aria-hidden="true"></i>
                                                 </div>
                                                 <p class="mt-2 text-[10px] text-[#414942]">Pemasukan</p>
-                                                <p class="text-xs font-extrabold text-[#316342] leading-tight">Rp 7.500.000</p>
+                                                <p class="whitespace-nowrap text-[11px] font-extrabold text-[#316342] leading-tight">Rp 7.500.000</p>
                                                 <p class="text-[9px] text-[#717971] mt-0.5">8 Transaksi</p>
                                             </div>
                                             <div class="rounded-2xl border border-[#dfe4df] bg-white p-3 shadow-xs">
@@ -312,15 +315,15 @@
                                                     <i class="fa-solid fa-arrow-trend-down text-xs" aria-hidden="true"></i>
                                                 </div>
                                                 <p class="mt-2 text-[10px] text-[#414942]">Pengeluaran</p>
-                                                <p class="text-xs font-extrabold text-[#F97316] leading-tight">Rp 3.250.000</p>
+                                                <p class="whitespace-nowrap text-[11px] font-extrabold text-[#F97316] leading-tight">Rp 3.250.000</p>
                                                 <p class="text-[9px] text-[#717971] mt-0.5">14 Transaksi</p>
                                             </div>
                                         </div>
 
                                         <!-- Strip Selisih (Surplus) -->
-                                        <div class="flex items-center justify-between rounded-xl border border-[#ebf5ee] bg-[#f6fbf5] px-3 py-2">
-                                            <span class="text-[10px] font-semibold text-[#414942]">Total 22 Transaksi</span>
-                                            <span class="rounded-full bg-[#ebf5ee] px-2 py-0.5 text-[9.5px] font-bold text-[#316342]">
+                                        <div class="flex flex-nowrap items-center justify-between gap-2 rounded-xl border border-[#ebf5ee] bg-[#f6fbf5] px-3 py-2">
+                                            <span class="min-w-0 truncate text-[9.5px] font-semibold text-[#414942]">Total 22 Transaksi</span>
+                                            <span class="shrink-0 whitespace-nowrap rounded-full bg-[#ebf5ee] px-2 py-0.5 text-[8px] font-bold text-[#316342]">
                                                 Selisih + Rp 4.250.000 (Surplus)
                                             </span>
                                         </div>
@@ -358,13 +361,13 @@
                                             <div class="space-y-1.5">
                                                 <div class="flex items-center gap-2.5 rounded-xl border border-[#dfe4df] bg-white p-2.5 shadow-xs">
                                                     <span class="flex h-8 w-8 items-center justify-center rounded-xl bg-[#ebf5ee] text-[#316342]"><i class="fa-solid fa-wallet text-xs"></i></span>
-                                                    <div class="flex-1 min-w-0"><p class="text-xs font-bold text-[#181d1a] truncate">Gaji Bulanan</p><p class="text-[9px] text-[#717971]">Kemarin &bull; Pemasukan</p></div>
-                                                    <span class="text-xs font-bold text-[#316342]">+ Rp 7.500.000</span>
+                                                    <div class="flex-1 min-w-0"><p class="text-xs font-bold text-[#181d1a] truncate">Gaji Bulanan</p><p class="text-[9px] text-[#717971] truncate">Kemarin &bull; Pemasukan</p></div>
+                                                    <span class="shrink-0 whitespace-nowrap text-xs font-bold text-[#316342]">+ Rp 7.500.000</span>
                                                 </div>
                                                 <div class="flex items-center gap-2.5 rounded-xl border border-[#dfe4df] bg-white p-2.5 shadow-xs">
                                                     <span class="flex h-8 w-8 items-center justify-center rounded-xl bg-[#FFEDD5] text-[#F97316]"><i class="fa-solid fa-basket-shopping text-xs"></i></span>
-                                                    <div class="flex-1 min-w-0"><p class="text-xs font-bold text-[#181d1a] truncate">Belanja Bulanan</p><p class="text-[9px] text-[#717971]">Hari ini &bull; Belanja</p></div>
-                                                    <span class="text-xs font-bold text-[#F97316]">- Rp 850.000</span>
+                                                    <div class="flex-1 min-w-0"><p class="text-xs font-bold text-[#181d1a] truncate">Belanja Bulanan</p><p class="text-[9px] text-[#717971] truncate">Hari ini &bull; Belanja</p></div>
+                                                    <span class="shrink-0 whitespace-nowrap text-xs font-bold text-[#F97316]">- Rp 850.000</span>
                                                 </div>
                                                 <div class="flex items-center gap-2.5 rounded-xl border border-[#dfe4df] bg-white p-2.5 shadow-xs">
                                                     <span class="flex h-8 w-8 items-center justify-center rounded-xl bg-[#FFEDD5] text-[#F97316]"><i class="fa-solid fa-mug-saucer text-xs"></i></span>
