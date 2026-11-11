@@ -23,6 +23,10 @@ File ini adalah **sumber kanonik** aturan proyek ini.
 - `npm test` — validate + browser test.
 - Deploy memakai `wrangler.json` (Cloudflare).
 
+## Pencarian kode
+
+Belum ada knowledge graph graphify di proyek ini (`graphify-out/` tidak ada), jadi pencarian memakai `rg` pada `sections/`, `pages/`, `app.js`, dan `style.css`. Bila graph ingin dibuat, jalankan skill `/graphify` dari folder ini; setelah itu query dengan `graphify query "<pertanyaan>"`.
+
 ## Aturan
 
 - Edit sumber di `sections/`, `pages/`, `style.css`, `app.js`; jangan menyentuh `dist/`.
