@@ -1,13 +1,6 @@
-/* ============================================================
-   LifeSync — Daily Habit Tracker and Assistance
-   Design System: Warm Minimalism & Daily Habit Tracker and Assistance
-   Palette: Warm Cream (#FAF8F5), Sage Green (#316342),
-            Terracotta (#9A442D), Slate Stone (#181D1A)
-   ============================================================ */
+/* LifeSync — Daily Habit Tracker and Assistance */
 
-/* ---------------------------------------------------------
-   0. Design System Tokens
-   --------------------------------------------------------- */
+/* Design system tokens */
 :root {
     --surface: #f6fbf5;
     --surface-dim: #d7dbd6;
@@ -48,9 +41,7 @@
     --border-soft: #c1c9bf;
 }
 
-/* ---------------------------------------------------------
-   1. Base & Typography
-   --------------------------------------------------------- */
+/* Base & typography */
 html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
@@ -94,9 +85,7 @@ body {
     font-feature-settings: 'liga';
 }
 
-/* ---------------------------------------------------------
-   2. Tactile Card Components & Elevation
-   --------------------------------------------------------- */
+/* Tactile card components */
 .mindful-card {
     background-color: var(--surface-container-lowest);
     border: 1px solid var(--outline-variant);
@@ -166,9 +155,7 @@ section[id] {
     }
 }
 
-/* ---------------------------------------------------------
-   3. Navigasi Desktop & Scroll State
-   --------------------------------------------------------- */
+/* Navigasi desktop & scroll state */
 .nav-link {
     position: relative;
     display: inline-flex;
@@ -229,9 +216,7 @@ section[id] {
     box-shadow: 0 10px 30px -15px rgba(24, 29, 26, 0.08);
 }
 
-/* ---------------------------------------------------------
-   4. Menu Mobile Drawer
-   --------------------------------------------------------- */
+/* Menu mobile drawer */
 .mobile-link {
     display: flex;
     align-items: center;
@@ -252,9 +237,7 @@ section[id] {
     outline: none;
 }
 
-/* ---------------------------------------------------------
-   5. Decorative Ambient Glow & Background Grid
-   --------------------------------------------------------- */
+/* Background grid */
 .hero-grid {
     background-image:
         linear-gradient(to right, rgba(49, 99, 66, 0.05) 1px, transparent 1px),
@@ -264,9 +247,7 @@ section[id] {
     -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, #000 40%, transparent 100%);
 }
 
-/* ---------------------------------------------------------
-   6. Reveal Animasi Halus on Scroll (Slide-Up + Fade)
-   --------------------------------------------------------- */
+/* Reveal on scroll */
 .reveal {
     opacity: 0;
     transform: translateY(20px);
@@ -285,9 +266,7 @@ section[id] {
 .reveal-delay-3 { transition-delay: 0.24s; }
 .reveal-delay-4 { transition-delay: 0.32s; }
 
-/* ---------------------------------------------------------
-   7. Aksesibilitas - Reduced Motion
-   --------------------------------------------------------- */
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
     html {
         scroll-behavior: auto;
@@ -307,9 +286,7 @@ section[id] {
     }
 }
 
-/* ---------------------------------------------------------
-   8. Showcase Navigation (Interactive Phone Prototype)
-   --------------------------------------------------------- */
+/* Showcase phone prototype */
 @keyframes floatSlow {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-8px); }

@@ -32,7 +32,7 @@ const TAG_RE = /<(\/?)([a-zA-Z][a-zA-Z0-9-]*)((?:"[^"]*"|'[^']*'|[^>"'])*?)(\/?)
 
 let failures = 0;
 
-/* ---------- 1. Tag balance ---------- */
+/* Validasi tag balance HTML */
 console.log('=== 1. Validasi tag HTML ===');
 for (const rel of FILES) {
     const full = path.join(ROOT, rel);
@@ -76,10 +76,9 @@ for (const rel of FILES) {
     }
 }
 
-/* ---------- 2. Link & asset internal ----------
-   Catatan: file di sections/ di-inject ke index.html, sehingga path
-   relatifnya di-resolve relatif terhadap root situs, bukan folder
-   file-nya sendiri. Page di pages/ bersifat mandiri.                  */
+/* Link & asset internal
+   File di sections/ di-inject ke index.html sehingga path relatif ke root situs;
+   halaman di pages/ bersifat mandiri. */
 console.log('\n=== 2. Validasi href/src internal ===');
 for (const rel of FILES) {
     const full = path.join(ROOT, rel);
@@ -104,7 +103,7 @@ for (const rel of FILES) {
     }
 }
 
-/* ---------- 3. Anchor target harus ada ---------- */
+/* Anchor target harus ada */
 console.log('\n=== 3. Validasi anchor (#id) ===');
 const allIds = new Set();
 for (const rel of FILES) {

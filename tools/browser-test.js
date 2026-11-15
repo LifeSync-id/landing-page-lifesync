@@ -58,7 +58,7 @@ function httpGetJson(url) {
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-/* ---------------- CDP client ---------------- */
+/* CDP client */
 class CDP {
     constructor(wsUrl) {
         this.wsUrl = wsUrl;
@@ -101,7 +101,7 @@ class CDP {
     close() { try { this.ws.close(); } catch (e) {} }
 }
 
-/* ---------------- Main ---------------- */
+/* Main */
 (async () => {
     if (!fs.existsSync(CHROME)) {
         log('SKIP  Chrome tidak ditemukan di ' + CHROME);
@@ -145,7 +145,7 @@ class CDP {
             width: 1440, height: 900, deviceScaleFactor: 1, mobile: false,
         });
 
-        /* ---------- Navigasi ---------- */
+        /* Navigasi */
         await cdp.send('Page.navigate', { url: PAGE });
         await sleep(4500);
 
@@ -179,7 +179,7 @@ class CDP {
 
 
 
-        /* ---------- Struktur DOM ---------- */
+        /* Struktur DOM */
         const structure = await evalJs(`(() => {
             const ids = ['top','pillars','fitur','offline','ai','pricing'];
             const missing = ids.filter(id => !document.getElementById(id));
@@ -220,7 +220,7 @@ class CDP {
             `scrollWidth=${structure.scrollWidth} innerWidth=${structure.innerWidth}`);
 
 
-        /* ---------- Smooth scroll + scroll spy ---------- */
+        /* Smooth scroll & scroll spy */
         await evalJs(`document.querySelector('.nav-link[href="#pricing"]').click()`);
         await sleep(1800);
         const afterScroll = await evalJs(`(() => {
@@ -247,7 +247,7 @@ class CDP {
         check('Navbar state is-scrolled', afterScroll.isScrolled === true);
         check('Hash URL diperbarui', afterScroll.hash === '#pricing', 'hash=' + afterScroll.hash);
 
-        /* ---------- Drawer mobile ---------- */
+        /* Drawer mobile */
         await cdp.send('Emulation.setDeviceMetricsOverride', {
             width: 390, height: 844, deviceScaleFactor: 2, mobile: true,
         });
@@ -274,7 +274,7 @@ class CDP {
         check('aria-expanded = true', drawer.ariaExpanded === 'true');
         check('Drawer terlihat (display bukan none)', drawer.display !== 'none', 'display=' + drawer.display);
 
-        /* ---------- Escape menutup drawer ---------- */
+        /* Escape menutup drawer */
         const esc = await evalJs(`(() => {
             document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
             const menu = document.getElementById('nav-mobile-menu');
@@ -286,7 +286,7 @@ class CDP {
         check('Escape menutup drawer', esc.hidden === true);
         check('Fokus kembali ke tombol toggle', esc.focusOnToggle === true);
 
-        /* ---------- Click outside menutup drawer ---------- */
+        /* Click outside menutup drawer */
         const outside = await evalJs(`(() => {
             const toggle = document.getElementById('nav-toggle');
             const menu = document.getElementById('nav-mobile-menu');
@@ -299,7 +299,7 @@ class CDP {
         check('Drawer dapat dibuka kembali', outside.opened === true);
         check('Click di luar menutup drawer', outside.closedAfterOutside === true);
 
-        /* ---------- Overflow horizontal (mobile) ---------- */
+        /* Overflow horizontal (mobile) */
         const mobOverflow = await evalJs(`(() => {
             const wide = [];
             document.querySelectorAll('body *').forEach(el => {
@@ -323,7 +323,7 @@ class CDP {
             mobOverflow.scrollWidth <= mobOverflow.innerWidth + 2,
             `scrollWidth=${mobOverflow.scrollWidth} innerWidth=${mobOverflow.innerWidth} offenders=${mobOverflow.offenders.join(' | ')}`);
 
-        /* ---------- Screenshot multi viewport ---------- */
+        /* Screenshot multi viewport */
         const viewports = [
             { name: 'mobile-390', width: 390, height: 844, mobile: true },
             { name: 'tablet-768', width: 768, height: 1024, mobile: true },
@@ -341,7 +341,7 @@ class CDP {
             log('screenshot -> ' + file);
         }
 
-        /* ---------- Halaman modul ---------- */
+        /* Halaman modul */
         for (const p of ['nutrisi', 'keuangan', 'kalender', 'memento']) {
             await cdp.send('Page.navigate', { url: `${URL_BASE}/pages/${p}.html` });
             await sleep(1600);
