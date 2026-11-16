@@ -55,6 +55,30 @@ body {
     overflow-x: hidden;
 }
 
+@layer base {
+    a[href],
+    button:not(:disabled),
+    summary,
+    select:not(:disabled),
+    input[type="checkbox"]:not(:disabled),
+    input[type="radio"]:not(:disabled),
+    input[type="submit"]:not(:disabled),
+    input[type="button"]:not(:disabled),
+    [role="button"]:not([aria-disabled="true"]) {
+        cursor: pointer;
+    }
+
+    button:disabled,
+    [aria-disabled="true"] {
+        cursor: not-allowed;
+    }
+
+    :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+        outline: 2px solid var(--primary);
+        outline-offset: 2px;
+    }
+}
+
 ::selection {
     background-color: var(--primary-fixed);
     color: var(--on-primary-fixed);
@@ -73,9 +97,16 @@ body {
     font-style: normal;
     font-size: 24px;
     line-height: 1;
+    width: 1em;
+    height: 1em;
     letter-spacing: normal;
     text-transform: none;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+    vertical-align: middle;
     white-space: nowrap;
     word-wrap: normal;
     direction: ltr;
@@ -185,7 +216,6 @@ section[id] {
 .nav-link:focus-visible {
     color: var(--primary);
     background-color: var(--surface-container-low);
-    outline: none;
 }
 
 .nav-link:active {
@@ -234,7 +264,6 @@ section[id] {
     background-color: var(--surface-container-low);
     color: var(--primary);
     padding-left: 1.25rem;
-    outline: none;
 }
 
 /* Background grid */

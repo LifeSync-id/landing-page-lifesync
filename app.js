@@ -35,6 +35,14 @@ const SECTIONS = [
     { id: 'section-footer',  file: 'sections/footer.html' },
 ];
 
+function t(key, fallback) {
+    if (window.LifeSyncI18n && typeof window.LifeSyncI18n.t === 'function') {
+        var val = window.LifeSyncI18n.t(key);
+        if (val) return val;
+    }
+    return fallback || '';
+}
+
 /* Loader section */
 async function loadSection({ id, file }) {
     try {
@@ -44,7 +52,7 @@ async function loadSection({ id, file }) {
             console.error('Gagal memuat ' + file + ' (HTTP ' + response.status + ')');
             const container = document.getElementById(id);
             if (container) {
-                container.innerHTML = '<div class="max-w-xl mx-auto my-12 p-6 bg-red-50 border border-red-200 rounded-2xl text-center text-red-700 text-sm font-medium">Gagal memuat section ' + file + ' (Status: ' + response.status + '). Pastikan file tersedia.</div>';
+                container.innerHTML = '<div class="max-w-xl mx-auto my-12 p-6 bg-red-50 border border-red-200 rounded-2xl text-center text-red-700 text-sm font-medium">' + t('js.sectionLoadError', 'Gagal memuat bagian halaman.') + ' (' + file + ' - HTTP ' + response.status + ')</div>';
             }
             return false;
         }
@@ -60,18 +68,26 @@ async function loadSection({ id, file }) {
         console.error('Error loading ' + file + ':', error);
         const container = document.getElementById(id);
         if (container) {
-            container.innerHTML = '<div class="max-w-xl mx-auto my-12 p-6 bg-amber-50 border border-amber-200 rounded-2xl text-center text-amber-800 text-sm font-medium"><p class="font-bold mb-1">Gagal memuat ' + file + '</p><p class="text-xs text-amber-700">Pastikan website dijalankan melalui local web server (seperti VS Code Live Server di port 5500/5501) dan bukan dibuka langsung via double-click file://.</p></div>';
+            container.innerHTML = '<div class="max-w-xl mx-auto my-12 p-6 bg-amber-50 border border-amber-200 rounded-2xl text-center text-amber-800 text-sm font-medium"><p class="font-bold mb-1">' + file + '</p><p class="text-xs text-amber-700">' + t('js.sectionLoadError', 'Gagal memuat bagian halaman. Pastikan website dijalankan lewat server lokal.') + '</p></div>';
         }
         return false;
     }
 }
 
 document.addEventListener('DOMContentLoaded', async function () {
+    if (window.LifeSyncI18n) {
+        window.LifeSyncI18n.init();
+    }
+
     const results = await Promise.all(SECTIONS.map(loadSection));
 
     const failed = SECTIONS.filter(function (_, i) { return !results[i]; });
     if (failed.length) {
         console.warn('Section gagal dimuat:', failed.map(function (s) { return s.file; }).join(', '));
+    }
+
+    if (window.LifeSyncI18n) {
+        window.LifeSyncI18n.apply(window.LifeSyncI18n.getLang(), document);
     }
 
     var modules = [
@@ -125,7 +141,10 @@ function initNavbar() {
     function setMenu(open) {
         menu.classList.toggle('hidden', !open);
         toggle.setAttribute('aria-expanded', String(open));
-        toggle.setAttribute('aria-label', open ? 'Tutup menu navigasi' : 'Buka menu navigasi');
+        toggle.setAttribute(
+            'aria-label',
+            open ? t('nav.menuClose', 'Tutup menu navigasi') : t('nav.menuOpen', 'Buka menu navigasi')
+        );
         if (icon) {
             if (icon.classList.contains('material-symbols-outlined')) {
                 icon.textContent = open ? 'close' : 'menu';
@@ -148,6 +167,21 @@ function initNavbar() {
         if (!navbar.contains(e.target)) setMenu(false);
     });
 
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !menu.classList.contains('hidden')) {
+            setMenu(false);
+            toggle.focus();
+        }
+    });
+
+    document.addEventListener('lifesync:langchange', function () {
+        var isOpen = !menu.classList.contains('hidden');
+        toggle.setAttribute(
+            'aria-label',
+            isOpen ? t('nav.menuClose', 'Tutup menu navigasi') : t('nav.menuOpen', 'Buka menu navigasi')
+        );
+    });
+
     var navLinks = document.querySelectorAll('.nav-link');
 
     function updateScrollSpy() {
@@ -163,7 +197,8 @@ function initNavbar() {
         navLinks.forEach(function (link) {
             var href = link.getAttribute('href');
             var active = href === '#' + current;
-            link.classList.toggle('text-primary-default', active);
+            link.classList.toggle('is-active', active);
+            link.classList.toggle('text-primary', active);
             link.classList.toggle('font-bold', active);
         });
     }
@@ -172,6 +207,7 @@ function initNavbar() {
         var y = window.scrollY;
         var scrolled = y > 10;
 
+        navbar.classList.toggle('is-scrolled', scrolled);
         if (scrolled) {
             navbar.classList.add('bg-surface/90', 'backdrop-blur-xl', 'shadow-soft');
             navbar.classList.remove('bg-transparent');
@@ -180,10 +216,10 @@ function initNavbar() {
                 bar.classList.remove('border-transparent');
             }
         } else {
-            navbar.classList.remove('bg-white/95', 'backdrop-blur-xl', 'shadow-sm');
+            navbar.classList.remove('bg-surface/90', 'bg-white/95', 'backdrop-blur-xl', 'shadow-soft', 'shadow-sm');
             navbar.classList.add('bg-transparent');
             if (bar) {
-                bar.classList.remove('border-slate-100');
+                bar.classList.remove('border-outline-variant/30', 'border-slate-100');
                 bar.classList.add('border-transparent');
             }
         }
@@ -391,7 +427,7 @@ function initKontakForm() {
         var btnIcon = document.getElementById('btn-icon');
 
         if (btn) btn.disabled = true;
-        if (btnText) btnText.textContent = 'Mengirim...';
+        if (btnText) btnText.textContent = t('js.sending', 'Mengirim...');
         if (btnIcon) btnIcon.className = 'fa-solid fa-circle-notch fa-spin';
 
         var formData = new FormData(form);
@@ -412,11 +448,11 @@ function initKontakForm() {
             }
         })
         .catch(function () {
-            alert('Gagal mengirim pesan. Coba lagi nanti atau hubungi kami melalui email langsung:\npartnership@lifesync.id');
+            alert(t('js.sendFailed', 'Gagal mengirim pesan. Coba lagi nanti atau kirim email langsung ke partnership@lifesync.id.'));
         })
         .finally(function () {
             if (btn) btn.disabled = false;
-            if (btnText) btnText.textContent = 'Kirim Pesan';
+            if (btnText) btnText.textContent = t('js.sendMessage', 'Kirim Pesan');
             if (btnIcon) btnIcon.className = 'fa-solid fa-paper-plane';
         });
     });
@@ -462,31 +498,47 @@ function initPricingModal() {
     var closeBtn    = document.getElementById('dev-modal-close-btn');
     var ctaKontak   = document.getElementById('dev-modal-cta-kontak');
     var ctaMockup   = document.getElementById('dev-modal-cta-mockup');
+    var activePlan  = 'free';
+    var previousFocus = null;
 
-    function openModal(plan) {
+    function renderModalCopy(plan) {
         if (plan === 'premium') {
-            if (planTitleEl) planTitleEl.textContent = 'Paket Akses Premium';
+            if (planTitleEl) planTitleEl.textContent = t('modal.premTitle', 'Paket Premium');
             if (planDescEl) {
-                planDescEl.textContent = 'Fitur paket premium dan sistem langganan belum dibuka karena aplikasi LifeSync saat ini masih dalam proses pengembangan.';
+                planDescEl.textContent = t('modal.premDesc', 'Langganan berbayar dan fitur AI tambahan belum dibuka karena aplikasinya masih dalam tahap pengembangan.');
             }
         } else {
-            if (planTitleEl) planTitleEl.textContent = 'Paket Dasar Gratis';
+            if (planTitleEl) planTitleEl.textContent = t('modal.freeTitle', 'Paket Gratis');
             if (planDescEl) {
-                planDescEl.textContent = 'Aplikasi mobile LifeSync saat ini masih dalam proses pengembangan dan belum dirilis untuk diunduh.';
+                planDescEl.textContent = t('modal.freeDesc', 'Aplikasi mobile LifeSync saat ini masih dalam pengembangan, jadi file unduhan resminya belum dirilis.');
             }
         }
+    }
+
+    function openModal(plan) {
+        previousFocus = document.activeElement;
+        activePlan = plan === 'premium' ? 'premium' : 'free';
+        renderModalCopy(activePlan);
 
         modal.classList.remove('hidden');
         document.body.classList.add('overflow-hidden');
 
+        if (closeBtn && typeof closeBtn.focus === 'function') {
+            closeBtn.focus();
+        }
+
         sendAnalyticsEvent('dev_modal_open', {
-            plan_type: plan || 'free'
+            plan_type: activePlan
         });
     }
 
     function closeModal() {
         modal.classList.add('hidden');
         document.body.classList.remove('overflow-hidden');
+        if (previousFocus && typeof previousFocus.focus === 'function') {
+            previousFocus.focus();
+            previousFocus = null;
+        }
     }
 
     document.querySelectorAll('[data-open-dev-modal]').forEach(function (btn) {
@@ -501,8 +553,29 @@ function initPricingModal() {
     if (backdrop) backdrop.addEventListener('click', closeModal);
 
     document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+        if (modal.classList.contains('hidden')) return;
+        if (e.key === 'Escape') {
             closeModal();
+            return;
+        }
+        if (e.key === 'Tab') {
+            var focusables = modal.querySelectorAll('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])');
+            if (!focusables.length) return;
+            var first = focusables[0];
+            var last = focusables[focusables.length - 1];
+            if (e.shiftKey && document.activeElement === first) {
+                e.preventDefault();
+                last.focus();
+            } else if (!e.shiftKey && document.activeElement === last) {
+                e.preventDefault();
+                first.focus();
+            }
+        }
+    });
+
+    document.addEventListener('lifesync:langchange', function () {
+        if (!modal.classList.contains('hidden')) {
+            renderModalCopy(activePlan);
         }
     });
 
