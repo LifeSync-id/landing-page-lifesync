@@ -13,15 +13,14 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LifeSync - Coba Langsung Aplikasi (Simulator Interaktif)</title>
-    <meta name="description" content="Rasakan langsung pengalaman menggunakan LifeSync di browser Anda. Uji coba pelacak kebiasaan, agenda to-do, catatan, pemantau keuangan, pemindai nutrisi AI, hingga kenangan perjalanan.">
+    <title>Simulator Interaktif - LifeSync: Daily Habit Tracker and Assistance</title>
+    <meta name="description" content="Rasakan langsung pengalaman menggunakan LifeSync: Daily Habit Tracker and Assistance di browser kamu. Uji coba pelacak kebiasaan, agenda to-do, catatan, pemantau keuangan, pemindai nutrisi AI, hingga kenangan perjalanan.">
     <meta name="theme-color" content="#316342">
-    <!-- Google Search Engine & Browser Favicons (Kelipatan 48px Standar Resmi Google Search) -->
-    <link rel="icon" type="image/png" sizes="48x48" href="https://www.lifesync.id/assets/favicon-48x48.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="https://www.lifesync.id/assets/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="https://www.lifesync.id/assets/favicon-192x192.png">
-    <link rel="icon" href="https://www.lifesync.id/favicon.ico" sizes="any">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://www.lifesync.id/assets/apple-touch-icon.png">
+    <link rel="canonical" href="https://www.lifesync.id/pages/mockup.html">
+    <link rel="icon" type="image/png" sizes="192x192" href="../assets/favicon-192x192.png">
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
+    <link rel="manifest" href="../site.webmanifest">
 
     <!-- Google Fonts & Material Symbols -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -160,13 +159,10 @@
 </head>
 <body class="min-h-screen bg-[#f6fbf5] text-[#181d1a] ambient-mesh selection:bg-primary/20 selection:text-primary">
 
-    <!-- ============================================================
-         HEADER - LifeSync Interactive Simulator
-         ============================================================ -->
+    <!-- Header -->
     <header class="sticky top-0 z-50 border-b border-[#dfe4df] bg-white/95 backdrop-blur-md px-3 sm:px-6 md:px-8 py-2.5 sm:py-3 shadow-xs">
         <div class="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-4 min-w-0">
 
-            <!-- Brand: Logo & Nama LifeSync -->
             <div class="flex items-center gap-2 sm:gap-3 shrink-0 min-w-0">
                 <a href="../index.html" class="flex items-center gap-2 sm:gap-2.5 shrink-0 group focus:outline-none" aria-label="LifeSync - Beranda">
                     <img src="../assets/lifesync-symbol.png" alt="Logo LifeSync" width="48" height="48"
@@ -176,7 +172,6 @@
                 </a>
             </div>
 
-            <!-- Action Buttons: Navigasi Cepat & Kontrol Demo -->
             <div class="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
                 <a href="../index.html"
                    class="inline-flex items-center justify-center gap-1 p-2 sm:px-3 sm:py-2 rounded-xl border border-[#316342]/30 bg-[#ebf5ee] hover:bg-[#dfe9e1] text-xs font-bold text-[#1e5031] transition shadow-2xs"
@@ -210,10 +205,9 @@
         </div>
     </header>
 
-    <!-- ==================== AREA UTAMA ==================== -->
+    <!-- Area utama -->
     <main class="max-w-7xl mx-auto px-4 sm:px-8 py-8 lg:py-12">
 
-        <!-- Intro Demo Interaktif -->
         <div class="mb-8 text-center max-w-3xl mx-auto">
             <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#181D1A] tracking-tight leading-tight">
                 Kelola Rutinitas Harian Jadi Lebih Mudah Bareng <span class="text-[#316342]">LifeSync</span>
@@ -223,7 +217,7 @@
             </p>
         </div>
 
-        <!-- ==================== TAHAPAN RUTINITAS HARIAN (CLEAN SEGMENTED CONTROL) ==================== -->
+        <!-- Tahapan rutinitas harian -->
         <div class="mb-8">
             <div class="flex items-center gap-1 p-1 bg-[#ebefea] rounded-xl border border-[#c1c9bf] overflow-x-auto scrollbar-none max-w-full">
                 <button type="button" onclick="switchPhoneScreen('splash')" class="flow-chip active px-3.5 py-1.5 rounded-lg text-xs font-bold text-[#1e5031] bg-white shadow-xs transition whitespace-nowrap" data-chip="splash">
@@ -267,30 +261,25 @@
             </div>
         </div>
 
-        <!-- ==================== DISPLAY FRAME & USER IMPACT PANE ==================== -->
         <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start min-w-0">
 
-            <!-- KOLOM KIRI: SMARTPHONE PROTOTYPE (PREMIUM HARDWARE FRAME) -->
+            <!-- Kolom kiri: simulator ponsel -->
             <div class="lg:col-span-7 min-w-0 flex justify-center items-center py-2 px-3 sm:px-0">
                 <div id="phone-wrapper" class="relative w-full min-w-0 max-w-[calc(100%-20px)] sm:max-w-[390px] mx-auto transition-transform duration-300 origin-top">
 
-                    <!-- Hardware Side Buttons -->
                     <span class="phone-btn-vol-up" aria-hidden="true"></span>
                     <span class="phone-btn-vol-down" aria-hidden="true"></span>
                     <span class="phone-btn-power" aria-hidden="true"></span>
 
-                    <!-- Titanium Outer Bezel -->
                     <div class="rounded-[3.25rem] border border-[#BAC7BF] bg-gradient-to-br from-[#E2EAE4] via-[#C9D6CE] to-[#DFE8E2] p-[8px] shadow-[0_32px_80px_-15px_rgba(24,45,34,0.18),0_15px_35px_rgba(0,0,0,0.06)]">
                         <div class="rounded-[2.8rem] border border-[#8B9C92] bg-[#141C17] p-[3.5px]">
 
-                            <!-- Phone Display Glass Canvas -->
                             <div class="relative h-[680px] sm:h-[720px] md:h-[740px] overflow-hidden rounded-[2.55rem] bg-[#f6fbf5] text-[#181d1a] flex flex-col select-none shadow-inner">
 
-                                <!-- ==================== 1. STATUS BAR ==================== -->
+                                <!-- Status bar -->
                                 <div class="relative shrink-0 px-6 pt-3 pb-1.5 flex items-center justify-between text-[11px] font-bold text-[#181d1a] z-30 bg-[#f6fbf5]/90 backdrop-blur-sm">
                                     <span id="phone-clock" class="tracking-tight font-extrabold">09:41</span>
 
-                                    <!-- Kamera Depan (Punch Hole) -->
                                     <div class="absolute left-1/2 top-3 -translate-x-1/2 flex items-center justify-center pointer-events-none" aria-hidden="true">
                                         <div class="h-3 w-3 rounded-full bg-[#141C17] flex items-center justify-center ring-1 ring-black/10">
                                             <div class="h-1.5 w-1.5 rounded-full bg-[#223026]"></div>
@@ -304,15 +293,12 @@
                                     </div>
                                 </div>
 
-                                <!-- ==================== 1b. NOTIFIKASI DALAM PONSEL ==================== -->
                                 <div id="phone-toast-host" class="pointer-events-none absolute inset-x-0 top-11 z-40 flex flex-col items-center gap-1.5 px-3" aria-live="polite" aria-atomic="false"></div>
 
-                                <!-- ==================== 2. SCREEN CANVAS CONTAINER ==================== -->
                                 <div id="phone-screen-container" class="flex-1 overflow-y-auto phone-screen-scroll relative flex flex-col">
 
-                                    <!-- SCREEN: SPLASH -->
+                                    <!-- Screen: splash -->
                                     <div id="view-splash" class="app-view relative flex flex-1 flex-col items-center justify-center overflow-hidden bg-[#f6fbf5] px-6 py-8 text-center">
-                                        <!-- Aurora mesh glow -->
                                         <div class="pointer-events-none absolute -left-10 -top-16 h-44 w-44 rounded-full bg-[#b9efc5]/60 blur-3xl"></div>
                                         <div class="pointer-events-none absolute -right-12 top-24 h-52 w-52 rounded-full bg-[#C9DEFA]/50 blur-3xl"></div>
                                         <div class="pointer-events-none absolute bottom-4 left-6 h-36 w-36 rounded-full bg-[#FDE68A]/40 blur-3xl"></div>
@@ -350,9 +336,8 @@
                                         </div>
                                     </div>
 
-                                    <!-- SCREEN: ONBOARDING -->
+                                    <!-- Screen: onboarding -->
                                     <div id="view-onboarding" class="app-view hidden flex-1 flex flex-col justify-between p-6 bg-[#f6fbf5]">
-                                        <!-- Top Bar: Back & Skip -->
                                         <div class="flex items-center justify-between text-xs font-bold pt-1">
                                             <button id="ob-btn-back" type="button" onclick="prevOnboardingSlide()" class="text-[#414942] hover:text-[#181d1a] opacity-0 transition">
                                                 <i class="fa-solid fa-arrow-left"></i> Kembali
@@ -362,7 +347,6 @@
                                             </button>
                                         </div>
 
-                                        <!-- Slides Content (Dynamic Switcher) -->
                                         <div id="ob-slide-content" class="my-auto text-center space-y-4">
                                             <div id="ob-illustration" class="mx-auto h-40 w-40 rounded-3xl bg-[#ebf5ee] border border-[#c1c9bf] flex items-center justify-center text-[#316342] text-5xl shadow-sm">
                                                 <i class="fa-solid fa-repeat"></i>
@@ -377,7 +361,6 @@
                                             </div>
                                         </div>
 
-                                        <!-- Bottom Navigation & Dots -->
                                         <div class="space-y-4 pb-4">
                                             <div class="flex items-center justify-center gap-1.5" id="ob-dots">
                                                 <span class="ob-dot h-2 w-6 rounded-full bg-[#316342] transition-all"></span>
@@ -390,10 +373,9 @@
                                         </div>
                                     </div>
 
-                                    <!-- SCREEN: AUTH (LOGIN & REGISTER & TAMU) -->
+                                    <!-- Screen: auth -->
                                     <div id="view-auth" class="app-view hidden flex-1 flex flex-col justify-between p-6 bg-[#f6fbf5]">
                                         <div class="space-y-4 pt-2">
-                                            <!-- Brand Logo -->
                                             <div class="flex items-center justify-center">
                                                 <div class="h-16 w-16 rounded-2xl bg-white border border-[#dfe4df] shadow-sm flex items-center justify-center p-2.5">
                                                     <img src="../assets/lifesync-symbol.png" alt="LifeSync Icon" class="h-full w-full object-contain">
@@ -405,7 +387,6 @@
                                                 <p id="auth-subheading" class="text-xs text-[#414942] mt-0.5">Kelola aktivitas dan keseharianmu bersama LifeSync.</p>
                                             </div>
 
-                                            <!-- Form Inputs -->
                                             <form id="auth-form" onsubmit="handleAuthSubmit(event)" class="space-y-3">
                                                 <div id="auth-name-group" class="hidden">
                                                     <label class="block text-[11px] font-bold text-[#181d1a] mb-1">Nama Lengkap</label>
@@ -428,7 +409,6 @@
                                                 </button>
                                             </form>
 
-                                            <!-- Guest Button -->
                                             <div>
                                                 <button type="button" onclick="loginAsGuest()" class="w-full py-2.5 rounded-xl border border-[#dfe4df] bg-white hover:bg-neutral-50 text-[#181d1a] font-semibold text-xs flex items-center justify-center gap-2 transition shadow-xs">
                                                     <i class="fa-solid fa-user text-[11px] text-[#414942]"></i>
@@ -437,7 +417,6 @@
                                             </div>
                                         </div>
 
-                                        <!-- Toggle Auth Mode -->
                                         <div class="pt-3 text-center text-xs text-[#414942]">
                                             <span id="auth-toggle-text">Belum punya akun?</span>
                                             <button type="button" onclick="toggleAuthMode()" id="auth-toggle-btn" class="font-bold text-[#316342] hover:underline ml-1">
@@ -446,12 +425,11 @@
                                         </div>
                                     </div>
 
-                                    <!-- ==================== MAIN APP VIEWS CONTAINER ==================== -->
+                                    <!-- Main app views -->
                                     <div id="view-main-app" class="hidden flex-1 flex flex-col relative pb-24">
 
-                                        <!-- 1. HOME TAB -->
+                                        <!-- Tab: home -->
                                         <div id="tab-home" class="app-tab px-4 pt-2 space-y-3.5">
-                                            <!-- TopBar: Brand & Tools -->
                                             <div class="flex items-center justify-between">
                                                 <div class="flex items-center gap-2">
                                                     <img src="../assets/lifesync-symbol.png" alt="LifeSync Icon" class="h-6 w-6 object-contain">
@@ -467,7 +445,6 @@
                                                 </div>
                                             </div>
 
-                                            <!-- Greeting Banner -->
                                             <div class="flex items-center justify-between gap-2 pt-0.5">
                                                 <div class="min-w-0">
                                                     <h2 id="home-greeting-name" class="text-lg font-extrabold text-[#181d1a] leading-tight">Selamat pagi, Megah 👋</h2>
@@ -478,7 +455,6 @@
                                                 </div>
                                             </div>
 
-                                            <!-- Dynamic Progress Ring Card -->
                                             <div class="rounded-2xl border border-[#dfe4df] bg-white p-3.5 shadow-xs">
                                                 <div class="flex items-center justify-between gap-2">
                                                     <div class="flex items-center gap-1.5">
@@ -503,7 +479,6 @@
                                                 </div>
                                             </div>
 
-                                            <!-- Shortcuts to Planner & Catatan -->
                                             <div>
                                                 <h3 class="mb-2 text-xs font-bold text-[#181d1a]">Produktivitas</h3>
                                                 <div class="grid grid-cols-2 gap-2">
@@ -524,7 +499,6 @@
                                                 </div>
                                             </div>
 
-                                            <!-- Week Streak Heatmap -->
                                             <div class="rounded-2xl border border-[#dfe4df] bg-white p-3 shadow-xs">
                                                 <div class="flex items-center justify-between pb-2.5 border-b border-[#f6fbf5]">
                                                     <h3 class="text-xs font-bold text-[#181d1a]">Minggu Ini</h3>
@@ -544,7 +518,6 @@
                                                 </div>
                                             </div>
 
-                                            <!-- Insight Card -->
                                             <div class="rounded-2xl border border-[#C9DEFA] bg-[#F3F8FF] p-3 shadow-xs">
                                                 <div class="flex items-start gap-2.5">
                                                     <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[#E0EDFF] text-[#2B7DE9]">
@@ -562,7 +535,6 @@
                                                 </div>
                                             </div>
 
-                                            <!-- Habit Tiles (Interactive Checkboxes & Water Counter) -->
                                             <div>
                                                 <div class="mb-2 flex items-center justify-between">
                                                     <h3 class="text-xs font-bold text-[#181d1a]">Keseharian</h3>
@@ -577,14 +549,12 @@
                                                     </div>
                                                 </div>
                                                 <div id="home-habit-list" class="space-y-2">
-                                                    <!-- Injected dynamically by JS -->
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <!-- 2. PLANNER TAB -->
+                                        <!-- Tab: planner -->
                                         <div id="tab-planner" class="app-tab hidden px-4 pt-2 space-y-3.5">
-                                            <!-- Planner Header -->
                                             <div class="flex items-center justify-between">
                                                 <div>
                                                     <h2 class="text-lg font-extrabold text-[#181d1a]">Jadwal &amp; To-Do</h2>
@@ -596,18 +566,15 @@
                                                 </button>
                                             </div>
 
-                                            <!-- Mini Calendar Strip -->
                                             <div class="rounded-2xl border border-[#dfe4df] bg-white p-2.5 shadow-xs">
                                                 <div class="flex items-center justify-between px-1 mb-2">
                                                     <span class="text-xs font-bold text-[#181d1a]">Oktober 2026</span>
                                                     <span class="text-[9px] font-bold text-[#1e5031] bg-[#ebf5ee] px-2 py-0.5 rounded-full">Hari Ini</span>
                                                 </div>
                                                 <div class="grid grid-cols-7 gap-1 text-center text-[10px]" id="planner-calendar-strip">
-                                                    <!-- Calendar days populated by JS -->
                                                 </div>
                                             </div>
 
-                                            <!-- Summary & Filter Chips -->
                                             <div class="space-y-2">
                                                 <div class="flex items-center justify-between text-xs">
                                                     <span id="planner-summary-text" class="font-bold text-[#181d1a]">3 dari 4 tugas selesai</span>
@@ -623,15 +590,12 @@
                                                 </div>
                                             </div>
 
-                                            <!-- Tasks List -->
                                             <div id="planner-task-list" class="space-y-2 pt-1">
-                                                <!-- Tasks populated by JS -->
                                             </div>
                                         </div>
 
-                                        <!-- 3. CATATAN / NOTES TAB -->
+                                        <!-- Tab: notes -->
                                         <div id="tab-notes" class="app-tab hidden px-4 pt-2 space-y-3.5">
-                                            <!-- Notes Header -->
                                             <div class="flex items-center justify-between">
                                                 <div>
                                                     <h2 class="text-lg font-extrabold text-[#181d1a]">Catatan</h2>
@@ -643,7 +607,6 @@
                                                 </button>
                                             </div>
 
-                                            <!-- Search & Tags -->
                                             <div class="space-y-2">
                                                 <div class="flex items-center gap-2">
                                                     <div class="relative flex-1">
@@ -662,15 +625,12 @@
                                                 </div>
                                             </div>
 
-                                            <!-- Notes Cards Grid -->
                                             <div id="notes-grid" class="space-y-2.5">
-                                                <!-- Notes injected by JS -->
                                             </div>
                                         </div>
 
-                                        <!-- 4. FINANCE TAB -->
+                                        <!-- Tab: finance -->
                                         <div id="tab-finance" class="app-tab hidden px-4 pt-2 space-y-3.5">
-                                            <!-- Header & Month -->
                                             <div class="flex items-center justify-between">
                                                 <div>
                                                     <h2 class="text-lg font-extrabold text-[#181d1a]">Keuangan</h2>
@@ -681,7 +641,6 @@
                                                 </span>
                                             </div>
 
-                                            <!-- Summary Cards: Pemasukan & Pengeluaran -->
                                             <div class="grid grid-cols-2 gap-2">
                                                 <div class="rounded-2xl border border-[#dfe4df] bg-white p-3 shadow-xs">
                                                     <div class="flex h-7 w-7 items-center justify-center rounded-xl bg-[#ebf5ee] text-[#1e5031]">
@@ -701,7 +660,6 @@
                                                 </div>
                                             </div>
 
-                                            <!-- Total & Selisih Strip -->
                                             <div class="flex flex-nowrap items-center justify-between gap-2 rounded-xl border border-[#dfe4df] bg-[#f0f5f0] px-3 py-2">
                                                 <span id="finance-total-tx" class="min-w-0 truncate text-[9.5px] font-semibold text-[#414942]">Total 22 Transaksi</span>
                                                 <span id="finance-surplus-badge" class="shrink-0 whitespace-nowrap rounded-full bg-[#ebf5ee] px-2 py-0.5 text-[8px] font-bold text-[#1e5031]">
@@ -709,7 +667,6 @@
                                                 </span>
                                             </div>
 
-                                            <!-- Ringkasan Keuangan -->
                                             <div class="rounded-2xl border border-[#dfe4df] bg-white p-3 shadow-xs space-y-2">
                                                 <div class="flex items-center justify-between">
                                                     <h3 class="text-xs font-bold text-[#181d1a]">Ringkasan Keuangan</h3>
@@ -731,7 +688,6 @@
                                                 </div>
                                             </div>
 
-                                            <!-- Kategori Pengeluaran -->
                                             <div class="rounded-2xl border border-[#dfe4df] bg-white p-3 shadow-xs space-y-2">
                                                 <div class="flex items-center justify-between">
                                                     <h3 class="text-xs font-bold text-[#181d1a]">Kategori Pengeluaran</h3>
@@ -753,14 +709,12 @@
                                                 </div>
                                             </div>
 
-                                            <!-- Recent Transactions -->
                                             <div>
                                                 <div class="mb-2 flex items-center justify-between">
                                                     <h3 class="text-xs font-bold text-[#181d1a]">Transaksi Terkini</h3>
                                                     <button type="button" onclick="triggerNotification('Semua transaksi bisa kamu lihat di halaman Transaksi.')" class="text-[9.5px] font-semibold text-[#1e5031] hover:underline">Lihat Semua</button>
                                                 </div>
                                                 <div id="finance-tx-list" class="space-y-1.5">
-                                                    <!-- Populated by JS -->
                                                 </div>
                                             </div>
 
@@ -770,9 +724,8 @@
                                             </button>
                                         </div>
 
-                                        <!-- 5. NUTRITION TAB -->
+                                        <!-- Tab: nutrition -->
                                         <div id="tab-nutrition" class="app-tab hidden px-4 pt-2 space-y-3.5">
-                                            <!-- Header & AI Scanner Button -->
                                             <div class="flex items-center justify-between">
                                                 <div>
                                                     <h2 class="text-lg font-extrabold text-[#181d1a]">Pantau Nutrisi &amp; Makanan</h2>
@@ -784,7 +737,6 @@
                                                 </button>
                                             </div>
 
-                                            <!-- Calorie Ring -->
                                             <div class="rounded-2xl border border-[#dfe4df] bg-white p-3.5 shadow-xs text-center">
                                                 <div id="nutrition-calorie-conic" class="mx-auto flex h-[76px] w-[76px] items-center justify-center rounded-full p-[6px]" style="background: conic-gradient(#316342 0% 62%, #ebf5ee 62% 100%)">
                                                     <div class="flex h-full w-full flex-col items-center justify-center rounded-full bg-white shadow-inner">
@@ -796,7 +748,6 @@
                                                 <p id="nutrition-cal-desc" class="text-[10px] text-[#414942]">62% dari target harian &bull; Porsi makan cukup seimbang</p>
                                             </div>
 
-                                            <!-- Macronutrient Progress Bars -->
                                             <div class="rounded-2xl border border-[#dfe4df] bg-white p-3 shadow-xs space-y-2.5">
                                                 <h3 class="text-xs font-bold text-[#181d1a]">Asupan Nutrisi</h3>
                                                 <div>
@@ -824,7 +775,6 @@
                                                 </div>
                                             </div>
 
-                                            <!-- Last Food AI Detection -->
                                             <div class="rounded-xl border border-[#c1c9bf] bg-[#ebf5ee] p-2.5 flex items-center gap-2.5">
                                                 <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[#316342] text-white">
                                                     <i class="fa-solid fa-camera text-xs"></i>
@@ -837,9 +787,8 @@
                                             </div>
                                         </div>
 
-                                        <!-- 6. MEMENTO TAB -->
+                                        <!-- Tab: memento -->
                                         <div id="tab-memento" class="app-tab hidden px-4 pt-2 space-y-3.5">
-                                            <!-- Memento Header -->
                                             <div class="flex items-center justify-between">
                                                 <div>
                                                     <h2 class="text-lg font-extrabold text-[#181d1a]">Memento</h2>
@@ -850,7 +799,6 @@
                                                 </button>
                                             </div>
 
-                                            <!-- Interactive Vector Map Canvas of Batam -->
                                             <div class="rounded-2xl border border-[#dfe4df] bg-white p-3 shadow-xs space-y-2">
                                                 <div class="flex items-center justify-between">
                                                     <div class="flex items-center gap-1.5">
@@ -861,12 +809,10 @@
                                                 </div>
 
                                                 <div class="relative h-32 w-full rounded-xl border border-[#c1c9bf] bg-gradient-to-br from-[#ebf5ee] via-[#E0F4EA] to-[#D0ECE0] overflow-hidden p-2">
-                                                    <!-- Batam geographic shapes -->
                                                     <svg class="absolute inset-0 w-full h-full opacity-40" viewBox="0 0 200 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <path d="M20 50 Q45 20 80 40 T150 35 T190 70 Q160 90 100 80 T30 75 Z" fill="#b9efc5" stroke="#316342" stroke-width="1"/>
                                                     </svg>
 
-                                                    <!-- Clickable Pins -->
                                                     <button type="button" onclick="showMomentDetail('Barelang')" class="absolute left-1/4 top-1/3 flex flex-col items-center group focus:outline-none">
                                                         <span class="flex h-5 w-5 items-center justify-center rounded-full bg-[#316342] text-white text-[9px] shadow-sm group-hover:scale-110 transition"><i class="fa-solid fa-location-dot"></i></span>
                                                         <span class="rounded bg-white/95 px-1.5 text-[7.5px] font-bold text-[#181d1a] shadow-xs">Barelang</span>
@@ -888,7 +834,6 @@
                                                 </div>
                                             </div>
 
-                                            <!-- Moments Counter -->
                                             <div class="rounded-xl border border-[#c1c9bf] bg-[#ebf5ee] p-2.5 flex items-center gap-2.5">
                                                 <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#316342] text-white">
                                                     <i class="fa-solid fa-photo-film text-xs"></i>
@@ -899,7 +844,6 @@
                                                 </div>
                                             </div>
 
-                                            <!-- Kenangan Terbaru -->
                                             <div>
                                                 <div class="mb-2 flex items-center justify-between">
                                                     <div>
@@ -912,11 +856,9 @@
                                                     </button>
                                                 </div>
                                                 <div id="memento-cards-grid" class="flex gap-2 overflow-x-auto pb-1 scrollbar-none">
-                                                    <!-- Cards populated by JS -->
                                                 </div>
                                             </div>
 
-                                            <!-- Album Rekomendasi -->
                                             <div>
                                                 <div class="mb-2 flex items-center justify-between">
                                                     <h3 class="text-xs font-bold text-[#181d1a]">Album Rekomendasi</h3>
@@ -942,14 +884,12 @@
                                             </div>
                                         </div>
 
-                                        <!-- 7. PROFILE TAB -->
+                                        <!-- Tab: profile -->
                                         <div id="tab-profile" class="app-tab hidden px-4 pt-2 space-y-3.5">
-                                            <!-- Profile Header -->
                                             <div class="flex items-center justify-between">
                                                 <h2 class="text-lg font-extrabold text-[#181d1a]">Profil</h2>
                                             </div>
 
-                                            <!-- User Card -->
                                             <div class="rounded-2xl border border-[#dfe4df] bg-white p-3.5 shadow-xs space-y-3">
                                                 <div class="flex items-center gap-3">
                                                     <div class="relative">
@@ -985,7 +925,6 @@
                                                 </div>
                                             </div>
 
-                                            <!-- Akun -->
                                             <div class="space-y-1">
                                                 <h3 class="mb-1 text-[9.5px] font-bold uppercase tracking-wider text-[#717971]">Akun</h3>
                                                 <div class="rounded-xl border border-[#dfe4df] bg-white divide-y divide-[#dfe4df] shadow-xs">
@@ -1016,7 +955,6 @@
                                                 </div>
                                             </div>
 
-                                            <!-- Preferensi -->
                                             <div class="space-y-1">
                                                 <h3 class="mb-1 text-[9.5px] font-bold uppercase tracking-wider text-[#717971]">Preferensi</h3>
                                                 <div class="rounded-xl border border-[#dfe4df] bg-white shadow-xs">
@@ -1033,7 +971,6 @@
                                                 </div>
                                             </div>
 
-                                            <!-- Bantuan -->
                                             <div class="space-y-1">
                                                 <h3 class="mb-1 text-[9.5px] font-bold uppercase tracking-wider text-[#717971]">Bantuan</h3>
                                                 <div class="rounded-xl border border-[#dfe4df] bg-white divide-y divide-[#dfe4df] shadow-xs">
@@ -1064,7 +1001,6 @@
                                                 </div>
                                             </div>
 
-                                            <!-- Logout Button -->
                                             <button type="button" onclick="handleLogout()" class="w-full py-2.5 rounded-xl border border-red-200 bg-red-50 hover:bg-red-100 text-red-600 font-bold text-xs flex items-center justify-center gap-2 transition">
                                                 <i class="fa-solid fa-arrow-right-from-bracket text-xs"></i>
                                                 <span>Keluar</span>
@@ -1077,7 +1013,7 @@
 
                                 </div>
 
-                                <!-- ==================== 3. FLOATING BOTTOM APP NAVIGATION ==================== -->
+                                <!-- Floating bottom navigation -->
                                 <nav id="phone-bottom-nav" aria-label="Navigasi showcase aplikasi" class="hidden absolute inset-x-3 bottom-2.5 z-30 rounded-2xl border border-white/80 bg-white/92 backdrop-blur-md px-1.5 py-1 shadow-[0_8px_24px_rgba(0,0,0,0.08)]">
                                     <div class="flex items-center justify-between">
                                         <button type="button" onclick="switchPhoneTab('home')" class="showcase-nav-button is-active flex flex-col items-center gap-0.5 px-1 focus:outline-none" data-tab="home" aria-label="Beranda" aria-pressed="true">
@@ -1103,7 +1039,6 @@
                                     </div>
                                 </nav>
 
-                                <!-- Bottom Gesture Bar -->
                                 <div class="absolute bottom-1 left-1/2 -translate-x-1/2 w-28 h-1 bg-[#181d1a]/25 rounded-full z-40 pointer-events-none"></div>
 
                             </div>
@@ -1113,10 +1048,9 @@
                 </div>
             </div>
 
-            <!-- KOLOM KANAN: PANDUAN PENGGUNA & RINGKASAN HARIAN -->
+            <!-- Kolom kanan: panduan & ringkasan harian -->
             <div class="lg:col-span-5 space-y-5">
 
-                <!-- 1. KARTU HARMONI HARI INI (LIVE VALUE DASHBOARD) -->
                 <div class="rounded-3xl border border-[#c1c9bf] bg-white p-6 shadow-sm space-y-4">
                     <div class="flex items-center justify-between border-b border-[#dfe4df] pb-3.5">
                         <div class="flex items-center gap-2.5">
@@ -1133,7 +1067,6 @@
                         </span>
                     </div>
 
-                    <!-- 4 Kartu Metrik Keseharian -->
                     <div class="grid grid-cols-2 gap-3 text-xs">
                         <div class="p-3.5 rounded-2xl bg-[#f6fbf5] border border-[#dfe4df]">
                             <div class="flex items-center gap-1.5 text-[#414942] text-[10.5px] font-semibold">
@@ -1172,14 +1105,12 @@
                         </div>
                     </div>
 
-                    <!-- Tombol Hasil Akhir -->
                     <button type="button" onclick="openExecutiveSummary()" class="w-full py-3 rounded-xl bg-[#316342] hover:bg-[#1e5031] text-white font-bold text-xs flex items-center justify-center gap-2 shadow-sm transition">
                         <i class="fa-solid fa-medal text-sm"></i>
                         <span>Lihat Rekap Lengkap Hari Ini</span>
                     </button>
                 </div>
 
-                <!-- 2. COBA LANGSUNG AKSI CEPAT (INTERACTIVE PROMPTS FOR PROSPECTIVE USERS) -->
                 <div class="rounded-3xl border border-[#c1c9bf] bg-white p-6 shadow-sm space-y-3.5">
                     <div class="flex items-center gap-2">
                         <span class="flex h-6 w-6 items-center justify-center rounded-lg bg-[#ebf5ee] text-[#1e5031] text-xs font-bold">
@@ -1226,7 +1157,6 @@
                     </div>
                 </div>
 
-                <!-- 3. MENGAPA PENGGUNA MEMILIH LIFESYNC (HUMAN VALUES) -->
                 <div class="rounded-3xl border border-[#c1c9bf] bg-white p-6 shadow-sm space-y-3.5">
                     <h4 class="text-xs font-bold uppercase tracking-wider text-[#1e5031]">Mengapa Memilih LifeSync?</h4>
                     <div class="space-y-3 text-xs text-[#414942]">
@@ -1275,11 +1205,10 @@
 
     </main>
 
-    <!-- ==================== FOOTER ==================== -->
+    <!-- Footer -->
     <footer class="w-full bg-surface-container-low text-on-surface-variant border-t border-outline-variant/30 py-16 relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-10 pb-12 border-b border-outline-variant/20">
-                <!-- Brand & Tagline -->
                 <div class="flex items-center gap-4">
                     <img src="../assets/lifesync-symbol.png" alt="LifeSync Icon" width="44" height="44"
                          class="w-11 h-11 rounded-2xl bg-surface-container-lowest p-1 shadow-soft object-contain border border-outline-variant/20" />
@@ -1289,7 +1218,6 @@
                     </div>
                 </div>
 
-                <!-- Navigasi Internal (Selaras dengan Landing Page) -->
                 <nav class="flex flex-wrap items-center gap-x-8 gap-y-3 text-xs sm:text-sm font-medium text-on-surface-variant">
                     <a href="../index.html" class="hover:text-primary transition-colors duration-200">Beranda</a>
                     <a href="../index.html#fitur" class="hover:text-primary transition-colors duration-200">Pilar Fitur</a>
@@ -1299,7 +1227,6 @@
                     <a href="../index.html#kontak" class="hover:text-primary transition-colors duration-200">Kontak</a>
                 </nav>
 
-                <!-- Aksi & Email -->
                 <div class="flex flex-wrap items-center gap-4">
                     <a href="mailto:partnership@lifesync.id" class="inline-flex items-center gap-1.5 text-xs text-on-surface-variant hover:text-primary transition-colors">
                         <span class="material-symbols-outlined text-sm text-secondary">mail</span>
@@ -1308,7 +1235,6 @@
                 </div>
             </div>
 
-            <!-- Baris Bawah: Hak Cipta & Jaminan Privasi -->
             <div class="mt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-on-surface-variant">
                 <div>
                     &copy; 2026 LifeSync. Seluruh hak cipta dilindungi undang-undang.
@@ -1325,9 +1251,9 @@
     </footer>
 
 
-    <!-- ==================== INTERACTIVE MODALS ==================== -->
+    <!-- Modal interaktif -->
 
-    <!-- 1. MODAL TAMBAH TUGAS (PLANNER) -->
+    <!-- Modal tambah tugas -->
     <div id="modal-add-task" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
         <div class="bg-white rounded-3xl max-w-sm w-full p-6 text-[#181d1a] space-y-4 shadow-2xl animate-fade-in border border-[#dfe4df]">
             <div class="flex items-center justify-between border-b border-[#dfe4df] pb-3">
@@ -1361,7 +1287,7 @@
         </div>
     </div>
 
-    <!-- 2. MODAL TAMBAH HABIT (BERANDA) -->
+    <!-- Modal tambah habit -->
     <div id="modal-add-habit" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
         <div class="bg-white rounded-3xl max-w-sm w-full p-6 text-[#181d1a] space-y-4 shadow-2xl border border-[#dfe4df]">
             <div class="flex items-center justify-between border-b border-[#dfe4df] pb-3">
@@ -1385,7 +1311,7 @@
         </div>
     </div>
 
-    <!-- 3. MODAL TAMBAH TRANSAKSI (KEUANGAN) -->
+    <!-- Modal tambah transaksi -->
     <div id="modal-add-tx" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
         <div class="bg-white rounded-3xl max-w-sm w-full p-6 text-[#181d1a] space-y-4 shadow-2xl border border-[#dfe4df]">
             <div class="flex items-center justify-between border-b border-[#dfe4df] pb-3">
@@ -1417,7 +1343,7 @@
         </div>
     </div>
 
-    <!-- 4. MODAL NOTE EDITOR (CATATAN) -->
+    <!-- Modal editor catatan -->
     <div id="modal-note-editor" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
         <div class="bg-white rounded-3xl max-w-sm w-full p-6 text-[#181d1a] space-y-4 shadow-2xl border border-[#dfe4df]">
             <div class="flex items-center justify-between border-b border-[#dfe4df] pb-3">
@@ -1455,7 +1381,7 @@
         </div>
     </div>
 
-    <!-- 5. MODAL SIMULASI FOOD AI (NUTRISI) -->
+    <!-- Modal simulasi Food AI -->
     <div id="modal-food-ai" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
         <div class="bg-white rounded-3xl max-w-sm w-full p-6 text-[#181d1a] space-y-4 shadow-2xl border border-[#dfe4df]">
             <div class="flex items-center justify-between border-b border-[#dfe4df] pb-3">
@@ -1466,7 +1392,6 @@
                 <button type="button" onclick="closeModal('modal-food-ai')" class="text-[#414942] hover:text-[#181d1a] text-lg font-bold">&times;</button>
             </div>
 
-            <!-- Scanner Viewfinder Box -->
             <div class="relative h-44 rounded-2xl bg-[#141C17] overflow-hidden flex flex-col items-center justify-center p-3 text-white border border-[#2D3A32]">
                 <div class="absolute inset-4 border-2 border-dashed border-[#4a7c59]/70 rounded-xl pointer-events-none flex items-center justify-center">
                     <span class="text-[9.5px] font-bold text-[#4a7c59] bg-black/60 px-2.5 py-0.5 rounded-md">Kamera Mendeteksi Makanan</span>
@@ -1475,7 +1400,6 @@
                 <p id="ai-scan-status-text" class="text-xs font-bold">Arahkan kamera ke makanan kamu</p>
             </div>
 
-            <!-- Pre-defined Food Options -->
             <div class="space-y-1.5">
                 <p class="text-[10px] font-bold text-[#414942] uppercase tracking-wider">Pilih contoh makanan untuk simulasi:</p>
                 <button type="button" onclick="applyScannedFood('Nasi Ayam Bakar & Lalapan', 520, 28, 62, 14)" class="w-full text-left p-3 rounded-xl border border-[#dfe4df] hover:border-[#316342] bg-[#f6fbf5] hover:bg-[#ebf5ee]/30 flex items-center justify-between text-xs transition">
@@ -1503,7 +1427,7 @@
         </div>
     </div>
 
-    <!-- 6. MODAL DETAIL MEMENTO (BATAM) -->
+    <!-- Modal detail memento -->
     <div id="modal-memento-detail" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
         <div class="bg-white rounded-3xl max-w-sm w-full p-6 text-[#181d1a] space-y-4 shadow-2xl border border-[#dfe4df]">
             <div class="flex items-center justify-between border-b border-[#dfe4df] pb-3">
@@ -1531,7 +1455,7 @@
         </div>
     </div>
 
-    <!-- 7. MODAL REKAP AKTIVITAS HARI INI -->
+    <!-- Modal rekap aktivitas hari ini -->
     <div id="modal-executive-summary" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/65 backdrop-blur-sm">
         <div class="bg-white rounded-3xl max-w-md w-full p-7 text-[#181d1a] space-y-5 shadow-2xl max-h-[92vh] overflow-y-auto border border-[#dfe4df]">
             <div class="flex items-center justify-between border-b border-[#dfe4df] pb-3.5">
@@ -1545,7 +1469,6 @@
                 <button type="button" onclick="closeModal('modal-executive-summary')" class="text-[#414942] hover:text-[#181d1a] text-xl font-bold">&times;</button>
             </div>
 
-            <!-- Pesan Apresiasi Diri -->
             <div class="p-4 rounded-2xl bg-[#ebf5ee] border border-[#c1c9bf]">
                 <p class="font-extrabold text-xs text-[#1e5031] flex items-center gap-1.5">
                     <i class="fa-solid fa-sparkles"></i>
@@ -1557,7 +1480,6 @@
             </div>
 
             <div class="space-y-2.5 text-xs">
-                <!-- Capaian 4 Aspek Kehidupan -->
                 <div class="grid grid-cols-2 gap-2.5">
                     <div class="p-3.5 rounded-2xl border border-[#dfe4df] bg-[#f6fbf5]">
                         <span class="text-[10px] text-[#414942] flex items-center gap-1 font-semibold"><i class="fa-solid fa-repeat text-[#316342]"></i> Kebiasaan Selesai</span>
@@ -1577,7 +1499,6 @@
                     </div>
                 </div>
 
-                <!-- Catatan & Memento -->
                 <div class="p-3.5 rounded-2xl border border-[#dfe4df] bg-white flex items-center justify-between">
                     <div>
                         <p class="font-bold text-[#181d1a]" id="sum-notes-val">4 Catatan Tersimpan</p>
@@ -1598,7 +1519,6 @@
                 </div>
             </div>
 
-            <!-- Call to Action Pengguna -->
             <div class="space-y-2 pt-2">
                 <a href="../index.html#pricing" class="w-full py-3 rounded-xl bg-[#316342] hover:bg-[#1e5031] text-white font-bold text-xs flex items-center justify-center gap-2 shadow-sm transition">
                     <span>Mulai Atur Hari Lebih Rapi &bull; Download Gratis</span>
@@ -1611,9 +1531,8 @@
         </div>
     </div>
 
-    <!-- ==================== JAVASCRIPT LOGIC ==================== -->
     <script>
-        /* ---------------- TELEMETRY ANALYTICS HELPER ---------------- */
+        /* Telemetry analytics */
         function trackMockupEvent(eventName, params) {
             try {
                 const payload = Object.assign({}, params || {});
@@ -1628,13 +1547,7 @@
             }
         }
 
-        /* ---------------- FEATURE ATTENTION TRACKER (GA4) ----------------
-           Mengukur fitur mana yang paling menarik perhatian pengguna:
-           - mockup_feature_enter   : masuk ke sebuah layar/tab fitur
-           - mockup_feature_dwell   : durasi perhatian (detik) saat keluar/milestone
-           - mockup_feature_action  : aksi yang dilakukan pada sebuah fitur
-           - mockup_attention_summary: ringkasan sesi saat halaman ditinggalkan
-        ------------------------------------------------------------------ */
+        /* Feature attention tracker (GA4): enter, dwell, action, summary */
         const ATTENTION_LABEL = {
             splash: 'Tampilan Awal',
             onboarding: 'Kenalan Fitur',
@@ -1891,7 +1804,7 @@
             });
         }
 
-        /* ---------------- APP STATE STORE ---------------- */
+        /* App state store */
         const DEFAULT_STATE = {
             screen: 'splash', // 'splash', 'onboarding', 'auth', 'main'
             tab: 'home',    // 'home', 'planner', 'notes', 'finance', 'nutrition', 'memento', 'profile'
@@ -1945,14 +1858,13 @@
 
         let appState = JSON.parse(JSON.stringify(DEFAULT_STATE));
 
-        /* ---------------- INITIALIZATION ---------------- */
+        /* Initialization */
         document.addEventListener('DOMContentLoaded', () => {
             renderAll();
             startLiveClock();
             initFeatureAttention();
             trackMockupEvent('mockup_loaded', { initial_screen: appState.screen });
 
-            // Tracker tombol Kembali ke Beranda
             document.querySelectorAll('a[href="../index.html"], a[href="../index.html#fitur"]').forEach(btn => {
                 btn.addEventListener('click', () => {
                     trackMockupEvent('mockup_back_home', {
@@ -1962,7 +1874,6 @@
                 });
             });
 
-            // Engaged Simulator Time Tracker (15s, 30s, 60s, 120s)
             let mockupActiveSecs = 0;
             const milestones = [15, 30, 60, 120];
             const fired = {};
@@ -1991,7 +1902,7 @@
             setInterval(update, 30000);
         }
 
-        /* ---------------- RENDER ALL COMPONENTS ---------------- */
+        /* Render components */
         function renderAll() {
             renderScreenState();
             renderHabits();
@@ -2003,7 +1914,7 @@
             renderTelemetry();
         }
 
-        /* ---------------- SCREEN NAVIGATION ---------------- */
+        /* Screen navigation */
         function switchPhoneScreen(screenName) {
             const prevScreen = appState.screen;
             appState.screen = screenName;
@@ -2059,7 +1970,6 @@
                     if (tabEl) tabEl.classList.toggle('hidden', appState.tab !== t);
                 });
 
-                // Update bottom nav active status
                 document.querySelectorAll('.showcase-nav-button').forEach(btn => {
                     const match = btn.getAttribute('data-tab') === appState.tab;
                     btn.classList.toggle('is-active', match);
@@ -2067,7 +1977,6 @@
                 });
             }
 
-            // Update top chips (Clean Segmented Control)
             document.querySelectorAll('.flow-chip').forEach(chip => {
                 const cKey = chip.getAttribute('data-chip');
                 const active = (appState.screen !== 'main' && appState.screen === cKey) || (appState.screen === 'main' && appState.tab === cKey);
@@ -2083,7 +1992,7 @@
             });
         }
 
-        /* ---------------- ONBOARDING SLIDES ---------------- */
+        /* Onboarding slides */
         const ONBOARDING_SLIDES = [
             {
                 title: 'Bangun Kebiasaan Lebih Baik',
@@ -2139,7 +2048,7 @@
             }
         }
 
-        /* ---------------- AUTHENTICATION ---------------- */
+        /* Authentication */
         let isRegisterMode = false;
 
         function toggleAuthMode() {
@@ -2174,7 +2083,7 @@
             triggerNotification('Kode verifikasi demo: 849201. Akun kamu langsung siap digunakan.', 'Reset Password');
         }
 
-        /* ---------------- HABITS (HOME TAB) ---------------- */
+        /* Habits (home tab) */
         function renderHabits() {
             const list = document.getElementById('home-habit-list');
             if (!list) return;
@@ -2183,7 +2092,6 @@
             const doneCount = appState.habits.filter(h => h.done).length;
             const pct = Math.round((doneCount / total) * 100);
 
-            // Update Progress Ring Card
             document.getElementById('home-progress-badge').textContent = `${pct}% Selesai`;
             document.getElementById('home-progress-ratio').textContent = `${doneCount}/${total}`;
             document.getElementById('home-progress-text').textContent = `${doneCount} dari ${total} habit selesai`;
@@ -2285,7 +2193,7 @@
             triggerNotification(`Kebiasaan baru "${title}" berhasil ditambahkan!`);
         }
 
-        /* ---------------- PLANNER TAB ---------------- */
+        /* Planner tab */
         let plannerFilter = 'semua';
 
         function renderPlanner() {
@@ -2305,7 +2213,6 @@
             document.getElementById('count-pending').textContent = pending;
             document.getElementById('count-done').textContent = done;
 
-            // Render calendar strip
             const calStrip = document.getElementById('planner-calendar-strip');
             if (calStrip && calStrip.children.length === 0) {
                 const days = [
@@ -2412,7 +2319,7 @@
             triggerNotification(`Agenda "${title}" tersimpan rapi.`);
         }
 
-        /* ---------------- CATATAN / NOTES TAB ---------------- */
+        /* Notes tab */
         let notesTagFilter = 'Semua';
         let notesSearchQuery = '';
 
@@ -2496,7 +2403,7 @@
             renderNotes();
         }
 
-        /* ---------------- FINANCE TAB ---------------- */
+        /* Finance tab */
         function renderFinance() {
             const f = appState.finance;
             const fmt = (num) => 'Rp ' + Math.abs(num).toLocaleString('id-ID');
@@ -2582,7 +2489,7 @@
             triggerNotification(`Transaksi "${title}" berhasil dicatat!`);
         }
 
-        /* ---------------- NUTRITION TAB ---------------- */
+        /* Nutrition tab */
         function renderNutrition() {
             const n = appState.nutrition;
             const pct = Math.round((n.calories / n.target) * 100);
@@ -2634,7 +2541,7 @@
             });
         }
 
-        /* ---------------- MEMENTO TAB ---------------- */
+        /* Memento tab */
         const BATAM_MOMENTS = {
             'Barelang': {
                 title: 'Jembatan Barelang',
@@ -2671,7 +2578,6 @@
             triggerNotification('Lokasi foto otomatis terdeteksi. Simpan momen lengkap dengan cerita perjalanannya.', 'Memento');
         }
 
-        // Render Memento Cards
         const mementoContainer = document.getElementById('memento-cards-grid');
         if (mementoContainer) {
             mementoContainer.innerHTML = `
@@ -2699,7 +2605,7 @@
             `;
         }
 
-        /* ---------------- PROFILE TAB ---------------- */
+        /* Profile tab */
         function renderProfile() {
             const u = appState.user;
             document.getElementById('home-greeting-name').textContent = u.isGuest ? 'Halo, Guest 👋' : `Selamat pagi, ${u.name.split(' ')[0]} 👋`;
@@ -2775,7 +2681,7 @@
             });
         }
 
-        /* ---------------- TELEMETRY & RESULTS ---------------- */
+        /* Telemetry & results */
         function renderTelemetry() {
             const habitDone = appState.habits.filter(h => h.done).length;
             const habitTotal = appState.habits.length;
@@ -2838,7 +2744,7 @@
             if (m) m.classList.add('hidden');
         }
 
-        /* ---------------- IN-PHONE NOTIFICATIONS ---------------- */
+        /* In-phone notifications */
         function getPhoneNotificationHost() {
             return document.getElementById('phone-toast-host');
         }

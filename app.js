@@ -9,43 +9,19 @@
  *   selesai dimuat. Jika tidak, scroll spy akan mencari target yang belum ada.
  */
 
-/* ==========================================================
-   0. Konfigurasi situs
-   ========================================================== */
+/* Konfigurasi situs */
 /**
  * URL toko resmi (Google Play / App Store / website).
- * TODO: ganti dengan URL resmi saat sudah tersedia.
- * Selama kosong, tombol "Download App" diarahkan ke section #pricing.
+ * TODO: ganti dengan URL resmi saat sudah tersedia; selama kosong, mengarah ke #pricing.
  */
 const STORE_URL = '';
-
-/**
- * URL toko resmi khusus Android (Google Play).
- */
 const ANDROID_STORE_URL = '';
-
-/**
- * URL toko resmi khusus iOS (App Store).
- */
 const IOS_STORE_URL = '';
-
-/**
- * Dipakai untuk menandai elemen CTA unduhan.
- * app.js akan mengganti href-nya otomatis bila STORE_URL terisi.
- */
 const DOWNLOAD_SELECTOR = '[data-download]';
-
-/**
- * Selector untuk tombol unduh Android dan iOS terpisah.
- */
 const DOWNLOAD_ANDROID_SELECTOR = '[data-download-android]';
 const DOWNLOAD_IOS_SELECTOR = '[data-download-ios]';
 
-/**
- * Endpoint Formspree untuk formulir kontak.
- * Ganti YOUR_FORM_ID dengan Form ID dari dashboard Formspree:
- * https://formspree.io -> buat form baru -> salin endpoint-nya.
- */
+// Ganti YOUR_FORM_ID_HERE dengan Form ID dari dashboard Formspree.
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID_HERE';
 
 const SECTIONS = [
@@ -59,18 +35,24 @@ const SECTIONS = [
     { id: 'section-footer',  file: 'sections/footer.html' },
 ];
 
-/* ==========================================================
-   1. Loader Section
-   ========================================================== */
+function t(key, fallback) {
+    if (window.LifeSyncI18n && typeof window.LifeSyncI18n.t === 'function') {
+        var val = window.LifeSyncI18n.t(key);
+        if (val) return val;
+    }
+    return fallback || '';
+}
+
+/* Loader section */
 async function loadSection({ id, file }) {
     try {
-        // Cache-buster query param agar browser tidak menyajikan cache lama yang rusak
+        // Cache-buster agar browser tidak menyajikan HTML partial lama yang rusak.
         const response = await fetch(file + '?v=' + Date.now());
         if (!response.ok) {
             console.error('Gagal memuat ' + file + ' (HTTP ' + response.status + ')');
             const container = document.getElementById(id);
             if (container) {
-                container.innerHTML = '<div class="max-w-xl mx-auto my-12 p-6 bg-red-50 border border-red-200 rounded-2xl text-center text-red-700 text-sm font-medium">Gagal memuat section ' + file + ' (Status: ' + response.status + '). Pastikan file tersedia.</div>';
+                container.innerHTML = '<div class="max-w-xl mx-auto my-12 p-6 bg-red-50 border border-red-200 rounded-2xl text-center text-red-700 text-sm font-medium">' + t('js.sectionLoadError', 'Gagal memuat bagian halaman.') + ' (' + file + ' - HTTP ' + response.status + ')</div>';
             }
             return false;
         }
@@ -86,14 +68,17 @@ async function loadSection({ id, file }) {
         console.error('Error loading ' + file + ':', error);
         const container = document.getElementById(id);
         if (container) {
-            container.innerHTML = '<div class="max-w-xl mx-auto my-12 p-6 bg-amber-50 border border-amber-200 rounded-2xl text-center text-amber-800 text-sm font-medium"><p class="font-bold mb-1">Gagal memuat ' + file + '</p><p class="text-xs text-amber-700">Pastikan website dijalankan melalui local web server (seperti VS Code Live Server di port 5500/5501) dan bukan dibuka langsung via double-click file://.</p></div>';
+            container.innerHTML = '<div class="max-w-xl mx-auto my-12 p-6 bg-amber-50 border border-amber-200 rounded-2xl text-center text-amber-800 text-sm font-medium"><p class="font-bold mb-1">' + file + '</p><p class="text-xs text-amber-700">' + t('js.sectionLoadError', 'Gagal memuat bagian halaman. Pastikan website dijalankan lewat server lokal.') + '</p></div>';
         }
         return false;
     }
 }
 
 document.addEventListener('DOMContentLoaded', async function () {
-    // 1) Muat semua section secara paralel
+    if (window.LifeSyncI18n) {
+        window.LifeSyncI18n.init();
+    }
+
     const results = await Promise.all(SECTIONS.map(loadSection));
 
     const failed = SECTIONS.filter(function (_, i) { return !results[i]; });
@@ -101,7 +86,10 @@ document.addEventListener('DOMContentLoaded', async function () {
         console.warn('Section gagal dimuat:', failed.map(function (s) { return s.file; }).join(', '));
     }
 
-    // 2) Inisialisasi setiap interaksi dengan defensive programming (try-catch mandiri)
+    if (window.LifeSyncI18n) {
+        window.LifeSyncI18n.apply(window.LifeSyncI18n.getLang(), document);
+    }
+
     var modules = [
         { name: 'Navbar', fn: initNavbar },
         { name: 'Reveal Animations', fn: initReveal },
@@ -140,9 +128,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     }
 });
 
-/* ==========================================================
-   2. Navbar: mobile menu, sticky state, scroll spy
-   ========================================================== */
+/* Navbar: menu mobile, sticky state, dan scroll spy */
 function initNavbar() {
     var navbar  = document.getElementById('navbar');
     var bar     = document.getElementById('navbar-bar');
@@ -152,11 +138,13 @@ function initNavbar() {
 
     if (!navbar || !toggle || !menu) return;
 
-    /* --- 2a. Buka / tutup menu mobile --- */
     function setMenu(open) {
         menu.classList.toggle('hidden', !open);
         toggle.setAttribute('aria-expanded', String(open));
-        toggle.setAttribute('aria-label', open ? 'Tutup menu navigasi' : 'Buka menu navigasi');
+        toggle.setAttribute(
+            'aria-label',
+            open ? t('nav.menuClose', 'Tutup menu navigasi') : t('nav.menuOpen', 'Buka menu navigasi')
+        );
         if (icon) {
             if (icon.classList.contains('material-symbols-outlined')) {
                 icon.textContent = open ? 'close' : 'menu';
@@ -171,17 +159,29 @@ function initNavbar() {
         setMenu(menu.classList.contains('hidden'));
     });
 
-    // Tutup menu ketika salah satu tautan diklik
     menu.querySelectorAll('a[href^="#"]').forEach(function (link) {
         link.addEventListener('click', function () { setMenu(false); });
     });
 
-    // Tutup menu ketika klik di luar navbar
     document.addEventListener('click', function (e) {
         if (!navbar.contains(e.target)) setMenu(false);
     });
 
-    /* --- 2b. Scroll spy --- */
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !menu.classList.contains('hidden')) {
+            setMenu(false);
+            toggle.focus();
+        }
+    });
+
+    document.addEventListener('lifesync:langchange', function () {
+        var isOpen = !menu.classList.contains('hidden');
+        toggle.setAttribute(
+            'aria-label',
+            isOpen ? t('nav.menuClose', 'Tutup menu navigasi') : t('nav.menuOpen', 'Buka menu navigasi')
+        );
+    });
+
     var navLinks = document.querySelectorAll('.nav-link');
 
     function updateScrollSpy() {
@@ -197,16 +197,17 @@ function initNavbar() {
         navLinks.forEach(function (link) {
             var href = link.getAttribute('href');
             var active = href === '#' + current;
-            link.classList.toggle('text-primary-default', active);
+            link.classList.toggle('is-active', active);
+            link.classList.toggle('text-primary', active);
             link.classList.toggle('font-bold', active);
         });
     }
 
-    /* --- 2c. Sticky navbar + background scroll --- */
     function onScroll() {
         var y = window.scrollY;
         var scrolled = y > 10;
 
+        navbar.classList.toggle('is-scrolled', scrolled);
         if (scrolled) {
             navbar.classList.add('bg-surface/90', 'backdrop-blur-xl', 'shadow-soft');
             navbar.classList.remove('bg-transparent');
@@ -215,10 +216,10 @@ function initNavbar() {
                 bar.classList.remove('border-transparent');
             }
         } else {
-            navbar.classList.remove('bg-white/95', 'backdrop-blur-xl', 'shadow-sm');
+            navbar.classList.remove('bg-surface/90', 'bg-white/95', 'backdrop-blur-xl', 'shadow-soft', 'shadow-sm');
             navbar.classList.add('bg-transparent');
             if (bar) {
-                bar.classList.remove('border-slate-100');
+                bar.classList.remove('border-outline-variant/30', 'border-slate-100');
                 bar.classList.add('border-transparent');
             }
         }
@@ -227,12 +228,10 @@ function initNavbar() {
     }
 
     window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll(); // jalankan sekali saat mount
+    onScroll();
 }
 
-/* ==========================================================
-   3. Smooth Scroll
-   ========================================================== */
+/* Smooth scroll */
 function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
         anchor.addEventListener('click', function (e) {
@@ -253,9 +252,7 @@ function initSmoothScroll() {
     });
 }
 
-/* ==========================================================
-   4. Download Links
-   ========================================================== */
+/* Download links */
 function initDownloadLinks() {
     var links = document.querySelectorAll(DOWNLOAD_SELECTOR);
     links.forEach(function (link) {
@@ -289,9 +286,7 @@ function initDownloadLinks() {
     });
 }
 
-/* ==========================================================
-   5. Reveal on Scroll
-   ========================================================== */
+/* Reveal on scroll */
 function initReveal() {
     var items = document.querySelectorAll('.reveal');
     if (items.length === 0) return;
@@ -315,7 +310,6 @@ function initReveal() {
 
     items.forEach(function (el) {
         var rect = el.getBoundingClientRect();
-        // Elemen yang sudah di dalam viewport saat pertama load langsung diberi is-visible
         if (rect.top < window.innerHeight && rect.bottom > 0) {
             el.classList.add('is-visible');
         } else {
@@ -324,9 +318,7 @@ function initReveal() {
     });
 }
 
-/* ==========================================================
-   6. Interaksi kartu fitur (klik -> buka halaman detail)
-   ========================================================== */
+/* Interaksi kartu fitur */
 var FEATURE_PAGE = {
     todo:     'pages/fitur-todo.html',
     calendar: 'pages/kalender.html',
@@ -349,9 +341,7 @@ function initFeatureCards() {
     });
 }
 
-/* ==========================================================
-   7. Showcase app navigation
-   ========================================================== */
+/* Showcase app navigation */
 function initShowcaseNavigation() {
     var tabs = document.querySelectorAll('[data-showcase-tab]');
     var views = document.querySelectorAll('[data-showcase-view]');
@@ -383,9 +373,7 @@ function initShowcaseNavigation() {
     });
 }
 
-/* ==========================================================
-   8. Kontak Form: validasi & Formspree submit
-   ========================================================== */
+/* Kontak form */
 function initKontakForm() {
     var form = document.getElementById('kontak-form');
     if (!form) return;
@@ -402,7 +390,6 @@ function initKontakForm() {
 
         var valid = true;
 
-        // Reset semua pesan error
         ['nama', 'email', 'subjek', 'pesan'].forEach(function (id) {
             var el = document.getElementById('error-' + id);
             if (el) el.classList.add('hidden');
@@ -435,13 +422,12 @@ function initKontakForm() {
 
         if (!valid) return;
 
-        // State: loading
         var btn     = document.getElementById('btn-kirim');
         var btnText = document.getElementById('btn-text');
         var btnIcon = document.getElementById('btn-icon');
 
         if (btn) btn.disabled = true;
-        if (btnText) btnText.textContent = 'Mengirim...';
+        if (btnText) btnText.textContent = t('js.sending', 'Mengirim...');
         if (btnIcon) btnIcon.className = 'fa-solid fa-circle-notch fa-spin';
 
         var formData = new FormData(form);
@@ -454,7 +440,6 @@ function initKontakForm() {
         .then(function (response) {
             if (response.ok) {
                 form.reset();
-                // Sembunyikan form, tampilkan pesan sukses
                 var wrapper = document.getElementById('kontak-form-wrapper');
                 if (wrapper) wrapper.classList.add('hidden');
                 if (successBox) successBox.classList.remove('hidden');
@@ -463,17 +448,17 @@ function initKontakForm() {
             }
         })
         .catch(function () {
-            alert('Gagal mengirim pesan. Coba lagi nanti atau hubungi kami melalui email langsung:\npartnership@lifesync.id');
+            alert(t('js.sendFailed', 'Gagal mengirim pesan. Coba lagi nanti atau kirim email langsung ke partnership@lifesync.id.'));
         })
         .finally(function () {
             if (btn) btn.disabled = false;
-            if (btnText) btnText.textContent = 'Kirim Pesan';
+            if (btnText) btnText.textContent = t('js.sendMessage', 'Kirim Pesan');
             if (btnIcon) btnIcon.className = 'fa-solid fa-paper-plane';
         });
     });
 }
 
-/* Fungsi reset form kontak (dipanggil dari tombol "Kirim Pesan Lagi") */
+/* Dipanggil oleh tombol "Kirim Pesan Lagi" di kontak.html. */
 window.resetKontakForm = function resetKontakForm() {
     var form       = document.getElementById('kontak-form');
     var wrapper    = document.getElementById('kontak-form-wrapper');
@@ -490,9 +475,7 @@ window.resetKontakForm = function resetKontakForm() {
 };
 
 
-/* ==========================================================
-   9. Analytics Telemetry (GA4 Automatic Event Tracking)
-   ========================================================== */
+/* Analytics telemetry (GA4) */
 function sendAnalyticsEvent(eventName, params) {
     try {
         if (typeof window.gtag === 'function') {
@@ -504,9 +487,7 @@ function sendAnalyticsEvent(eventName, params) {
 }
 
 
-/* ==========================================================
-   8b. Modal Status Pengembangan (Pricing Plan CTA)
-   ========================================================== */
+/* Modal status pengembangan */
 function initPricingModal() {
     var modal = document.getElementById('modal-pricing-dev');
     if (!modal) return;
@@ -517,34 +498,49 @@ function initPricingModal() {
     var closeBtn    = document.getElementById('dev-modal-close-btn');
     var ctaKontak   = document.getElementById('dev-modal-cta-kontak');
     var ctaMockup   = document.getElementById('dev-modal-cta-mockup');
+    var activePlan  = 'free';
+    var previousFocus = null;
 
-    function openModal(plan) {
+    function renderModalCopy(plan) {
         if (plan === 'premium') {
-            if (planTitleEl) planTitleEl.textContent = 'Paket Akses Premium';
+            if (planTitleEl) planTitleEl.textContent = t('modal.premTitle', 'Paket Premium');
             if (planDescEl) {
-                planDescEl.textContent = 'Fitur paket premium dan sistem langganan belum dibuka karena aplikasi LifeSync saat ini masih dalam proses pengembangan.';
+                planDescEl.textContent = t('modal.premDesc', 'Langganan berbayar dan fitur AI tambahan belum dibuka karena aplikasinya masih dalam tahap pengembangan.');
             }
         } else {
-            if (planTitleEl) planTitleEl.textContent = 'Paket Dasar Gratis';
+            if (planTitleEl) planTitleEl.textContent = t('modal.freeTitle', 'Paket Gratis');
             if (planDescEl) {
-                planDescEl.textContent = 'Aplikasi mobile LifeSync saat ini masih dalam proses pengembangan dan belum dirilis untuk diunduh.';
+                planDescEl.textContent = t('modal.freeDesc', 'Aplikasi mobile LifeSync saat ini masih dalam pengembangan, jadi file unduhan resminya belum dirilis.');
             }
         }
+    }
+
+    function openModal(plan) {
+        previousFocus = document.activeElement;
+        activePlan = plan === 'premium' ? 'premium' : 'free';
+        renderModalCopy(activePlan);
 
         modal.classList.remove('hidden');
         document.body.classList.add('overflow-hidden');
 
+        if (closeBtn && typeof closeBtn.focus === 'function') {
+            closeBtn.focus();
+        }
+
         sendAnalyticsEvent('dev_modal_open', {
-            plan_type: plan || 'free'
+            plan_type: activePlan
         });
     }
 
     function closeModal() {
         modal.classList.add('hidden');
         document.body.classList.remove('overflow-hidden');
+        if (previousFocus && typeof previousFocus.focus === 'function') {
+            previousFocus.focus();
+            previousFocus = null;
+        }
     }
 
-    // Pasang listener pada tombol di pricing section
     document.querySelectorAll('[data-open-dev-modal]').forEach(function (btn) {
         btn.addEventListener('click', function (e) {
             e.preventDefault();
@@ -556,14 +552,33 @@ function initPricingModal() {
     if (closeBtn) closeBtn.addEventListener('click', closeModal);
     if (backdrop) backdrop.addEventListener('click', closeModal);
 
-    // Escape key listener
     document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+        if (modal.classList.contains('hidden')) return;
+        if (e.key === 'Escape') {
             closeModal();
+            return;
+        }
+        if (e.key === 'Tab') {
+            var focusables = modal.querySelectorAll('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])');
+            if (!focusables.length) return;
+            var first = focusables[0];
+            var last = focusables[focusables.length - 1];
+            if (e.shiftKey && document.activeElement === first) {
+                e.preventDefault();
+                last.focus();
+            } else if (!e.shiftKey && document.activeElement === last) {
+                e.preventDefault();
+                first.focus();
+            }
         }
     });
 
-    // Kontak button inside modal
+    document.addEventListener('lifesync:langchange', function () {
+        if (!modal.classList.contains('hidden')) {
+            renderModalCopy(activePlan);
+        }
+    });
+
     if (ctaKontak) {
         ctaKontak.addEventListener('click', function () {
             closeModal();
@@ -571,7 +586,6 @@ function initPricingModal() {
         });
     }
 
-    // Mockup button inside modal
     if (ctaMockup) {
         ctaMockup.addEventListener('click', function () {
             sendAnalyticsEvent('dev_modal_mockup_click', {});
@@ -583,7 +597,6 @@ function initPricingModal() {
 }
 
 function initAnalytics() {
-    // 9a. Global CTA & Delegated Click Tracker
     document.addEventListener('click', function (e) {
         var target = e.target;
         if (!target) return;
@@ -591,7 +604,6 @@ function initAnalytics() {
         var linkOrBtn = target.closest('a, button, .feature-card');
         if (!linkOrBtn) return;
 
-        // Tentukan nama section terdekat
         var sectionEl = linkOrBtn.closest('section[id], header[id], footer, div[id^="section-"]');
         var sectionName = 'page';
         if (sectionEl) {
@@ -599,7 +611,6 @@ function initAnalytics() {
             sectionName = sectionName.replace('section-', '');
         }
 
-        // 1) Feature Card Click (Navigasi ke halaman detail fitur)
         if (linkOrBtn.classList.contains('feature-card')) {
             var featKey = linkOrBtn.getAttribute('data-feature') || 'unknown';
             sendAnalyticsEvent('select_content', {
@@ -610,7 +621,6 @@ function initAnalytics() {
             return;
         }
 
-                // 1b) Tombol Pricing Plan (Modal status pengembangan)
         if (linkOrBtn.hasAttribute('data-open-dev-modal')) {
             var planType = linkOrBtn.getAttribute('data-open-dev-modal') || 'free';
             sendAnalyticsEvent('pricing_plan_click', {
@@ -621,7 +631,6 @@ function initAnalytics() {
             return;
         }
 
-        // 2) Download Button Click
         if (linkOrBtn.matches(DOWNLOAD_SELECTOR) || linkOrBtn.matches(DOWNLOAD_ANDROID_SELECTOR) || linkOrBtn.matches(DOWNLOAD_IOS_SELECTOR)) {
             var platform = linkOrBtn.hasAttribute('data-download-android') ? 'android' : (linkOrBtn.hasAttribute('data-download-ios') ? 'ios' : 'all_platforms');
             sendAnalyticsEvent('download_click', {
@@ -632,7 +641,6 @@ function initAnalytics() {
             return;
         }
 
-        // 3) Link to Mockup Simulator
         var href = linkOrBtn.getAttribute('href') || '';
         if (href.indexOf('mockup.html') !== -1) {
             sendAnalyticsEvent('mockup_open_click', {
@@ -642,7 +650,6 @@ function initAnalytics() {
             return;
         }
 
-        // 4) Anchor navigation ke #pricing atau #kontak
         if (href === '#pricing' || href.indexOf('#pricing') !== -1) {
             sendAnalyticsEvent('pricing_nav_click', {
                 cta_location: sectionName,
@@ -659,7 +666,6 @@ function initAnalytics() {
             return;
         }
 
-        // 5) Outbound Links
         if (href && (href.startsWith('http://') || href.startsWith('https://')) && href.indexOf(window.location.hostname) === -1) {
             sendAnalyticsEvent('outbound_click', {
                 link_url: href,
@@ -669,7 +675,7 @@ function initAnalytics() {
         }
     });
 
-    // 9b. Section Visibility Tracker (Mencatat section yang benar-benar dibaca user >= 1.5 detik)
+    // Section visibility tracker (>= 1.5 detik)
     if ('IntersectionObserver' in window) {
         var observedSections = document.querySelectorAll('section[id], header[id="top"]');
         var viewTimers = {};
@@ -703,7 +709,7 @@ function initAnalytics() {
         });
     }
 
-    // 9c. Engaged Reading Time Milestones (15s, 30s, 60s, 120s saat tab browser aktif)
+    // Engaged reading time milestones (detik saat tab aktif)
     var activeSeconds = 0;
     var milestones = [15, 30, 60, 120];
     var firedMilestones = {};

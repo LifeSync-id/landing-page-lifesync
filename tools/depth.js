@@ -49,7 +49,7 @@ for (const s of stack) {
     console.log(`  <${s.tag}> dibuka di line ${s.line}`);
 }
 
-/* ---------- Trace kedalaman per baris (untuk div) ---------- */
+/* Trace kedalaman tag per baris */
 console.log('\n=== Trace kedalaman (hanya baris dengan perubahan) ===');
 const lines = html.split('\n');
 TAG_RE.lastIndex = 0;

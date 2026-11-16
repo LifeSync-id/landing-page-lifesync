@@ -1,49 +1,40 @@
-<!-- ============================================================
-      FOOTER - LifeSync
-      Warm Minimalism: Sesuai Acuan plan/code.html
-      Latar Keramik Lembut bg-surface-container-low, Navigasi Presisi
-      ============================================================ -->
 <footer class="w-full bg-surface-container-low text-on-surface-variant border-t border-outline-variant/30 py-16 relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-10 pb-12 border-b border-outline-variant/20">
-            <!-- Brand & Tagline -->
             <div class="flex items-center gap-4">
-                <img src="assets/lifesync-symbol.png" alt="LifeSync Icon" class="w-11 h-11 rounded-2xl bg-surface-container-lowest p-1 shadow-soft object-contain border border-outline-variant/20" />
+                <img src="assets/lifesync-symbol.png" alt="Logo LifeSync: Daily Habit Tracker and Assistance" class="w-11 h-11 rounded-2xl bg-surface-container-lowest p-1 shadow-soft object-contain border border-outline-variant/20" />
                 <div>
                     <div class="text-xl font-display font-bold text-on-surface tracking-tight">LifeSync</div>
-                    <div class="text-xs text-primary font-semibold tracking-wider">Daily Habit Tracker and Assistance</div>
+                    <div class="text-xs text-primary font-semibold tracking-wider" data-i18n="footer.tagline">Daily Habit Tracker and Assistance</div>
                 </div>
             </div>
 
-            <!-- Navigasi Internal (Selaras dengan Header) -->
-            <nav class="flex flex-wrap items-center gap-x-8 gap-y-3 text-xs sm:text-sm font-medium text-on-surface-variant">
-                <a href="#fitur" class="hover:text-primary transition-colors duration-200">Pilar Fitur</a>
-                <a href="#offline" class="hover:text-primary transition-colors duration-200">Offline-First</a>
-                <a href="#ai" class="hover:text-primary transition-colors duration-200">AI Proaktif</a>
-                <a href="#pricing" class="hover:text-primary transition-colors duration-200">Pilihan Akses</a>
-                <a href="#kontak" class="hover:text-primary transition-colors duration-200">Kontak</a>
+            <nav class="flex flex-wrap items-center gap-x-8 gap-y-3 text-xs sm:text-sm font-medium text-on-surface-variant" aria-label="Navigasi utama" data-i18n-aria="nav.primaryAria">
+                <a href="#fitur" class="hover:text-primary transition-colors duration-200" data-i18n="nav.features">Fitur</a>
+                <a href="#offline" class="hover:text-primary transition-colors duration-200" data-i18n="nav.offline">Offline</a>
+                <a href="#ai" class="hover:text-primary transition-colors duration-200" data-i18n="nav.ai">Bantuan AI</a>
+                <a href="#pricing" class="hover:text-primary transition-colors duration-200" data-i18n="nav.pricing">Harga</a>
+                <a href="#kontak" class="hover:text-primary transition-colors duration-200" data-i18n="nav.contact">Kontak</a>
             </nav>
 
-            <!-- Aksi & Email -->
             <div class="flex flex-wrap items-center gap-4">
                 <a href="mailto:partnership@lifesync.id" class="inline-flex items-center gap-1.5 text-xs text-on-surface-variant hover:text-primary transition-colors">
-                    <span class="material-symbols-outlined text-sm text-secondary">mail</span>
+                    <span class="material-symbols-outlined text-sm text-secondary" aria-hidden="true">mail</span>
                     <span>partnership@lifesync.id</span>
                 </a>
             </div>
         </div>
 
-        <!-- Baris Bawah: Hak Cipta & Jaminan Privasi -->
         <div class="mt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-on-surface-variant">
-            <div>
-                &copy; 2026 LifeSync. Seluruh hak cipta dilindungi undang-undang.
+            <div data-i18n="footer.copy">
+                &copy; 2026 LifeSync: Daily Habit Tracker and Assistance.
             </div>
             <div class="flex items-center gap-2 text-xs text-primary font-medium">
-                <span class="material-symbols-outlined text-sm">verified_user</span>
-                <span>Penyimpanan Lokal &bull; Bebas Iklan &bull; Privasi Terjaga</span>
+                <span class="material-symbols-outlined text-sm" aria-hidden="true">shield_lock</span>
+                <span data-i18n="footer.privacy">Simpan Lokal &bull; Tanpa Iklan &bull; Privasi Terjaga</span>
             </div>
-            <div>
+            <div data-i18n="footer.location">
                 Batam, Kepulauan Riau, Indonesia
             </div>
         </div>

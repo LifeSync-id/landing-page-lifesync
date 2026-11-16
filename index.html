@@ -13,22 +13,89 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LifeSync - Daily Habit Tracker and Assistance</title>
-    <meta name="description" content="LifeSync adalah aplikasi Daily Habit Tracker and Assistance yang menyatukan kesehatan, waktu, keuangan, dan produktivitas dalam satu ekosistem. Kerjakan kebiasaan harian dengan bantuan AI, bahkan saat offline.">
+    <title>LifeSync: Daily Habit Tracker and Assistance</title>
+    <meta name="description" content="LifeSync: Daily Habit Tracker and Assistance menyatukan catatan harian, habit tracker, jadwal, keuangan, scan gizi makanan, dan jurnal foto. Tetap jalan tanpa internet dan otomatis sinkron ke cloud.">
+    <meta name="application-name" content="LifeSync: Daily Habit Tracker and Assistance">
+    <meta name="apple-mobile-web-app-title" content="LifeSync">
+    <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="theme-color" content="#316342">
     <link rel="canonical" href="https://www.lifesync.id/">
-    <!-- Google Search Engine & Browser Favicons (Kelipatan 48px Standar Resmi Google Search) -->
-    <link rel="icon" type="image/png" sizes="48x48" href="https://www.lifesync.id/assets/favicon-48x48.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="https://www.lifesync.id/assets/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="https://www.lifesync.id/assets/favicon-192x192.png">
-    <link rel="icon" href="https://www.lifesync.id/favicon.ico" sizes="any">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://www.lifesync.id/assets/apple-touch-icon.png">
+
+    <!-- Search Engine & Browser Favicons (1:1 PNG >= 48px multiple + ICO fallback + Manifest) -->
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192x192.png">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
 
     <!-- Open Graph / Social Preview -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="LifeSync - Daily Habit Tracker and Assistance">
-    <meta property="og:description" content="Satukan kesehatan, waktu, keuangan, dan produktivitas dalam satu aplikasi. Download App LifeSync sekarang.">
-    <meta property="og:image" content="assets/lifesync-banner.png">
+    <meta property="og:site_name" content="LifeSync: Daily Habit Tracker and Assistance">
+    <meta property="og:url" content="https://www.lifesync.id/">
+    <meta property="og:title" content="LifeSync: Daily Habit Tracker and Assistance">
+    <meta property="og:description" content="LifeSync: Daily Habit Tracker and Assistance menyatukan catatan harian, habit tracker, jadwal, keuangan, scan gizi makanan, dan jurnal foto. Tetap jalan tanpa internet dan otomatis sinkron ke cloud.">
+    <meta property="og:image" content="https://www.lifesync.id/assets/lifesync-banner.png">
+    <meta property="og:image:width" content="1920">
+    <meta property="og:image:height" content="1080">
+    <meta property="og:image:alt" content="LifeSync: Daily Habit Tracker and Assistance">
+
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="LifeSync: Daily Habit Tracker and Assistance">
+    <meta name="twitter:description" content="LifeSync: Daily Habit Tracker and Assistance menyatukan catatan harian, habit tracker, jadwal, keuangan, scan gizi makanan, dan jurnal foto. Tetap jalan tanpa internet dan otomatis sinkron ke cloud.">
+    <meta name="twitter:image" content="https://www.lifesync.id/assets/lifesync-banner.png">
+
+    <!-- Structured Data (Organization Logo + WebSite Site Name + SoftwareApplication) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://www.lifesync.id/#organization",
+          "name": "LifeSync: Daily Habit Tracker and Assistance",
+          "alternateName": "LifeSync",
+          "url": "https://www.lifesync.id/",
+          "email": "partnership@lifesync.id",
+          "logo": {
+            "@type": "ImageObject",
+            "@id": "https://www.lifesync.id/#logo",
+            "url": "https://www.lifesync.id/assets/favicon-512x512.png",
+            "contentUrl": "https://www.lifesync.id/assets/favicon-512x512.png",
+            "width": 512,
+            "height": 512,
+            "caption": "LifeSync: Daily Habit Tracker and Assistance"
+          },
+          "image": { "@id": "https://www.lifesync.id/#logo" },
+          "sameAs": [
+            "https://www.instagram.com/lifesync_id"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://www.lifesync.id/#website",
+          "url": "https://www.lifesync.id/",
+          "name": "LifeSync: Daily Habit Tracker and Assistance",
+          "alternateName": "LifeSync",
+          "inLanguage": ["id-ID", "en-US"],
+          "publisher": { "@id": "https://www.lifesync.id/#organization" }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "LifeSync: Daily Habit Tracker and Assistance",
+          "applicationCategory": "LifestyleApplication",
+          "operatingSystem": "Android, iOS",
+          "url": "https://www.lifesync.id/",
+          "image": "https://www.lifesync.id/assets/favicon-512x512.png",
+          "screenshot": "https://www.lifesync.id/assets/lifesync-banner.png",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "IDR"
+          }
+        }
+      ]
+    }
+    </script>
 
     <!-- Google Fonts & Material Symbols Outlined -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -144,36 +211,22 @@
             }
         };
     </script>
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-surface text-on-surface font-sans antialiased selection:bg-primary-fixed selection:text-on-primary-fixed">
+<body class="bg-surface text-on-surface font-sans antialiased selection:bg-primary-fixed selection:text-on-primary-fixed" data-i18n-title="meta.home.title" data-i18n-desc="meta.home.desc">
 
-    <!-- 1. HEADER / NAVBAR -->
     <div id="section-header"></div>
-
-    <!-- 2. HERO SECTION -->
-    <div id="section-hero"></div>
-
-    <!-- 3. FITUR UTAMA (6 PILAR KEHIDUPAN) -->
-    <div id="section-fitur"></div>
-
-    <!-- 4. ARSITEKTUR OFFLINE-FIRST & SINKRONISASI -->
-    <div id="section-offline"></div>
-
-    <!-- 5. ASISTEN AI PROAKTIF (FOOD AI & COACH) -->
-    <div id="section-ai"></div>
-
-    <!-- 6. PRICING / PILIHAN AKSES JUJUR -->
-    <div id="section-pricing"></div>
-
-    <!-- 7. KONTAK KAMI & KOLABORASI -->
-    <div id="section-kontak"></div>
-
-    <!-- 8. FOOTER -->
+    <main id="main-content" tabindex="-1">
+        <div id="section-hero"></div>
+        <div id="section-fitur"></div>
+        <div id="section-offline"></div>
+        <div id="section-ai"></div>
+        <div id="section-pricing"></div>
+        <div id="section-kontak"></div>
+    </main>
     <div id="section-footer"></div>
 
-    <!-- Script Utama -->
+    <script src="i18n.js?v=1.0.0"></script>
     <script src="app.js?v=1.0.0"></script>
 </body>
 </html>

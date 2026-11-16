@@ -1,87 +1,93 @@
-<!-- ============================================================
-     NAVBAR / HEADER - LifeSync (Daily Habit Tracker and Assistance)
-     ============================================================ -->
+<a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] focus:px-4 focus:py-2.5 focus:rounded-xl focus:bg-primary focus:text-on-primary focus:text-sm focus:font-semibold focus:shadow-lg" data-i18n="nav.skip">
+    Langsung ke isi halaman
+</a>
+
 <header id="navbar" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
-    <!-- Announcement Bar -->
+    <!-- Announcement bar -->
     <div class="hidden lg:block bg-primary text-on-primary border-b border-primary-container/30">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="h-9 flex items-center justify-center gap-2.5 text-[13px] font-medium tracking-tight">
-                <span class="material-symbols-outlined text-[16px] text-primary-fixed">auto_awesome</span>
-                <span>LifeSync 1.0 — Daily Habit Tracker & Assistance, Sinkronisasi Cloud Bebas Konflik & Asisten AI Proaktif.</span>
-                <a href="#fitur" class="inline-flex items-center gap-1 font-semibold text-primary-fixed hover:text-white underline decoration-primary-fixed/60 underline-offset-4 hover:decoration-white transition-all">
-                    Pelajari Fitur
-                    <span class="material-symbols-outlined text-[13px]">arrow_forward</span>
+                <span class="material-symbols-outlined text-[16px] text-primary-fixed" aria-hidden="true">campaign</span>
+                <span data-i18n="nav.announcement">LifeSync lagi dalam pengembangan. Fitur inti &amp; sinkronisasi cloud tetap gratis, sambil menunggu rilis, coba dulu simulasinya di browser.</span>
+                <a href="#fitur" class="inline-flex items-center font-semibold text-primary-fixed hover:text-white underline decoration-primary-fixed/60 underline-offset-4 hover:decoration-white transition-all whitespace-nowrap" data-i18n="nav.announcementCta">
+                    Lihat 6 Fitur
                 </a>
             </div>
         </div>
     </div>
 
-    <!-- Navbar Utama -->
+    <!-- Navbar utama -->
     <div id="navbar-bar" class="transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between gap-4 h-[72px]">
+            <div class="flex items-center justify-between gap-2 sm:gap-4 h-[72px]">
 
-                <!-- Logo & Brand Name (Enlarged Banner) -->
-                <a href="#top" class="flex items-center gap-2.5 sm:gap-3 shrink-0 group focus:outline-none" aria-label="LifeSync - Beranda">
-                    <img src="assets/lifesync-symbol.png" alt="Logo LifeSync" width="48" height="48"
-                         class="h-10 w-10 sm:h-11 sm:w-11 md:h-12 md:w-12 object-contain transition-transform duration-300 group-hover:scale-105">
-                    <img src="assets/lifesync-logo-name.png" alt="LifeSync" width="220" height="56"
-                         class="h-12 sm:h-14 md:h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
+                <a href="#top" class="flex items-center gap-2 sm:gap-3 shrink-0 group rounded-xl" aria-label="LifeSync: Daily Habit Tracker and Assistance" data-i18n-aria="nav.brandAria">
+                    <img src="assets/lifesync-symbol.png" alt="Logo LifeSync: Daily Habit Tracker and Assistance" width="48" height="48"
+                         class="h-7 w-7 min-[400px]:h-9 min-[400px]:w-9 sm:h-11 sm:w-11 md:h-12 md:w-12 object-contain transition-transform duration-300 group-hover:scale-105">
+                    <img src="assets/lifesync-logo-name.png" alt="LifeSync: Daily Habit Tracker and Assistance" width="220" height="56"
+                         class="h-7 min-[400px]:h-10 sm:h-12 md:h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
                 </a>
 
-                <!-- Navigasi Desktop (Selaras dengan Footer) -->
-                <nav class="hidden lg:flex items-center gap-1 bg-surface-container-low/70 px-3 py-1.5 rounded-xl border border-outline-variant/30" aria-label="Navigasi utama">
-                    <a href="#fitur" class="nav-link">Pilar Fitur</a>
-                    <a href="#offline" class="nav-link">Offline-First</a>
-                    <a href="#ai" class="nav-link">AI Proaktif</a>
-                    <a href="#pricing" class="nav-link">Pilihan Akses</a>
-                    <a href="#kontak" class="nav-link">Kontak</a>
+                <nav class="hidden lg:flex items-center gap-1 bg-surface-container-low/70 px-2.5 py-1 rounded-xl border border-outline-variant/30" aria-label="Navigasi utama" data-i18n-aria="nav.primaryAria">
+                    <a href="#fitur" class="nav-link whitespace-nowrap" data-i18n="nav.features">Fitur</a>
+                    <a href="#offline" class="nav-link whitespace-nowrap" data-i18n="nav.offline">Offline</a>
+                    <a href="#ai" class="nav-link whitespace-nowrap" data-i18n="nav.ai">Bantuan AI</a>
+                    <a href="#pricing" class="nav-link whitespace-nowrap" data-i18n="nav.pricing">Harga</a>
+                    <a href="#kontak" class="nav-link whitespace-nowrap" data-i18n="nav.contact">Kontak</a>
                 </nav>
 
-                <!-- Aksi Kanan -->
-                <div class="flex items-center gap-3">
+                <div class="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
+                    <div role="group" aria-label="Pilih bahasa" data-i18n-aria="nav.langGroupAria"
+                         class="inline-flex items-center p-0.5 rounded-xl border border-outline-variant/40 bg-surface-container-low/80 shrink-0">
+                        <button type="button" data-lang-option="id" aria-pressed="true" aria-label="Bahasa Indonesia" data-i18n-aria="nav.langIdAria"
+                                class="min-h-[44px] min-w-[44px] px-2.5 rounded-lg text-xs font-bold transition-colors bg-primary text-on-primary shadow-xs">
+                            ID
+                        </button>
+                        <button type="button" data-lang-option="en" aria-pressed="false" aria-label="English" data-i18n-aria="nav.langEnAria"
+                                class="min-h-[44px] min-w-[44px] px-2.5 rounded-lg text-xs font-bold transition-colors text-on-surface-variant hover:text-on-surface hover:bg-surface-container-lowest/80">
+                            EN
+                        </button>
+                    </div>
+
                     <a href="pages/mockup.html"
-                       class="hidden md:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-primary/30 bg-primary/10 hover:bg-primary/20 text-primary font-semibold text-xs transition">
-                        <span class="material-symbols-outlined text-[15px]">smartphone</span>
-                        <span>Coba Aplikasi</span>
+                       class="hidden md:inline-flex items-center gap-1.5 min-h-[44px] px-3.5 py-2 rounded-xl border border-primary/30 bg-primary/10 hover:bg-primary/20 text-primary font-semibold text-xs transition whitespace-nowrap">
+                        <span class="material-symbols-outlined text-[15px]" aria-hidden="true">smartphone</span>
+                        <span data-i18n="nav.tryDemo">Coba Demo</span>
                     </a>
 
                     <a href="#pricing" data-download
-                       class="btn-interactive hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary hover:bg-primary-container text-on-primary font-semibold text-sm shadow-sm">
-                        <span>Mulai Gratis</span>
-                        <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                       class="btn-interactive hidden sm:inline-flex items-center gap-2 min-h-[44px] px-4 xl:px-5 py-2 rounded-xl bg-primary hover:bg-primary-container text-on-primary font-semibold text-sm shadow-sm whitespace-nowrap">
+                        <span data-i18n="nav.seePlans">Lihat Paket</span>
                     </a>
 
-                    <!-- Tombol Menu Mobile -->
                     <button id="nav-toggle" type="button"
-                            class="lg:hidden grid place-items-center h-10 w-10 rounded-xl border border-outline-variant/60 bg-surface-container-lowest text-on-surface shadow-tactile transition hover:border-primary hover:text-primary"
+                            class="lg:hidden grid place-items-center h-11 w-11 rounded-xl border border-outline-variant/60 bg-surface-container-lowest text-on-surface shadow-tactile transition hover:border-primary hover:text-primary shrink-0"
                             aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="nav-mobile-menu">
-                        <i id="nav-toggle-icon" class="fa-solid fa-bars text-base"></i>
+                        <i id="nav-toggle-icon" class="fa-solid fa-bars text-base" aria-hidden="true"></i>
                     </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Menu Mobile (Drawer) -->
-    <div id="nav-mobile-menu" class="lg:hidden hidden border-t border-outline-variant/40 bg-surface/98 backdrop-blur-xl shadow-ambient">
-        <nav class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex flex-col gap-1" aria-label="Navigasi mobile">
-            <a href="#fitur" class="mobile-link">Pilar Fitur</a>
-            <a href="#offline" class="mobile-link">Offline-First</a>
-            <a href="#ai" class="mobile-link">AI Proaktif</a>
-            <a href="#pricing" class="mobile-link">Pilihan Akses</a>
-            <a href="#kontak" class="mobile-link">Kontak</a>
+    <!-- Menu mobile drawer -->
+    <div id="nav-mobile-menu" class="lg:hidden hidden border-t border-outline-variant/40 bg-surface-container-lowest shadow-ambient">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex flex-col gap-1" aria-label="Navigasi mobile" data-i18n-aria="nav.mobileAria">
+            <a href="#fitur" class="mobile-link min-h-[44px] flex items-center" data-i18n="nav.features">Fitur</a>
+            <a href="#offline" class="mobile-link min-h-[44px] flex items-center" data-i18n="nav.offline">Offline</a>
+            <a href="#ai" class="mobile-link min-h-[44px] flex items-center" data-i18n="nav.ai">Bantuan AI</a>
+            <a href="#pricing" class="mobile-link min-h-[44px] flex items-center" data-i18n="nav.pricing">Harga</a>
+            <a href="#kontak" class="mobile-link min-h-[44px] flex items-center" data-i18n="nav.contact">Kontak</a>
 
             <div class="pt-3 mt-2 border-t border-outline-variant/30 flex flex-col gap-2">
                 <a href="#pricing" data-download
-                   class="btn-interactive w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-primary text-on-primary font-semibold text-sm shadow-sm">
-                    <span>Mulai Gratis Sekarang</span>
-                    <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                   class="btn-interactive w-full min-h-[44px] inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-primary text-on-primary font-semibold text-sm shadow-sm">
+                    <span data-i18n="nav.mobilePlans">Lihat Paket Gratis &amp; Premium</span>
                 </a>
                 <a href="pages/mockup.html"
-                   class="btn-secondary-interactive w-full inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl border border-primary/30 bg-primary/10 text-primary font-semibold text-sm shadow-xs">
-                    <span class="material-symbols-outlined text-[16px]">smartphone</span>
-                    <span>Coba Langsung di Browser</span>
+                   class="btn-secondary-interactive w-full min-h-[44px] inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl border border-primary/30 bg-primary/10 text-primary font-semibold text-sm shadow-xs">
+                    <span class="material-symbols-outlined text-[16px]" aria-hidden="true">smartphone</span>
+                    <span data-i18n="nav.mobileDemo">Coba Simulasi di Browser</span>
                 </a>
             </div>
         </nav>

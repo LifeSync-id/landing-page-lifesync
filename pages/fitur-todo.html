@@ -13,107 +13,126 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LifeSync - Habit Tracker &amp; To-Do Mandiri</title>
+    <title>Habit Tracker &amp; To-Do Terpisah - LifeSync: Daily Habit Tracker and Assistance</title>
+    <link rel="canonical" href="https://www.lifesync.id/pages/fitur-todo.html">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="../tailwind-config.js"></script>
     <link rel="stylesheet" href="../style.css">
-    <!-- Google Search Engine & Browser Favicons (Kelipatan 48px Standar Resmi Google Search) -->
-    <link rel="icon" type="image/png" sizes="48x48" href="https://www.lifesync.id/assets/favicon-48x48.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="https://www.lifesync.id/assets/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="https://www.lifesync.id/assets/favicon-192x192.png">
-    <link rel="icon" href="https://www.lifesync.id/favicon.ico" sizes="any">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://www.lifesync.id/assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="../assets/favicon-192x192.png">
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
+    <link rel="manifest" href="../site.webmanifest">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,500..800;1,500..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
-<body class="bg-surface-container-low text-on-surface p-6 sm:p-12 font-sans selection:bg-tertiary-default selection:text-on-primary min-h-screen">
-    <div class="max-w-4xl mx-auto bg-surface-container-lowest p-8 sm:p-10 rounded-3xl shadow-card space-y-6 border border-outline-variant/40">
-        <a href="../index.html#fitur" class="inline-flex items-center gap-1.5 text-xs font-bold text-tertiary hover:text-tertiary-dark transition-colors">
-            <span class="material-symbols-outlined text-sm">arrow_back</span>
-            <span>Kembali ke Fitur Utama LifeSync</span>
-        </a>
-
-        <div class="flex items-center space-x-4 border-b border-outline-variant/30 pb-5">
-            <div class="w-14 h-14 bg-tertiary-fixed text-tertiary rounded-2xl flex items-center justify-center flex-shrink-0">
-                <span class="material-symbols-outlined text-3xl">repeat</span>
-            </div>
-            <div>
-                <h1 class="text-2xl sm:text-3xl font-display font-bold text-on-surface">Habit Tracker &amp; To-Do Mandiri</h1>
-                <p class="text-xs sm:text-sm text-on-surface-variant font-mono">Pemisahan Beban Mental &bull; Target Poin &bull; Heatmap 30 Hari</p>
+<body class="bg-surface-container-low text-on-surface p-6 sm:p-12 font-sans selection:bg-tertiary-default selection:text-on-primary min-h-screen" data-i18n-title="meta.todo.title">
+    <main class="max-w-4xl mx-auto bg-surface-container-lowest p-8 sm:p-10 rounded-3xl shadow-card space-y-6 border border-outline-variant/40">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+            <a href="../index.html#fitur" class="inline-flex items-center gap-1.5 min-h-[44px] py-2 text-xs font-bold text-tertiary hover:underline transition-colors">
+                <span class="material-symbols-outlined text-sm" aria-hidden="true">arrow_back</span>
+                <span data-i18n="page.backLink">Kembali ke Fitur Utama LifeSync</span>
+            </a>
+            <div role="group" aria-label="Pilih bahasa" data-i18n-aria="nav.langGroupAria"
+                 class="inline-flex items-center p-0.5 rounded-xl border border-outline-variant/40 bg-surface-container-low/80 shrink-0">
+                <button type="button" data-lang-option="id" aria-pressed="true" aria-label="Bahasa Indonesia" data-i18n-aria="nav.langIdAria"
+                        class="min-h-[44px] min-w-[44px] px-2.5 rounded-lg text-xs font-bold transition-colors bg-primary text-on-primary shadow-xs">
+                    ID
+                </button>
+                <button type="button" data-lang-option="en" aria-pressed="false" aria-label="English" data-i18n-aria="nav.langEnAria"
+                        class="min-h-[44px] min-w-[44px] px-2.5 rounded-lg text-xs font-bold transition-colors text-on-surface-variant hover:text-on-surface hover:bg-surface-container-lowest/80">
+                    EN
+                </button>
             </div>
         </div>
 
-        <p class="text-on-surface-variant leading-relaxed text-sm sm:text-base">
-            Membangun kebiasaan baik membutuhkan ruang mental yang berbeda dari daftar pekerjaan yang menekan. LifeSync secara sadar memisahkan modul pembentukan kebiasaan (Habit) dari tugas harian (To-Do), membimbing Anda mencapai konsistensi tanpa rasa bersalah.
+        <div class="flex items-center space-x-4 border-b border-outline-variant/30 pb-5">
+            <div class="w-14 h-14 bg-tertiary-fixed text-tertiary rounded-2xl flex items-center justify-center flex-shrink-0">
+                <span class="material-symbols-outlined text-3xl" aria-hidden="true">repeat</span>
+            </div>
+            <div>
+                <h1 class="text-2xl sm:text-3xl font-display font-bold text-on-surface" data-i18n="page.todo.h1">Habit Tracker &amp; To-Do Terpisah</h1>
+                <p class="text-xs sm:text-sm text-on-surface-variant font-mono" data-i18n="page.todo.sub">Pisah dari Tumpukan Tugas &bull; Target Fleksibel &bull; Progres 30 Hari</p>
+            </div>
+        </div>
+
+        <p class="text-on-surface-variant leading-relaxed text-sm sm:text-base" data-i18n="page.todo.intro">
+            Membangun kebiasaan baik butuh ruang yang tenang, bukan bercampur dengan daftar kerjaan yang bikin cemas. LifeSync memisahkan pelacak kebiasaan dari to-do list supaya kamu bisa jaga konsistensi tanpa tertekan.
         </p>
 
         <div class="grid md:grid-cols-2 gap-6">
             <div class="p-6 rounded-2xl border border-outline-variant/30 bg-surface-container-low">
-                <h3 class="text-base font-display font-bold text-on-surface mb-3 flex items-center gap-2">
-                    <span class="material-symbols-outlined text-tertiary text-xl">cycle</span>
-                    <span>Modul Kebiasaan (Habit Tracker)</span>
-                </h3>
+                <h2 class="text-base font-display font-bold text-on-surface mb-3 flex items-center gap-2">
+                    <span class="material-symbols-outlined text-tertiary text-xl" aria-hidden="true">cycle</span>
+                    <span data-i18n="page.todo.col1Title">Pelacak Kebiasaan (Habit Tracker)</span>
+                </h2>
                 <ul class="space-y-3 text-xs sm:text-sm text-on-surface-variant">
                     <li class="flex items-start gap-2.5">
-                        <span class="material-symbols-outlined text-tertiary text-base flex-shrink-0 mt-0.5">check_circle</span>
-                        <span>Penetapan aturan target: harian, hari kerja, atau kuota mingguan</span>
+                        <span class="material-symbols-outlined text-tertiary text-base flex-shrink-0 mt-0.5" aria-hidden="true">check_circle</span>
+                        <span data-i18n="page.todo.col1Item1">Atur target harian, hari kerja, atau kuota mingguan sesuai kesibukanmu</span>
                     </li>
                     <li class="flex items-start gap-2.5">
-                        <span class="material-symbols-outlined text-tertiary text-base flex-shrink-0 mt-0.5">check_circle</span>
-                        <span>Akumulasi poin keberhasilan untuk mengukur konsistensi riil</span>
+                        <span class="material-symbols-outlined text-tertiary text-base flex-shrink-0 mt-0.5" aria-hidden="true">check_circle</span>
+                        <span data-i18n="page.todo.col1Item2">Hitung poin dan rangkaian hari beruntun secara realistis</span>
                     </li>
                     <li class="flex items-start gap-2.5">
-                        <span class="material-symbols-outlined text-tertiary text-base flex-shrink-0 mt-0.5">check_circle</span>
-                        <span>Visualisasi kisi heatmap 30 hari untuk refleksi pencapaian</span>
+                        <span class="material-symbols-outlined text-tertiary text-base flex-shrink-0 mt-0.5" aria-hidden="true">check_circle</span>
+                        <span data-i18n="page.todo.col1Item3">Lihat tampilan progres 30 hari untuk memantau konsistensi</span>
                     </li>
                     <li class="flex items-start gap-2.5">
-                        <span class="material-symbols-outlined text-tertiary text-base flex-shrink-0 mt-0.5">check_circle</span>
-                        <span>Pengingat damai tanpa spam notifikasi yang mengintimidasi</span>
+                        <span class="material-symbols-outlined text-tertiary text-base flex-shrink-0 mt-0.5" aria-hidden="true">check_circle</span>
+                        <span data-i18n="page.todo.col1Item4">Pengingat ringan tanpa spam notifikasi yang mengganggu</span>
                     </li>
                     <li class="flex items-start gap-2.5">
-                        <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mt-0.5">notifications_active</span>
-                        <span><strong>Pengingat Kontekstual (Premium):</strong> Kalimat pengingat dirangkai berbeda-beda secara unik dan adaptif sesuai konteks hari, bukan pesan template kaku</span>
+                        <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mt-0.5" aria-hidden="true">notifications_active</span>
+                        <span data-i18n-html="page.todo.col1Item5Html"><strong>Pengingat Kontekstual (Premium):</strong> Kalimat pengingat disusun menyesuaikan jadwal dan rutinitasmu hari itu</span>
                     </li>
                 </ul>
             </div>
 
             <div class="p-6 rounded-2xl border border-outline-variant/30 bg-surface-container-low">
-                <h3 class="text-base font-display font-bold text-on-surface mb-3 flex items-center gap-2">
-                    <span class="material-symbols-outlined text-tertiary text-xl">checklist</span>
-                    <span>Modul Tugas &amp; Prioritas (To-Do)</span>
-                </h3>
+                <h2 class="text-base font-display font-bold text-on-surface mb-3 flex items-center gap-2">
+                    <span class="material-symbols-outlined text-tertiary text-xl" aria-hidden="true">checklist</span>
+                    <span data-i18n="page.todo.col2Title">Daftar Tugas &amp; Prioritas (To-Do)</span>
+                </h2>
                 <ul class="space-y-3 text-xs sm:text-sm text-on-surface-variant">
                     <li class="flex items-start gap-2.5">
-                        <span class="material-symbols-outlined text-tertiary text-base flex-shrink-0 mt-0.5">check_circle</span>
-                        <span>Klasifikasi prioritas terstruktur: Urgent, High, Normal, dan Low</span>
+                        <span class="material-symbols-outlined text-tertiary text-base flex-shrink-0 mt-0.5" aria-hidden="true">check_circle</span>
+                        <span data-i18n="page.todo.col2Item1">Tandai prioritas tugas: Mendesak, Tinggi, Normal, dan Santai</span>
                     </li>
                     <li class="flex items-start gap-2.5">
-                        <span class="material-symbols-outlined text-tertiary text-base flex-shrink-0 mt-0.5">check_circle</span>
-                        <span>Tenggat waktu terhubung langsung dengan kalender agenda</span>
+                        <span class="material-symbols-outlined text-tertiary text-base flex-shrink-0 mt-0.5" aria-hidden="true">check_circle</span>
+                        <span data-i18n="page.todo.col2Item2">Tenggat waktu terhubung langsung ke tampilan kalender</span>
                     </li>
                     <li class="flex items-start gap-2.5">
-                        <span class="material-symbols-outlined text-tertiary text-base flex-shrink-0 mt-0.5">check_circle</span>
-                        <span>Pembedaan status tugas: Belum Dimulai, Dalam Proses, &amp; Selesai</span>
+                        <span class="material-symbols-outlined text-tertiary text-base flex-shrink-0 mt-0.5" aria-hidden="true">check_circle</span>
+                        <span data-i18n="page.todo.col2Item3">Lacak status pengerjaan: Belum Mulai, Berjalan, dan Selesai</span>
                     </li>
                     <li class="flex items-start gap-2.5">
-                        <span class="material-symbols-outlined text-tertiary text-base flex-shrink-0 mt-0.5">check_circle</span>
-                        <span>Pemberian label kontekstual universal untuk penyaringan cepat</span>
+                        <span class="material-symbols-outlined text-tertiary text-base flex-shrink-0 mt-0.5" aria-hidden="true">check_circle</span>
+                        <span data-i18n="page.todo.col2Item4">Kelompokkan tugas pakai tag supaya gampang disaring</span>
                     </li>
                 </ul>
             </div>
         </div>
 
         <div class="p-6 rounded-2xl border border-tertiary-default/20 bg-surface-container-low">
-            <h3 class="text-sm font-bold text-tertiary mb-1.5 flex items-center gap-2">
-                <span class="material-symbols-outlined text-base">self_improvement</span>
-                <span>Ritme Konsistensi Tanpa Kelelahan (Burnout)</span>
-            </h3>
-            <p class="text-xs sm:text-sm text-on-surface-variant leading-relaxed">
-                Ketika daftar to-do Anda menumpuk, kebiasaan baik seringkali menjadi korban pertama. Dengan memisahkannya ke sistem pelacakan mandiri, Anda tetap bisa menjaga hidrasi, membaca, atau berolahraga terlepas dari dinamika pekerjaan Anda.
+            <h2 class="text-sm font-bold text-tertiary mb-1.5 flex items-center gap-2">
+                <span class="material-symbols-outlined text-base" aria-hidden="true">self_improvement</span>
+                <span data-i18n="page.todo.noteTitle">Konsisten Tanpa Merasa Terhakimi</span>
+            </h2>
+            <p class="text-xs sm:text-sm text-on-surface-variant leading-relaxed" data-i18n="page.todo.noteBody">
+                Saat pekerjaan lagi padat, kebiasaan sederhana seperti minum air atau olahraga sering ikut terbengkalai. Memisahkannya di menu sendiri bikin rutinitas kecilmu tetap terjaga.
             </p>
         </div>
-    </div>
+    </main>
+
+    <script src="../i18n.js?v=1.0.0"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            if (window.LifeSyncI18n) window.LifeSyncI18n.init();
+        });
+    </script>
 </body>
 </html>
