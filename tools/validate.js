@@ -126,5 +126,69 @@ for (const rel of FILES) {
     }
 }
 
+/* Validasi SEO (sitemap.xml & kebijakan robots index/noindex) */
+console.log('\n=== 4. Validasi SEO & sitemap.xml ===');
+const INDEXABLE_PAGES = ['index.html', 'pages/mockup.html'];
+const NOINDEX_PAGES = [
+    'pages/nutrisi.html',
+    'pages/keuangan.html',
+    'pages/kalender.html',
+    'pages/memento.html',
+    'pages/fitur-todo.html',
+    'pages/fitur-notes.html',
+];
+
+const sitemapPath = path.join(ROOT, 'sitemap.xml');
+if (!fs.existsSync(sitemapPath)) {
+    failures++;
+    console.log('FAIL sitemap.xml tidak ditemukan');
+} else {
+    const sitemapXml = fs.readFileSync(sitemapPath, 'utf8');
+    const locs = [...sitemapXml.matchAll(/<loc>\s*([^<\s]+)\s*<\/loc>/g)].map((m) => m[1]);
+    const expectedLocs = [
+        'https://www.lifesync.id/',
+        'https://www.lifesync.id/pages/mockup.html',
+    ];
+    if (locs.length !== expectedLocs.length || expectedLocs.some((u) => !locs.includes(u))) {
+        failures++;
+        console.log(`FAIL sitemap.xml harus hanya berisi ${expectedLocs.join(', ')} (ditemukan: ${locs.join(', ')})`);
+    } else {
+        for (const loc of locs) {
+            const parsed = new URL(loc);
+            const relPath = parsed.pathname === '/' ? 'index.html' : parsed.pathname.replace(/^\/+/, '');
+            if (!fs.existsSync(path.join(ROOT, relPath))) {
+                failures++;
+                console.log(`FAIL sitemap.xml -> ${loc} (file ${relPath} tidak ada)`);
+            } else {
+                console.log(`OK   sitemap.xml -> ${loc}`);
+            }
+        }
+    }
+}
+
+for (const rel of INDEXABLE_PAGES) {
+    const html = fs.readFileSync(path.join(ROOT, rel), 'utf8');
+    const hasIndex = /<meta\s+name="robots"\s+content="[^"]*index,\s*follow/i.test(html);
+    const hasCanonical = /<link\s+rel="canonical"\s+href="https:\/\/www\.lifesync\.id\//i.test(html);
+    if (!hasIndex || !hasCanonical) {
+        failures++;
+        console.log(`FAIL SEO ${rel} -> harus punya meta robots index,follow dan canonical`);
+    } else {
+        console.log(`OK   SEO indexable -> ${rel}`);
+    }
+}
+
+for (const rel of NOINDEX_PAGES) {
+    const html = fs.readFileSync(path.join(ROOT, rel), 'utf8');
+    const hasNoindex = /<meta\s+name="robots"\s+content="noindex,\s*follow"/i.test(html);
+    const hasCanonical = /<link\s+rel="canonical"/i.test(html);
+    if (!hasNoindex || hasCanonical) {
+        failures++;
+        console.log(`FAIL SEO ${rel} -> harus punya meta robots noindex,follow dan tanpa canonical`);
+    } else {
+        console.log(`OK   SEO noindex -> ${rel}`);
+    }
+}
+
 console.log(`\n=== HASIL: ${failures === 0 ? 'SEMUA LULUS' : failures + ' MASALAH'} ===`);
 process.exit(failures === 0 ? 0 : 1);
