@@ -44,7 +44,7 @@ Halaman utama (`index.html`) dan keenam halaman detail fitur tersedia dalam baha
 
 ### 5. SEO, Aksesibilitas, dan Telemetri
 
-- Situs dilengkapi tag `<link rel="canonical">`, metadata Open Graph dan Twitter Card, data terstruktur JSON-LD (`Organization`, `WebSite`, `SoftwareApplication`), `robots.txt`, `sitemap.xml`, dan `site.webmanifest`.
+- Pengindeksan SEO difokuskan hanya pada dua halaman publik: halaman utama (`https://www.lifesync.id/`) dan simulator interaktif (`https://www.lifesync.id/pages/mockup.html`). Keduanya dilengkapi `<link rel="canonical">`, `meta robots` (`index, follow`), metadata Open Graph dan Twitter Card, data terstruktur JSON-LD (`Organization`, `WebSite`, `WebPage`, `SoftwareApplication`, `WebApplication`, `BreadcrumbList`), `robots.txt`, `sitemap.xml`, dan `site.webmanifest`. Keenam halaman detail fitur tetap dapat diakses pengunjung, namun ditandai `noindex, follow` (via tag meta dan `_headers`) serta dikecualikan dari `sitemap.xml`.
 - Aksesibilitas mencakup skip link menuju `#main-content`, indikator fokus keyboard (`:focus-visible`), manajemen fokus dan tombol `Escape` pada drawer mobile maupun modal status rilis, serta dukungan `prefers-reduced-motion`.
 - Event interaksi dasar (klik CTA, kartu fitur, modal, visibilitas section, dan durasi baca) dikirim ke Google Analytics 4 (`gtag`) melalui `app.js`, yang juga memusatkan konfigurasi tautan unduhan aplikasi (`STORE_URL`, `ANDROID_STORE_URL`, `IOS_STORE_URL`).
 

@@ -29,6 +29,8 @@
 
     <!-- Open Graph / Social Preview -->
     <meta property="og:type" content="website">
+    <meta property="og:locale" content="id_ID">
+    <meta property="og:locale:alternate" content="en_US">
     <meta property="og:site_name" content="LifeSync: Daily Habit Tracker and Assistance">
     <meta property="og:url" content="https://www.lifesync.id/">
     <meta property="og:title" content="LifeSync: Daily Habit Tracker and Assistance">
@@ -44,7 +46,7 @@
     <meta name="twitter:description" content="LifeSync: Daily Habit Tracker and Assistance menyatukan catatan harian, habit tracker, jadwal, keuangan, scan gizi makanan, dan jurnal foto. Tetap jalan tanpa internet dan otomatis sinkron ke cloud.">
     <meta name="twitter:image" content="https://www.lifesync.id/assets/lifesync-banner.png">
 
-    <!-- Structured Data (Organization Logo + WebSite Site Name + SoftwareApplication) -->
+    <!-- Structured Data (Organization + WebSite + WebPage + SoftwareApplication) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -80,7 +82,19 @@
           "publisher": { "@id": "https://www.lifesync.id/#organization" }
         },
         {
+          "@type": "WebPage",
+          "@id": "https://www.lifesync.id/#webpage",
+          "url": "https://www.lifesync.id/",
+          "name": "LifeSync: Daily Habit Tracker and Assistance",
+          "description": "LifeSync: Daily Habit Tracker and Assistance menyatukan catatan harian, habit tracker, jadwal, keuangan, scan gizi makanan, dan jurnal foto. Tetap jalan tanpa internet dan otomatis sinkron ke cloud.",
+          "inLanguage": "id-ID",
+          "isPartOf": { "@id": "https://www.lifesync.id/#website" },
+          "about": { "@id": "https://www.lifesync.id/#app" },
+          "significantLink": "https://www.lifesync.id/pages/mockup.html"
+        },
+        {
           "@type": "SoftwareApplication",
+          "@id": "https://www.lifesync.id/#app",
           "name": "LifeSync: Daily Habit Tracker and Assistance",
           "applicationCategory": "LifestyleApplication",
           "operatingSystem": "Android, iOS",

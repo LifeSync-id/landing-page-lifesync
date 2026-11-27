@@ -22,6 +22,7 @@ const ITEMS = [
     'style.css',
     'tailwind-config.js',
     '.nojekyll',
+    '_headers',
     'favicon.ico',
     'robots.txt',
     'sitemap.xml',

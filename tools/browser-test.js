@@ -341,14 +341,14 @@ class CDP {
             log('screenshot -> ' + file);
         }
 
-        /* Halaman modul */
-        for (const p of ['nutrisi', 'keuangan', 'kalender', 'memento']) {
+        /* Halaman modul & simulator */
+        for (const p of ['nutrisi', 'keuangan', 'kalender', 'memento', 'mockup']) {
             await cdp.send('Page.navigate', { url: `${URL_BASE}/pages/${p}.html` });
             await sleep(1600);
             const info = await evalJs(`(() => ({
                 title: document.title,
                 textLen: document.body.innerText.trim().length,
-                backLink: !!document.querySelector('a[href="../index.html"]'),
+                backLink: !!document.querySelector('a[href^="../index.html"]'),
                 overflow: document.documentElement.scrollWidth > window.innerWidth + 1,
             }))()`);
             check(`Halaman ${p} ter-render`,

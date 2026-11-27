@@ -1,0 +1,20 @@
+/pages/fitur-notes.html
+  X-Robots-Tag: noindex, follow
+
+/pages/fitur-todo.html
+  X-Robots-Tag: noindex, follow
+
+/pages/kalender.html
+  X-Robots-Tag: noindex, follow
+
+/pages/keuangan.html
+  X-Robots-Tag: noindex, follow
+
+/pages/memento.html
+  X-Robots-Tag: noindex, follow
+
+/pages/nutrisi.html
+  X-Robots-Tag: noindex, follow
+
+/sections/*
+  X-Robots-Tag: noindex, follow

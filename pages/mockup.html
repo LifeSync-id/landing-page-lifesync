@@ -15,12 +15,90 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simulator Interaktif - LifeSync: Daily Habit Tracker and Assistance</title>
     <meta name="description" content="Rasakan langsung pengalaman menggunakan LifeSync: Daily Habit Tracker and Assistance di browser kamu. Uji coba pelacak kebiasaan, agenda to-do, catatan, pemantau keuangan, pemindai nutrisi AI, hingga kenangan perjalanan.">
+    <meta name="application-name" content="LifeSync: Daily Habit Tracker and Assistance">
+    <meta name="apple-mobile-web-app-title" content="LifeSync">
+    <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="theme-color" content="#316342">
     <link rel="canonical" href="https://www.lifesync.id/pages/mockup.html">
+
+    <!-- Search Engine & Browser Favicons -->
     <link rel="icon" type="image/png" sizes="192x192" href="../assets/favicon-192x192.png">
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
     <link rel="manifest" href="../site.webmanifest">
+
+    <!-- Open Graph / Social Preview -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="id_ID">
+    <meta property="og:site_name" content="LifeSync: Daily Habit Tracker and Assistance">
+    <meta property="og:url" content="https://www.lifesync.id/pages/mockup.html">
+    <meta property="og:title" content="Simulator Interaktif - LifeSync: Daily Habit Tracker and Assistance">
+    <meta property="og:description" content="Rasakan langsung pengalaman menggunakan LifeSync: Daily Habit Tracker and Assistance di browser kamu. Uji coba pelacak kebiasaan, agenda to-do, catatan, pemantau keuangan, pemindai nutrisi AI, hingga kenangan perjalanan.">
+    <meta property="og:image" content="https://www.lifesync.id/assets/lifesync-banner.png">
+    <meta property="og:image:width" content="1920">
+    <meta property="og:image:height" content="1080">
+    <meta property="og:image:alt" content="Simulator Interaktif LifeSync: Daily Habit Tracker and Assistance">
+
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Simulator Interaktif - LifeSync: Daily Habit Tracker and Assistance">
+    <meta name="twitter:description" content="Rasakan langsung pengalaman menggunakan LifeSync: Daily Habit Tracker and Assistance di browser kamu. Uji coba pelacak kebiasaan, agenda to-do, catatan, pemantau keuangan, pemindai nutrisi AI, hingga kenangan perjalanan.">
+    <meta name="twitter:image" content="https://www.lifesync.id/assets/lifesync-banner.png">
+
+    <!-- Structured Data (WebPage + WebApplication + BreadcrumbList) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": "https://www.lifesync.id/pages/mockup.html#webpage",
+          "url": "https://www.lifesync.id/pages/mockup.html",
+          "name": "Simulator Interaktif - LifeSync: Daily Habit Tracker and Assistance",
+          "description": "Rasakan langsung pengalaman menggunakan LifeSync: Daily Habit Tracker and Assistance di browser kamu. Uji coba pelacak kebiasaan, agenda to-do, catatan, pemantau keuangan, pemindai nutrisi AI, hingga kenangan perjalanan.",
+          "inLanguage": "id-ID",
+          "isPartOf": { "@id": "https://www.lifesync.id/#website" },
+          "breadcrumb": { "@id": "https://www.lifesync.id/pages/mockup.html#breadcrumb" },
+          "mainEntity": { "@id": "https://www.lifesync.id/pages/mockup.html#simulator" }
+        },
+        {
+          "@type": "WebApplication",
+          "@id": "https://www.lifesync.id/pages/mockup.html#simulator",
+          "name": "Simulator Interaktif LifeSync",
+          "url": "https://www.lifesync.id/pages/mockup.html",
+          "applicationCategory": "LifestyleApplication",
+          "operatingSystem": "Web",
+          "browserRequirements": "Requires JavaScript",
+          "image": "https://www.lifesync.id/assets/favicon-512x512.png",
+          "screenshot": "https://www.lifesync.id/assets/lifesync-banner.png",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "IDR"
+          },
+          "isPartOf": { "@id": "https://www.lifesync.id/#website" }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://www.lifesync.id/pages/mockup.html#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Beranda",
+              "item": "https://www.lifesync.id/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Simulator Interaktif",
+              "item": "https://www.lifesync.id/pages/mockup.html"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
 
     <!-- Google Fonts & Material Symbols -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1858,12 +1936,39 @@
 
         let appState = JSON.parse(JSON.stringify(DEFAULT_STATE));
 
+        function applyInitialRoute() {
+            const validTabs = new Set(['home', 'planner', 'notes', 'finance', 'nutrition', 'memento', 'profile']);
+            const validScreens = new Set(['splash', 'onboarding', 'auth']);
+            let target = '';
+
+            try {
+                const hashTarget = (window.location.hash || '').replace(/^#/, '').trim().toLowerCase();
+                const queryTarget = (new URLSearchParams(window.location.search).get('tab') || '').trim().toLowerCase();
+                target = hashTarget || queryTarget;
+            } catch (e) {
+                target = '';
+            }
+
+            if (validTabs.has(target)) {
+                appState.screen = 'main';
+                appState.tab = target;
+            } else if (validScreens.has(target)) {
+                appState.screen = target;
+            }
+        }
+
         /* Initialization */
         document.addEventListener('DOMContentLoaded', () => {
+            applyInitialRoute();
             renderAll();
             startLiveClock();
             initFeatureAttention();
-            trackMockupEvent('mockup_loaded', { initial_screen: appState.screen });
+            trackMockupEvent('mockup_loaded', { initial_screen: appState.screen, initial_tab: appState.tab });
+
+            window.addEventListener('hashchange', () => {
+                applyInitialRoute();
+                renderScreenState();
+            });
 
             document.querySelectorAll('a[href="../index.html"], a[href="../index.html#fitur"]').forEach(btn => {
                 btn.addEventListener('click', () => {
